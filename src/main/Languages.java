@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JRadioButton;
+import javax.swing.JCheckBox;
 
 public class Languages {
 
@@ -83,12 +85,80 @@ public class Languages {
         lblNewLabel_1.setBounds(10, 10, 150, 30);
         panel_1.add(lblNewLabel_1);
         
-        JComboBox comboBox = new JComboBox();
-        comboBox.setForeground(new Color(255, 255, 255));
-        comboBox.setModel(new DefaultComboBoxModel(new String[] {"Finnish", "English", "Spanish", "German", "Japanese", "Chinese", "Swedish", "Norwegian", "Danish"}));
-        comboBox.setBackground(new Color(86, 86, 86));
-        comboBox.setFont(new Font("Tahoma", Font.BOLD, 15));
-        comboBox.setBounds(170, 10, 174, 30);
-        panel_1.add(comboBox);
+        JComboBox cmbxLang = new JComboBox();
+        cmbxLang.setForeground(new Color(255, 255, 255));
+        cmbxLang.setModel(new DefaultComboBoxModel(new String[] {"Finnish", "English", "Spanish", "German", "Japanese", "Chinese", "Swedish", "Norwegian", "Danish"}));
+        cmbxLang.setBackground(new Color(86, 86, 86));
+        cmbxLang.setFont(new Font("Tahoma", Font.BOLD, 15));
+        cmbxLang.setBounds(170, 10, 174, 30);
+        panel_1.add(cmbxLang);
+        
+        JRadioButton rdbtnBegSpeech = new JRadioButton("Beginner");
+        rdbtnBegSpeech.setFont(new Font("Tahoma", Font.BOLD, 15));
+        rdbtnBegSpeech.setForeground(new Color(255, 255, 255));
+        rdbtnBegSpeech.setBackground(new Color(86, 86, 86));
+        rdbtnBegSpeech.setBounds(170, 97, 174, 21);
+        panel_1.add(rdbtnBegSpeech);
+        
+        JRadioButton rdbtnInterSpeech = new JRadioButton("Intermediate");
+        rdbtnInterSpeech.setForeground(Color.WHITE);
+        rdbtnInterSpeech.setFont(new Font("Tahoma", Font.BOLD, 15));
+        rdbtnInterSpeech.setBackground(new Color(86, 86, 86));
+        rdbtnInterSpeech.setBounds(170, 128, 174, 21);
+        panel_1.add(rdbtnInterSpeech);
+        
+        JRadioButton rdbtnAdSpeech = new JRadioButton("Advanced");
+        rdbtnAdSpeech.setForeground(Color.WHITE);
+        rdbtnAdSpeech.setFont(new Font("Tahoma", Font.BOLD, 15));
+        rdbtnAdSpeech.setBackground(new Color(86, 86, 86));
+        rdbtnAdSpeech.setBounds(170, 160, 174, 21);
+        panel_1.add(rdbtnAdSpeech);
+        
+        JRadioButton rdbtnNatSpeech = new JRadioButton("Native");
+        rdbtnNatSpeech.setForeground(Color.WHITE);
+        rdbtnNatSpeech.setFont(new Font("Tahoma", Font.BOLD, 15));
+        rdbtnNatSpeech.setBackground(new Color(86, 86, 86));
+        rdbtnNatSpeech.setBounds(170, 193, 174, 21);
+        panel_1.add(rdbtnNatSpeech);
+        
+        JRadioButton rdbtnBegWrite = new JRadioButton("Beginner");
+        rdbtnBegWrite.setForeground(Color.WHITE);
+        rdbtnBegWrite.setFont(new Font("Tahoma", Font.BOLD, 15));
+        rdbtnBegWrite.setBackground(new Color(86, 86, 86));
+        rdbtnBegWrite.setBounds(9, 264, 174, 21);
+        panel_1.add(rdbtnBegWrite);
+        
+        JRadioButton rdbtnInterWrite = new JRadioButton("Intermediate");
+        rdbtnInterWrite.setForeground(Color.WHITE);
+        rdbtnInterWrite.setFont(new Font("Tahoma", Font.BOLD, 15));
+        rdbtnInterWrite.setBackground(new Color(86, 86, 86));
+        rdbtnInterWrite.setBounds(10, 294, 174, 21);
+        panel_1.add(rdbtnInterWrite);
+        
+        JRadioButton rdbtnAdWrite = new JRadioButton("Advanced");
+        rdbtnAdWrite.setForeground(Color.WHITE);
+        rdbtnAdWrite.setFont(new Font("Tahoma", Font.BOLD, 15));
+        rdbtnAdWrite.setBackground(new Color(86, 86, 86));
+        rdbtnAdWrite.setBounds(10, 323, 174, 21);
+        panel_1.add(rdbtnAdWrite);
+        
+        JRadioButton rdbtnNatWrite = new JRadioButton("Native");
+        rdbtnNatWrite.setForeground(Color.WHITE);
+        rdbtnNatWrite.setFont(new Font("Tahoma", Font.BOLD, 15));
+        rdbtnNatWrite.setBackground(new Color(86, 86, 86));
+        rdbtnNatWrite.setBounds(10, 353, 174, 21);
+        panel_1.add(rdbtnNatWrite);
+        
+        JLabel lblNewLabel_1_1_1 = new JLabel("Select your speech skill level:");
+        lblNewLabel_1_1_1.setForeground(Color.WHITE);
+        lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 17));
+        lblNewLabel_1_1_1.setBounds(10, 50, 334, 30);
+        panel_1.add(lblNewLabel_1_1_1);
+        
+        JLabel lblNewLabel_1_1_1_1 = new JLabel("Select your writing skills:");
+        lblNewLabel_1_1_1_1.setForeground(Color.WHITE);
+        lblNewLabel_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 17));
+        lblNewLabel_1_1_1_1.setBounds(10, 228, 334, 30);
+        panel_1.add(lblNewLabel_1_1_1_1);
     }
 }
