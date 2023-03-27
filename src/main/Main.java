@@ -9,11 +9,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
+import javax.swing.JList;
 
 public class Main {
 
 	private JFrame frame;
+	private String[] strengths = { "", "", "", "", "" };
 
 	/**
 	 * Launch the application.
@@ -29,6 +35,27 @@ public class Main {
 				}
 			}
 		});
+	}
+	
+	public void getStrengths() {
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader("strengths.txt"));
+			String line = reader.readLine();
+			
+			int i = 0;
+			while (line != null) {
+				line = reader.readLine();
+				
+				strengths[i] = line;
+				
+				i++;
+			}
+			
+			reader.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -61,10 +88,15 @@ public class Main {
         lblNewLabel.setBounds(28, 11, 354, 49);
         frame.getContentPane().add(lblNewLabel);
         
-        JButton btnReturn = new JButton("Return");
-        btnReturn.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        btnReturn.setBounds(545, 504, 112, 23);
-        frame.getContentPane().add(btnReturn);
+        JButton btnRefresh = new JButton("Refresh");
+        btnRefresh.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		getStrengths();
+        	}
+        });
+        btnRefresh.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnRefresh.setBounds(545, 504, 112, 23);
+        frame.getContentPane().add(btnRefresh);
         
         JButton btnFinish = new JButton("Finish");
         btnFinish.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -84,7 +116,7 @@ public class Main {
         JButton btnBuffs = new JButton("Vahvuudet");
         btnBuffs.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		Buffs.main(null);
+        		Strengths.main(null);
         	}
         });
         btnBuffs.setBounds(10, 72, 334, 50);
