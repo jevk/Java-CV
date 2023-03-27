@@ -13,9 +13,6 @@ import javax.swing.JTextField;
 import structs.CV;
 
 import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTabbedPane;
 import javax.swing.JScrollPane;
@@ -25,10 +22,20 @@ import javax.swing.SwingConstants;
 public class Strengths {
 
 	private CV cv;
-	private String[] strengths = new String[10];
+	private String[] strengths = {
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+	};
 	private JFrame frame;
 	private JTextField strengthField;
-	private String[] skills = {"", "", "", "", ""};
 
 	/**
 	 * Launch the application.
@@ -94,16 +101,6 @@ public class Strengths {
         JButton btnBack = new JButton("Back");
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		try {
-					BufferedWriter writer = new BufferedWriter(new FileWriter("strengths.txt"));
-					writer.write(skills[0] + "\n" + skills[1] + "\n" + skills[2] + "\n" + skills[3] + "\n" + skills[4]);
-					writer.close();
-					
-					frame.dispose();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
         	}
         });
         btnBack.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -125,10 +122,14 @@ public class Strengths {
         btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		strengthsText.append(strengthField.getText() + "\n");
-        		for (int i = 0; i < strengths.length; i++) {
-        			if (strengths[i] == null) {
-        				strengths[i] = strengthField.getText();
+        		for (String s : strengths) {
+        			if (s == "") {
+        				s = strengthField.getText();
         			}
+        		}
+
+        		for (String s : strengths) {
+        			System.out.println(s);
         		}
         	}
         });
@@ -138,8 +139,13 @@ public class Strengths {
         JButton btnNext = new JButton("Next");
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		for (int i = 0; i < strengths.length; i++) {
+        			if (strengths[i] == null) {
+        				strengths[i] = "";
+        			}
+        		}
         		cv.setStrengths(strengths);
-        		Languages.main(null);
+        		Languages.main(null, cv);
         		frame.dispose();
         	}
         });

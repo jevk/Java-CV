@@ -17,6 +17,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.text.BadLocationException;
 
+import structs.CV;
 import structs.Language;
 
 import javax.swing.JTabbedPane;
@@ -26,7 +27,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 
 public class Languages {
-
+	private CV cv;
 	private JFrame frame;
 	private Language[] langs = new Language[10];
 
@@ -46,11 +47,11 @@ public class Languages {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args, CV curriculumVitae) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Languages window = new Languages();
+					Languages window = new Languages(curriculumVitae);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -62,7 +63,8 @@ public class Languages {
 	/**
 	 * Create the application.
 	 */
-	public Languages() {
+	public Languages(CV curriculumVitae) {
+		cv = curriculumVitae;
 		initialize();
 	}
 
@@ -84,16 +86,28 @@ public class Languages {
         panel.setLayout(null);
         
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+        tabbedPane.setSelectedIndex(-1);
         tabbedPane.setBounds(10, 11, 334, 415);
         panel.add(tabbedPane);
         
-        JScrollPane scrollPane = new JScrollPane();
-        tabbedPane.addTab("CV", null, scrollPane, null);
+        JScrollPane strengthPane = new JScrollPane();
+        tabbedPane.addTab("Strengths", null, strengthPane, null);
         
-        JTextArea txtCV = new JTextArea();
-        txtCV.setEditable(false);
-        scrollPane.setViewportView(txtCV);
-        txtCV.setFont(new Font("Monospaced", Font.BOLD, 15));
+        JTextArea txtStrengths = new JTextArea();
+        strengthPane.setViewportView(txtStrengths);
+        String[] strengths = cv.getStrengths();
+        for (int i = 0; i < strengths.length; i++) {
+        	System.out.println(i);
+        	txtStrengths.append(strengths[i] + "\n");
+        }
+        
+        JScrollPane langPane = new JScrollPane();
+        tabbedPane.addTab("Languages", null, langPane, null);
+        
+        JTextArea txtLangs = new JTextArea();
+        txtLangs.setEditable(false);
+        langPane.setViewportView(txtLangs);
+        txtLangs.setFont(new Font("Monospaced", Font.BOLD, 15));
         
         JLabel lblNewLabel = new JLabel("Language Skills");
         lblNewLabel.setForeground(new Color(255, 255, 255));
@@ -101,15 +115,15 @@ public class Languages {
         lblNewLabel.setBounds(28, 11, 354, 49);
         frame.getContentPane().add(lblNewLabel);
         
-        JButton btnReturn = new JButton("Return");
-        btnReturn.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        btnReturn.setBounds(545, 504, 112, 23);
-        frame.getContentPane().add(btnReturn);
+        JButton btnNext = new JButton("Next");
+        btnNext.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnNext.setBounds(545, 504, 112, 23);
+        frame.getContentPane().add(btnNext);
         
-        JButton btnFinish = new JButton("Finish");
-        btnFinish.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        btnFinish.setBounds(127, 504, 112, 23);
-        frame.getContentPane().add(btnFinish);
+        JButton btnBack = new JButton("Back");
+        btnBack.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnBack.setBounds(127, 504, 112, 23);
+        frame.getContentPane().add(btnBack);
         
         JPanel panel_1 = new JPanel();
         panel_1.setBackground(new Color(49, 49, 49));
@@ -215,7 +229,7 @@ public class Languages {
         btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		if (!Write.isSelected(null) && !Speech.isSelected(null)) {
-        			txtCV.append(cmbxLang.getSelectedItem() + ": \nWriting: " + getSelectedButtonText(Write) + "\nSpeech: " + getSelectedButtonText(Speech) + "\n");
+        			txtLangs.append(cmbxLang.getSelectedItem() + ": \nWriting: " + getSelectedButtonText(Write) + "\nSpeech: " + getSelectedButtonText(Speech) + "\n");
         			Language lang = new Language(
         					cmbxLang.getSelectedItem().toString(), 
         					getSelectedButtonText(Write), 
@@ -246,8 +260,8 @@ public class Languages {
         	public void actionPerformed(ActionEvent e) {
         		int end;
 				try {
-					end = txtCV.getLineEndOffset(2);
-					txtCV.replaceRange("", 0, end);
+					end = txtLangs.getLineEndOffset(2);
+					txtLangs.replaceRange("", 0, end);
 				} catch (BadLocationException e1) {
 					JOptionPane.showMessageDialog(null, e1);
 				}
