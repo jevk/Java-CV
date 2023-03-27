@@ -1,22 +1,42 @@
 package main;
 
-import java.awt.Color;
+import java.awt.Color; 
 import java.awt.EventQueue;
 import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JComboBox;
+import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JRadioButton;
-import javax.swing.JCheckBox;
+import javax.swing.JTextArea;
+import javax.swing.JTabbedPane;
+import java.awt.event.ActionListener;
+import java.util.Enumeration;
+import java.awt.event.ActionEvent;
 
 public class Languages {
 
 	private JFrame frame;
 
+	
+	public String getSelectedButtonText(ButtonGroup buttonGroup) {
+        for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
+            AbstractButton button = buttons.nextElement();
+
+            if (button.isSelected()) {
+                return button.getText();
+            }
+        }
+
+        return null;
+    }
+	
 	/**
 	 * Launch the application.
 	 */
@@ -57,6 +77,14 @@ public class Languages {
         frame.getContentPane().add(panel);
         panel.setLayout(null);
         
+        JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+        tabbedPane.setBounds(10, 11, 334, 415);
+        panel.add(tabbedPane);
+        
+        JTextArea txtCV = new JTextArea();
+        txtCV.setFont(new Font("Monospaced", Font.BOLD, 15));
+        tabbedPane.addTab("CV", null, txtCV, null);
+        
         JLabel lblNewLabel = new JLabel("Language Skills");
         lblNewLabel.setForeground(new Color(255, 255, 255));
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
@@ -85,9 +113,9 @@ public class Languages {
         lblNewLabel_1.setBounds(10, 10, 150, 30);
         panel_1.add(lblNewLabel_1);
         
-        JComboBox cmbxLang = new JComboBox();
+        JComboBox<Object> cmbxLang = new JComboBox<Object>();
         cmbxLang.setForeground(new Color(255, 255, 255));
-        cmbxLang.setModel(new DefaultComboBoxModel(new String[] {"Finnish", "English", "Spanish", "German", "Japanese", "Chinese", "Swedish", "Norwegian", "Danish"}));
+        cmbxLang.setModel(new DefaultComboBoxModel<Object>(new String[] {"Finnish", "English", "Spanish", "German", "Japanese", "Chinese", "Swedish", "Norwegian", "Danish"}));
         cmbxLang.setBackground(new Color(86, 86, 86));
         cmbxLang.setFont(new Font("Tahoma", Font.BOLD, 15));
         cmbxLang.setBounds(170, 10, 174, 30);
@@ -160,5 +188,48 @@ public class Languages {
         lblNewLabel_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 17));
         lblNewLabel_1_1_1_1.setBounds(10, 228, 334, 30);
         panel_1.add(lblNewLabel_1_1_1_1);
+        
+        ButtonGroup Speech = new ButtonGroup();
+        Speech.add(rdbtnNatSpeech);
+        Speech.add(rdbtnAdSpeech);
+        Speech.add(rdbtnInterSpeech);
+        Speech.add(rdbtnBegSpeech);
+        
+        ButtonGroup Write = new ButtonGroup();
+        Write.add(rdbtnNatWrite);
+        Write.add(rdbtnAdWrite);
+        Write.add(rdbtnInterWrite);
+        Write.add(rdbtnBegWrite);
+        
+        JButton btnAdd = new JButton("Add an entry");
+        btnAdd.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		if (!Write.isSelected(null) && !Speech.isSelected(null)) {
+        		txtCV.append(cmbxLang.getSelectedItem() + ": \nWriting: " + getSelectedButtonText(Write) + "\nSpeech: " + getSelectedButtonText(Speech) + "\n");
+        		}
+        		else {
+        			JOptionPane.showMessageDialog(null, "You also must select both skill levels to put to the CV");
+        		}
+        	}		
+        });
+        btnAdd.setForeground(new Color(255, 255, 255));
+        btnAdd.setBackground(new Color(128, 128, 128));
+        btnAdd.setFont(new Font("Tahoma", Font.BOLD, 15));
+        btnAdd.setBounds(190, 354, 154, 23);
+        panel_1.add(btnAdd);
+        
+        JButton btnClear = new JButton("Clear");
+        btnClear.setFont(new Font("Tahoma", Font.BOLD, 15));
+        btnClear.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		txtCV.setText(null);
+        		Write.clearSelection();
+        		Speech.clearSelection();
+        	}
+        });
+        btnClear.setBackground(new Color(128, 128, 128));
+        btnClear.setForeground(new Color(255, 255, 255));
+        btnClear.setBounds(190, 323, 154, 21);
+        panel_1.add(btnClear);
     }
 }
