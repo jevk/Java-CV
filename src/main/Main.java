@@ -7,12 +7,14 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+
+import structs.CV;
 
 public class Main {
 
@@ -74,50 +76,33 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         
-        JPanel panel = new JPanel();
-        panel.setBackground(new Color(49, 49, 49));
-        panel.setBounds(408, 21, 354, 437);
-        frame.getContentPane().add(panel);
-        panel.setLayout(null);
-        
         JLabel lblNewLabel = new JLabel("CV Generator");
+        lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel.setForeground(new Color(255, 255, 255));
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
-        lblNewLabel.setBounds(28, 11, 354, 49);
+        lblNewLabel.setBounds(215, 11, 354, 49);
         frame.getContentPane().add(lblNewLabel);
         
-        JButton btnRefresh = new JButton("Refresh");
-        btnRefresh.addActionListener(new ActionListener() {
+        JButton btnQuit = new JButton("Quit");
+        btnQuit.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		getStrengths();
+        		System.exit(0);
         	}
         });
-        btnRefresh.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        btnRefresh.setBounds(545, 504, 112, 23);
-        frame.getContentPane().add(btnRefresh);
+        btnQuit.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnQuit.setBounds(336, 504, 112, 23);
+        frame.getContentPane().add(btnQuit);
         
-        JButton btnFinish = new JButton("Finish");
-        btnFinish.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        btnFinish.setBounds(127, 504, 112, 23);
-        frame.getContentPane().add(btnFinish);
-        
-        JPanel panel_1 = new JPanel();
-        panel_1.setBackground(new Color(49, 49, 49));
-        panel_1.setBounds(28, 71, 354, 387);
-        frame.getContentPane().add(panel_1);
-        panel_1.setLayout(null);
-        
-        JButton btnContacts = new JButton("Henkil\u00F6tiedot");
-        btnContacts.setBounds(10, 11, 334, 50);
-        panel_1.add(btnContacts);
-        
-        JButton btnBuffs = new JButton("Vahvuudet");
-        btnBuffs.addActionListener(new ActionListener() {
+        JButton btnStart = new JButton("Start");
+        btnStart.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		Strengths.main(null);
+        		CV cv = new CV();
+        		Strengths.main(null, cv);
+        		frame.dispose();
         	}
         });
-        btnBuffs.setBounds(10, 72, 334, 50);
-        panel_1.add(btnBuffs);
+        btnStart.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnStart.setBounds(291, 213, 202, 49);
+        frame.getContentPane().add(btnStart);
 	}
 }

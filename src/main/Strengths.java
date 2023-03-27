@@ -4,46 +4,40 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 
-import javax.swing.AbstractButton;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.JRadioButton;
+
+import structs.CV;
+
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Enumeration;
 import java.awt.event.ActionEvent;
+import javax.swing.JTabbedPane;
+import javax.swing.JScrollPane;
+import java.awt.TextArea;
+import javax.swing.SwingConstants;
 
 public class Strengths {
 
+	private CV cv;
+	private String[] strengths = new String[10];
 	private JFrame frame;
-	private JTextField textField;
+	private JTextField strengthField;
 	private String[] skills = {"", "", "", "", ""};
-	private String getSelectedButton(ButtonGroup buttonGroup) {
-        for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
-            AbstractButton button = buttons.nextElement();
-
-            if (button.isSelected()) {
-                return button.getName();
-            }
-        }
-
-        return null;
-    }
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args, CV curriculumVitae) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Strengths window = new Strengths();
+					Strengths window = new Strengths(curriculumVitae);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -55,7 +49,8 @@ public class Strengths {
 	/**
 	 * Create the application.
 	 */
-	public Strengths() {
+	public Strengths(CV curriculumVitae) {
+		cv = curriculumVitae;
 		initialize();
 	}
 
@@ -76,91 +71,28 @@ public class Strengths {
         frame.getContentPane().add(panel);
         panel.setLayout(null);
         
-        JLabel lblSkill1 = new JLabel("-");
-        lblSkill1.setForeground(Color.WHITE);
-        lblSkill1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        lblSkill1.setBounds(10, 11, 223, 49);
-        panel.add(lblSkill1);
+        JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+        tabbedPane.setBounds(10, 11, 334, 415);
+        panel.add(tabbedPane);
         
-        JLabel lblSkill2 = new JLabel("-");
-        lblSkill2.setForeground(Color.WHITE);
-        lblSkill2.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        lblSkill2.setBounds(10, 71, 223, 49);
-        panel.add(lblSkill2);
+        JScrollPane strengthsTab = new JScrollPane();
+        tabbedPane.addTab("Strengths", null, strengthsTab, null);
         
-        JLabel lblSkill3 = new JLabel("-");
-        lblSkill3.setForeground(Color.WHITE);
-        lblSkill3.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        lblSkill3.setBounds(10, 131, 223, 49);
-        panel.add(lblSkill3);
+        TextArea strengthsText = new TextArea();
+        strengthsTab.setRowHeaderView(strengthsText);
         
-        JLabel lblSkill4 = new JLabel("-");
-        lblSkill4.setForeground(Color.WHITE);
-        lblSkill4.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        lblSkill4.setBounds(10, 191, 223, 49);
-        panel.add(lblSkill4);
+        JScrollPane langTab = new JScrollPane();
+        tabbedPane.addTab("Languages", null, langTab, null);
         
-        JLabel lblSkill5 = new JLabel("-");
-        lblSkill5.setForeground(Color.WHITE);
-        lblSkill5.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        lblSkill5.setBounds(10, 251, 223, 49);
-        panel.add(lblSkill5);
-        
-        ButtonGroup btnGrp = new ButtonGroup();
-        
-        JRadioButton rdbtnNewRadioButton_0 = new JRadioButton("Select");
-        rdbtnNewRadioButton_0.setForeground(Color.WHITE);
-        rdbtnNewRadioButton_0.setBackground(new Color(49, 49, 49));
-        rdbtnNewRadioButton_0.setBounds(239, 28, 109, 23);
-        rdbtnNewRadioButton_0.setName("0");
-        panel.add(rdbtnNewRadioButton_0);
-        btnGrp.add(rdbtnNewRadioButton_0);
-        
-        JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Select");
-        rdbtnNewRadioButton_1.setForeground(Color.WHITE);
-        rdbtnNewRadioButton_1.setBackground(new Color(49, 49, 49));
-        rdbtnNewRadioButton_1.setBounds(239, 88, 109, 23);
-        rdbtnNewRadioButton_1.setName("1");
-        panel.add(rdbtnNewRadioButton_1);
-        btnGrp.add(rdbtnNewRadioButton_1);
-        
-        JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Select");
-        rdbtnNewRadioButton_2.setForeground(Color.WHITE);
-        rdbtnNewRadioButton_2.setBackground(new Color(49, 49, 49));
-        rdbtnNewRadioButton_2.setBounds(239, 148, 109, 23);
-        rdbtnNewRadioButton_2.setName("2");
-        panel.add(rdbtnNewRadioButton_2);
-        btnGrp.add(rdbtnNewRadioButton_2);
-        
-        JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("Select");
-        rdbtnNewRadioButton_3.setForeground(Color.WHITE);
-        rdbtnNewRadioButton_3.setBackground(new Color(49, 49, 49));
-        rdbtnNewRadioButton_3.setBounds(239, 208, 109, 23);
-        rdbtnNewRadioButton_3.setName("3");
-        panel.add(rdbtnNewRadioButton_3);
-        btnGrp.add(rdbtnNewRadioButton_3);
-        
-        JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("Select");
-        rdbtnNewRadioButton_4.setForeground(Color.WHITE);
-        rdbtnNewRadioButton_4.setBackground(new Color(49, 49, 49));
-        rdbtnNewRadioButton_4.setBounds(239, 268, 109, 23);
-        rdbtnNewRadioButton_4.setName("4");
-        panel.add(rdbtnNewRadioButton_4);
-        btnGrp.add(rdbtnNewRadioButton_4);
-        
-        JLabel lblNewLabel = new JLabel("Section title");
+        JLabel lblNewLabel = new JLabel("Strengths");
         lblNewLabel.setForeground(new Color(255, 255, 255));
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
         lblNewLabel.setBounds(28, 11, 354, 49);
         frame.getContentPane().add(lblNewLabel);
         
-        JButton btnReturn = new JButton("Cancel");
-        btnReturn.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        btnReturn.setBounds(545, 504, 112, 23);
-        frame.getContentPane().add(btnReturn);
         
-        JButton btnFinish = new JButton("Finish");
-        btnFinish.addActionListener(new ActionListener() {
+        JButton btnBack = new JButton("Back");
+        btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		try {
 					BufferedWriter writer = new BufferedWriter(new FileWriter("strengths.txt"));
@@ -174,50 +106,53 @@ public class Strengths {
 				}
         	}
         });
-        btnFinish.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        btnFinish.setBounds(127, 504, 112, 23);
-        frame.getContentPane().add(btnFinish);
+        btnBack.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnBack.setBounds(127, 504, 112, 23);
+        frame.getContentPane().add(btnBack);
         
         JPanel panel_1 = new JPanel();
         panel_1.setBackground(new Color(49, 49, 49));
-        panel_1.setBounds(28, 71, 354, 387);
+        panel_1.setBounds(38, 71, 354, 387);
         frame.getContentPane().add(panel_1);
         panel_1.setLayout(null);
         
-        JButton btnSet = new JButton("Set");
-        btnSet.addActionListener(new ActionListener() {
+        strengthField = new JTextField();
+        strengthField.setBounds(64, 166, 225, 34);
+        panel_1.add(strengthField);
+        strengthField.setColumns(10);
+        
+        JButton btnAdd = new JButton("Add");
+        btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		if (getSelectedButton(btnGrp) == null) {
-        			rdbtnNewRadioButton_0.setSelected(true);
+        		strengthsText.append(strengthField.getText() + "\n");
+        		for (int i = 0; i < strengths.length; i++) {
+        			if (strengths[i] == null) {
+        				strengths[i] = strengthField.getText();
+        			}
         		}
-        		String text  = textField.getText();
-        		int selectedButton = Integer.parseInt(getSelectedButton(btnGrp));
-        		switch (selectedButton) {
-        		case 0:
-        			lblSkill1.setText("- " + text);
-        			break;
-        		case 1:
-        			lblSkill2.setText("- " + text);
-        			break;
-        		case 2:
-        			lblSkill3.setText("- " + text);
-        			break;
-        		case 3:
-        			lblSkill4.setText("- " + text);
-        			break;
-        		case 4:
-        			lblSkill5.setText("- " + text);
-        			break;
-        		}
-        		skills[selectedButton] = text;
         	}
         });
-        btnSet.setBounds(100, 328, 154, 48);
-        panel_1.add(btnSet);
+        btnAdd.setBounds(100, 273, 154, 48);
+        panel_1.add(btnAdd);
         
-        textField = new JTextField();
-        textField.setBounds(35, 218, 284, 29);
-        panel_1.add(textField);
-        textField.setColumns(10);
+        JButton btnNext = new JButton("Next");
+        btnNext.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		cv.setStrengths(strengths);
+        		Languages.main(null);
+        		frame.dispose();
+        	}
+        });
+        btnNext.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnNext.setBounds(545, 504, 112, 23);
+        frame.getContentPane().add(btnNext);
+        
+        
+        JLabel lblNewLabel_1 = new JLabel("Strength");
+        lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        lblNewLabel_1.setForeground(Color.WHITE);
+        lblNewLabel_1.setBounds(80, 115, 193, 40);
+        panel_1.add(lblNewLabel_1);
 	}
 }
