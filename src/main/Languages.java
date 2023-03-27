@@ -15,6 +15,9 @@ import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
+
+import structs.Language;
+
 import javax.swing.JTabbedPane;
 import java.awt.event.ActionListener;
 import java.util.Enumeration;
@@ -23,6 +26,7 @@ import java.awt.event.ActionEvent;
 public class Languages {
 
 	private JFrame frame;
+	private Language[] langs = new Language[10];
 
 	
 	public String getSelectedButtonText(ButtonGroup buttonGroup) {
@@ -205,7 +209,19 @@ public class Languages {
         btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		if (!Write.isSelected(null) && !Speech.isSelected(null)) {
-        		txtCV.append(cmbxLang.getSelectedItem() + ": \nWriting: " + getSelectedButtonText(Write) + "\nSpeech: " + getSelectedButtonText(Speech) + "\n");
+        			txtCV.append(cmbxLang.getSelectedItem() + ": \nWriting: " + getSelectedButtonText(Write) + "\nSpeech: " + getSelectedButtonText(Speech) + "\n");
+        			Language lang = new Language(
+        					cmbxLang.getSelectedItem().toString(), 
+        					getSelectedButtonText(Write), 
+        					getSelectedButtonText(Speech)
+        			);
+        			for (int i = 0; i < langs.length; i++) {
+        				System.out.println(i);
+        				if (langs[i] == null) {
+        					langs[i] = lang;
+        					break;
+        				}
+        			}
         		}
         		else {
         			JOptionPane.showMessageDialog(null, "You also must select both skill levels to put to the CV");
