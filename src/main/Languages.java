@@ -15,10 +15,12 @@ import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
+import javax.swing.text.BadLocationException;
 import javax.swing.JTabbedPane;
 import java.awt.event.ActionListener;
 import java.util.Enumeration;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
 
 public class Languages {
 
@@ -81,9 +83,13 @@ public class Languages {
         tabbedPane.setBounds(10, 11, 334, 415);
         panel.add(tabbedPane);
         
+        JScrollPane scrollPane = new JScrollPane();
+        tabbedPane.addTab("CV", null, scrollPane, null);
+        
         JTextArea txtCV = new JTextArea();
+        txtCV.setEditable(false);
+        scrollPane.setViewportView(txtCV);
         txtCV.setFont(new Font("Monospaced", Font.BOLD, 15));
-        tabbedPane.addTab("CV", null, txtCV, null);
         
         JLabel lblNewLabel = new JLabel("Language Skills");
         lblNewLabel.setForeground(new Color(255, 255, 255));
@@ -217,5 +223,23 @@ public class Languages {
         btnAdd.setFont(new Font("Tahoma", Font.BOLD, 15));
         btnAdd.setBounds(190, 354, 154, 23);
         panel_1.add(btnAdd);
+        
+        JButton btnNewButton = new JButton("Clear 3 last lines");
+        btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 15));
+        btnNewButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		int end;
+				try {
+					end = txtCV.getLineEndOffset(2);
+					txtCV.replaceRange("", 0, end);
+				} catch (BadLocationException e1) {
+					JOptionPane.showMessageDialog(null, e1);
+				}
+        	}
+        });
+        btnNewButton.setForeground(new Color(255, 255, 255));
+        btnNewButton.setBackground(new Color(128, 128, 128));
+        btnNewButton.setBounds(190, 324, 154, 20);
+        panel_1.add(btnNewButton);
     }
 }
