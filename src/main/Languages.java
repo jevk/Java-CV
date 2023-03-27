@@ -15,13 +15,10 @@ import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
-<<<<<<< HEAD
 import javax.swing.text.BadLocationException;
-=======
 
 import structs.Language;
 
->>>>>>> 1e441f310e8b7b4899750cde7a103e7de07d2122
 import javax.swing.JTabbedPane;
 import java.awt.event.ActionListener;
 import java.util.Enumeration;
