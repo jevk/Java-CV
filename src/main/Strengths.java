@@ -13,14 +13,17 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Enumeration;
 import java.awt.event.ActionEvent;
 
-public class Buffs {
+public class Strengths {
 
 	private JFrame frame;
 	private JTextField textField;
-	private String[] skills;
+	private String[] skills = {"", "", "", "", ""};
 	private String getSelectedButton(ButtonGroup buttonGroup) {
         for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
             AbstractButton button = buttons.nextElement();
@@ -40,7 +43,7 @@ public class Buffs {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Buffs window = new Buffs();
+					Strengths window = new Strengths();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,7 +55,7 @@ public class Buffs {
 	/**
 	 * Create the application.
 	 */
-	public Buffs() {
+	public Strengths() {
 		initialize();
 	}
 
@@ -151,12 +154,26 @@ public class Buffs {
         lblNewLabel.setBounds(28, 11, 354, 49);
         frame.getContentPane().add(lblNewLabel);
         
-        JButton btnReturn = new JButton("Return");
+        JButton btnReturn = new JButton("Cancel");
         btnReturn.setFont(new Font("Tahoma", Font.PLAIN, 13));
         btnReturn.setBounds(545, 504, 112, 23);
         frame.getContentPane().add(btnReturn);
         
         JButton btnFinish = new JButton("Finish");
+        btnFinish.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		try {
+					BufferedWriter writer = new BufferedWriter(new FileWriter("strengths.txt"));
+					writer.write(skills[0] + "\n" + skills[1] + "\n" + skills[2] + "\n" + skills[3] + "\n" + skills[4]);
+					writer.close();
+					
+					frame.dispose();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+        	}
+        });
         btnFinish.setFont(new Font("Tahoma", Font.PLAIN, 13));
         btnFinish.setBounds(127, 504, 112, 23);
         frame.getContentPane().add(btnFinish);
