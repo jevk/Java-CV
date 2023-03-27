@@ -217,19 +217,5 @@ public class Languages {
         btnAdd.setFont(new Font("Tahoma", Font.BOLD, 15));
         btnAdd.setBounds(190, 354, 154, 23);
         panel_1.add(btnAdd);
-        
-        JButton btnClear = new JButton("Clear");
-        btnClear.setFont(new Font("Tahoma", Font.BOLD, 15));
-        btnClear.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		txtCV.setText(null);
-        		Write.clearSelection();
-        		Speech.clearSelection();
-        	}
-        });
-        btnClear.setBackground(new Color(128, 128, 128));
-        btnClear.setForeground(new Color(255, 255, 255));
-        btnClear.setBounds(190, 323, 154, 21);
-        panel_1.add(btnClear);
     }
 }
