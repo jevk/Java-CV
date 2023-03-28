@@ -8,35 +8,24 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JScrollPane;
 
 import structs.CV;
 import structs.Details;
 import structs.Language;
 
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JTabbedPane;
-import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
-import javax.swing.JTextArea;
 
-public class Strengths {
+public class ITSkills {
 	private CV cv;
-	private String[] strengths = {
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-	};
+	private String[] itSkills = new String[10];
 	private JFrame frame;
-	private JTextField strengthField;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -45,7 +34,7 @@ public class Strengths {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Strengths window = new Strengths(curriculumVitae);
+					ITSkills window = new ITSkills(curriculumVitae);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -57,15 +46,15 @@ public class Strengths {
 	/**
 	 * Create the application.
 	 */
-	public Strengths(CV curriculumVitae) {
+	public ITSkills(CV curriculumVitae) {
 		cv = curriculumVitae;
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
+    /**
+     * Initialize the contents of the frame.
+     */
+    private void initialize() {
         frame = new JFrame();
         frame.getContentPane().setBackground(new Color(39, 39, 39));
         frame.getContentPane().setForeground(new Color(0, 0, 0));
@@ -82,7 +71,7 @@ public class Strengths {
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
         tabbedPane.setBounds(10, 11, 334, 415);
         panel.add(tabbedPane);
-        
+
         JScrollPane detailsTab = new JScrollPane();
         tabbedPane.addTab("Details", null, detailsTab, null);
         
@@ -105,13 +94,13 @@ public class Strengths {
         tabbedPane.addTab("Strengths", null, strengthsTab, null);
         
         JTextArea strengthsText = new JTextArea();
-        strengthsText.setText("Strengths:\n");
-    	strengths = cv.getStrengths();
-        for (int i = 0; i < strengths.length; i++) {
-        	if (strengths[i] != null) strengthsText.append(strengths[i] + "\n");
-        }
         strengthsText.setEditable(false);
         strengthsTab.setViewportView(strengthsText);
+        String[] strengths = cv.getStrengths();
+        strengthsText.setText("Strengths:\n");
+        for (int i = 0; i < strengths.length; i++) {
+        	if (strengths[i] != null && strengths[i] != "") strengthsText.append(strengths[i] + "\n");
+        }
         
         JScrollPane langTab = new JScrollPane();
         tabbedPane.addTab("Languages", null, langTab, null);
@@ -119,46 +108,47 @@ public class Strengths {
         JTextArea langsText = new JTextArea();
         langsText.setEditable(false);
         langTab.setViewportView(langsText);
-        Language[] langs = cv.getLanguages();
         langsText.setText("Languages:\n");
-        for (int i = 0; i < langs.length; i++) {
-        	if (langs[i] != null) {
-            	String spoken = langs[i].getSpoken();
-            	String written = langs[i].getWritten();
-            	String langName = langs[i].getLangName();
+        Language[] languages = cv.getLanguages();
+        for (int i = 0; i < languages.length; i++) {
+        	if (languages[i] != null) {
         		langsText.append(
-        				langName + ":\n" +
-        				"Written: " + written + "\n" +
-        				"Spoken: " + spoken + "\n"
+        				languages[i].getLangName() + "\n" +
+        				"Writing: " + languages[i].getWritten() + "\n" +
+        				"Speech: " + languages[i].getSpoken()
         		);
         	}
         }
         
-        JScrollPane itTab = new JScrollPane();
-        tabbedPane.addTab("IT Skills", null, itTab, null);
+        JScrollPane scrollPane = new JScrollPane();
+        tabbedPane.addTab("IT Skills", null, scrollPane, null);
         
         JTextArea itText = new JTextArea();
         itText.setEditable(false);
-        itTab.setViewportView(itText);
-        String[] itSkills = cv.getItSkills();
+        scrollPane.setViewportView(itText);
         itText.setText("IT Skills:\n");
+        itSkills = cv.getItSkills();
         for (int i = 0; i < itSkills.length; i++) {
-        	if (itSkills[i] != null) {
-        		itText.append(itSkills[i] + "\n");
-        	}
+        	if (itSkills[i] != null) itText.append(itSkills[i] + "\n");
         }
         
-        JLabel lblNewLabel = new JLabel("Strengths");
+        JLabel lblNewLabel = new JLabel("IT Skills");
         lblNewLabel.setForeground(new Color(255, 255, 255));
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
         lblNewLabel.setBounds(28, 11, 354, 49);
         frame.getContentPane().add(lblNewLabel);
         
+        JButton btnNext = new JButton("Next");
+        btnNext.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnNext.setBounds(545, 504, 112, 23);
+        frame.getContentPane().add(btnNext);
         
         JButton btnBack = new JButton("Back");
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		Main.main(null);
+        		cv.setItSkills(itSkills);
+        		Strengths.main(null, cv);
+        		frame.dispose();
         	}
         });
         btnBack.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -167,64 +157,40 @@ public class Strengths {
         
         JPanel panel_1 = new JPanel();
         panel_1.setBackground(new Color(49, 49, 49));
-        panel_1.setBounds(38, 71, 354, 387);
+        panel_1.setBounds(28, 71, 354, 387);
         frame.getContentPane().add(panel_1);
         panel_1.setLayout(null);
         
-        strengthField = new JTextField();
-        strengthField.setBounds(64, 166, 225, 34);
-        panel_1.add(strengthField);
-        strengthField.setColumns(10);
+        JLabel lblNewLabel_1 = new JLabel("Program");
+        lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        lblNewLabel_1.setForeground(Color.WHITE);
+        lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel_1.setBounds(10, 114, 334, 57);
+        panel_1.add(lblNewLabel_1);
+        
+        textField = new JTextField();
+        textField.setBounds(47, 182, 260, 37);
+        panel_1.add(textField);
+        textField.setColumns(10);
         
         JButton btnAdd = new JButton("Add");
         btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		String strength = strengthField.getText();
-        		strengthsText.append(strength + "\n");
-        		for (int i = 0; i < strengths.length; i++) {
-        			if (strengths[i] == "" || strengths[i] == null) {
-        				strengths[i] = strength;
+				itText.append(textField.getText() + "\n");
+        		for (int i = 0; i < itSkills.length; i++) {
+        			if (itSkills[i] == null) {
+        				itSkills[i] = textField.getText();
         				break;
         			}
         		}
+        		textField.setText("");
         	}
         });
-        btnAdd.setBounds(52, 281, 98, 34);
+        btnAdd.setBounds(40, 272, 116, 37);
         panel_1.add(btnAdd);
         
-        JButton btnNext = new JButton("Next");
-        btnNext.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		cv.setStrengths(strengths);
-        		ITSkills.main(null, cv);
-        		frame.dispose();
-        	}
-        });
-        btnNext.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        btnNext.setBounds(545, 504, 112, 23);
-        frame.getContentPane().add(btnNext);
-        
-        
-        JLabel lblNewLabel_1 = new JLabel("Strength");
-        lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-        lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        lblNewLabel_1.setForeground(Color.WHITE);
-        lblNewLabel_1.setBounds(80, 115, 193, 40);
-        panel_1.add(lblNewLabel_1);
-        
         JButton btnRemove = new JButton("Remove");
-        btnRemove.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-       			String newText = strengthsText.getText().replace("\n" + strengthField.getText() + "\n", "\n");
-           		for (int i = 0; i < 10; i++) {
-           			if (strengths[i] == strengthField.getText()) {
-           				strengths[i] = "";
-            		}
-            	}
-        		strengthsText.setText(newText);
-        	}
-        });
-        btnRemove.setBounds(202, 281, 98, 34);
+        btnRemove.setBounds(196, 272, 116, 37);
         panel_1.add(btnRemove);
-	}
+    }
 }
