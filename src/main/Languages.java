@@ -116,11 +116,25 @@ public class Languages {
         frame.getContentPane().add(lblNewLabel);
         
         JButton btnNext = new JButton("Next");
+        btnNext.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		cv.setLanguages(langs);
+        		
+        		frame.dispose();
+        	}
+        });
         btnNext.setFont(new Font("Tahoma", Font.PLAIN, 13));
         btnNext.setBounds(545, 504, 112, 23);
         frame.getContentPane().add(btnNext);
         
         JButton btnBack = new JButton("Back");
+        btnBack.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		cv.setLanguages(langs);
+        		ITSkills.main(null, cv);
+        		frame.dispose();
+        	}
+        });
         btnBack.setFont(new Font("Tahoma", Font.PLAIN, 13));
         btnBack.setBounds(127, 504, 112, 23);
         frame.getContentPane().add(btnBack);

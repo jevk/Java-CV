@@ -139,6 +139,12 @@ public class ITSkills {
         frame.getContentPane().add(lblNewLabel);
         
         JButton btnNext = new JButton("Next");
+        btnNext.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Languages.main(null, cv);
+        		frame.dispose();
+        	}
+        });
         btnNext.setFont(new Font("Tahoma", Font.PLAIN, 13));
         btnNext.setBounds(545, 504, 112, 23);
         frame.getContentPane().add(btnNext);
