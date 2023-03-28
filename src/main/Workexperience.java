@@ -142,7 +142,7 @@ public class Workexperience {
 	        				+"\n Yritys: "
 	        				+workplace.getText()
 	        				+"\nVuosien ja kuukausien määrä: "
-	        				+year.getText()+"vuotta ja "+month.getSelectedItem());
+	        				+year.getText()+" vuotta ja "+month.getSelectedItem());
 	        	}
 	        });
 	        btnTulosta.setFont(new Font("Tahoma", Font.PLAIN, 13));
