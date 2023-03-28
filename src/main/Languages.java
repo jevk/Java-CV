@@ -25,11 +25,13 @@ import java.awt.event.ActionListener;
 import java.util.Enumeration;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
 public class Languages {
 	private CV cv;
 	private JFrame frame;
 	private Language[] langs = new Language[10];
+	private JTextField txtLang;
 
 	
 	public String getSelectedButtonText(ButtonGroup buttonGroup) {
@@ -137,80 +139,72 @@ public class Languages {
         lblNewLabel_1.setBounds(10, 10, 150, 30);
         panel_1.add(lblNewLabel_1);
         
-        JComboBox<Object> cmbxLang = new JComboBox<Object>();
-        cmbxLang.setForeground(new Color(255, 255, 255));
-        cmbxLang.setModel(new DefaultComboBoxModel<Object>(new String[] {"Finnish", "English", "Spanish", "German", "Japanese", "Chinese", "Swedish", "Norwegian", "Danish"}));
-        cmbxLang.setBackground(new Color(86, 86, 86));
-        cmbxLang.setFont(new Font("Tahoma", Font.BOLD, 15));
-        cmbxLang.setBounds(170, 10, 174, 30);
-        panel_1.add(cmbxLang);
-        
         JRadioButton rdbtnBegSpeech = new JRadioButton("Beginner");
         rdbtnBegSpeech.setFont(new Font("Tahoma", Font.BOLD, 15));
         rdbtnBegSpeech.setForeground(new Color(255, 255, 255));
         rdbtnBegSpeech.setBackground(new Color(86, 86, 86));
-        rdbtnBegSpeech.setBounds(170, 97, 174, 21);
+        rdbtnBegSpeech.setBounds(170, 88, 174, 21);
         panel_1.add(rdbtnBegSpeech);
         
         JRadioButton rdbtnInterSpeech = new JRadioButton("Intermediate");
         rdbtnInterSpeech.setForeground(Color.WHITE);
         rdbtnInterSpeech.setFont(new Font("Tahoma", Font.BOLD, 15));
         rdbtnInterSpeech.setBackground(new Color(86, 86, 86));
-        rdbtnInterSpeech.setBounds(170, 128, 174, 21);
+        rdbtnInterSpeech.setBounds(170, 112, 174, 21);
         panel_1.add(rdbtnInterSpeech);
         
         JRadioButton rdbtnAdSpeech = new JRadioButton("Advanced");
         rdbtnAdSpeech.setForeground(Color.WHITE);
         rdbtnAdSpeech.setFont(new Font("Tahoma", Font.BOLD, 15));
         rdbtnAdSpeech.setBackground(new Color(86, 86, 86));
-        rdbtnAdSpeech.setBounds(170, 160, 174, 21);
+        rdbtnAdSpeech.setBounds(170, 136, 174, 21);
         panel_1.add(rdbtnAdSpeech);
         
         JRadioButton rdbtnNatSpeech = new JRadioButton("Native");
         rdbtnNatSpeech.setForeground(Color.WHITE);
         rdbtnNatSpeech.setFont(new Font("Tahoma", Font.BOLD, 15));
         rdbtnNatSpeech.setBackground(new Color(86, 86, 86));
-        rdbtnNatSpeech.setBounds(170, 193, 174, 21);
+        rdbtnNatSpeech.setBounds(170, 160, 174, 21);
         panel_1.add(rdbtnNatSpeech);
         
         JRadioButton rdbtnBegWrite = new JRadioButton("Beginner");
         rdbtnBegWrite.setForeground(Color.WHITE);
         rdbtnBegWrite.setFont(new Font("Tahoma", Font.BOLD, 15));
         rdbtnBegWrite.setBackground(new Color(86, 86, 86));
-        rdbtnBegWrite.setBounds(9, 264, 174, 21);
+        rdbtnBegWrite.setBounds(10, 225, 174, 21);
         panel_1.add(rdbtnBegWrite);
         
         JRadioButton rdbtnInterWrite = new JRadioButton("Intermediate");
         rdbtnInterWrite.setForeground(Color.WHITE);
         rdbtnInterWrite.setFont(new Font("Tahoma", Font.BOLD, 15));
         rdbtnInterWrite.setBackground(new Color(86, 86, 86));
-        rdbtnInterWrite.setBounds(10, 294, 174, 21);
+        rdbtnInterWrite.setBounds(10, 249, 174, 21);
         panel_1.add(rdbtnInterWrite);
         
         JRadioButton rdbtnAdWrite = new JRadioButton("Advanced");
         rdbtnAdWrite.setForeground(Color.WHITE);
         rdbtnAdWrite.setFont(new Font("Tahoma", Font.BOLD, 15));
         rdbtnAdWrite.setBackground(new Color(86, 86, 86));
-        rdbtnAdWrite.setBounds(10, 323, 174, 21);
+        rdbtnAdWrite.setBounds(10, 273, 174, 21);
         panel_1.add(rdbtnAdWrite);
         
         JRadioButton rdbtnNatWrite = new JRadioButton("Native");
         rdbtnNatWrite.setForeground(Color.WHITE);
         rdbtnNatWrite.setFont(new Font("Tahoma", Font.BOLD, 15));
         rdbtnNatWrite.setBackground(new Color(86, 86, 86));
-        rdbtnNatWrite.setBounds(10, 353, 174, 21);
+        rdbtnNatWrite.setBounds(10, 297, 174, 21);
         panel_1.add(rdbtnNatWrite);
         
         JLabel lblNewLabel_1_1_1 = new JLabel("Select your speech skill level:");
         lblNewLabel_1_1_1.setForeground(Color.WHITE);
         lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 17));
-        lblNewLabel_1_1_1.setBounds(10, 50, 334, 30);
+        lblNewLabel_1_1_1.setBounds(10, 51, 334, 30);
         panel_1.add(lblNewLabel_1_1_1);
         
-        JLabel lblNewLabel_1_1_1_1 = new JLabel("Select your writing skills:");
+        JLabel lblNewLabel_1_1_1_1 = new JLabel("Select your writing skill level:");
         lblNewLabel_1_1_1_1.setForeground(Color.WHITE);
         lblNewLabel_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 17));
-        lblNewLabel_1_1_1_1.setBounds(10, 228, 334, 30);
+        lblNewLabel_1_1_1_1.setBounds(10, 188, 334, 30);
         panel_1.add(lblNewLabel_1_1_1_1);
         
         ButtonGroup Speech = new ButtonGroup();
@@ -229,9 +223,9 @@ public class Languages {
         btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		if (!Write.isSelected(null) && !Speech.isSelected(null)) {
-        			txtLangs.append(cmbxLang.getSelectedItem() + ": \nWriting: " + getSelectedButtonText(Write) + "\nSpeech: " + getSelectedButtonText(Speech) + "\n");
+        			txtLangs.append(txtLang.getText() + ": \nWriting: " + getSelectedButtonText(Write) + "\nSpeech: " + getSelectedButtonText(Speech) + "\n");
         			Language lang = new Language(
-        					cmbxLang.getSelectedItem().toString(), 
+        					txtLang.getText().toString(), 
         					getSelectedButtonText(Write), 
         					getSelectedButtonText(Speech)
         			);
@@ -244,14 +238,14 @@ public class Languages {
         			}
         		}
         		else {
-        			JOptionPane.showMessageDialog(null, "You also must select both skill levels to put to the CV");
+        			JOptionPane.showMessageDialog(null, "You also must select both skill levels to add an entry to the CV");
         		}
         	}		
         });
         btnAdd.setForeground(new Color(255, 255, 255));
         btnAdd.setBackground(new Color(128, 128, 128));
         btnAdd.setFont(new Font("Tahoma", Font.BOLD, 15));
-        btnAdd.setBounds(190, 354, 154, 23);
+        btnAdd.setBounds(10, 353, 154, 23);
         panel_1.add(btnAdd);
         
         JButton btnNewButton = new JButton("Clear 3 last lines");
@@ -269,7 +263,12 @@ public class Languages {
         });
         btnNewButton.setForeground(new Color(255, 255, 255));
         btnNewButton.setBackground(new Color(128, 128, 128));
-        btnNewButton.setBounds(190, 324, 154, 20);
+        btnNewButton.setBounds(190, 353, 154, 23);
         panel_1.add(btnNewButton);
+        
+        txtLang = new JTextField();
+        txtLang.setBounds(170, 12, 174, 30);
+        panel_1.add(txtLang);
+        txtLang.setColumns(10);
     }
 }
