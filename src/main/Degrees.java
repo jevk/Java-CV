@@ -74,8 +74,8 @@ public class Degrees {
         JScrollPane scrollPane = new JScrollPane();
         tabbedPane.addTab("Degrees", null, scrollPane, null);
         
-        JTextArea textArea = new JTextArea();
-        scrollPane.setViewportView(textArea);
+        JTextArea txtADegree = new JTextArea();
+        scrollPane.setViewportView(txtADegree);
         
         JScrollPane scrollPane_1 = new JScrollPane();
         tabbedPane.addTab("New tab", null, scrollPane_1, null);
