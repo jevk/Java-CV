@@ -20,7 +20,7 @@ import java.awt.TextArea;
 import javax.swing.SwingConstants;
 
 public class Strengths {
-
+	private int index = 0;
 	private CV cv;
 	private String[] strengths = {
 		"",
@@ -101,6 +101,7 @@ public class Strengths {
         JButton btnBack = new JButton("Back");
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		Main.main(null);
         	}
         });
         btnBack.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -121,29 +122,18 @@ public class Strengths {
         JButton btnAdd = new JButton("Add");
         btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		strengthsText.append(strengthField.getText() + "\n");
-        		for (String s : strengths) {
-        			if (s == "") {
-        				s = strengthField.getText();
-        			}
-        		}
-
-        		for (String s : strengths) {
-        			System.out.println(s);
-        		}
+        		String strength = strengthField.getText();
+        		strengthsText.append(strength + "\n");
+        		strengths[index] = strength;
+        		index++;
         	}
         });
-        btnAdd.setBounds(100, 273, 154, 48);
+        btnAdd.setBounds(52, 281, 98, 34);
         panel_1.add(btnAdd);
         
         JButton btnNext = new JButton("Next");
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		for (int i = 0; i < strengths.length; i++) {
-        			if (strengths[i] == null) {
-        				strengths[i] = "";
-        			}
-        		}
         		cv.setStrengths(strengths);
         		Languages.main(null, cv);
         		frame.dispose();
@@ -160,5 +150,20 @@ public class Strengths {
         lblNewLabel_1.setForeground(Color.WHITE);
         lblNewLabel_1.setBounds(80, 115, 193, 40);
         panel_1.add(lblNewLabel_1);
+        
+        JButton btnRemove = new JButton("Remove");
+        btnRemove.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+    			String newText = strengthsText.getText().replace(strengthField.getText(), "");
+        		for (int i = 0; i < 10; i++) {
+        			if (strengths[i] == strengthField.getText()) {
+        				strengths[i] = "";
+        			}
+        		}
+        		strengthsText.setText(newText);
+        	}
+        });
+        btnRemove.setBounds(202, 281, 98, 34);
+        panel_1.add(btnRemove);
 	}
 }
