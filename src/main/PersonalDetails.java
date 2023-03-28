@@ -9,7 +9,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
 
 import structs.CV;
 import structs.Details;
@@ -18,7 +17,7 @@ import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Henkilotieto {
+public class PersonalDetails {
 	private CV cv;
 	private JFrame frame;
 	private JTextField txtNimi;
@@ -37,7 +36,7 @@ public class Henkilotieto {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Henkilotieto window = new Henkilotieto(curriculumVitae);
+					PersonalDetails window = new PersonalDetails(curriculumVitae);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +48,7 @@ public class Henkilotieto {
 	/**
 	 * Create the application.
 	 */
-	public Henkilotieto(CV curriculumVitae) {
+	public PersonalDetails(CV curriculumVitae) {
 		cv = curriculumVitae;
 		initialize();
 	}
@@ -82,10 +81,16 @@ public class Henkilotieto {
         lblNewLabel.setBounds(28, 11, 354, 49);
         frame.getContentPane().add(lblNewLabel);
         
-        JButton btnReturn = new JButton("Return");
-        btnReturn.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        btnReturn.setBounds(545, 504, 112, 23);
-        frame.getContentPane().add(btnReturn);
+        JButton btnNext = new JButton("Next");
+        btnNext.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Strengths.main(null, cv);
+        		frame.dispose();
+        	}
+        });
+        btnNext.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnNext.setBounds(545, 504, 112, 23);
+        frame.getContentPane().add(btnNext);
         
         JButton btnFinish = new JButton("Finish");
         btnFinish.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -175,6 +180,7 @@ public class Henkilotieto {
         		details.setTown(txtKaupunki.getText());
         		details.setZip(txtPostinumero.getText());
         		
+        		cv.setDetails(details);
         	}
         });
         btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));

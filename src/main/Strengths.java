@@ -158,7 +158,9 @@ public class Strengths {
         JButton btnBack = new JButton("Back");
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		Main.main(null);
+        		cv.setStrengths(strengths);
+        		PersonalDetails.main(null, cv);
+        		frame.dispose();
         	}
         });
         btnBack.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -196,7 +198,7 @@ public class Strengths {
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.setStrengths(strengths);
-        		ITSkills.main(null, cv);
+        		WorkExperience.main(null, cv);
         		frame.dispose();
         	}
         });

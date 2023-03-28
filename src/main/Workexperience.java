@@ -3,34 +3,42 @@ package main;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
-public class Workexperience {
+import structs.CV;
+import structs.Details;
+import structs.Experience;
+import structs.Language;
 
+public class WorkExperience {
+	private CV cv;
+	private Experience[] experience;
 	private JFrame frame;
-	private JTextField job;
-	private JTextField workplace;
-	private JTextField year;
-	private String lengt;
+	private JTextField textWorkplace;
+	private JTextField textJob;
+	private JTextField textLength;
+	private JTextField textMonth;
+	private JTextField textYear;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args, CV curriculumVitae) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Workexperience window = new Workexperience();
+					WorkExperience window = new WorkExperience(curriculumVitae);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,7 +50,9 @@ public class Workexperience {
 	/**
 	 * Create the application.
 	 */
-	public Workexperience() {
+	public WorkExperience(CV curriculumVitae) {
+		cv = curriculumVitae;
+		experience = cv.getExperience();
 		initialize();
 	}
 
@@ -50,125 +60,229 @@ public class Workexperience {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		 frame = new JFrame();
-	        frame.getContentPane().setBackground(new Color(39, 39, 39));
-	        frame.getContentPane().setForeground(new Color(0, 0, 0));
-	        frame.setBounds(100, 100, 800, 600);
-	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        frame.getContentPane().setLayout(null);
-	        
-	        JPanel panel = new JPanel();
-	        panel.setBackground(new Color(49, 49, 49));
-	        panel.setBounds(408, 21, 354, 437);
-	        frame.getContentPane().add(panel);
-	        panel.setLayout(null);
-	        
-	        JTextArea Yhteenveto = new JTextArea();
-	        Yhteenveto.setBounds(10, 11, 334, 415);
-	        panel.add(Yhteenveto);
-	        
-	        JLabel lblNewLabel = new JLabel("Työkokemus");
-	        lblNewLabel.setForeground(new Color(255, 255, 255));
-	        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
-	        lblNewLabel.setBounds(28, 11, 354, 49);
-	        frame.getContentPane().add(lblNewLabel);
-	        
-	        JButton btnReturn = new JButton("Palaa ");
-	        btnReturn.addActionListener(new ActionListener() {
-	        	public void actionPerformed(ActionEvent e) {
-	        		Main.main(null);
-					frame.setVisible(false);
-	        	}
-	        });
-	        btnReturn.setFont(new Font("Tahoma", Font.PLAIN, 13));
-	        btnReturn.setBounds(650, 504, 112, 23);
-	        frame.getContentPane().add(btnReturn);
-	        
-	        JPanel panel_1 = new JPanel();
-	        panel_1.setBackground(new Color(49, 49, 49));
-	        panel_1.setBounds(28, 71, 354, 387);
-	        frame.getContentPane().add(panel_1);
-	        panel_1.setLayout(null);
-	        
-	        JLabel lblNewLabel_3 = new JLabel("Kirjoita ammatti");
-	        lblNewLabel_3.setForeground(Color.WHITE);
-	        lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
-	        lblNewLabel_3.setBounds(10, 188, 334, 37);
-	        panel_1.add(lblNewLabel_3);
-	        
-	        job = new JTextField();
-	        job.setBounds(10, 236, 334, 37);
-	        panel_1.add(job);
-	        job.setColumns(10);
-	        
-	        JLabel lblNewLabel_4 = new JLabel("Kirjoita yritys");
-	        lblNewLabel_4.setForeground(Color.WHITE);
-	        lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
-	        lblNewLabel_4.setBounds(10, 285, 334, 37);
-	        panel_1.add(lblNewLabel_4);
-	        
-	        workplace = new JTextField();
-	        workplace.setColumns(10);
-	        workplace.setBounds(10, 339, 334, 37);
-	        panel_1.add(workplace);
-	        
-	        JLabel lblNewLabel_1 = new JLabel("työkokemus vuosina");
-	        lblNewLabel_1.setForeground(Color.WHITE);
-	        lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-	        lblNewLabel_1.setBounds(10, 11, 191, 37);
-	        panel_1.add(lblNewLabel_1);
-	        
-	        year = new JTextField();
-	        year.setBounds(211, 11, 133, 37);
-	        panel_1.add(year);
-	        year.setColumns(10);
-	        
-	        JLabel lblNewLabel_1_1 = new JLabel("työkokemus kuukaudet");
-	        lblNewLabel_1_1.setForeground(Color.WHITE);
-	        lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-	        lblNewLabel_1_1.setBounds(10, 76, 334, 37);
-	        panel_1.add(lblNewLabel_1_1);
-	        
-	        JComboBox month = new JComboBox();
-	        month.setModel(new DefaultComboBoxModel(new String[] {"Valitse kuukausien määrä", "1 Kuukausi", "2 Kuukautta", "3 Kuukautta", "4 Kuukautta", "5 Kuukautta", "6 Kuukautta", "7 Kuukautta", "8 Kuukautta", "9 Kuukautta", "10 Kuukautta", "11 Kuukautta", "12 Kuukautta"}));
-	        month.setBounds(10, 140, 324, 37);
-	        panel_1.add(month);
-	        
-	        JButton btnTulosta = new JButton("Tulosta työkokemus");
-	        btnTulosta.addActionListener(new ActionListener() {
-	        	public void actionPerformed(ActionEvent e) {
-	        		Yhteenveto.append("Ammatti: "
-	        				+job.getText()
-	        				+"\n Yritys: "
-	        				+workplace.getText()
-	        				+"\nVuosien ja kuukausien määrä: "
-	        				+year.getText()+" vuotta ja "+month.getSelectedItem());
-	        	}
-	        });
-	        btnTulosta.setFont(new Font("Tahoma", Font.PLAIN, 13));
-	        btnTulosta.setBounds(262, 504, 158, 23);
-	        frame.getContentPane().add(btnTulosta);
-	        
-	        JButton btnFinish = new JButton("Valmis ja tallenna");
-	        btnFinish.addActionListener(new ActionListener() {
-	        	public void actionPerformed(ActionEvent e) {
-
-	        	}
-	        });
-	        btnFinish.setBounds(43, 505, 149, 23);
-	        frame.getContentPane().add(btnFinish);
-	        
-	        JButton btnNewButton = new JButton("Tyhjennä");
-	        btnNewButton.addActionListener(new ActionListener() {
-	        	public void actionPerformed(ActionEvent e) {
-	        		job.setText("");
-	        		workplace.setText("");
-	        		month.setSelectedItem("Valitse kuukausien määrä");
-	        		year.setText("");
-	        		Yhteenveto.setText("");
-	        	}
-	        });
-	        btnNewButton.setBounds(480, 505, 120, 23);
-	        frame.getContentPane().add(btnNewButton);
+        frame = new JFrame();
+        frame.getContentPane().setBackground(new Color(39, 39, 39));
+        frame.getContentPane().setForeground(new Color(0, 0, 0));
+        frame.setBounds(100, 100, 800, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().setLayout(null);
+        
+        JPanel panel = new JPanel();
+        panel.setBackground(new Color(49, 49, 49));
+        panel.setBounds(408, 21, 354, 437);
+        frame.getContentPane().add(panel);
+        panel.setLayout(null);
+        
+        JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+        tabbedPane.setBounds(10, 11, 334, 415);
+        panel.add(tabbedPane);
+        
+        JScrollPane detailsTab = new JScrollPane();
+        tabbedPane.addTab("Details", null, detailsTab, null);
+        
+        JTextArea detailsText = new JTextArea();
+        detailsText.setEditable(false);
+        detailsTab.setViewportView(detailsText);
+        detailsText.setText("Details:\n");
+        Details details = cv.getDetails();
+        if (details != null) {
+        	detailsText.append(
+        			details.getName() + "\n" +
+        			details.getAddress() + "\n" +
+        			details.getZip() + details.getTown() + "\n" +
+        			details.getPhone() + "\n" +
+        			details.getEmail()
+        	);
+        }
+        
+        JScrollPane strengthsTab = new JScrollPane();
+        tabbedPane.addTab("Strengths", null, strengthsTab, null);
+        
+        JTextArea strengthsText = new JTextArea();
+        strengthsText.setText("Strengths:\n");
+        String[] strengths = cv.getStrengths();
+        for (int i = 0; i < strengths.length; i++) {
+        	if (strengths[i] != null) strengthsText.append(strengths[i] + "\n");
+        }
+        strengthsText.setEditable(false);
+        strengthsTab.setViewportView(strengthsText);
+        
+        JScrollPane expTab = new JScrollPane();
+        tabbedPane.addTab("Experience", null, expTab, null);
+        
+        JTextArea expText = new JTextArea();
+        expTab.setViewportView(expText);
+        
+        JScrollPane langTab = new JScrollPane();
+        tabbedPane.addTab("Languages", null, langTab, null);
+        
+        JTextArea langsText = new JTextArea();
+        langsText.setEditable(false);
+        langTab.setViewportView(langsText);
+        Language[] langs = cv.getLanguages();
+        langsText.setText("Languages:\n");
+        for (int i = 0; i < langs.length; i++) {
+        	if (langs[i] != null) {
+            	String spoken = langs[i].getSpoken();
+            	String written = langs[i].getWritten();
+            	String langName = langs[i].getLangName();
+        		langsText.append(
+        				langName + ":\n" +
+        				"Written: " + written + "\n" +
+        				"Spoken: " + spoken + "\n"
+        		);
+        	}
+        }
+        
+        JScrollPane itTab = new JScrollPane();
+        tabbedPane.addTab("IT Skills", null, itTab, null);
+        
+        JTextArea itText = new JTextArea();
+        itText.setEditable(false);
+        itTab.setViewportView(itText);
+        String[] itSkills = cv.getItSkills();
+        itText.setText("IT Skills:\n");
+        for (int i = 0; i < itSkills.length; i++) {
+        	if (itSkills[i] != null) {
+        		itText.append(itSkills[i] + "\n");
+        	}
+        }
+        
+        JLabel lblNewLabel = new JLabel("Work Experience");
+        lblNewLabel.setForeground(new Color(255, 255, 255));
+        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
+        lblNewLabel.setBounds(28, 11, 354, 49);
+        frame.getContentPane().add(lblNewLabel);
+        
+        
+        JButton btnBack = new JButton("Back");
+        btnBack.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		cv.setExperience(experience);
+        		Strengths.main(null, cv);
+        		frame.dispose();
+        	}
+        });
+        btnBack.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnBack.setBounds(127, 504, 112, 23);
+        frame.getContentPane().add(btnBack);
+        
+        JPanel panel_1 = new JPanel();
+        panel_1.setBackground(new Color(49, 49, 49));
+        panel_1.setBounds(38, 71, 354, 387);
+        frame.getContentPane().add(panel_1);
+        panel_1.setLayout(null);
+        
+        JButton btnAdd = new JButton("Add");
+        btnAdd.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		String workplace = textWorkplace.getText();
+        		String job = textJob.getText();
+        		String length = textLength.getText();
+        		String month = textMonth.getText();
+        		int year = Integer.parseInt(textYear.getText());
+        		
+        		for (int i = 0; i < experience.length; i++) {
+        			if (experience[i] == null) {
+        				Experience exp = new Experience();
+        				
+        				exp.setWorkplace(workplace);
+        				exp.setJob(job);
+        				exp.setLength(length);
+        				exp.setMonth(month);
+        				exp.setYear(year);
+        				
+        				experience[i] = exp;
+        				
+        				break;
+        			}
+        		}
+        		expText.append(workplace + "\n" + job + "\n" + length + ", " + month + ", " + year + "\n\n");
+        	}
+        });
+        btnAdd.setBounds(52, 281, 98, 34);
+        panel_1.add(btnAdd);
+        
+        JButton btnNext = new JButton("Next");
+        btnNext.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		cv.setExperience(experience);
+        		ITSkills.main(null, cv);
+        		frame.dispose();
+        	}
+        });
+        btnNext.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnNext.setBounds(545, 504, 112, 23);
+        frame.getContentPane().add(btnNext);
+        
+        
+        JLabel lblNewLabel_1 = new JLabel("Workplace");
+        lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        lblNewLabel_1.setForeground(Color.WHITE);
+        lblNewLabel_1.setBounds(10, 11, 124, 28);
+        panel_1.add(lblNewLabel_1);
+        
+        JButton btnRemove = new JButton("Remove");
+        btnRemove.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
+        btnRemove.setBounds(202, 281, 98, 34);
+        panel_1.add(btnRemove);
+        
+        JLabel lblNewLabel_1_1 = new JLabel("Job");
+        lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel_1_1.setForeground(Color.WHITE);
+        lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        lblNewLabel_1_1.setBounds(10, 50, 124, 28);
+        panel_1.add(lblNewLabel_1_1);
+        
+        JLabel lblNewLabel_1_2 = new JLabel("Length");
+        lblNewLabel_1_2.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel_1_2.setForeground(Color.WHITE);
+        lblNewLabel_1_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        lblNewLabel_1_2.setBounds(10, 89, 124, 28);
+        panel_1.add(lblNewLabel_1_2);
+        
+        JLabel lblNewLabel_1_3 = new JLabel("Month");
+        lblNewLabel_1_3.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel_1_3.setForeground(Color.WHITE);
+        lblNewLabel_1_3.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        lblNewLabel_1_3.setBounds(10, 129, 124, 28);
+        panel_1.add(lblNewLabel_1_3);
+        
+        JLabel lblNewLabel_1_4 = new JLabel("Year");
+        lblNewLabel_1_4.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel_1_4.setForeground(Color.WHITE);
+        lblNewLabel_1_4.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        lblNewLabel_1_4.setBounds(10, 168, 124, 28);
+        panel_1.add(lblNewLabel_1_4);
+        
+        textWorkplace = new JTextField();
+        textWorkplace.setBounds(144, 18, 200, 20);
+        panel_1.add(textWorkplace);
+        textWorkplace.setColumns(10);
+        
+        textJob = new JTextField();
+        textJob.setColumns(10);
+        textJob.setBounds(144, 57, 200, 20);
+        panel_1.add(textJob);
+        
+        textLength = new JTextField();
+        textLength.setColumns(10);
+        textLength.setBounds(144, 96, 200, 20);
+        panel_1.add(textLength);
+        
+        textMonth = new JTextField();
+        textMonth.setColumns(10);
+        textMonth.setBounds(144, 136, 200, 20);
+        panel_1.add(textMonth);
+        
+        textYear = new JTextField();
+        textYear.setColumns(10);
+        textYear.setBounds(144, 175, 200, 20);
+        panel_1.add(textYear);
 	}
+
 }
