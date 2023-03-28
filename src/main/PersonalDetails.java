@@ -16,6 +16,8 @@ import structs.Details;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTabbedPane;
+import javax.swing.JScrollPane;
 
 public class PersonalDetails {
 	private CV cv;
