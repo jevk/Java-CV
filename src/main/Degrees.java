@@ -1,0 +1,178 @@
+package main;
+
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import structs.CV;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
+
+public class Degrees {
+
+	private JFrame frame;
+	private JTextField txtSchool;
+	private JTextField txtEducation;
+	private JTextField txtDegree;
+	private JTextField txtStartYear;
+	private JTextField txtEndYear;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args, CV curriculumVitae) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Degrees window = new Degrees();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public Degrees() {
+		initialize();
+	}
+
+	 /**
+     * Initialize the contents of the frame.
+     */
+    private void initialize() {
+        frame = new JFrame();
+        frame.getContentPane().setBackground(new Color(39, 39, 39));
+        frame.getContentPane().setForeground(new Color(0, 0, 0));
+        frame.setBounds(100, 100, 800, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().setLayout(null);
+        
+        JPanel panel = new JPanel();
+        panel.setBackground(new Color(49, 49, 49));
+        panel.setBounds(408, 21, 354, 437);
+        frame.getContentPane().add(panel);
+        panel.setLayout(null);
+        
+        JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+        tabbedPane.setBounds(10, 11, 334, 415);
+        panel.add(tabbedPane);
+        
+        JScrollPane scrollPane = new JScrollPane();
+        tabbedPane.addTab("Degrees", null, scrollPane, null);
+        
+        JTextArea textArea = new JTextArea();
+        scrollPane.setViewportView(textArea);
+        
+        JScrollPane scrollPane_1 = new JScrollPane();
+        tabbedPane.addTab("New tab", null, scrollPane_1, null);
+        
+        JTextArea textArea_1 = new JTextArea();
+        scrollPane_1.setViewportView(textArea_1);
+        
+        JLabel lblNewLabel = new JLabel("Degrees");
+        lblNewLabel.setForeground(new Color(255, 255, 255));
+        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
+        lblNewLabel.setBounds(28, 11, 354, 49);
+        frame.getContentPane().add(lblNewLabel);
+        
+        JButton btnNext = new JButton("Next");
+        btnNext.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnNext.setBounds(545, 504, 112, 23);
+        frame.getContentPane().add(btnNext);
+        
+        JButton btnBack = new JButton("Back");
+        btnBack.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnBack.setBounds(127, 504, 112, 23);
+        frame.getContentPane().add(btnBack);
+        
+        JPanel panel_1 = new JPanel();
+        panel_1.setBackground(new Color(49, 49, 49));
+        panel_1.setBounds(28, 71, 354, 387);
+        frame.getContentPane().add(panel_1);
+        panel_1.setLayout(null);
+        
+        JLabel lblNewLabel_1 = new JLabel("School");
+        lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        lblNewLabel_1.setForeground(Color.WHITE);
+        lblNewLabel_1.setBounds(10, 58, 112, 21);
+        panel_1.add(lblNewLabel_1);
+        
+        JLabel lblNewLabel_1_1 = new JLabel("Education");
+        lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        lblNewLabel_1_1.setForeground(Color.WHITE);
+        lblNewLabel_1_1.setBounds(10, 106, 112, 21);
+        panel_1.add(lblNewLabel_1_1);
+        
+        JLabel lblNewLabel_1_2 = new JLabel("Degree");
+        lblNewLabel_1_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        lblNewLabel_1_2.setForeground(Color.WHITE);
+        lblNewLabel_1_2.setBounds(10, 153, 112, 21);
+        panel_1.add(lblNewLabel_1_2);
+        
+        JLabel lblNewLabel_1_3 = new JLabel("Start Year");
+        lblNewLabel_1_3.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        lblNewLabel_1_3.setForeground(Color.WHITE);
+        lblNewLabel_1_3.setBounds(10, 202, 112, 21);
+        panel_1.add(lblNewLabel_1_3);
+        
+        JLabel lblNewLabel_1_4 = new JLabel("End Year");
+        lblNewLabel_1_4.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        lblNewLabel_1_4.setForeground(Color.WHITE);
+        lblNewLabel_1_4.setBounds(10, 253, 112, 21);
+        panel_1.add(lblNewLabel_1_4);
+        
+        txtSchool = new JTextField();
+        txtSchool.setBounds(132, 61, 183, 20);
+        panel_1.add(txtSchool);
+        txtSchool.setColumns(10);
+        
+        txtEducation = new JTextField();
+        txtEducation.setColumns(10);
+        txtEducation.setBounds(132, 109, 183, 20);
+        panel_1.add(txtEducation);
+        
+        txtDegree = new JTextField();
+        txtDegree.setColumns(10);
+        txtDegree.setBounds(132, 156, 183, 20);
+        panel_1.add(txtDegree);
+        
+        txtStartYear = new JTextField();
+        txtStartYear.setColumns(10);
+        txtStartYear.setBounds(132, 205, 183, 20);
+        panel_1.add(txtStartYear);
+        
+        txtEndYear = new JTextField();
+        txtEndYear.setColumns(10);
+        txtEndYear.setBounds(132, 256, 183, 20);
+        panel_1.add(txtEndYear);
+        
+        JButton btnAdd = new JButton("Add");
+        btnAdd.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		txtADegree.append(
+        				"Shcool: " +txtSchool.getText()
+        				+"\nEducation: " +txtEducation.getText()
+        				+"\nDegree: " +txtDegree.getText()
+        				+"\nStart Year: " +txtStartYear.getText()
+        				+"\nEnd Year: " +txtEndYear.getText());
+        	}
+        });
+        btnAdd.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        btnAdd.setBounds(142, 300, 163, 40);
+        panel_1.add(btnAdd);
+    }
+}
