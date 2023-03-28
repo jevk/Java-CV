@@ -16,6 +16,7 @@ import javax.swing.JTextArea;
 import javax.swing.text.BadLocationException;
 
 import structs.CV;
+import structs.Details;
 import structs.Language;
 
 import javax.swing.JTabbedPane;
@@ -90,24 +91,74 @@ public class Languages {
         tabbedPane.setBounds(10, 11, 334, 415);
         panel.add(tabbedPane);
         
+        JScrollPane detailsPane = new JScrollPane();
+        tabbedPane.addTab("Details", null, detailsPane, null);
+        
+        JTextArea txtDetails = new JTextArea();
+        txtDetails.setText("Details:\n");
+        detailsPane.setViewportView(txtDetails);
+        Details details = cv.getDetails();
+        if (details != null) {
+        	txtDetails.append(
+        			details.getName() + "\n" +
+        			details.getAddress() + "\n" +
+        			details.getZip() + details.getTown() + "\n" +
+        			details.getPhone() + "\n" +
+        			details.getEmail()
+        	);
+        }
+        
         JScrollPane strengthPane = new JScrollPane();
         tabbedPane.addTab("Strengths", null, strengthPane, null);
         
         JTextArea txtStrengths = new JTextArea();
+        txtStrengths.setText("Strengths:");
         strengthPane.setViewportView(txtStrengths);
         String[] strengths = cv.getStrengths();
         for (int i = 0; i < strengths.length; i++) {
-        	System.out.println(i);
-        	txtStrengths.append(strengths[i] + "\n");
+        	if (strengths[i] != null && strengths[i] != "") txtStrengths.append(strengths[i] + "\n");
         }
         
         JScrollPane langPane = new JScrollPane();
         tabbedPane.addTab("Languages", null, langPane, null);
         
         JTextArea txtLangs = new JTextArea();
+        txtLangs.setText("Languages:\n");
         txtLangs.setEditable(false);
         langPane.setViewportView(txtLangs);
         txtLangs.setFont(new Font("Monospaced", Font.BOLD, 15));
+        Language[] languages = cv.getLanguages();
+        for (int i = 0; i < languages.length; i++) {
+        	if (languages[i] != null) {
+        		txtLangs.append(
+        				languages[i].getLangName() + "\n" +
+        				"Writing: " + languages[i].getWritten() + "\n" +
+        				"Speech: " + languages[i].getSpoken()
+        		);
+        	}
+        }
+        
+        JScrollPane ITPane = new JScrollPane();
+        tabbedPane.addTab("IT Skills", null, ITPane, null);
+        
+        JTextArea txtIT = new JTextArea();
+        txtIT.setText("IT Skills:\n");
+        ITPane.setViewportView(txtIT);
+        String[] itSkills = cv.getItSkills();
+        for (int i = 0; i < itSkills.length; i++) {
+        	if (itSkills[i] != null) txtIT.append(itSkills[i] + "\n");
+        }
+        
+        JScrollPane coursesPane = new JScrollPane();
+        tabbedPane.addTab("Courses", null, coursesPane, null);
+        
+        JTextArea txtCourses = new JTextArea();
+        txtCourses.setEditable(false);
+        coursesPane.setViewportView(txtCourses);
+        String[] courses = cv.getCourses();
+        for (int i = 0; i < courses.length; i++) {
+        	if (courses[i] != null) txtCourses.append(courses[i] + "\n");
+        }
         
         JLabel lblNewLabel = new JLabel("Language Skills");
         lblNewLabel.setForeground(new Color(255, 255, 255));
@@ -119,7 +170,7 @@ public class Languages {
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.setLanguages(langs);
-        		
+        		Courses.main(courses, cv);
         		frame.dispose();
         	}
         });
@@ -145,7 +196,7 @@ public class Languages {
         frame.getContentPane().add(panel_1);
         panel_1.setLayout(null);
         
-        JLabel lblNewLabel_1 = new JLabel("Select a language:");
+        JLabel lblNewLabel_1 = new JLabel("Write a language:");
         lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 15));
         lblNewLabel_1.setForeground(new Color(255, 255, 255));
         lblNewLabel_1.setBounds(10, 10, 150, 30);
