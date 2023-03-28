@@ -158,12 +158,6 @@ public class Courses {
         	if (courses[i] != null) txtCourses.append(courses[i] + "\n");
         }
         
-        JLabel lblNewLabel = new JLabel("Strengths");
-        lblNewLabel.setForeground(new Color(255, 255, 255));
-        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
-        lblNewLabel.setBounds(28, 11, 354, 49);
-        frame.getContentPane().add(lblNewLabel);
-        
         
         JButton btnBack = new JButton("Back");
         btnBack.addActionListener(new ActionListener() {
