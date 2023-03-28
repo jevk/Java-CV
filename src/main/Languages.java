@@ -261,7 +261,7 @@ public class Languages {
         });
         btnNewButton.setForeground(new Color(255, 255, 255));
         btnNewButton.setBackground(new Color(128, 128, 128));
-        btnNewButton.setBounds(190, 353, 154, 23);
+        btnNewButton.setBounds(174, 353, 170, 23);
         panel_1.add(btnNewButton);
         
         txtLang = new JTextField();
