@@ -23,8 +23,9 @@ import javax.swing.border.BevelBorder;
 public class Hobbies {
 	private CV cv;
 	JFrame frame;
-	private JTextField txtNimi;
+	private JTextField txtHobby;
 	private Details details = new Details();
+	private JTextField txtInterest;
 	
 
 	/**
@@ -95,32 +96,44 @@ public class Hobbies {
         frame.getContentPane().add(panel_1);
         panel_1.setLayout(null);
         
-        JLabel lblNewLabel_1 = new JLabel("Hobby");
+        JLabel lblNewLabel_1 = new JLabel("Hobbies");
         lblNewLabel_1.setForeground(new Color(255, 255, 255));
         lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 21));
-        lblNewLabel_1.setBounds(142, 48, 71, 29);
+        lblNewLabel_1.setBounds(135, 48, 95, 29);
         panel_1.add(lblNewLabel_1);
         
-        txtNimi = new JTextField();
-        txtNimi.setBounds(10, 100, 334, 35);
-        panel_1.add(txtNimi);
-        txtNimi.setColumns(10);
+        txtHobby = new JTextField();
+        txtHobby.setBounds(36, 88, 287, 35);
+        panel_1.add(txtHobby);
+        txtHobby.setColumns(10);
         
-        JButton btnNewButton = new JButton("Add");
-        btnNewButton.addActionListener(new ActionListener() {
+        JButton btnAdd = new JButton("Add");
+        btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		textArea.append("Your hobbies are: "
+        		textArea.append("Your hobbies and interests are: "
         				+"\r\n"
-        				+ "Nimi: "
-        				+ txtNimi.getText()
-        				
-        				
+        				+ "Hobby: "
+        				+ txtHobby.getText()
+        				+"\r\n"
+        				+ "Interest"
+        				+ txtInterest.getText()
         				);       		
         	}
         });
-        btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-        btnNewButton.setBounds(85, 308, 171, 23);
-        panel_1.add(btnNewButton);
+        btnAdd.setFont(new Font("Tahoma", Font.BOLD, 11));
+        btnAdd.setBounds(85, 308, 171, 23);
+        panel_1.add(btnAdd);
+        
+        JLabel lblNewLabel_2 = new JLabel("Interests");
+        lblNewLabel_2.setForeground(new Color(255, 255, 255));
+        lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 21));
+        lblNewLabel_2.setBounds(131, 148, 109, 29);
+        panel_1.add(lblNewLabel_2);
+        
+        txtInterest = new JTextField();
+        txtInterest.setBounds(36, 207, 287, 35);
+        panel_1.add(txtInterest);
+        txtInterest.setColumns(10);
         
     }
 }
