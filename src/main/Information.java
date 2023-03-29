@@ -77,5 +77,13 @@ public abstract class Information {
 				positions.append(position[i]);
 			}
 		}
+		
+		String[] referee = cv.referees;
+		referees.setText("Referees:\n");
+		for (int i = 0; i < referee.length; i++) {
+			if (referee[i] != null) {
+				referees.append(referee[i]);
+			}
+		}
 	}
 }
