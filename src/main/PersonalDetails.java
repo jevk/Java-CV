@@ -8,8 +8,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
 
 import structs.CV;
 import structs.Details;
@@ -18,7 +19,7 @@ import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Henkilotieto {
+public class PersonalDetails extends Information {
 	private CV cv;
 	private JFrame frame;
 	private JTextField txtNimi;
@@ -37,7 +38,7 @@ public class Henkilotieto {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Henkilotieto window = new Henkilotieto(curriculumVitae);
+					PersonalDetails window = new PersonalDetails(curriculumVitae);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +50,7 @@ public class Henkilotieto {
 	/**
 	 * Create the application.
 	 */
-	public Henkilotieto(CV curriculumVitae) {
+	public PersonalDetails(CV curriculumVitae) {
 		cv = curriculumVitae;
 		initialize();
 	}
@@ -72,20 +73,22 @@ public class Henkilotieto {
         frame.getContentPane().add(panel);
         panel.setLayout(null);
         
-        JTextArea textArea = new JTextArea();
-        textArea.setBounds(10, 11, 334, 415);
-        panel.add(textArea);
-        
-        JLabel lblNewLabel = new JLabel("Henkilötiedot");
+        JLabel lblNewLabel = new JLabel("Personal Details");
         lblNewLabel.setForeground(new Color(255, 255, 255));
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
         lblNewLabel.setBounds(28, 11, 354, 49);
         frame.getContentPane().add(lblNewLabel);
         
-        JButton btnReturn = new JButton("Return");
-        btnReturn.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        btnReturn.setBounds(545, 504, 112, 23);
-        frame.getContentPane().add(btnReturn);
+        JButton btnNext = new JButton("Next");
+        btnNext.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Strengths.main(null, cv);
+        		frame.dispose();
+        	}
+        });
+        btnNext.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnNext.setBounds(545, 504, 112, 23);
+        frame.getContentPane().add(btnNext);
         
         JButton btnFinish = new JButton("Finish");
         btnFinish.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -98,26 +101,99 @@ public class Henkilotieto {
         frame.getContentPane().add(panel_1);
         panel_1.setLayout(null);
         
-        JLabel lblNewLabel_1 = new JLabel("Nimi");
+        JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+        tabbedPane.setBounds(10, 11, 334, 415);
+        panel.add(tabbedPane);
+        
+        JScrollPane detailsTab = new JScrollPane();
+        tabbedPane.addTab("Details", null, detailsTab, null);
+        
+        JTextArea detailsText = new JTextArea();
+        detailsText.setEditable(false);
+        detailsTab.setViewportView(detailsText);
+        
+        JScrollPane strengthsTab = new JScrollPane();
+        tabbedPane.addTab("Strengths", null, strengthsTab, null);
+        
+        JTextArea strengthsText = new JTextArea();
+        strengthsText.setEditable(false);
+        strengthsTab.setViewportView(strengthsText);
+        
+        JScrollPane degreeTab = new JScrollPane();
+        tabbedPane.addTab("Degrees", null, degreeTab, null);
+        
+        JTextArea degreeText = new JTextArea();
+        degreeText.setEditable(false);
+        degreeTab.setViewportView(degreeText);
+        
+        JScrollPane courseTab = new JScrollPane();
+        tabbedPane.addTab("Courses", null, courseTab, null);
+        
+        JTextArea courseText = new JTextArea();
+        courseText.setEditable(false);
+        courseTab.setViewportView(courseText);
+        
+        JScrollPane expTab = new JScrollPane();
+        tabbedPane.addTab("Experience", null, expTab, null);
+        
+        JTextArea expText = new JTextArea();
+        expTab.setViewportView(expText);
+        
+        JScrollPane itTab = new JScrollPane();
+        tabbedPane.addTab("IT Skills", null, itTab, null);
+        
+        JTextArea itText = new JTextArea();
+        itText.setEditable(false);
+        itTab.setViewportView(itText);
+        itText.setText("IT Skills:\n");
+        
+        JScrollPane langTab = new JScrollPane();
+        tabbedPane.addTab("Languages", null, langTab, null);
+        
+        JTextArea langsText = new JTextArea();
+        langsText.setEditable(false);
+        langTab.setViewportView(langsText);
+        
+        JScrollPane hobbyTab = new JScrollPane();
+        tabbedPane.addTab("Hobbies", null, hobbyTab, null);
+        
+        JTextArea hobbyText = new JTextArea();
+        hobbyTab.setViewportView(hobbyText);
+        
+        JScrollPane positionTab = new JScrollPane();
+        tabbedPane.addTab("Positions", null, positionTab, null);
+        
+        JTextArea positionText = new JTextArea();
+        positionTab.setViewportView(positionText);
+        
+        JScrollPane refereeTab = new JScrollPane();
+        tabbedPane.addTab("Referees", null, refereeTab, null);
+        
+        JTextArea refereeText = new JTextArea();
+        refereeTab.setViewportView(refereeText);
+        
+        getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
+        
+        JLabel lblNewLabel_1 = new JLabel("Name");
         lblNewLabel_1.setForeground(new Color(255, 255, 255));
         lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1.setBounds(10, 31, 49, 14);
         panel_1.add(lblNewLabel_1);
         
-        JLabel lblNewLabel_2 = new JLabel("Kotiosoite");
+        JLabel lblNewLabel_2 = new JLabel("Address");
         lblNewLabel_2.setForeground(new Color(255, 255, 255));
         lblNewLabel_2.setBackground(new Color(255, 255, 255));
         lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_2.setBounds(10, 62, 83, 14);
         panel_1.add(lblNewLabel_2);
         
-        JLabel lblNewLabel_3 = new JLabel("Sähköpostiosoite");
+        JLabel lblNewLabel_3 = new JLabel("Email");
         lblNewLabel_3.setForeground(new Color(255, 255, 255));
         lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_3.setBounds(10, 95, 131, 14);
         panel_1.add(lblNewLabel_3);
         
-        JLabel lblNewLabel_4 = new JLabel("Puhelinnumero");
+        JLabel lblNewLabel_4 = new JLabel("Phone");
         lblNewLabel_4.setForeground(new Color(255, 255, 255));
         lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_4.setBounds(10, 126, 105, 14);
@@ -143,38 +219,39 @@ public class Henkilotieto {
         panel_1.add(txtPuhnumero);
         txtPuhnumero.setColumns(10);
         
-        JButton btnNewButton = new JButton("Lähetä henkilötiedot");
+        JButton btnNewButton = new JButton("Set Information");
         btnNewButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		textArea.append("Henkilötiedot: "
+        		detailsText.setText("Personal Details: "
         				+"\r\n"
-        				+ "Nimi: "
+        				+ "Name: "
         				+ txtNimi.getText()
         				+"\r\n"
-        				+"Kotiosoite: "
+        				+"Address: "
         				+ txtKotiosoite.getText() 
         				+"\r\n"
-        				+"Sähköpostiosoite: "
-        				+ txtSahkoposti.getText()
-        				+"\r\n"
-        				+ "Puhelinnumero: "
-        				+ txtPuhnumero.getText()
-        				+"\r\n"
-        				+ "Kaupunki: "
+        				+ "Town: "
         				+ txtKaupunki.getText()
         				+"\r\n"
-        				+"Postinumero: "
+        				+"Zip: "
         				+ txtPostinumero.getText()
+        				+"\r\n"
+        				+ "Phone: "
+        				+ txtPuhnumero.getText()
+        				+"\r\n"
+        				+"Email: "
+        				+ txtSahkoposti.getText()
         				
         				
         				);
-        		details.setAddress(txtKotiosoite.getText());
-        		details.setEmail(txtSahkoposti.getText());
-        		details.setName(txtNimi.getText());
-        		details.setPhone(txtPuhnumero.getText());
-        		details.setTown(txtKaupunki.getText());
-        		details.setZip(txtPostinumero.getText());
+        		details.address = txtKotiosoite.getText();
+        		details.email = txtSahkoposti.getText();
+        		details.name = txtNimi.getText();
+        		details.phone = txtPuhnumero.getText();
+        		details.town = txtKaupunki.getText();
+        		details.zip = txtPostinumero.getText();
         		
+        		cv.details = details;
         	}
         });
         btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -191,13 +268,13 @@ public class Henkilotieto {
         panel_1.add(txtPostinumero);
         txtPostinumero.setColumns(10);
         
-        JLabel lblNewLabel_5 = new JLabel("Kaupunki");
+        JLabel lblNewLabel_5 = new JLabel("Town");
         lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_5.setForeground(new Color(255, 255, 255));
         lblNewLabel_5.setBounds(10, 156, 83, 17);
         panel_1.add(lblNewLabel_5);
         
-        JLabel lblNewLabel_6 = new JLabel("Postinumero");
+        JLabel lblNewLabel_6 = new JLabel("Zip");
         lblNewLabel_6.setForeground(new Color(255, 255, 255));
         lblNewLabel_6.setBackground(new Color(255, 255, 255));
         lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 14));

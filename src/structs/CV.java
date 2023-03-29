@@ -2,16 +2,16 @@ package structs;
 
 public class CV {
 	// Variable declarations
-	private Details details;
-	private String[] strengths;
-	private Degree[] degrees;
-	private String[] courses;
-	private Experience[] experience;
-	private String[] itSkills;
-	private Language[] langs;
-	private String[] hobbies;
-	private String[] positions;
-	private String[] referees;
+	public Details details;
+	public String[] strengths;
+	public Degree[] degrees;
+	public String[] courses;
+	public Experience[] experience;
+	public String[] itSkills;
+	public Language[] langs;
+	public String[] hobbies;
+	public String[] positions;
+	public String[] referees;
 	
 	
 	// Constructors
@@ -26,77 +26,5 @@ public class CV {
 		this.hobbies = new String[10];
 		this.positions = new String[10];
 		this.referees = new String[10];
-	}
-	
-	
-	// Getters and setters
-	public String[] getStrengths() {
-		return strengths;
-	}
-	public void setStrengths(String[] strengths) {
-		this.strengths = strengths;
-	}
-	
-	public Language[] getLanguages() {
-		return langs;
-	}
-	public void setLanguages(Language[] langs) {
-		this.langs = langs;
-	}
-
-	public Details getDetails() {
-		return details;
-	}
-	public void setDetails(Details details) {
-		this.details = details;
-	}
-
-	public Degree[] getDegrees() {
-		return degrees;
-	}
-	public void setDegrees(Degree[] degrees) {
-		this.degrees = degrees;
-	}
-
-	public String[] getCourses() {
-		return courses;
-	}
-	public void setCourses(String[] courses) {
-		this.courses = courses;
-	}
-
-	public Experience[] getExperience() {
-		return experience;
-	}
-	public void setExperience(Experience[] experience) {
-		this.experience = experience;
-	}
-
-	public String[] getItSkills() {
-		return itSkills;
-	}
-	public void setItSkills(String[] itSkills) {
-		this.itSkills = itSkills;
-	}
-
-	public String[] getHobbies() {
-		return hobbies;
-	}
-	public void setHobbies(String[] hobbies) {
-		this.hobbies = hobbies;
-	}
-
-	public String[] getPositions() {
-		return positions;
-	}
-	public void setPositions(String[] positions) {
-		this.positions = positions;
-	}
-
-	public String[] getReferees() {
-		return referees;
-	}
-	public void setReferees(String[] referees) {
-		this.referees = referees;
 	}
 }
