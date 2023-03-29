@@ -159,7 +159,7 @@ public class Languages extends Information {
         refereeTab.setViewportView(refereeText);
         
         //GET TAB INFO
-       	getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText);
+       	getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
         
         
         

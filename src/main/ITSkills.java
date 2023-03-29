@@ -138,7 +138,7 @@ public class ITSkills extends Information {
         JTextArea refereeText = new JTextArea();
         refereeTab.setViewportView(refereeText);
         
-        getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText);
+        getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
         // COPY ABOVE
         
         JLabel lblNewLabel = new JLabel("IT Skills");

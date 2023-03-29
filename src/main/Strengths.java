@@ -137,7 +137,7 @@ public class Strengths extends Information {
         JTextArea refereeText = new JTextArea();
         refereeTab.setViewportView(refereeText);
         
-        getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText);
+        getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
         
         JLabel lblNewLabel = new JLabel("Strengths");
         lblNewLabel.setForeground(new Color(255, 255, 255));

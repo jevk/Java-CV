@@ -172,7 +172,7 @@ public class PersonalDetails extends Information {
         JTextArea refereeText = new JTextArea();
         refereeTab.setViewportView(refereeText);
         
-        getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText);
+        getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
         
         JLabel lblNewLabel_1 = new JLabel("Name");
         lblNewLabel_1.setForeground(new Color(255, 255, 255));
