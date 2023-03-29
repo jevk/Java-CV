@@ -18,7 +18,7 @@ import javax.swing.SwingConstants;
 
 import structs.CV;
 
-public class Courses {
+public class Courses extends Information {
 	private CV cv;
 	private String[] courses = {
 		"",
@@ -147,7 +147,7 @@ public class Courses {
         JTextArea refereeText = new JTextArea();
         refereeTab.setViewportView(refereeText);
         
-        Information.getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText);
+        getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText);
         
         JButton btnBack = new JButton("Back");
         btnBack.addActionListener(new ActionListener() {

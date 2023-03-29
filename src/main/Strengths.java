@@ -19,7 +19,7 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.JTextArea;
 
-public class Strengths {
+public class Strengths extends Information {
 	private CV cv;
 	private String[] strengths = new String[10];
 	private JFrame frame;
@@ -137,7 +137,7 @@ public class Strengths {
         JTextArea refereeText = new JTextArea();
         refereeTab.setViewportView(refereeText);
         
-        Information.getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText);
+        getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText);
         
         JLabel lblNewLabel = new JLabel("Strengths");
         lblNewLabel.setForeground(new Color(255, 255, 255));

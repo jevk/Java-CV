@@ -19,7 +19,7 @@ import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class PersonalDetails {
+public class PersonalDetails extends Information {
 	private CV cv;
 	private JFrame frame;
 	private JTextField txtNimi;
@@ -172,7 +172,7 @@ public class PersonalDetails {
         JTextArea refereeText = new JTextArea();
         refereeTab.setViewportView(refereeText);
         
-        Information.getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText);
+        getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText);
         
         JLabel lblNewLabel_1 = new JLabel("Name");
         lblNewLabel_1.setForeground(new Color(255, 255, 255));

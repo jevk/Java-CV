@@ -19,7 +19,7 @@ import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ITSkills {
+public class ITSkills extends Information {
 	private CV cv;
 	private String[] itSkills = new String[10];
 	private JFrame frame;
@@ -137,7 +137,7 @@ public class ITSkills {
         JTextArea refereeText = new JTextArea();
         refereeTab.setViewportView(refereeText);
         
-        Information.getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText);
+        getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText);
         
         JLabel lblNewLabel = new JLabel("IT Skills");
         lblNewLabel.setForeground(new Color(255, 255, 255));

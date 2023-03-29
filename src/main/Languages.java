@@ -25,7 +25,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
-public class Languages {
+public class Languages extends Information {
 	private CV cv;
 	private JFrame frame;
 	private Language[] langs = new Language[10];
@@ -159,7 +159,7 @@ public class Languages {
         refereeTab.setViewportView(refereeText);
         
         //GET TAB INFO
-        Information.getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText);
+       	getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText);
         
         
         

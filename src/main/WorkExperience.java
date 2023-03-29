@@ -19,7 +19,7 @@ import javax.swing.SwingConstants;
 import structs.CV;
 import structs.Experience;
 
-public class WorkExperience {
+public class WorkExperience extends Information {
 	private CV cv;
 	private Experience[] experience;
 	private JFrame frame;
@@ -142,7 +142,7 @@ public class WorkExperience {
         JTextArea refereeText = new JTextArea();
         refereeTab.setViewportView(refereeText);
         
-        Information.getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText);
+        getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText);
         
         JLabel lblNewLabel = new JLabel("Work Experience");
         lblNewLabel.setForeground(new Color(255, 255, 255));

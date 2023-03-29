@@ -5,7 +5,7 @@ import javax.swing.JTextArea;
 import structs.*;
 
 public abstract class Information {
-	public static void getCV(CV cv, JTextArea detail, JTextArea strength, JTextArea degree, JTextArea experience, JTextArea itSkills, JTextArea languages, JTextArea hobbies, JTextArea positions) {
+	public void getCV(CV cv, JTextArea detail, JTextArea strength, JTextArea degree, JTextArea experience, JTextArea itSkills, JTextArea languages, JTextArea hobbies, JTextArea positions) {
 		Details details = cv.details;
 		detail.setText("Personal details:\n");
 		detail.append("Name: " + details.name + "\n");
