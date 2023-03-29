@@ -230,17 +230,17 @@ public class PersonalDetails extends Information {
         				+"Address: "
         				+ txtKotiosoite.getText() 
         				+"\r\n"
-        				+"Email: "
-        				+ txtSahkoposti.getText()
-        				+"\r\n"
-        				+ "Phone: "
-        				+ txtPuhnumero.getText()
-        				+"\r\n"
         				+ "Town: "
         				+ txtKaupunki.getText()
         				+"\r\n"
         				+"Zip: "
         				+ txtPostinumero.getText()
+        				+"\r\n"
+        				+ "Phone: "
+        				+ txtPuhnumero.getText()
+        				+"\r\n"
+        				+"Email: "
+        				+ txtSahkoposti.getText()
         				
         				
         				);
