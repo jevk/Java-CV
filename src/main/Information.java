@@ -10,7 +10,7 @@ public abstract class Information {
 		detail.setText("Personal details:\n");
 		detail.append("Name: " + details.name + "\n");
 		detail.append("Address: " + details.address + "\n");
-		detail.append("Town: " + details.zip + " " + details.town + "\n");
+		detail.append("Town: " + details.town + ", " + details.zip + "\n");
 		detail.append("Phone: " + details.phone + "\n");
 		detail.append("Email: " + details.email);
 		
