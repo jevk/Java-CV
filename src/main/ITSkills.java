@@ -66,6 +66,7 @@ public class ITSkills extends Information {
         frame.getContentPane().add(panel);
         panel.setLayout(null);
         
+        // COPY EVERYTHING BELOW
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
         tabbedPane.setBounds(10, 11, 334, 415);
         panel.add(tabbedPane);
@@ -138,6 +139,7 @@ public class ITSkills extends Information {
         refereeTab.setViewportView(refereeText);
         
         getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText);
+        // COPY ABOVE
         
         JLabel lblNewLabel = new JLabel("IT Skills");
         lblNewLabel.setForeground(new Color(255, 255, 255));
