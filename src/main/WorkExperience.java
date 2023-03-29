@@ -17,9 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import structs.CV;
-import structs.Details;
 import structs.Experience;
-import structs.Language;
 
 public class WorkExperience {
 	private CV cv;
@@ -52,7 +50,7 @@ public class WorkExperience {
 	 */
 	public WorkExperience(CV curriculumVitae) {
 		cv = curriculumVitae;
-		experience = cv.getExperience();
+		experience = cv.experience;
 		initialize();
 	}
 
@@ -83,27 +81,11 @@ public class WorkExperience {
         JTextArea detailsText = new JTextArea();
         detailsText.setEditable(false);
         detailsTab.setViewportView(detailsText);
-        detailsText.setText("Details:\n");
-        Details details = cv.getDetails();
-        if (details != null) {
-        	detailsText.append(
-        			details.getName() + "\n" +
-        			details.getAddress() + "\n" +
-        			details.getZip() + details.getTown() + "\n" +
-        			details.getPhone() + "\n" +
-        			details.getEmail()
-        	);
-        }
         
         JScrollPane strengthsTab = new JScrollPane();
         tabbedPane.addTab("Strengths", null, strengthsTab, null);
         
         JTextArea strengthsText = new JTextArea();
-        strengthsText.setText("Strengths:\n");
-        String[] strengths = cv.getStrengths();
-        for (int i = 0; i < strengths.length; i++) {
-        	if (strengths[i] != null) strengthsText.append(strengths[i] + "\n");
-        }
         strengthsText.setEditable(false);
         strengthsTab.setViewportView(strengthsText);
         
@@ -141,8 +123,6 @@ public class WorkExperience {
         JTextArea langsText = new JTextArea();
         langsText.setEditable(false);
         langTab.setViewportView(langsText);
-        Language[] langs = cv.getLanguages();
-        langsText.setText("Languages:\n");
         
         JScrollPane hobbyTab = new JScrollPane();
         tabbedPane.addTab("Hobbies", null, hobbyTab, null);
@@ -161,24 +141,8 @@ public class WorkExperience {
         
         JTextArea refereeText = new JTextArea();
         refereeTab.setViewportView(refereeText);
-        for (int i = 0; i < langs.length; i++) {
-        	if (langs[i] != null) {
-            	String spoken = langs[i].getSpoken();
-            	String written = langs[i].getWritten();
-            	String langName = langs[i].getLangName();
-        		langsText.append(
-        				langName + ":\n" +
-        				"Written: " + written + "\n" +
-        				"Spoken: " + spoken + "\n"
-        		);
-        	}
-        }
-        String[] itSkills = cv.getItSkills();
-        for (int i = 0; i < itSkills.length; i++) {
-        	if (itSkills[i] != null) {
-        		itText.append(itSkills[i] + "\n");
-        	}
-        }
+        
+        Information.getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText);
         
         JLabel lblNewLabel = new JLabel("Work Experience");
         lblNewLabel.setForeground(new Color(255, 255, 255));
@@ -190,7 +154,7 @@ public class WorkExperience {
         JButton btnBack = new JButton("Back");
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		cv.setExperience(experience);
+        		cv.experience = experience;
         		Strengths.main(null, cv);
         		frame.dispose();
         	}
@@ -218,11 +182,11 @@ public class WorkExperience {
         			if (experience[i] == null) {
         				Experience exp = new Experience();
         				
-        				exp.setWorkplace(workplace);
-        				exp.setJob(job);
-        				exp.setLength(length);
-        				exp.setMonth(month);
-        				exp.setYear(year);
+        				exp.workplace = workplace;
+        				exp.job = job;
+        				exp.length = length;
+        				exp.month = month;
+        				exp.year = year;
         				
         				experience[i] = exp;
         				
@@ -238,7 +202,7 @@ public class WorkExperience {
         JButton btnNext = new JButton("Next");
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		cv.setExperience(experience);
+        		cv.experience = experience;
         		ITSkills.main(null, cv);
         		frame.dispose();
         	}

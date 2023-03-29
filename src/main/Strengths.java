@@ -11,8 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import structs.CV;
-import structs.Details;
-import structs.Language;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -23,18 +21,7 @@ import javax.swing.JTextArea;
 
 public class Strengths {
 	private CV cv;
-	private String[] strengths = {
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-	};
+	private String[] strengths = new String[10];
 	private JFrame frame;
 	private JTextField strengthField;
 
@@ -89,50 +76,33 @@ public class Strengths {
         JTextArea detailsText = new JTextArea();
         detailsText.setEditable(false);
         detailsTab.setViewportView(detailsText);
-        detailsText.setText("Details:\n");
-        Details details = cv.getDetails();
-        if (details != null) {
-        	detailsText.append(
-        			details.getName() + "\n" +
-        			details.getAddress() + "\n" +
-        			details.getZip() + details.getTown() + "\n" +
-        			details.getPhone() + "\n" +
-        			details.getEmail()
-        	);
-        }
         
         JScrollPane strengthsTab = new JScrollPane();
         tabbedPane.addTab("Strengths", null, strengthsTab, null);
         
         JTextArea strengthsText = new JTextArea();
-        strengthsText.setText("Strengths:\n");
-    	strengths = cv.getStrengths();
-        for (int i = 0; i < strengths.length; i++) {
-        	if (strengths[i] != null) strengthsText.append(strengths[i] + "\n");
-        }
         strengthsText.setEditable(false);
         strengthsTab.setViewportView(strengthsText);
         
-        JScrollPane langTab = new JScrollPane();
-        tabbedPane.addTab("Languages", null, langTab, null);
+        JScrollPane degreeTab = new JScrollPane();
+        tabbedPane.addTab("Degrees", null, degreeTab, null);
         
-        JTextArea langsText = new JTextArea();
-        langsText.setEditable(false);
-        langTab.setViewportView(langsText);
-        Language[] langs = cv.getLanguages();
-        langsText.setText("Languages:\n");
-        for (int i = 0; i < langs.length; i++) {
-        	if (langs[i] != null) {
-            	String spoken = langs[i].getSpoken();
-            	String written = langs[i].getWritten();
-            	String langName = langs[i].getLangName();
-        		langsText.append(
-        				langName + ":\n" +
-        				"Written: " + written + "\n" +
-        				"Spoken: " + spoken + "\n"
-        		);
-        	}
-        }
+        JTextArea degreeText = new JTextArea();
+        degreeText.setEditable(false);
+        degreeTab.setViewportView(degreeText);
+        
+        JScrollPane courseTab = new JScrollPane();
+        tabbedPane.addTab("Courses", null, courseTab, null);
+        
+        JTextArea courseText = new JTextArea();
+        courseText.setEditable(false);
+        courseTab.setViewportView(courseText);
+        
+        JScrollPane expTab = new JScrollPane();
+        tabbedPane.addTab("Experience", null, expTab, null);
+        
+        JTextArea expText = new JTextArea();
+        expTab.setViewportView(expText);
         
         JScrollPane itTab = new JScrollPane();
         tabbedPane.addTab("IT Skills", null, itTab, null);
@@ -140,13 +110,34 @@ public class Strengths {
         JTextArea itText = new JTextArea();
         itText.setEditable(false);
         itTab.setViewportView(itText);
-        String[] itSkills = cv.getItSkills();
         itText.setText("IT Skills:\n");
-        for (int i = 0; i < itSkills.length; i++) {
-        	if (itSkills[i] != null) {
-        		itText.append(itSkills[i] + "\n");
-        	}
-        }
+        
+        JScrollPane langTab = new JScrollPane();
+        tabbedPane.addTab("Languages", null, langTab, null);
+        
+        JTextArea langsText = new JTextArea();
+        langsText.setEditable(false);
+        langTab.setViewportView(langsText);
+        
+        JScrollPane hobbyTab = new JScrollPane();
+        tabbedPane.addTab("Hobbies", null, hobbyTab, null);
+        
+        JTextArea hobbyText = new JTextArea();
+        hobbyTab.setViewportView(hobbyText);
+        
+        JScrollPane positionTab = new JScrollPane();
+        tabbedPane.addTab("Positions", null, positionTab, null);
+        
+        JTextArea positionText = new JTextArea();
+        positionTab.setViewportView(positionText);
+        
+        JScrollPane refereeTab = new JScrollPane();
+        tabbedPane.addTab("Referees", null, refereeTab, null);
+        
+        JTextArea refereeText = new JTextArea();
+        refereeTab.setViewportView(refereeText);
+        
+        Information.getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText);
         
         JLabel lblNewLabel = new JLabel("Strengths");
         lblNewLabel.setForeground(new Color(255, 255, 255));
@@ -158,7 +149,7 @@ public class Strengths {
         JButton btnBack = new JButton("Back");
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		cv.setStrengths(strengths);
+        		cv.strengths = strengths;
         		PersonalDetails.main(null, cv);
         		frame.dispose();
         	}
@@ -197,7 +188,7 @@ public class Strengths {
         JButton btnNext = new JButton("Next");
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		cv.setStrengths(strengths);
+        		cv.strengths = strengths;
         		WorkExperience.main(null, cv);
         		frame.dispose();
         	}

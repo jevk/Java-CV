@@ -17,8 +17,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import structs.CV;
-import structs.Details;
-import structs.Language;
 
 public class Courses {
 	private CV cv;
@@ -88,50 +86,33 @@ public class Courses {
         JTextArea detailsText = new JTextArea();
         detailsText.setEditable(false);
         detailsTab.setViewportView(detailsText);
-        detailsText.setText("Details:\n");
-        Details details = cv.getDetails();
-        if (details != null) {
-        	detailsText.append(
-        			details.getName() + "\n" +
-        			details.getAddress() + "\n" +
-        			details.getZip() + details.getTown() + "\n" +
-        			details.getPhone() + "\n" +
-        			details.getEmail()
-        	);
-        }
         
         JScrollPane strengthsTab = new JScrollPane();
         tabbedPane.addTab("Strengths", null, strengthsTab, null);
         
         JTextArea strengthsText = new JTextArea();
-        strengthsText.setText("Strengths:\n");
-    	String[] strengths = cv.getStrengths();
-        for (int i = 0; i < strengths.length; i++) {
-        	if (strengths[i] != null) strengthsText.append(strengths[i] + "\n");
-        }
         strengthsText.setEditable(false);
         strengthsTab.setViewportView(strengthsText);
         
-        JScrollPane langTab = new JScrollPane();
-        tabbedPane.addTab("Languages", null, langTab, null);
+        JScrollPane degreeTab = new JScrollPane();
+        tabbedPane.addTab("Degrees", null, degreeTab, null);
         
-        JTextArea langsText = new JTextArea();
-        langsText.setEditable(false);
-        langTab.setViewportView(langsText);
-        Language[] langs = cv.getLanguages();
-        langsText.setText("Languages:\n");
-        for (int i = 0; i < langs.length; i++) {
-        	if (langs[i] != null) {
-            	String spoken = langs[i].getSpoken();
-            	String written = langs[i].getWritten();
-            	String langName = langs[i].getLangName();
-        		langsText.append(
-        				langName + ":\n" +
-        				"Written: " + written + "\n" +
-        				"Spoken: " + spoken + "\n"
-        		);
-        	}
-        }
+        JTextArea degreeText = new JTextArea();
+        degreeText.setEditable(false);
+        degreeTab.setViewportView(degreeText);
+        
+        JScrollPane courseTab = new JScrollPane();
+        tabbedPane.addTab("Courses", null, courseTab, null);
+        
+        JTextArea courseText = new JTextArea();
+        courseText.setEditable(false);
+        courseTab.setViewportView(courseText);
+        
+        JScrollPane expTab = new JScrollPane();
+        tabbedPane.addTab("Experience", null, expTab, null);
+        
+        JTextArea expText = new JTextArea();
+        expTab.setViewportView(expText);
         
         JScrollPane itTab = new JScrollPane();
         tabbedPane.addTab("IT Skills", null, itTab, null);
@@ -139,30 +120,39 @@ public class Courses {
         JTextArea itText = new JTextArea();
         itText.setEditable(false);
         itTab.setViewportView(itText);
-        String[] itSkills = cv.getItSkills();
         itText.setText("IT Skills:\n");
-        for (int i = 0; i < itSkills.length; i++) {
-        	if (itSkills[i] != null) {
-        		itText.append(itSkills[i] + "\n");
-        	}
-        }
         
-        JScrollPane coursesPane = new JScrollPane();
-        tabbedPane.addTab("Courses", null, coursesPane, null);
+        JScrollPane langTab = new JScrollPane();
+        tabbedPane.addTab("Languages", null, langTab, null);
         
-        JTextArea txtCourses = new JTextArea();
-        txtCourses.setEditable(false);
-        coursesPane.setViewportView(txtCourses);
-        String[] courses = cv.getCourses();
-        for (int i = 0; i < courses.length; i++) {
-        	if (courses[i] != null) txtCourses.append(courses[i] + "\n");
-        }
+        JTextArea langsText = new JTextArea();
+        langsText.setEditable(false);
+        langTab.setViewportView(langsText);
         
+        JScrollPane hobbyTab = new JScrollPane();
+        tabbedPane.addTab("Hobbies", null, hobbyTab, null);
+        
+        JTextArea hobbyText = new JTextArea();
+        hobbyTab.setViewportView(hobbyText);
+        
+        JScrollPane positionTab = new JScrollPane();
+        tabbedPane.addTab("Positions", null, positionTab, null);
+        
+        JTextArea positionText = new JTextArea();
+        positionTab.setViewportView(positionText);
+        
+        JScrollPane refereeTab = new JScrollPane();
+        tabbedPane.addTab("Referees", null, refereeTab, null);
+        
+        JTextArea refereeText = new JTextArea();
+        refereeTab.setViewportView(refereeText);
+        
+        Information.getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText);
         
         JButton btnBack = new JButton("Back");
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		cv.setCourses(courses);
+        		cv.courses = courses;
         		Languages.main(null, cv);
         		frame.dispose();
         	}
@@ -186,7 +176,7 @@ public class Courses {
         btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		String course = coursesField.getText();
-        		txtCourses.append(course + "\n");
+        		courseText.append(course + "\n");
         		for (int i = 0; i < course.length(); i++) {
         			if (courses[i] == "" || courses[i] == null) {
         				courses[i] = course;
@@ -218,7 +208,7 @@ public class Courses {
         JButton btnRemove = new JButton("Remove");
         btnRemove.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-       			String newText = txtCourses.getText().replace("\n" + coursesField.getText() + "\n", "\n");
+       			String newText = courseText.getText().replace("\n" + coursesField.getText() + "\n", "\n");
            		for (int i = 0; i < 10; i++) {
            			if (courses[i] == coursesField.getText()) {
            				courses[i] = "";
