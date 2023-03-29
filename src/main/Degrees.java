@@ -18,8 +18,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 
-public class Degrees {
-
+public class Degrees extends Information {
+	private CV cv;
 	private JFrame frame;
 	private JTextField txtSchool;
 	private JTextField txtEducation;
@@ -34,7 +34,7 @@ public class Degrees {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Degrees window = new Degrees();
+					Degrees window = new Degrees(curriculumVitae);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +46,8 @@ public class Degrees {
 	/**
 	 * Create the application.
 	 */
-	public Degrees() {
+	public Degrees(CV curriculumVitae) {
+		cv = curriculumVitae;
 		initialize();
 	}
 
@@ -71,17 +72,74 @@ public class Degrees {
         tabbedPane.setBounds(10, 11, 334, 415);
         panel.add(tabbedPane);
         
-        JScrollPane scrollPane = new JScrollPane();
-        tabbedPane.addTab("Degrees", null, scrollPane, null);
+        JScrollPane detailsTab = new JScrollPane();
+        tabbedPane.addTab("Details", null, detailsTab, null);
         
-        JTextArea txtADegree = new JTextArea();
-        scrollPane.setViewportView(txtADegree);
+        JTextArea detailsText = new JTextArea();
+        detailsText.setEditable(false);
+        detailsTab.setViewportView(detailsText);
         
-        JScrollPane scrollPane_1 = new JScrollPane();
-        tabbedPane.addTab("New tab", null, scrollPane_1, null);
+        JScrollPane strengthsTab = new JScrollPane();
+        tabbedPane.addTab("Strengths", null, strengthsTab, null);
         
-        JTextArea textArea_1 = new JTextArea();
-        scrollPane_1.setViewportView(textArea_1);
+        JTextArea strengthsText = new JTextArea();
+        strengthsText.setEditable(false);
+        strengthsTab.setViewportView(strengthsText);
+        
+        JScrollPane degreeTab = new JScrollPane();
+        tabbedPane.addTab("Degrees", null, degreeTab, null);
+        
+        JTextArea degreeText = new JTextArea();
+        degreeText.setEditable(false);
+        degreeTab.setViewportView(degreeText);
+        
+        JScrollPane courseTab = new JScrollPane();
+        tabbedPane.addTab("Courses", null, courseTab, null);
+        
+        JTextArea courseText = new JTextArea();
+        courseText.setEditable(false);
+        courseTab.setViewportView(courseText);
+        
+        JScrollPane expTab = new JScrollPane();
+        tabbedPane.addTab("Experience", null, expTab, null);
+        
+        JTextArea expText = new JTextArea();
+        expTab.setViewportView(expText);
+        
+        JScrollPane itTab = new JScrollPane();
+        tabbedPane.addTab("IT Skills", null, itTab, null);
+        
+        JTextArea itText = new JTextArea();
+        itText.setEditable(false);
+        itTab.setViewportView(itText);
+        itText.setText("IT Skills:\n");
+        
+        JScrollPane langTab = new JScrollPane();
+        tabbedPane.addTab("Languages", null, langTab, null);
+        
+        JTextArea langsText = new JTextArea();
+        langsText.setEditable(false);
+        langTab.setViewportView(langsText);
+        
+        JScrollPane hobbyTab = new JScrollPane();
+        tabbedPane.addTab("Hobbies", null, hobbyTab, null);
+        
+        JTextArea hobbyText = new JTextArea();
+        hobbyTab.setViewportView(hobbyText);
+        
+        JScrollPane positionTab = new JScrollPane();
+        tabbedPane.addTab("Positions", null, positionTab, null);
+        
+        JTextArea positionText = new JTextArea();
+        positionTab.setViewportView(positionText);
+        
+        JScrollPane refereeTab = new JScrollPane();
+        tabbedPane.addTab("Referees", null, refereeTab, null);
+        
+        JTextArea refereeText = new JTextArea();
+        refereeTab.setViewportView(refereeText);
+        
+        getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
         
         JLabel lblNewLabel = new JLabel("Degrees");
         lblNewLabel.setForeground(new Color(255, 255, 255));
@@ -163,7 +221,7 @@ public class Degrees {
         JButton btnAdd = new JButton("Add");
         btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		txtADegree.append(
+        		degreeText.append(
         				"Shcool: " +txtSchool.getText()
         				+"\nEducation: " +txtEducation.getText()
         				+"\nDegree: " +txtDegree.getText()
