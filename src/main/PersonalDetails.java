@@ -222,7 +222,7 @@ public class PersonalDetails extends Information {
         JButton btnNewButton = new JButton("Set Information");
         btnNewButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		detailsText.setText("PersonalDetails: "
+        		detailsText.setText("Personal Details: "
         				+"\r\n"
         				+ "Name: "
         				+ txtNimi.getText()
