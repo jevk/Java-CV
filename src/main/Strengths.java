@@ -189,7 +189,7 @@ public class Strengths extends Information {
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.strengths = strengths;
-        		WorkExperience.main(null, cv);
+        		Courses.main(null, cv);
         		frame.dispose();
         	}
         });
