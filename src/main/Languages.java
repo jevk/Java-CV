@@ -173,7 +173,7 @@ public class Languages extends Information {
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.langs = langs;
-        		Degrees.main(null, cv);
+        		System.out.println(cv.toString());
         		frame.dispose();
         	}
         });
@@ -185,7 +185,7 @@ public class Languages extends Information {
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.langs = langs;
-        		Courses.main(null, cv);
+        		ITSkills.main(null, cv);
         		frame.dispose();
         	}
         });

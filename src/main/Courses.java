@@ -142,7 +142,7 @@ public class Courses extends Information {
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.courses = courses;
-        		Languages.main(null, cv);
+        		Degrees.main(null, cv);
         		frame.dispose();
         	}
         });
@@ -180,6 +180,9 @@ public class Courses extends Information {
         JButton btnNext = new JButton("Next");
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		cv.courses = courses;
+        		WorkExperience.main(null, cv);
+        		frame.dispose();
         	}
         });
         btnNext.setFont(new Font("Tahoma", Font.PLAIN, 13));

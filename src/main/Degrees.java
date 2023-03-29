@@ -13,7 +13,6 @@ import structs.CV;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
@@ -148,11 +147,23 @@ public class Degrees extends Information {
         frame.getContentPane().add(lblNewLabel);
         
         JButton btnNext = new JButton("Next");
+        btnNext.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Courses.main(null, cv);
+        		frame.dispose();
+        	}
+        });
         btnNext.setFont(new Font("Tahoma", Font.PLAIN, 13));
         btnNext.setBounds(545, 504, 112, 23);
         frame.getContentPane().add(btnNext);
         
         JButton btnBack = new JButton("Back");
+        btnBack.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Strengths.main(null, cv);
+        		frame.dispose();
+        	}
+        });
         btnBack.setFont(new Font("Tahoma", Font.PLAIN, 13));
         btnBack.setBounds(127, 504, 112, 23);
         frame.getContentPane().add(btnBack);

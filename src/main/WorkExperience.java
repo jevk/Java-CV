@@ -155,7 +155,7 @@ public class WorkExperience extends Information {
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.experience = experience;
-        		Strengths.main(null, cv);
+        		Courses.main(null, cv);
         		frame.dispose();
         	}
         });

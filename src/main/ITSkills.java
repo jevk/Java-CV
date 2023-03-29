@@ -150,6 +150,7 @@ public class ITSkills extends Information {
         JButton btnNext = new JButton("Next");
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		cv.itSkills = itSkills;
         		Languages.main(null, cv);
         		frame.dispose();
         	}
@@ -162,7 +163,7 @@ public class ITSkills extends Information {
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.itSkills = itSkills;
-        		Strengths.main(null, cv);
+        		WorkExperience.main(null, cv);
         		frame.dispose();
         	}
         });
