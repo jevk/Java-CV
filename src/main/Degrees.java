@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import structs.CV;
+import structs.Degree;
+
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -19,6 +21,7 @@ import javax.swing.JScrollPane;
 
 public class Degrees extends Information {
 	private CV cv;
+	private Degree[] degrees = new Degree[10];
 	private JFrame frame;
 	private JTextField txtSchool;
 	private JTextField txtEducation;
@@ -54,6 +57,8 @@ public class Degrees extends Information {
      * Initialize the contents of the frame.
      */
     private void initialize() {
+    	degrees = cv.degrees;
+    	
         frame = new JFrame();
         frame.getContentPane().setBackground(new Color(39, 39, 39));
         frame.getContentPane().setForeground(new Color(0, 0, 0));
@@ -149,6 +154,7 @@ public class Degrees extends Information {
         JButton btnNext = new JButton("Next");
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		cv.degrees = degrees;
         		Courses.main(null, cv);
         		frame.dispose();
         	}
@@ -160,6 +166,7 @@ public class Degrees extends Information {
         JButton btnBack = new JButton("Back");
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		cv.degrees = degrees;
         		Strengths.main(null, cv);
         		frame.dispose();
         	}
@@ -229,9 +236,23 @@ public class Degrees extends Information {
         txtEndYear.setBounds(132, 256, 183, 20);
         panel_1.add(txtEndYear);
         
+		// degrees[i - 1] = null;
+        
         JButton btnAdd = new JButton("Add");
         btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		for(int i = 0; i < degrees.length; i++) {
+        			if (degrees[i] == null) {
+        				Degree deg = new Degree();
+        				deg.school = txtSchool.getText();
+        				deg.education = txtEducation.getText();
+        				deg.degree = txtDegree.getText();
+        				deg.startYear = Integer.parseInt(txtStartYear.getText());
+        				deg.endYear = Integer.parseInt(txtEndYear.getText());
+        				degrees[i] = deg;
+        				break;
+        			}
+        		}
         		degreeText.append(
         				"Shcool: " +txtSchool.getText()
         				+"\nEducation: " +txtEducation.getText()
