@@ -17,10 +17,12 @@ import structs.Details;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTabbedPane;
+import javax.swing.border.BevelBorder;
 
 public class Henkilotieto {
 	private CV cv;
-	private JFrame frame;
+	JFrame frame;
 	private JTextField txtNimi;
 	private JTextField txtKotiosoite;
 	private JTextField txtSahkoposti;
@@ -68,12 +70,12 @@ public class Henkilotieto {
         
         JPanel panel = new JPanel();
         panel.setBackground(new Color(49, 49, 49));
-        panel.setBounds(408, 21, 354, 437);
+        panel.setBounds(408, 11, 354, 447);
         frame.getContentPane().add(panel);
         panel.setLayout(null);
         
         JTextArea textArea = new JTextArea();
-        textArea.setBounds(10, 11, 334, 415);
+        textArea.setBounds(10, 60, 334, 376);
         panel.add(textArea);
         
         JLabel lblNewLabel = new JLabel("Henkilötiedot");
