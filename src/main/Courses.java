@@ -20,18 +20,7 @@ import structs.CV;
 
 public class Courses extends Information {
 	private CV cv;
-	private String[] courses = {
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-	};
+	private String[] courses = new String[10];
 	private JFrame frame;
 	private JTextField coursesField;
 
@@ -147,7 +136,7 @@ public class Courses extends Information {
         JTextArea refereeText = new JTextArea();
         refereeTab.setViewportView(refereeText);
         
-        getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText);
+        getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
         
         JButton btnBack = new JButton("Back");
         btnBack.addActionListener(new ActionListener() {
