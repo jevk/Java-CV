@@ -97,7 +97,7 @@ public class Main {
         btnStart.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		CV cv = new CV();
-        		Strengths.main(null, cv);
+        		PersonalDetails.main(null, cv);
         		frame.dispose();
         	}
         });

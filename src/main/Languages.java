@@ -25,7 +25,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
-public class Languages {
+public class Languages extends Information {
 	private CV cv;
 	private JFrame frame;
 	private Language[] langs = new Language[10];
@@ -85,29 +85,83 @@ public class Languages {
         frame.getContentPane().add(panel);
         panel.setLayout(null);
         
+        
+        // TABS
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-        tabbedPane.setSelectedIndex(-1);
         tabbedPane.setBounds(10, 11, 334, 415);
         panel.add(tabbedPane);
         
-        JScrollPane strengthPane = new JScrollPane();
-        tabbedPane.addTab("Strengths", null, strengthPane, null);
+        JScrollPane detailsTab = new JScrollPane();
+        tabbedPane.addTab("Details", null, detailsTab, null);
         
-        JTextArea txtStrengths = new JTextArea();
-        strengthPane.setViewportView(txtStrengths);
-        String[] strengths = cv.getStrengths();
-        for (int i = 0; i < strengths.length; i++) {
-        	System.out.println(i);
-        	txtStrengths.append(strengths[i] + "\n");
-        }
+        JTextArea detailsText = new JTextArea();
+        detailsText.setEditable(false);
+        detailsTab.setViewportView(detailsText);
         
-        JScrollPane langPane = new JScrollPane();
-        tabbedPane.addTab("Languages", null, langPane, null);
+        JScrollPane strengthsTab = new JScrollPane();
+        tabbedPane.addTab("Strengths", null, strengthsTab, null);
         
-        JTextArea txtLangs = new JTextArea();
-        txtLangs.setEditable(false);
-        langPane.setViewportView(txtLangs);
-        txtLangs.setFont(new Font("Monospaced", Font.BOLD, 15));
+        JTextArea strengthsText = new JTextArea();
+        strengthsText.setEditable(false);
+        strengthsTab.setViewportView(strengthsText);
+        
+        JScrollPane degreeTab = new JScrollPane();
+        tabbedPane.addTab("Degrees", null, degreeTab, null);
+        
+        JTextArea degreeText = new JTextArea();
+        degreeText.setEditable(false);
+        degreeTab.setViewportView(degreeText);
+        
+        JScrollPane courseTab = new JScrollPane();
+        tabbedPane.addTab("Courses", null, courseTab, null);
+        
+        JTextArea courseText = new JTextArea();
+        courseText.setEditable(false);
+        courseTab.setViewportView(courseText);
+        
+        JScrollPane expTab = new JScrollPane();
+        tabbedPane.addTab("Experience", null, expTab, null);
+        
+        JTextArea expText = new JTextArea();
+        expTab.setViewportView(expText);
+        
+        JScrollPane itTab = new JScrollPane();
+        tabbedPane.addTab("IT Skills", null, itTab, null);
+        
+        JTextArea itText = new JTextArea();
+        itText.setEditable(false);
+        itTab.setViewportView(itText);
+        itText.setText("IT Skills:\n");
+        
+        JScrollPane langTab = new JScrollPane();
+        tabbedPane.addTab("Languages", null, langTab, null);
+        
+        JTextArea langsText = new JTextArea();
+        langsText.setEditable(false);
+        langTab.setViewportView(langsText);
+        
+        JScrollPane hobbyTab = new JScrollPane();
+        tabbedPane.addTab("Hobbies", null, hobbyTab, null);
+        
+        JTextArea hobbyText = new JTextArea();
+        hobbyTab.setViewportView(hobbyText);
+        
+        JScrollPane positionTab = new JScrollPane();
+        tabbedPane.addTab("Positions", null, positionTab, null);
+        
+        JTextArea positionText = new JTextArea();
+        positionTab.setViewportView(positionText);
+        
+        JScrollPane refereeTab = new JScrollPane();
+        tabbedPane.addTab("Referees", null, refereeTab, null);
+        
+        JTextArea refereeText = new JTextArea();
+        refereeTab.setViewportView(refereeText);
+        
+        //GET TAB INFO
+       	getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
+        
+        
         
         JLabel lblNewLabel = new JLabel("Language Skills");
         lblNewLabel.setForeground(new Color(255, 255, 255));
@@ -118,8 +172,8 @@ public class Languages {
         JButton btnNext = new JButton("Next");
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		cv.setLanguages(langs);
-        		
+        		cv.langs = langs;
+        		System.out.println(cv.toString());
         		frame.dispose();
         	}
         });
@@ -130,7 +184,7 @@ public class Languages {
         JButton btnBack = new JButton("Back");
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		cv.setLanguages(langs);
+        		cv.langs = langs;
         		ITSkills.main(null, cv);
         		frame.dispose();
         	}
@@ -145,7 +199,7 @@ public class Languages {
         frame.getContentPane().add(panel_1);
         panel_1.setLayout(null);
         
-        JLabel lblNewLabel_1 = new JLabel("Select a language:");
+        JLabel lblNewLabel_1 = new JLabel("Write a language:");
         lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 15));
         lblNewLabel_1.setForeground(new Color(255, 255, 255));
         lblNewLabel_1.setBounds(10, 10, 150, 30);
@@ -235,7 +289,7 @@ public class Languages {
         btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		if (!Write.isSelected(null) && !Speech.isSelected(null)) {
-        			txtLangs.append(txtLang.getText() + ": \nWriting: " + getSelectedButtonText(Write) + "\nSpeech: " + getSelectedButtonText(Speech) + "\n");
+        			langsText.append(txtLang.getText() + ": \nWriting: " + getSelectedButtonText(Write) + "\nSpeech: " + getSelectedButtonText(Speech) + "\n");
         			Language lang = new Language(
         					txtLang.getText().toString(), 
         					getSelectedButtonText(Write), 
@@ -266,8 +320,8 @@ public class Languages {
         	public void actionPerformed(ActionEvent e) {
         		int end;
 				try {
-					end = txtLangs.getLineEndOffset(2);
-					txtLangs.replaceRange("", 0, end);
+					end = langsText.getLineEndOffset(2);
+					langsText.replaceRange("", 0, end);
 				} catch (BadLocationException e1) {
 					JOptionPane.showMessageDialog(null, e1);
 				}
