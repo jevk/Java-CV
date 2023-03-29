@@ -173,7 +173,7 @@ public class Languages extends Information {
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.langs = langs;
-        		System.out.println(cv.toString());
+        		Hobbies.main(null, cv);
         		frame.dispose();
         	}
         });
