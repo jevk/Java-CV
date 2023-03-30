@@ -253,16 +253,32 @@ public class Degrees extends Information {
         				break;
         			}
         		}
-        		degreeText.append(
-        				"Shcool: " +txtSchool.getText()
-        				+"\nEducation: " +txtEducation.getText()
-        				+"\nDegree: " +txtDegree.getText()
-        				+"\nStart Year: " +txtStartYear.getText()
-        				+"\nEnd Year: " +txtEndYear.getText());
+				cv.degrees = degrees;
+                getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
         	}
         });
         btnAdd.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        btnAdd.setBounds(142, 300, 163, 40);
+        btnAdd.setBounds(142, 287, 163, 40);
         panel_1.add(btnAdd);
+        
+        JButton btnRemove = new JButton("Remove");
+        btnRemove.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		for(int i = 0; i < degrees.length; i++) {
+        			if (degrees[i] == null) {
+        				try {
+							degrees[i - 1] = null;
+						} catch (Exception e1) {
+							System.out.println("vitun retu xD");
+						}
+        			}
+        		}
+				cv.degrees = degrees;
+                getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
+        	}
+        });
+        btnRemove.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        btnRemove.setBounds(142, 336, 163, 40);
+        panel_1.add(btnRemove);
     }
 }
