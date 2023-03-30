@@ -319,14 +319,21 @@ public class Languages extends Information {
         btnNewButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		int end;
-				try {
-					end = langsText.getLineEndOffset(2);
-					langsText.replaceRange("", 0, end);
-				} catch (BadLocationException e1) {
-					JOptionPane.showMessageDialog(null, e1);
-				}
-        	}
-        });
+        		for(int i = 0; i < langs.length; i++) {
+        			if (langs[i] == null) {
+        				try {
+							langs[i - 1] = null;
+							end = langsText.getLineEndOffset(2);
+							langsText.replaceRange("", 0, end); 
+							
+						} catch (Exception e1) {
+							System.out.println(e1);
+						}
+				cv.langs = langs;
+				getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
+        			}
+        		}
+        	}});
         btnNewButton.setForeground(new Color(255, 255, 255));
         btnNewButton.setBackground(new Color(128, 128, 128));
         btnNewButton.setBounds(174, 353, 170, 23);
