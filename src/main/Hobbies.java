@@ -204,5 +204,14 @@ public class Hobbies extends Information {
         btnNewButton.setBounds(85, 308, 171, 23);
         panel_1.add(btnNewButton);
         
+        JButton btnRemove = new JButton("Remove");
+        btnRemove.setFont(new Font("Tahoma", Font.BOLD, 11));
+        btnRemove.setBounds(85, 353, 171, 23);
+        panel_1.add(btnRemove);
+        
+        txtNimi.setText(" ");
+        detailsText.setText("  ");
+        
+        
     }
 }
