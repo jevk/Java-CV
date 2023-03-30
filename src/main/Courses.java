@@ -211,5 +211,11 @@ public class Courses extends Information {
         });
         btnRemove.setBounds(202, 281, 98, 34);
         panel_1.add(btnRemove);
+        
+        JLabel lblNewLabel = new JLabel("Courses");
+        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
+        lblNewLabel.setForeground(new Color(255, 255, 255));
+        lblNewLabel.setBounds(38, 11, 354, 49);
+        frame.getContentPane().add(lblNewLabel);
 	}
 }
