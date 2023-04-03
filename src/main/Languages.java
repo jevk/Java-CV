@@ -358,9 +358,13 @@ public class Languages extends Information {
         				try {
 							langs[i - 1] = null;
 							end = langsText.getLineEndOffset(2);
-							langsText.replaceRange("", 0, end); 
-							if (langsText.getText().contains("Native")) {
+							int end2 = langsText.getLineEndOffset(3);
+							if (langsText.getLineOfOffset().contains("Native")) {
+								langsText.replaceRange("", 0, end2);
 								nativeLang--;
+							}
+							else {
+							langsText.replaceRange("", 0, end);
 							}
 							
 						} catch (Exception e1) {
