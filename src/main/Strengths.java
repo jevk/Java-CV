@@ -173,16 +173,17 @@ public class Strengths extends Information {
         btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		String strength = strengthField.getText();
-        		strengthsText.append(strength + "\n");
         		for (int i = 0; i < strengths.length; i++) {
         			if (strengths[i] == "" || strengths[i] == null) {
         				strengths[i] = strength;
         				break;
         			}
         		}
+        		cv.strengths = strengths;
+                getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
         	}
         });
-        btnAdd.setBounds(52, 281, 98, 34);
+        btnAdd.setBounds(116, 236, 120, 34);
         panel_1.add(btnAdd);
         
         JButton btnNext = new JButton("Next");
@@ -205,19 +206,19 @@ public class Strengths extends Information {
         lblNewLabel_1.setBounds(80, 115, 193, 40);
         panel_1.add(lblNewLabel_1);
         
-        JButton btnRemove = new JButton("Remove");
+        JButton btnRemove = new JButton("Remove last entry");
         btnRemove.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-       			String newText = strengthsText.getText().replace("\n" + strengthField.getText() + "\n", "\n");
            		for (int i = 0; i < 10; i++) {
-           			if (strengths[i] == strengthField.getText()) {
-           				strengths[i] = "";
+           			if (strengths[i] == null || i == 10) {
+           				strengths[i - 1] = null;
             		}
             	}
-        		strengthsText.setText(newText);
+        		cv.strengths = strengths;
+                getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
         	}
         });
-        btnRemove.setBounds(202, 281, 98, 34);
+        btnRemove.setBounds(116, 285, 121, 34);
         panel_1.add(btnRemove);
 	}
 }
