@@ -30,6 +30,7 @@ public class Languages extends Information {
 	private JFrame frame;
 	private Language[] langs = new Language[10];
 	private JTextField txtLang;
+	private JRadioButton rdbtnNative;
 
 	
 	public String getSelectedButtonText(ButtonGroup buttonGroup) {
@@ -226,12 +227,12 @@ public class Languages extends Information {
         rdbtnAdSpeech.setBounds(170, 136, 174, 21);
         panel_1.add(rdbtnAdSpeech);
         
-        JRadioButton rdbtnNatSpeech = new JRadioButton("Native");
-        rdbtnNatSpeech.setForeground(Color.WHITE);
-        rdbtnNatSpeech.setFont(new Font("Tahoma", Font.BOLD, 15));
-        rdbtnNatSpeech.setBackground(new Color(86, 86, 86));
-        rdbtnNatSpeech.setBounds(170, 160, 174, 21);
-        panel_1.add(rdbtnNatSpeech);
+        JRadioButton rdbtnFluSpeech = new JRadioButton("Fluent");
+        rdbtnFluSpeech.setForeground(Color.WHITE);
+        rdbtnFluSpeech.setFont(new Font("Tahoma", Font.BOLD, 15));
+        rdbtnFluSpeech.setBackground(new Color(86, 86, 86));
+        rdbtnFluSpeech.setBounds(170, 160, 174, 21);
+        panel_1.add(rdbtnFluSpeech);
         
         JRadioButton rdbtnBegWrite = new JRadioButton("Beginner");
         rdbtnBegWrite.setForeground(Color.WHITE);
@@ -254,12 +255,12 @@ public class Languages extends Information {
         rdbtnAdWrite.setBounds(10, 273, 174, 21);
         panel_1.add(rdbtnAdWrite);
         
-        JRadioButton rdbtnNatWrite = new JRadioButton("Native");
-        rdbtnNatWrite.setForeground(Color.WHITE);
-        rdbtnNatWrite.setFont(new Font("Tahoma", Font.BOLD, 15));
-        rdbtnNatWrite.setBackground(new Color(86, 86, 86));
-        rdbtnNatWrite.setBounds(10, 297, 174, 21);
-        panel_1.add(rdbtnNatWrite);
+        JRadioButton rdbtnFluWrite = new JRadioButton("Fluent");
+        rdbtnFluWrite.setForeground(Color.WHITE);
+        rdbtnFluWrite.setFont(new Font("Tahoma", Font.BOLD, 15));
+        rdbtnFluWrite.setBackground(new Color(86, 86, 86));
+        rdbtnFluWrite.setBounds(10, 297, 174, 21);
+        panel_1.add(rdbtnFluWrite);
         
         JLabel lblNewLabel_1_1_1 = new JLabel("Select your speech skill level:");
         lblNewLabel_1_1_1.setForeground(Color.WHITE);
@@ -274,21 +275,24 @@ public class Languages extends Information {
         panel_1.add(lblNewLabel_1_1_1_1);
         
         ButtonGroup Speech = new ButtonGroup();
-        Speech.add(rdbtnNatSpeech);
+        Speech.add(rdbtnFluSpeech);
         Speech.add(rdbtnAdSpeech);
         Speech.add(rdbtnInterSpeech);
         Speech.add(rdbtnBegSpeech);
         
         ButtonGroup Write = new ButtonGroup();
-        Write.add(rdbtnNatWrite);
+        Write.add(rdbtnFluWrite);
         Write.add(rdbtnAdWrite);
         Write.add(rdbtnInterWrite);
         Write.add(rdbtnBegWrite);
         
+        ButtonGroup Native = new ButtonGroup();
+        Native.add(rdbtnNative);
+        
         JButton btnAdd = new JButton("Add an entry");
         btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		if (!Write.isSelected(null) && !Speech.isSelected(null)) {
+        		if (!Write.isSelected(null) && !Speech.isSelected(null) && rdbtnNative.isSelected()) {
         			langsText.append(txtLang.getText() + ": \nWriting: " + getSelectedButtonText(Write) + "\nSpeech: " + getSelectedButtonText(Speech) + "\n");
         			Language lang = new Language(
         					txtLang.getText().toString(), 
@@ -302,9 +306,34 @@ public class Languages extends Information {
         					break;
         				}
         			}
+        			Write.clearSelection();
+        			Speech.clearSelection();
+        			Native.clearSelection();
         		}
-        		else {
-        			JOptionPane.showMessageDialog(null, "You also must select both skill levels to add an entry to the CV");
+        		else if (!rdbtnNative.isSelected() && Write.isSelected(null) && Speech.isSelected(null) ) {
+        			langsText.append("Native language: " + txtLang.getText() + "\n");
+        			Language langN = new Language(
+        					txtLang.getText().toString(), 
+        					getSelectedButtonText(Native),
+        					getSelectedButtonText(null)
+        			);
+        			
+        			for (int i = 0; i < langs.length; i++) {
+        				System.out.println(i);
+        				if (langs[i] == null) {
+        					langs[i] = langN;
+        					break;
+        				}
+        			}
+        			Write.clearSelection();
+        			Speech.clearSelection();
+        			Native.clearSelection();
+        		}
+        		else if (!Write.isSelected(null) && !Speech.isSelected(null) && !rdbtnNative.isSelected()) {
+        			JOptionPane.showMessageDialog(null, "You cannot select both set native and language skills to the entry!");
+        		}
+        		else if (rdbtnNative.isSelected() && Speech.isSelected(null) && !Native.isSelected(null)) {
+        			JOptionPane.showMessageDialog(null, "You also must select skill levels to add an entry to the CV");
         		}
         	}		
         });
@@ -314,7 +343,7 @@ public class Languages extends Information {
         btnAdd.setBounds(10, 353, 154, 23);
         panel_1.add(btnAdd);
         
-        JButton btnNewButton = new JButton("Clear 3 last lines");
+        JButton btnNewButton = new JButton("Delete the latest entry");
         btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 15));
         btnNewButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -343,5 +372,18 @@ public class Languages extends Information {
         txtLang.setBounds(170, 12, 174, 30);
         panel_1.add(txtLang);
         txtLang.setColumns(10);
+        
+        rdbtnNative = new JRadioButton("Native");
+        rdbtnNative.setForeground(Color.WHITE);
+        rdbtnNative.setFont(new Font("Tahoma", Font.BOLD, 15));
+        rdbtnNative.setBackground(new Color(86, 86, 86));
+        rdbtnNative.setBounds(229, 325, 115, 21);
+        panel_1.add(rdbtnNative);
+        
+        JLabel lblNewLabel_2 = new JLabel("Set as the native language:");
+        lblNewLabel_2.setForeground(new Color(255, 255, 255));
+        lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 15));
+        lblNewLabel_2.setBounds(10, 325, 213, 21);
+        panel_1.add(lblNewLabel_2);
     }
 }
