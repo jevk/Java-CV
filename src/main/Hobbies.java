@@ -207,10 +207,25 @@ public class Hobbies extends Information {
         JButton btnRemove = new JButton("Remove");
         btnRemove.setFont(new Font("Tahoma", Font.BOLD, 11));
         btnRemove.setBounds(85, 353, 171, 23);
+        btnRemove.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		for(int i = 0; i < hobbies.length; i++) {
+        			if (hobbies[i] == null) {
+        				try {
+							hobbies[i - 1] = null;
+						} catch (Exception e1) {
+							System.out.println("vitun retu xD");
+						}
+        			}
+        		}
+				cv.hobbies = hobbies;
+                getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
+        	}
+        });
         panel_1.add(btnRemove);
         
         txtNimi.setText(" ");
-        detailsText.setText("  ");
+        detailsText.setText(" ");
         
         
     }
