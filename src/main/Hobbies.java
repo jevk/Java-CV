@@ -65,7 +65,7 @@ public class Hobbies extends Information {
         
         JPanel panel = new JPanel();
         panel.setBackground(new Color(49, 49, 49));
-        panel.setBounds(408, 71, 354, 387);
+        panel.setBounds(408, 21, 354, 437);
         frame.getContentPane().add(panel);
         panel.setLayout(null);
         
