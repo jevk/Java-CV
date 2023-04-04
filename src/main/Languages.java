@@ -30,7 +30,6 @@ public class Languages extends Information {
 	private JFrame frame;
 	private Language[] langs = new Language[10];
 	private JTextField txtLang;
-	private int nativeLang = 0;
 	private JRadioButton rdbtnNative;
 
 	
@@ -293,51 +292,21 @@ public class Languages extends Information {
         JButton btnAdd = new JButton("Add an entry");
         btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		if (!Write.isSelected(null) && !Speech.isSelected(null) && !rdbtnNative.isSelected()) {
-        			langsText.append(txtLang.getText() + ": \nWriting: " + getSelectedButtonText(Write) + "\nSpeech: " + getSelectedButtonText(Speech) + "\n");
-        			Language lang = new Language(
-        					txtLang.getText().toString(), 
-        					getSelectedButtonText(Write), 
-        					getSelectedButtonText(Speech)
-        			);
-        			for (int i = 0; i < langs.length; i++) {
-        				System.out.println(i);
-        				if (langs[i] == null) {
-        					langs[i] = lang;
-        					break;
-        				}
-        			}
+        		if (!Write.isSelected(null) && !Speech.isSelected(null)) {
+        			langsText.append(txtLang.getText() + "\nWriting skill level: " + getSelectedButtonText(Write) + "\nWriting skill level: " + getSelectedButtonText(Speech) + "\n");
+        		}
+        		else if (rdbtnNative.isSelected()) {
+        			langsText.append("Native Language: " + txtLang.getText() + "\n");
+        		}
+        			cv.langs = langs;
+        			getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
         			Write.clearSelection();
         			Speech.clearSelection();
-        			Native.clearSelection();
-        		}
-        		else if (rdbtnNative.isSelected() && Write.isSelected(null) && Speech.isSelected(null) && nativeLang == 0) {
-        			langsText.append("Native language: " + txtLang.getText() + "\n");
-        			nativeLang++;
-        			Language langN = new Language(
-        					txtLang.getText().toString(), 
-        					getSelectedButtonText(Native),
-        					getSelectedButtonText(null)
-        			);
-        			
-        			for (int i = 0; i < langs.length; i++) {
-        				System.out.println(i);
-        				if (langs[i] == null) {
-        					langs[i] = langN;
-        					break;
-        				}
-        			}
-        			Write.clearSelection();
-        			Speech.clearSelection();
-        			Native.clearSelection();
-        		}
-        		else if (nativeLang == 1) {
-        			JOptionPane.showMessageDialog(null, "You can add only one native language!");
-        		}
-        		else if (!Write.isSelected(null) && !Speech.isSelected(null) && !rdbtnNative.isSelected()) {
+        			rdbtnNative.setSelected(false);
+        		if (!Write.isSelected(null) && !Speech.isSelected(null) && rdbtnNative.isSelected()) {
         			JOptionPane.showMessageDialog(null, "You cannot select both set native and language skills to the entry!");
         		}
-        		else if (rdbtnNative.isSelected() && Speech.isSelected(null) && !Native.isSelected(null)) {
+        		else if (rdbtnNative.isSelected() && !Speech.isSelected(null) || !Native.isSelected(null)) {
         			JOptionPane.showMessageDialog(null, "You also must select skill levels to add an entry to the CV");
         		}
         	}		
@@ -352,29 +321,16 @@ public class Languages extends Information {
         btnRemove.setFont(new Font("Tahoma", Font.BOLD, 15));
         btnRemove.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		int end;
         		for(int i = 0; i < langs.length; i++) {
         			if (langs[i] == null) {
-        				try {
-							langs[i - 1] = null;
-							end = langsText.getLineEndOffset(2);
-							int end2 = langsText.getLineEndOffset(3);
-							if (langsText.getLineOfOffset().contains("Native")) {
-								langsText.replaceRange("", 0, end2);
-								nativeLang--;
-							}
-							else {
-							langsText.replaceRange("", 0, end);
-							}
-							
-						} catch (Exception e1) {
-							System.out.println(e1);
-						}
-				cv.langs = langs;
-				getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
+						langs[i - 1] = null;
+						
+        				cv.langs = langs;
+        				getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
         			}
         		}
-        	}});
+        	}
+        });
         btnRemove.setForeground(new Color(255, 255, 255));
         btnRemove.setBackground(new Color(128, 128, 128));
         btnRemove.setBounds(174, 353, 170, 23);
