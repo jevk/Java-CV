@@ -8,6 +8,7 @@ public class Details {
 	public String town;
 	public String phone;
 	public String email;
+	public String other;
 	
 	// Constructors
 	public Details() {
@@ -17,5 +18,6 @@ public class Details {
 		this.town = "";
 		this.phone = "";
 		this.email = "";
+		this.other = "";
 	}
 }
