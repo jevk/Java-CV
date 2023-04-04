@@ -7,6 +7,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import structs.CV;
@@ -211,7 +212,7 @@ public class Degrees extends Information {
         lblNewLabel_1_4.setBounds(10, 253, 112, 21);
         panel_1.add(lblNewLabel_1_4);
         
-        txtSchool = new JTextField();
+        txtSchool = new JTextField(); 
         txtSchool.setBounds(132, 61, 183, 20);
         panel_1.add(txtSchool);
         txtSchool.setColumns(10);
@@ -238,6 +239,8 @@ public class Degrees extends Information {
         
 		// degrees[i - 1] = null;
         
+       
+        
         JButton btnAdd = new JButton("Add");
         btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -247,10 +250,31 @@ public class Degrees extends Information {
         				deg.school = txtSchool.getText();
         				deg.education = txtEducation.getText();
         				deg.degree = txtDegree.getText();
-        				deg.startYear = Integer.parseInt(txtStartYear.getText());
-        				deg.endYear = Integer.parseInt(txtEndYear.getText());
+        				deg.startYear = txtStartYear.getText();
+        				deg.endYear = txtEndYear.getText();
+        				//deg.startYear = Integer.parseInt(txtStartYear.getText());
+        				//deg.endYear = Integer.parseInt(txtEndYear.getText());
         				degrees[i] = deg;
         				break;
+        			}
+        			else if (txtSchool.getText().isEmpty()||txtEducation.getText().isEmpty()||txtDegree.getText().isEmpty()) {
+        				JOptionPane.showMessageDialog(null, "Please Enter All Fields");
+                    	break;
+        			}
+        			else if(txtSchool.getText().isEmpty())
+                    {
+                    	JOptionPane.showMessageDialog(null, "Please Enter School Field");
+                    	break;
+                    }
+        			else if(txtEducation.getText().isEmpty())
+        			{
+        				JOptionPane.showMessageDialog(null, "Please Enter Education Field");
+                    	break;
+        			}
+        			else if(txtDegree.getText().isEmpty())
+        			{
+        				JOptionPane.showMessageDialog(null, "Please Enter Degree Field");
+                    	break;
         			}
         		}
 				cv.degrees = degrees;
@@ -280,5 +304,20 @@ public class Degrees extends Information {
         btnRemove.setFont(new Font("Tahoma", Font.PLAIN, 18));
         btnRemove.setBounds(142, 336, 163, 40);
         panel_1.add(btnRemove);
+        
+        JLabel errorlabel = new JLabel("*Please Enter");
+        errorlabel.setForeground(Color.RED);
+        errorlabel.setBounds(221, 84, 123, 21);
+        panel_1.add(errorlabel);
+        
+        JLabel errorlabel_1 = new JLabel("*Please Enter");
+        errorlabel_1.setForeground(Color.RED);
+        errorlabel_1.setBounds(221, 129, 123, 28);
+        panel_1.add(errorlabel_1);
+        
+        JLabel errorlabel_1_1 = new JLabel("*Please Enter");
+        errorlabel_1_1.setForeground(Color.RED);
+        errorlabel_1_1.setBounds(221, 177, 123, 28);
+        panel_1.add(errorlabel_1_1);
     }
 }

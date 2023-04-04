@@ -29,6 +29,7 @@ public class PersonalDetails extends Information {
 	private Details details = new Details();
 	private JTextField txtKaupunki;
 	private JTextField txtPostinumero;
+	private JTextField textOther;
 	
 
 	/**
@@ -219,45 +220,6 @@ public class PersonalDetails extends Information {
         panel_1.add(txtPuhnumero);
         txtPuhnumero.setColumns(10);
         
-        JButton btnNewButton = new JButton("Set Information");
-        btnNewButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		detailsText.setText("Personal Details: "
-        				+"\r\n"
-        				+ "Name: "
-        				+ txtNimi.getText()
-        				+"\r\n"
-        				+"Address: "
-        				+ txtKotiosoite.getText() 
-        				+"\r\n"
-        				+ "Town: "
-        				+ txtKaupunki.getText()
-        				+"\r\n"
-        				+"Zip: "
-        				+ txtPostinumero.getText()
-        				+"\r\n"
-        				+ "Phone: "
-        				+ txtPuhnumero.getText()
-        				+"\r\n"
-        				+"Email: "
-        				+ txtSahkoposti.getText()
-        				
-        				
-        				);
-        		details.address = txtKotiosoite.getText();
-        		details.email = txtSahkoposti.getText();
-        		details.name = txtNimi.getText();
-        		details.phone = txtPuhnumero.getText();
-        		details.town = txtKaupunki.getText();
-        		details.zip = txtPostinumero.getText();
-        		
-        		cv.details = details;
-        	}
-        });
-        btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-        btnNewButton.setBounds(85, 308, 171, 23);
-        panel_1.add(btnNewButton);
-        
         txtKaupunki = new JTextField();
         txtKaupunki.setBounds(146, 156, 198, 20);
         panel_1.add(txtKaupunki);
@@ -267,6 +229,33 @@ public class PersonalDetails extends Information {
         txtPostinumero.setBounds(146, 187, 198, 20);
         panel_1.add(txtPostinumero);
         txtPostinumero.setColumns(10);
+        
+        textOther = new JTextField();
+        textOther.setColumns(10);
+        textOther.setBounds(146, 218, 198, 20);
+        panel_1.add(textOther);
+        
+        JButton btnNewButton = new JButton("Set Information");
+        btnNewButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		details.address = txtKotiosoite.getText();
+        		details.email = txtSahkoposti.getText();
+        		details.name = txtNimi.getText();
+        		details.phone = txtPuhnumero.getText();
+        		details.town = txtKaupunki.getText();
+        		details.zip = txtPostinumero.getText();
+        		
+        		if (textOther.getText().length() > 0) {
+        			details.other = textOther.getText();
+        		}
+        		
+        		cv.details = details;
+        		getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
+        	}
+        });
+        btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+        btnNewButton.setBounds(85, 308, 171, 23);
+        panel_1.add(btnNewButton);
         
         JLabel lblNewLabel_5 = new JLabel("Town");
         lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -278,7 +267,14 @@ public class PersonalDetails extends Information {
         lblNewLabel_6.setForeground(new Color(255, 255, 255));
         lblNewLabel_6.setBackground(new Color(255, 255, 255));
         lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblNewLabel_6.setBounds(10, 188, 105, 14);
+        lblNewLabel_6.setBounds(10, 188, 105, 19);
         panel_1.add(lblNewLabel_6);
+        
+        JLabel lblNewLabel_6_1 = new JLabel("Other");
+        lblNewLabel_6_1.setForeground(Color.WHITE);
+        lblNewLabel_6_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+        lblNewLabel_6_1.setBackground(Color.WHITE);
+        lblNewLabel_6_1.setBounds(10, 219, 105, 19);
+        panel_1.add(lblNewLabel_6_1);
     }
 }
