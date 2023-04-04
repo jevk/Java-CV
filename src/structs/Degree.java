@@ -5,8 +5,8 @@ public class Degree {
 	public String school;
 	public String education;
 	public String degree;
-	public int startYear;
-	public int endYear;
+	public String startYear;
+	public String endYear;
 	
 	
 	// Constructors
@@ -14,7 +14,7 @@ public class Degree {
 		school = "";
 		education = "";
 		degree = "";
-		startYear = 1970;
-		endYear = 1973;
+		startYear = "";
+		endYear = "";
 	}
 }
