@@ -226,7 +226,7 @@ public class WorkExperience extends Information {
         lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1.setForeground(Color.WHITE);
-        lblNewLabel_1.setBounds(10, 22, 91, 28);
+        lblNewLabel_1.setBounds(10, 29, 91, 28);
         panel_1.add(lblNewLabel_1);
         
         JButton btnRemove = new JButton("Remove");
@@ -244,53 +244,53 @@ public class WorkExperience extends Information {
         lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_1_1.setForeground(Color.WHITE);
         lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblNewLabel_1_1.setBounds(10, 61, 81, 28);
+        lblNewLabel_1_1.setBounds(12, 69, 81, 28);
         panel_1.add(lblNewLabel_1_1);
         
         JLabel lblNewLabel_1_2 = new JLabel("Length:");
         lblNewLabel_1_2.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_1_2.setForeground(Color.WHITE);
         lblNewLabel_1_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblNewLabel_1_2.setBounds(10, 100, 79, 28);
+        lblNewLabel_1_2.setBounds(11, 112, 79, 28);
         panel_1.add(lblNewLabel_1_2);
         
         JLabel lblNewLabel_1_3 = new JLabel("Month:");
         lblNewLabel_1_3.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_1_3.setForeground(Color.WHITE);
         lblNewLabel_1_3.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblNewLabel_1_3.setBounds(10, 139, 108, 28);
+        lblNewLabel_1_3.setBounds(10, 152, 108, 28);
         panel_1.add(lblNewLabel_1_3);
         
         JLabel lblNewLabel_1_4 = new JLabel("Year:");
         lblNewLabel_1_4.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_1_4.setForeground(Color.WHITE);
         lblNewLabel_1_4.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblNewLabel_1_4.setBounds(10, 178, 108, 28);
+        lblNewLabel_1_4.setBounds(10, 189, 108, 28);
         panel_1.add(lblNewLabel_1_4);
         
         textWorkplace = new JTextField();
-        textWorkplace.setBounds(134, 29, 200, 20);
+        textWorkplace.setBounds(134, 35, 200, 20);
         panel_1.add(textWorkplace);
         textWorkplace.setColumns(10);
         
         textJob = new JTextField();
         textJob.setColumns(10);
-        textJob.setBounds(134, 68, 200, 20);
+        textJob.setBounds(134, 74, 200, 20);
         panel_1.add(textJob);
         
         textLength = new JTextField();
         textLength.setColumns(10);
-        textLength.setBounds(134, 107, 200, 20);
+        textLength.setBounds(134, 113, 200, 20);
         panel_1.add(textLength);
         
         textMonth = new JTextField();
         textMonth.setColumns(10);
-        textMonth.setBounds(134, 147, 200, 20);
+        textMonth.setBounds(134, 154, 200, 20);
         panel_1.add(textMonth);
         
         textYear = new JTextField();
         textYear.setColumns(10);
-        textYear.setBounds(134, 186, 200, 20);
+        textYear.setBounds(134, 195, 200, 20);
         panel_1.add(textYear);
 	}
 
