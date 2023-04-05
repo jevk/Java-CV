@@ -7,7 +7,7 @@ import structs.*;
 public abstract class Information {
 	public void getCV(CV cv, JTextArea detail, JTextArea strength, JTextArea degree, JTextArea experience, JTextArea itSkills, JTextArea languages, JTextArea hobbies, JTextArea positions, JTextArea referees) {
 		Details details = cv.details;
-		detail.setText("Personal details:\n");
+		detail.setText("");
 		detail.append("Name: " + details.name + "\n");
 		detail.append("Address: " + details.address + "\n");
 		detail.append("Town: " + details.town + ", " + details.zip + "\n");
@@ -16,7 +16,7 @@ public abstract class Information {
 		if (details.other.length() > 0) detail.append("Other: " + details.other);
 		
 		String[] strengths = cv.strengths;
-		strength.setText("Strengths:\n");
+		strength.setText("");
 		for (int i = 0; i < strengths.length; i++) {
 			if (strengths[i] != null) {
 				strength.append(strengths[i] + "\n");
@@ -24,7 +24,7 @@ public abstract class Information {
 		}
 		
 		Degree[] degrees = cv.degrees;
-		degree.setText("Degrees:\n");
+		degree.setText("");
 		for (int i = 0; i < degrees.length; i++) {
 			if (degrees[i] != null) {
 				Degree deg = degrees[i];
@@ -35,7 +35,7 @@ public abstract class Information {
 		}
 		
 		Experience[] exps = cv.experience;
-		experience.setText("Work experience:\n");
+		experience.setText("");
 		for (int i = 0; i < exps.length; i++) {
 			if (exps[i] != null) {
 				Experience exp = exps[i];
@@ -46,7 +46,7 @@ public abstract class Information {
 		}
 		
 		String[] it = cv.itSkills;
-		itSkills.setText("IT Skills:\n");
+		itSkills.setText("");
 		for (int i = 0; i < it.length; i++) {
 			if (it[i] != null) {
 				itSkills.append(it[i]);
@@ -54,17 +54,20 @@ public abstract class Information {
 		}
 		
 		Language[] lang = cv.langs;
-		languages.setText("Languages:\n");
+		languages.setText("");
 		for (int i = 0; i < lang.length; i++) {
 			if (lang[i] != null) {
-				languages.append(lang[i].langName + ":\n");
-				languages.append(lang[i].spoken + ":\n");
-				languages.append(lang[i].written + ":\n");
+				if (lang[i].nativeLang) languages.append("Native " + lang[i].langName + " speaker.\n\n");
+				else {
+					languages.append(lang[i].langName + ":\n");
+					languages.append("- Speech: " + lang[i].spoken + "\n");
+					languages.append("- Written: " + lang[i].written + "\n\n");
+				}
 			}
 		}
 		
 		String[] hobby = cv.hobbies;
-		hobbies.setText("Hobbies:\n");
+		hobbies.setText("");
 		for (int i = 0; i < hobby.length; i++) {
 			if (hobby[i] != null) {
 				hobbies.append(hobby[i] + "\n");
@@ -72,7 +75,7 @@ public abstract class Information {
 		}
 		
 		String[] position = cv.positions;
-		positions.setText("Positions:\n");
+		positions.setText("");
 		for (int i = 0; i < position.length; i++) {
 			if (position[i] != null) {
 				positions.append(position[i]);
@@ -80,7 +83,7 @@ public abstract class Information {
 		}
 		
 		String[] referee = cv.referees;
-		referees.setText("Referees:\n");
+		referees.setText("");
 		for (int i = 0; i < referee.length; i++) {
 			if (referee[i] != null) {
 				referees.append(referee[i]);
