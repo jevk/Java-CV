@@ -61,12 +61,12 @@ public class Referees extends Information {
         
         JPanel panel = new JPanel();
         panel.setBackground(new Color(49, 49, 49));
-        panel.setBounds(408, 21, 354, 437);
+        panel.setBounds(385, 21, 391, 437);
         frame.getContentPane().add(panel);
         panel.setLayout(null);
         
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-        tabbedPane.setBounds(10, 11, 334, 415);
+        tabbedPane.setBounds(10, 11, 371, 415);
         panel.add(tabbedPane);
         
         JScrollPane detailsTab = new JScrollPane();
@@ -138,7 +138,7 @@ public class Referees extends Information {
         
         getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
         
-        JLabel lblNewLabel = new JLabel("Strengths");
+        JLabel lblNewLabel = new JLabel("Referees");
         lblNewLabel.setForeground(new Color(255, 255, 255));
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
         lblNewLabel.setBounds(28, 11, 354, 49);
@@ -159,16 +159,19 @@ public class Referees extends Information {
         
         JPanel panel_1 = new JPanel();
         panel_1.setBackground(new Color(49, 49, 49));
-        panel_1.setBounds(38, 71, 354, 387);
+        panel_1.setBounds(10, 71, 365, 387);
         frame.getContentPane().add(panel_1);
         panel_1.setLayout(null);
         
         JTextField refereeField = new JTextField();
-        refereeField.setBounds(64, 166, 225, 34);
+        refereeField.setBounds(165, 140, 190, 20);
         panel_1.add(refereeField);
         refereeField.setColumns(10);
         
         JButton btnAdd = new JButton("Add");
+        btnAdd.setForeground(new Color(255, 255, 255));
+        btnAdd.setFont(new Font("Tahoma", Font.BOLD, 11));
+        btnAdd.setBackground(new Color(128, 128, 128));
         btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		String strength = refereeField.getText();
@@ -183,7 +186,7 @@ public class Referees extends Information {
                 getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
         	}
         });
-        btnAdd.setBounds(116, 236, 120, 34);
+        btnAdd.setBounds(10, 178, 174, 20);
         panel_1.add(btnAdd);
         
         JButton btnNext = new JButton("Next");
@@ -199,14 +202,17 @@ public class Referees extends Information {
         frame.getContentPane().add(btnNext);
         
         
-        JLabel lblNewLabel_1 = new JLabel("Referee");
+        JLabel lblNewLabel_1 = new JLabel("Your referees:");
         lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-        lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 18));
         lblNewLabel_1.setForeground(Color.WHITE);
-        lblNewLabel_1.setBounds(80, 115, 193, 40);
+        lblNewLabel_1.setBounds(10, 127, 145, 40);
         panel_1.add(lblNewLabel_1);
         
         JButton btnRemove = new JButton("Remove last entry");
+        btnRemove.setForeground(new Color(255, 255, 255));
+        btnRemove.setFont(new Font("Tahoma", Font.BOLD, 11));
+        btnRemove.setBackground(new Color(128, 128, 128));
         btnRemove.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
            		for (int i = 0; i < 10; i++) {
@@ -219,7 +225,7 @@ public class Referees extends Information {
                 getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
         	}
         });
-        btnRemove.setBounds(116, 285, 121, 34);
+        btnRemove.setBounds(194, 178, 161, 20);
         panel_1.add(btnRemove);
 	}
 

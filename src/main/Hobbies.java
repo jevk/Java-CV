@@ -17,6 +17,7 @@ import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTabbedPane;
+import javax.swing.SwingConstants;
 
 public class Hobbies extends Information {
 	private CV cv;
@@ -65,7 +66,7 @@ public class Hobbies extends Information {
         
         JPanel panel = new JPanel();
         panel.setBackground(new Color(49, 49, 49));
-        panel.setBounds(408, 21, 354, 437);
+        panel.setBounds(371, 21, 405, 437);
         frame.getContentPane().add(panel);
         panel.setLayout(null);
         
@@ -76,7 +77,9 @@ public class Hobbies extends Information {
         frame.getContentPane().add(lblNewLabel);
         
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-        tabbedPane.setBounds(10, 11, 334, 415);
+        tabbedPane.setForeground(new Color(255, 255, 255));
+        tabbedPane.setBackground(new Color(128, 128, 128));
+        tabbedPane.setBounds(10, 11, 385, 415);
         panel.add(tabbedPane);
         
         JScrollPane detailsTab = new JScrollPane();
@@ -150,17 +153,19 @@ public class Hobbies extends Information {
         
         
         JButton btnNext = new JButton("Next");
+        btnNext.setBackground(new Color(128, 128, 128));
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.hobbies = hobbies;
         		frame.dispose();
         	}
         });
-        btnNext.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnNext.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnNext.setBounds(545, 504, 112, 23);
         frame.getContentPane().add(btnNext);
         
         JButton btnBack = new JButton("Back");
+        btnBack.setBackground(new Color(128, 128, 128));
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.hobbies = hobbies;
@@ -168,28 +173,31 @@ public class Hobbies extends Information {
         		frame.dispose();
         	}
         });
-        btnBack.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnBack.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnBack.setBounds(127, 504, 112, 23);
         frame.getContentPane().add(btnBack);
         
         JPanel panel_1 = new JPanel();
         panel_1.setBackground(new Color(49, 49, 49));
-        panel_1.setBounds(28, 71, 354, 387);
+        panel_1.setBounds(10, 71, 351, 387);
         frame.getContentPane().add(panel_1);
         panel_1.setLayout(null);
         
-        JLabel lblNewLabel_1 = new JLabel("Hobby");
+        JLabel lblNewLabel_1 = new JLabel("Your hobbies:");
+        lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_1.setForeground(new Color(255, 255, 255));
-        lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 21));
-        lblNewLabel_1.setBounds(142, 48, 71, 29);
+        lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+        lblNewLabel_1.setBounds(10, 154, 110, 29);
         panel_1.add(lblNewLabel_1);
         
         txtNimi = new JTextField();
-        txtNimi.setBounds(10, 100, 334, 35);
+        txtNimi.setBounds(124, 159, 217, 23);
         panel_1.add(txtNimi);
         txtNimi.setColumns(10);
         
         JButton btnNewButton = new JButton("Add");
+        btnNewButton.setForeground(new Color(255, 255, 255));
+        btnNewButton.setBackground(new Color(128, 128, 128));
         btnNewButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		for (int i = 0; i < hobbies.length; i++) {
@@ -202,12 +210,14 @@ public class Hobbies extends Information {
         	}
         });
         btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-        btnNewButton.setBounds(85, 308, 171, 23);
+        btnNewButton.setBounds(10, 194, 164, 23);
         panel_1.add(btnNewButton);
         
         JButton btnRemove = new JButton("Remove");
+        btnRemove.setForeground(new Color(255, 255, 255));
+        btnRemove.setBackground(new Color(128, 128, 128));
         btnRemove.setFont(new Font("Tahoma", Font.BOLD, 11));
-        btnRemove.setBounds(85, 353, 171, 23);
+        btnRemove.setBounds(184, 194, 157, 23);
         btnRemove.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		for(int i = 0; i < hobbies.length; i++) {

@@ -62,13 +62,15 @@ public class ITSkills extends Information {
         
         JPanel panel = new JPanel();
         panel.setBackground(new Color(49, 49, 49));
-        panel.setBounds(408, 21, 354, 437);
+        panel.setBounds(377, 21, 399, 437);
         frame.getContentPane().add(panel);
         panel.setLayout(null);
         
         // COPY EVERYTHING BELOW
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-        tabbedPane.setBounds(10, 11, 334, 415);
+        tabbedPane.setForeground(new Color(255, 255, 255));
+        tabbedPane.setBackground(new Color(128, 128, 128));
+        tabbedPane.setBounds(10, 11, 379, 415);
         panel.add(tabbedPane);
         
         JScrollPane detailsTab = new JScrollPane();
@@ -148,6 +150,8 @@ public class ITSkills extends Information {
         frame.getContentPane().add(lblNewLabel);
         
         JButton btnNext = new JButton("Next");
+        btnNext.setForeground(new Color(255, 255, 255));
+        btnNext.setBackground(new Color(128, 128, 128));
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.itSkills = itSkills;
@@ -155,11 +159,13 @@ public class ITSkills extends Information {
         		frame.dispose();
         	}
         });
-        btnNext.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnNext.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnNext.setBounds(545, 504, 112, 23);
         frame.getContentPane().add(btnNext);
         
         JButton btnBack = new JButton("Back");
+        btnBack.setForeground(new Color(255, 255, 255));
+        btnBack.setBackground(new Color(128, 128, 128));
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.itSkills = itSkills;
@@ -167,29 +173,32 @@ public class ITSkills extends Information {
         		frame.dispose();
         	}
         });
-        btnBack.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        btnBack.setBounds(127, 504, 112, 23);
+        btnBack.setFont(new Font("Tahoma", Font.BOLD, 13));
+        btnBack.setBounds(129, 504, 112, 23);
         frame.getContentPane().add(btnBack);
         
         JPanel panel_1 = new JPanel();
         panel_1.setBackground(new Color(49, 49, 49));
-        panel_1.setBounds(28, 71, 354, 387);
+        panel_1.setBounds(10, 71, 357, 387);
         frame.getContentPane().add(panel_1);
         panel_1.setLayout(null);
         
-        JLabel lblNewLabel_1 = new JLabel("Program");
-        lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        JLabel lblNewLabel_1 = new JLabel("Programs you can use:");
+        lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1.setForeground(Color.WHITE);
         lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-        lblNewLabel_1.setBounds(10, 114, 334, 57);
+        lblNewLabel_1.setBounds(0, 162, 176, 28);
         panel_1.add(lblNewLabel_1);
         
         textField = new JTextField();
-        textField.setBounds(47, 182, 260, 37);
+        textField.setBounds(186, 168, 161, 20);
         panel_1.add(textField);
         textField.setColumns(10);
         
         JButton btnAdd = new JButton("Add");
+        btnAdd.setFont(new Font("Tahoma", Font.BOLD, 11));
+        btnAdd.setForeground(new Color(255, 255, 255));
+        btnAdd.setBackground(new Color(128, 128, 128));
         btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
 				itText.append(textField.getText() + "\n");
@@ -202,11 +211,14 @@ public class ITSkills extends Information {
         		textField.setText("");
         	}
         });
-        btnAdd.setBounds(40, 272, 116, 37);
+        btnAdd.setBounds(10, 201, 163, 20);
         panel_1.add(btnAdd);
         
         JButton btnRemove = new JButton("Remove");
-        btnRemove.setBounds(196, 272, 116, 37);
+        btnRemove.setFont(new Font("Tahoma", Font.BOLD, 11));
+        btnRemove.setBackground(new Color(128, 128, 128));
+        btnRemove.setForeground(new Color(255, 255, 255));
+        btnRemove.setBounds(186, 201, 161, 20);
         panel_1.add(btnRemove);
     }
 }

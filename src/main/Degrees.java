@@ -69,12 +69,14 @@ public class Degrees extends Information {
         
         JPanel panel = new JPanel();
         panel.setBackground(new Color(49, 49, 49));
-        panel.setBounds(408, 21, 354, 437);
+        panel.setBounds(376, 21, 400, 437);
         frame.getContentPane().add(panel);
         panel.setLayout(null);
         
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-        tabbedPane.setBounds(10, 11, 334, 415);
+        tabbedPane.setForeground(new Color(255, 255, 255));
+        tabbedPane.setBackground(new Color(128, 128, 128));
+        tabbedPane.setBounds(10, 11, 380, 415);
         panel.add(tabbedPane);
         
         JScrollPane detailsTab = new JScrollPane();
@@ -153,6 +155,8 @@ public class Degrees extends Information {
         frame.getContentPane().add(lblNewLabel);
         
         JButton btnNext = new JButton("Next");
+        btnNext.setForeground(new Color(255, 255, 255));
+        btnNext.setBackground(new Color(128, 128, 128));
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.degrees = degrees;
@@ -160,11 +164,13 @@ public class Degrees extends Information {
         		frame.dispose();
         	}
         });
-        btnNext.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnNext.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnNext.setBounds(545, 504, 112, 23);
         frame.getContentPane().add(btnNext);
         
         JButton btnBack = new JButton("Back");
+        btnBack.setForeground(new Color(255, 255, 255));
+        btnBack.setBackground(new Color(128, 128, 128));
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.degrees = degrees;
@@ -172,69 +178,69 @@ public class Degrees extends Information {
         		frame.dispose();
         	}
         });
-        btnBack.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnBack.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnBack.setBounds(127, 504, 112, 23);
         frame.getContentPane().add(btnBack);
         
         JPanel panel_1 = new JPanel();
         panel_1.setBackground(new Color(49, 49, 49));
-        panel_1.setBounds(28, 71, 354, 387);
+        panel_1.setBounds(10, 71, 356, 387);
         frame.getContentPane().add(panel_1);
         panel_1.setLayout(null);
         
-        JLabel lblNewLabel_1 = new JLabel("School");
-        lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        JLabel lblNewLabel_1 = new JLabel("School:");
+        lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1.setForeground(Color.WHITE);
-        lblNewLabel_1.setBounds(10, 58, 112, 21);
+        lblNewLabel_1.setBounds(10, 24, 112, 21);
         panel_1.add(lblNewLabel_1);
         
-        JLabel lblNewLabel_1_1 = new JLabel("Education");
-        lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        JLabel lblNewLabel_1_1 = new JLabel("Education:");
+        lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1_1.setForeground(Color.WHITE);
-        lblNewLabel_1_1.setBounds(10, 106, 112, 21);
+        lblNewLabel_1_1.setBounds(10, 72, 112, 21);
         panel_1.add(lblNewLabel_1_1);
         
-        JLabel lblNewLabel_1_2 = new JLabel("Degree");
-        lblNewLabel_1_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        JLabel lblNewLabel_1_2 = new JLabel("Degree:");
+        lblNewLabel_1_2.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1_2.setForeground(Color.WHITE);
-        lblNewLabel_1_2.setBounds(10, 153, 112, 21);
+        lblNewLabel_1_2.setBounds(10, 119, 112, 21);
         panel_1.add(lblNewLabel_1_2);
         
-        JLabel lblNewLabel_1_3 = new JLabel("Start Year");
-        lblNewLabel_1_3.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        JLabel lblNewLabel_1_3 = new JLabel("Starting Year:");
+        lblNewLabel_1_3.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1_3.setForeground(Color.WHITE);
-        lblNewLabel_1_3.setBounds(10, 202, 112, 21);
+        lblNewLabel_1_3.setBounds(10, 168, 112, 21);
         panel_1.add(lblNewLabel_1_3);
         
-        JLabel lblNewLabel_1_4 = new JLabel("End Year");
-        lblNewLabel_1_4.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        JLabel lblNewLabel_1_4 = new JLabel("End Year:");
+        lblNewLabel_1_4.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1_4.setForeground(Color.WHITE);
-        lblNewLabel_1_4.setBounds(10, 253, 112, 21);
+        lblNewLabel_1_4.setBounds(10, 219, 112, 21);
         panel_1.add(lblNewLabel_1_4);
         
         txtSchool = new JTextField(); 
-        txtSchool.setBounds(132, 61, 183, 20);
+        txtSchool.setBounds(132, 27, 211, 20);
         panel_1.add(txtSchool);
         txtSchool.setColumns(10);
         
         txtEducation = new JTextField();
         txtEducation.setColumns(10);
-        txtEducation.setBounds(132, 109, 183, 20);
+        txtEducation.setBounds(132, 75, 212, 20);
         panel_1.add(txtEducation);
         
         txtDegree = new JTextField();
         txtDegree.setColumns(10);
-        txtDegree.setBounds(132, 156, 183, 20);
+        txtDegree.setBounds(132, 122, 212, 20);
         panel_1.add(txtDegree);
         
         txtStartYear = new JTextField();
         txtStartYear.setColumns(10);
-        txtStartYear.setBounds(132, 205, 183, 20);
+        txtStartYear.setBounds(132, 171, 215, 20);
         panel_1.add(txtStartYear);
         
         txtEndYear = new JTextField();
         txtEndYear.setColumns(10);
-        txtEndYear.setBounds(132, 256, 183, 20);
+        txtEndYear.setBounds(132, 222, 213, 20);
         panel_1.add(txtEndYear);
         
 		// degrees[i - 1] = null;
@@ -242,6 +248,8 @@ public class Degrees extends Information {
        
         
         JButton btnAdd = new JButton("Add");
+        btnAdd.setForeground(new Color(255, 255, 255));
+        btnAdd.setBackground(new Color(128, 128, 128));
         btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		for(int i = 0; i < degrees.length; i++) {
@@ -281,11 +289,13 @@ public class Degrees extends Information {
                 getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
         	}
         });
-        btnAdd.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        btnAdd.setBounds(142, 287, 163, 40);
+        btnAdd.setFont(new Font("Tahoma", Font.BOLD, 18));
+        btnAdd.setBounds(10, 272, 169, 21);
         panel_1.add(btnAdd);
         
         JButton btnRemove = new JButton("Remove");
+        btnRemove.setForeground(new Color(255, 255, 255));
+        btnRemove.setBackground(new Color(128, 128, 128));
         btnRemove.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		for(int i = 0; i < degrees.length; i++) {
@@ -301,23 +311,26 @@ public class Degrees extends Information {
                 getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
         	}
         });
-        btnRemove.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        btnRemove.setBounds(142, 336, 163, 40);
+        btnRemove.setFont(new Font("Tahoma", Font.BOLD, 18));
+        btnRemove.setBounds(190, 271, 154, 21);
         panel_1.add(btnRemove);
         
         JLabel errorlabel = new JLabel("*Please Enter");
+        errorlabel.setFont(new Font("Tahoma", Font.BOLD, 11));
         errorlabel.setForeground(Color.RED);
-        errorlabel.setBounds(221, 84, 123, 21);
+        errorlabel.setBounds(253, 52, 92, 21);
         panel_1.add(errorlabel);
         
         JLabel errorlabel_1 = new JLabel("*Please Enter");
+        errorlabel_1.setFont(new Font("Tahoma", Font.BOLD, 11));
         errorlabel_1.setForeground(Color.RED);
-        errorlabel_1.setBounds(221, 129, 123, 28);
+        errorlabel_1.setBounds(252, 94, 92, 28);
         panel_1.add(errorlabel_1);
         
         JLabel errorlabel_1_1 = new JLabel("*Please Enter");
+        errorlabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 11));
         errorlabel_1_1.setForeground(Color.RED);
-        errorlabel_1_1.setBounds(221, 177, 123, 28);
+        errorlabel_1_1.setBounds(249, 143, 95, 28);
         panel_1.add(errorlabel_1_1);
     }
 }

@@ -59,6 +59,7 @@ public class WorkExperience extends Information {
 	 */
 	private void initialize() {
         frame = new JFrame();
+        frame.getContentPane().setLocation(-25, -71);
         frame.getContentPane().setBackground(new Color(39, 39, 39));
         frame.getContentPane().setForeground(new Color(0, 0, 0));
         frame.setBounds(100, 100, 800, 600);
@@ -67,12 +68,14 @@ public class WorkExperience extends Information {
         
         JPanel panel = new JPanel();
         panel.setBackground(new Color(49, 49, 49));
-        panel.setBounds(408, 21, 354, 437);
+        panel.setBounds(370, 21, 402, 437);
         frame.getContentPane().add(panel);
         panel.setLayout(null);
         
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-        tabbedPane.setBounds(10, 11, 334, 415);
+        tabbedPane.setForeground(new Color(255, 255, 255));
+        tabbedPane.setBackground(new Color(128, 128, 128));
+        tabbedPane.setBounds(10, 11, 382, 415);
         panel.add(tabbedPane);
         
         JScrollPane detailsTab = new JScrollPane();
@@ -152,6 +155,8 @@ public class WorkExperience extends Information {
         
         
         JButton btnBack = new JButton("Back");
+        btnBack.setForeground(new Color(255, 255, 255));
+        btnBack.setBackground(new Color(128, 128, 128));
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.experience = experience;
@@ -159,17 +164,20 @@ public class WorkExperience extends Information {
         		frame.dispose();
         	}
         });
-        btnBack.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnBack.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnBack.setBounds(127, 504, 112, 23);
         frame.getContentPane().add(btnBack);
         
         JPanel panel_1 = new JPanel();
         panel_1.setBackground(new Color(49, 49, 49));
-        panel_1.setBounds(38, 71, 354, 387);
+        panel_1.setBounds(10, 71, 340, 387);
         frame.getContentPane().add(panel_1);
         panel_1.setLayout(null);
         
         JButton btnAdd = new JButton("Add");
+        btnAdd.setForeground(new Color(255, 255, 255));
+        btnAdd.setFont(new Font("Tahoma", Font.BOLD, 11));
+        btnAdd.setBackground(new Color(128, 128, 128));
         btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		String workplace = textWorkplace.getText();
@@ -196,10 +204,12 @@ public class WorkExperience extends Information {
         		expText.append(workplace + "\n" + job + "\n" + length + ", " + month + ", " + year + "\n\n");
         	}
         });
-        btnAdd.setBounds(52, 281, 98, 34);
+        btnAdd.setBounds(10, 245, 156, 20);
         panel_1.add(btnAdd);
         
         JButton btnNext = new JButton("Next");
+        btnNext.setForeground(new Color(255, 255, 255));
+        btnNext.setBackground(new Color(128, 128, 128));
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.experience = experience;
@@ -207,77 +217,80 @@ public class WorkExperience extends Information {
         		frame.dispose();
         	}
         });
-        btnNext.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnNext.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnNext.setBounds(545, 504, 112, 23);
         frame.getContentPane().add(btnNext);
         
         
-        JLabel lblNewLabel_1 = new JLabel("Workplace");
-        lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-        lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        JLabel lblNewLabel_1 = new JLabel("Workplace:");
+        lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
+        lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1.setForeground(Color.WHITE);
-        lblNewLabel_1.setBounds(10, 11, 124, 28);
+        lblNewLabel_1.setBounds(10, 22, 91, 28);
         panel_1.add(lblNewLabel_1);
         
         JButton btnRemove = new JButton("Remove");
+        btnRemove.setForeground(new Color(255, 255, 255));
+        btnRemove.setFont(new Font("Tahoma", Font.BOLD, 11));
+        btnRemove.setBackground(new Color(128, 128, 128));
         btnRemove.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         	}
         });
-        btnRemove.setBounds(202, 281, 98, 34);
+        btnRemove.setBounds(176, 244, 154, 20);
         panel_1.add(btnRemove);
         
-        JLabel lblNewLabel_1_1 = new JLabel("Job");
-        lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+        JLabel lblNewLabel_1_1 = new JLabel("Job:");
+        lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_1_1.setForeground(Color.WHITE);
-        lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        lblNewLabel_1_1.setBounds(10, 50, 124, 28);
+        lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+        lblNewLabel_1_1.setBounds(10, 61, 81, 28);
         panel_1.add(lblNewLabel_1_1);
         
-        JLabel lblNewLabel_1_2 = new JLabel("Length");
-        lblNewLabel_1_2.setHorizontalAlignment(SwingConstants.CENTER);
+        JLabel lblNewLabel_1_2 = new JLabel("Length:");
+        lblNewLabel_1_2.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_1_2.setForeground(Color.WHITE);
-        lblNewLabel_1_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        lblNewLabel_1_2.setBounds(10, 89, 124, 28);
+        lblNewLabel_1_2.setFont(new Font("Tahoma", Font.BOLD, 14));
+        lblNewLabel_1_2.setBounds(10, 100, 79, 28);
         panel_1.add(lblNewLabel_1_2);
         
-        JLabel lblNewLabel_1_3 = new JLabel("Month");
-        lblNewLabel_1_3.setHorizontalAlignment(SwingConstants.CENTER);
+        JLabel lblNewLabel_1_3 = new JLabel("Month:");
+        lblNewLabel_1_3.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_1_3.setForeground(Color.WHITE);
-        lblNewLabel_1_3.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        lblNewLabel_1_3.setBounds(10, 129, 124, 28);
+        lblNewLabel_1_3.setFont(new Font("Tahoma", Font.BOLD, 14));
+        lblNewLabel_1_3.setBounds(10, 139, 108, 28);
         panel_1.add(lblNewLabel_1_3);
         
-        JLabel lblNewLabel_1_4 = new JLabel("Year");
-        lblNewLabel_1_4.setHorizontalAlignment(SwingConstants.CENTER);
+        JLabel lblNewLabel_1_4 = new JLabel("Year:");
+        lblNewLabel_1_4.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_1_4.setForeground(Color.WHITE);
-        lblNewLabel_1_4.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        lblNewLabel_1_4.setBounds(10, 168, 124, 28);
+        lblNewLabel_1_4.setFont(new Font("Tahoma", Font.BOLD, 14));
+        lblNewLabel_1_4.setBounds(10, 178, 108, 28);
         panel_1.add(lblNewLabel_1_4);
         
         textWorkplace = new JTextField();
-        textWorkplace.setBounds(144, 18, 200, 20);
+        textWorkplace.setBounds(134, 29, 200, 20);
         panel_1.add(textWorkplace);
         textWorkplace.setColumns(10);
         
         textJob = new JTextField();
         textJob.setColumns(10);
-        textJob.setBounds(144, 57, 200, 20);
+        textJob.setBounds(134, 68, 200, 20);
         panel_1.add(textJob);
         
         textLength = new JTextField();
         textLength.setColumns(10);
-        textLength.setBounds(144, 96, 200, 20);
+        textLength.setBounds(134, 107, 200, 20);
         panel_1.add(textLength);
         
         textMonth = new JTextField();
         textMonth.setColumns(10);
-        textMonth.setBounds(144, 136, 200, 20);
+        textMonth.setBounds(134, 147, 200, 20);
         panel_1.add(textMonth);
         
         textYear = new JTextField();
         textYear.setColumns(10);
-        textYear.setBounds(144, 175, 200, 20);
+        textYear.setBounds(134, 186, 200, 20);
         panel_1.add(textYear);
 	}
 

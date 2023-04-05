@@ -70,40 +70,46 @@ public class PersonalDetails extends Information {
         
         JPanel panel = new JPanel();
         panel.setBackground(new Color(49, 49, 49));
-        panel.setBounds(408, 21, 354, 437);
+        panel.setBounds(378, 21, 398, 437);
         frame.getContentPane().add(panel);
         panel.setLayout(null);
         
         JLabel lblNewLabel = new JLabel("Personal Details");
         lblNewLabel.setForeground(new Color(255, 255, 255));
-        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
+        lblNewLabel.setFont(new Font("Ebrima", Font.BOLD, 24));
         lblNewLabel.setBounds(28, 11, 354, 49);
         frame.getContentPane().add(lblNewLabel);
         
         JButton btnNext = new JButton("Next");
+        btnNext.setForeground(new Color(255, 255, 255));
+        btnNext.setBackground(new Color(128, 128, 128));
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		Strengths.main(null, cv);
         		frame.dispose();
         	}
         });
-        btnNext.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnNext.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnNext.setBounds(545, 504, 112, 23);
         frame.getContentPane().add(btnNext);
         
-        JButton btnFinish = new JButton("Finish");
-        btnFinish.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        JButton btnFinish = new JButton("Back");
+        btnFinish.setForeground(new Color(255, 255, 255));
+        btnFinish.setBackground(new Color(128, 128, 128));
+        btnFinish.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnFinish.setBounds(127, 504, 112, 23);
         frame.getContentPane().add(btnFinish);
         
         JPanel panel_1 = new JPanel();
         panel_1.setBackground(new Color(49, 49, 49));
-        panel_1.setBounds(28, 71, 354, 387);
+        panel_1.setBounds(10, 71, 358, 387);
         frame.getContentPane().add(panel_1);
         panel_1.setLayout(null);
         
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-        tabbedPane.setBounds(10, 11, 334, 415);
+        tabbedPane.setForeground(new Color(255, 255, 255));
+        tabbedPane.setBackground(new Color(128, 128, 128));
+        tabbedPane.setBounds(10, 11, 378, 415);
         panel.add(tabbedPane);
         
         JScrollPane detailsTab = new JScrollPane();
@@ -175,67 +181,69 @@ public class PersonalDetails extends Information {
         
         getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
         
-        JLabel lblNewLabel_1 = new JLabel("Name");
+        JLabel lblNewLabel_1 = new JLabel("Name:");
         lblNewLabel_1.setForeground(new Color(255, 255, 255));
         lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1.setBounds(10, 31, 49, 14);
         panel_1.add(lblNewLabel_1);
         
-        JLabel lblNewLabel_2 = new JLabel("Address");
+        JLabel lblNewLabel_2 = new JLabel("Address:");
         lblNewLabel_2.setForeground(new Color(255, 255, 255));
         lblNewLabel_2.setBackground(new Color(255, 255, 255));
         lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_2.setBounds(10, 62, 83, 14);
         panel_1.add(lblNewLabel_2);
         
-        JLabel lblNewLabel_3 = new JLabel("Email");
+        JLabel lblNewLabel_3 = new JLabel("Email:");
         lblNewLabel_3.setForeground(new Color(255, 255, 255));
         lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_3.setBounds(10, 95, 131, 14);
         panel_1.add(lblNewLabel_3);
         
-        JLabel lblNewLabel_4 = new JLabel("Phone");
+        JLabel lblNewLabel_4 = new JLabel("Phone:");
         lblNewLabel_4.setForeground(new Color(255, 255, 255));
         lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_4.setBounds(10, 126, 105, 14);
         panel_1.add(lblNewLabel_4);
         
         txtNimi = new JTextField();
-        txtNimi.setBounds(146, 30, 198, 20);
+        txtNimi.setBounds(146, 30, 202, 20);
         panel_1.add(txtNimi);
         txtNimi.setColumns(10);
         
         txtKotiosoite = new JTextField();
-        txtKotiosoite.setBounds(146, 61, 198, 20);
+        txtKotiosoite.setBounds(146, 61, 202, 20);
         panel_1.add(txtKotiosoite);
         txtKotiosoite.setColumns(10);
         
         txtSahkoposti = new JTextField();
-        txtSahkoposti.setBounds(146, 94, 198, 20);
+        txtSahkoposti.setBounds(146, 94, 202, 20);
         panel_1.add(txtSahkoposti);
         txtSahkoposti.setColumns(10);
         
         txtPuhnumero = new JTextField();
-        txtPuhnumero.setBounds(146, 125, 198, 20);
+        txtPuhnumero.setBounds(146, 125, 202, 20);
         panel_1.add(txtPuhnumero);
         txtPuhnumero.setColumns(10);
         
         txtKaupunki = new JTextField();
-        txtKaupunki.setBounds(146, 156, 198, 20);
+        txtKaupunki.setBounds(146, 156, 202, 20);
         panel_1.add(txtKaupunki);
         txtKaupunki.setColumns(10);
         
         txtPostinumero = new JTextField();
-        txtPostinumero.setBounds(146, 187, 198, 20);
+        txtPostinumero.setBounds(146, 187, 202, 20);
         panel_1.add(txtPostinumero);
         txtPostinumero.setColumns(10);
         
         textOther = new JTextField();
         textOther.setColumns(10);
-        textOther.setBounds(146, 218, 198, 20);
+        textOther.setBounds(146, 218, 202, 20);
         panel_1.add(textOther);
         
         JButton btnNewButton = new JButton("Set Information");
+        btnNewButton.setForeground(new Color(255, 255, 255));
+        btnNewButton.setBackground(new Color(128, 128, 128));
         btnNewButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		details.address = txtKotiosoite.getText();
@@ -253,24 +261,24 @@ public class PersonalDetails extends Information {
         		getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
         	}
         });
-        btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-        btnNewButton.setBounds(85, 308, 171, 23);
+        btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 13));
+        btnNewButton.setBounds(96, 264, 171, 20);
         panel_1.add(btnNewButton);
         
-        JLabel lblNewLabel_5 = new JLabel("Town");
+        JLabel lblNewLabel_5 = new JLabel("Town:");
         lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_5.setForeground(new Color(255, 255, 255));
         lblNewLabel_5.setBounds(10, 156, 83, 17);
         panel_1.add(lblNewLabel_5);
         
-        JLabel lblNewLabel_6 = new JLabel("Zip");
+        JLabel lblNewLabel_6 = new JLabel("Zip:");
         lblNewLabel_6.setForeground(new Color(255, 255, 255));
         lblNewLabel_6.setBackground(new Color(255, 255, 255));
         lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblNewLabel_6.setBounds(10, 188, 105, 19);
+        lblNewLabel_6.setBounds(10, 186, 105, 19);
         panel_1.add(lblNewLabel_6);
         
-        JLabel lblNewLabel_6_1 = new JLabel("Other");
+        JLabel lblNewLabel_6_1 = new JLabel("Other:");
         lblNewLabel_6_1.setForeground(Color.WHITE);
         lblNewLabel_6_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_6_1.setBackground(Color.WHITE);

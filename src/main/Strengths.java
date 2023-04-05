@@ -62,12 +62,14 @@ public class Strengths extends Information {
         
         JPanel panel = new JPanel();
         panel.setBackground(new Color(49, 49, 49));
-        panel.setBounds(408, 21, 354, 437);
+        panel.setBounds(380, 29, 396, 437);
         frame.getContentPane().add(panel);
         panel.setLayout(null);
         
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-        tabbedPane.setBounds(10, 11, 334, 415);
+        tabbedPane.setForeground(new Color(255, 255, 255));
+        tabbedPane.setBackground(new Color(128, 128, 128));
+        tabbedPane.setBounds(10, 11, 378, 415);
         panel.add(tabbedPane);
         
         JScrollPane detailsTab = new JScrollPane();
@@ -147,6 +149,8 @@ public class Strengths extends Information {
         
         
         JButton btnBack = new JButton("Back");
+        btnBack.setForeground(new Color(255, 255, 255));
+        btnBack.setBackground(new Color(128, 128, 128));
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.strengths = strengths;
@@ -154,22 +158,25 @@ public class Strengths extends Information {
         		frame.dispose();
         	}
         });
-        btnBack.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnBack.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnBack.setBounds(127, 504, 112, 23);
         frame.getContentPane().add(btnBack);
         
         JPanel panel_1 = new JPanel();
         panel_1.setBackground(new Color(49, 49, 49));
-        panel_1.setBounds(38, 71, 354, 387);
+        panel_1.setBounds(10, 79, 360, 387);
         frame.getContentPane().add(panel_1);
         panel_1.setLayout(null);
         
         strengthField = new JTextField();
-        strengthField.setBounds(64, 166, 225, 34);
+        strengthField.setBounds(176, 170, 174, 20);
         panel_1.add(strengthField);
         strengthField.setColumns(10);
         
         JButton btnAdd = new JButton("Add");
+        btnAdd.setForeground(new Color(255, 255, 255));
+        btnAdd.setBackground(new Color(128, 128, 128));
+        btnAdd.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		String strength = strengthField.getText();
@@ -183,10 +190,12 @@ public class Strengths extends Information {
                 getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
         	}
         });
-        btnAdd.setBounds(116, 236, 120, 34);
+        btnAdd.setBounds(10, 205, 156, 20);
         panel_1.add(btnAdd);
         
         JButton btnNext = new JButton("Next");
+        btnNext.setForeground(new Color(255, 255, 255));
+        btnNext.setBackground(new Color(128, 128, 128));
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.strengths = strengths;
@@ -194,19 +203,22 @@ public class Strengths extends Information {
         		frame.dispose();
         	}
         });
-        btnNext.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnNext.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnNext.setBounds(545, 504, 112, 23);
         frame.getContentPane().add(btnNext);
         
         
-        JLabel lblNewLabel_1 = new JLabel("Strength");
-        lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-        lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        JLabel lblNewLabel_1 = new JLabel("Your strengths:");
+        lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
+        lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1.setForeground(Color.WHITE);
-        lblNewLabel_1.setBounds(80, 115, 193, 40);
+        lblNewLabel_1.setBounds(10, 162, 156, 32);
         panel_1.add(lblNewLabel_1);
         
         JButton btnRemove = new JButton("Remove last entry");
+        btnRemove.setForeground(new Color(255, 255, 255));
+        btnRemove.setBackground(new Color(128, 128, 128));
+        btnRemove.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnRemove.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
            		for (int i = 0; i < 10; i++) {
@@ -218,7 +230,7 @@ public class Strengths extends Information {
                 getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
         	}
         });
-        btnRemove.setBounds(116, 285, 121, 34);
+        btnRemove.setBounds(176, 205, 174, 20);
         panel_1.add(btnRemove);
 	}
 }

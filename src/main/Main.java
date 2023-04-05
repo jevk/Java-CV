@@ -79,21 +79,25 @@ public class Main {
         JLabel lblNewLabel = new JLabel("CV Generator");
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel.setForeground(new Color(255, 255, 255));
-        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
-        lblNewLabel.setBounds(215, 11, 354, 49);
+        lblNewLabel.setFont(new Font("Ebrima", Font.BOLD, 45));
+        lblNewLabel.setBounds(186, 11, 412, 76);
         frame.getContentPane().add(lblNewLabel);
         
-        JButton btnQuit = new JButton("Quit");
+        JButton btnQuit = new JButton("Leave");
+        btnQuit.setForeground(new Color(255, 255, 255));
+        btnQuit.setBackground(new Color(128, 128, 128));
         btnQuit.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		System.exit(0);
         	}
         });
-        btnQuit.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        btnQuit.setBounds(336, 504, 112, 23);
+        btnQuit.setFont(new Font("Tahoma", Font.BOLD, 15));
+        btnQuit.setBounds(291, 292, 202, 49);
         frame.getContentPane().add(btnQuit);
         
-        JButton btnStart = new JButton("Start");
+        JButton btnStart = new JButton("Generate a new CV");
+        btnStart.setForeground(new Color(255, 255, 255));
+        btnStart.setBackground(new Color(128, 128, 128));
         btnStart.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		CV cv = new CV();
@@ -101,7 +105,7 @@ public class Main {
         		frame.dispose();
         	}
         });
-        btnStart.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnStart.setFont(new Font("Tahoma", Font.BOLD, 15));
         btnStart.setBounds(291, 213, 202, 49);
         frame.getContentPane().add(btnStart);
 	}
