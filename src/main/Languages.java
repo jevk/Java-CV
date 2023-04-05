@@ -7,13 +7,11 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
-import javax.swing.text.BadLocationException;
 
 import structs.CV;
 import structs.Language;
@@ -24,13 +22,14 @@ import java.util.Enumeration;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.JCheckBox;
 
 public class Languages extends Information {
 	private CV cv;
 	private JFrame frame;
 	private Language[] langs = new Language[10];
 	private JTextField txtLang;
-	private JRadioButton rdbtnNative;
+	private boolean nativeSet = false;
 
 	
 	public String getSelectedButtonText(ButtonGroup buttonGroup) {
@@ -161,6 +160,11 @@ public class Languages extends Information {
         
         //GET TAB INFO
        	getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
+       	for (int i = 0; i < cv.langs.length; i++) {
+       		if (cv.langs[i] != null && cv.langs[i].nativeLang == true) {
+       			nativeSet = true;
+       		}
+       	}
         
         
         
@@ -286,29 +290,45 @@ public class Languages extends Information {
         Write.add(rdbtnInterWrite);
         Write.add(rdbtnBegWrite);
         
-        ButtonGroup Native = new ButtonGroup();
-        Native.add(rdbtnNative);
+        JCheckBox checkboxNative = new JCheckBox("");
+        checkboxNative.setEnabled(!nativeSet);
+        checkboxNative.setForeground(Color.WHITE);
+        checkboxNative.setBackground(new Color(49, 49, 49));
+        checkboxNative.setBounds(229, 326, 97, 23);
+        panel_1.add(checkboxNative);
         
         JButton btnAdd = new JButton("Add an entry");
         btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		if (!Write.isSelected(null) && !Speech.isSelected(null)) {
-        			langsText.append(txtLang.getText() + "\nWriting skill level: " + getSelectedButtonText(Write) + "\nWriting skill level: " + getSelectedButtonText(Speech) + "\n");
+        		for (int i = 0; i < langs.length; i++) {
+        			if (langs[i] == null) {
+        				Language l = new Language();
+        				l.langName = txtLang.getText();
+        				l.spoken = getSelectedButtonText(Speech);
+        				l.written = getSelectedButtonText(Write);
+        				
+                		if (checkboxNative.isSelected()) {
+                			l.nativeLang = true;
+                			nativeSet = true;
+                		}
+                		
+        				if (l.spoken == null && !l.nativeLang) l.spoken = "Beginner";
+        				if (l.written == null && !l.nativeLang) l.written = "Beginner";
+        				
+        				langs[i] = l;
+        				
+        				break;
+        			}
         		}
-        		else if (rdbtnNative.isSelected()) {
-        			langsText.append("Native Language: " + txtLang.getText() + "\n");
-        		}
-        			cv.langs = langs;
-        			getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
-        			Write.clearSelection();
-        			Speech.clearSelection();
-        			rdbtnNative.setSelected(false);
-        		if (!Write.isSelected(null) && !Speech.isSelected(null) && rdbtnNative.isSelected()) {
-        			JOptionPane.showMessageDialog(null, "You cannot select both set native and language skills to the entry!");
-        		}
-        		else if (rdbtnNative.isSelected() && !Speech.isSelected(null) || !Native.isSelected(null)) {
-        			JOptionPane.showMessageDialog(null, "You also must select skill levels to add an entry to the CV");
-        		}
+                checkboxNative.setEnabled(!nativeSet);
+                
+    			checkboxNative.setSelected(!nativeSet);
+    			Write.setSelected(null, false);
+    			Speech.setSelected(null, false);
+    			txtLang.setText(null);
+    			
+        		cv.langs = langs;
+               	getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
         	}		
         });
         btnAdd.setForeground(new Color(255, 255, 255));
@@ -317,18 +337,24 @@ public class Languages extends Information {
         btnAdd.setBounds(10, 353, 154, 23);
         panel_1.add(btnAdd);
         
-        JButton btnRemove = new JButton("Delete the latest entry");
+        JButton btnRemove = new JButton("Delete last entry");
         btnRemove.setFont(new Font("Tahoma", Font.BOLD, 15));
         btnRemove.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		for(int i = 0; i < langs.length; i++) {
         			if (langs[i] == null) {
+						if (langs[i - 1].nativeLang) {
+							nativeSet = false;
+							checkboxNative.setEnabled(!nativeSet);
+						}
 						langs[i - 1] = null;
 						
-        				cv.langs = langs;
-        				getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
+						break;
         			}
         		}
+				
+				cv.langs = langs;
+				getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
         	}
         });
         btnRemove.setForeground(new Color(255, 255, 255));
@@ -340,13 +366,6 @@ public class Languages extends Information {
         txtLang.setBounds(170, 12, 174, 30);
         panel_1.add(txtLang);
         txtLang.setColumns(10);
-        
-        rdbtnNative = new JRadioButton("Native");
-        rdbtnNative.setForeground(Color.WHITE);
-        rdbtnNative.setFont(new Font("Tahoma", Font.BOLD, 15));
-        rdbtnNative.setBackground(new Color(86, 86, 86));
-        rdbtnNative.setBounds(229, 325, 115, 21);
-        panel_1.add(rdbtnNative);
         
         JLabel lblNewLabel_2 = new JLabel("Set as the native language:");
         lblNewLabel_2.setForeground(new Color(255, 255, 255));
