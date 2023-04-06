@@ -1,5 +1,16 @@
 package structs;
 
+import java.io.IOException;
+
+import javax.xml.parsers.DocumentBuilder;
+
+import org.w3c.dom.DOMImplementation;
+import org.w3c.dom.Document;
+import org.xml.sax.EntityResolver;
+import org.xml.sax.ErrorHandler;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+
 public class CV {
 	// Variable declarations
 	public Details details;
@@ -26,5 +37,8 @@ public class CV {
 		this.hobbies = new String[10];
 		this.positions = new String[10];
 		this.referees = new String[10];
+	}
+	
+	public void BuildCV(CV cv) {
 	}
 }
