@@ -190,7 +190,7 @@ public class Languages extends Information {
         		frame.dispose();
         	}
         });
-        btnNext.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnNext.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnNext.setBounds(545, 504, 112, 23);
         frame.getContentPane().add(btnNext);
         
@@ -204,7 +204,7 @@ public class Languages extends Information {
         		frame.dispose();
         	}
         });
-        btnBack.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnBack.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnBack.setBounds(127, 504, 112, 23);
         frame.getContentPane().add(btnBack);
         
