@@ -230,7 +230,7 @@ public class Hobbies extends Information {
         			}
         		}
 				cv.hobbies = hobbies;
-                getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
+				getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         	}
         });
         panel_1.add(btnRemove);
