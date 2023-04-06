@@ -159,7 +159,7 @@ public class Languages extends Information {
         refereeTab.setViewportView(refereeText);
         
         //GET TAB INFO
-       	getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
+        getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
        	for (int i = 0; i < cv.langs.length; i++) {
        		if (cv.langs[i] != null && cv.langs[i].nativeLang == true) {
        			nativeSet = true;
@@ -328,7 +328,7 @@ public class Languages extends Information {
     			txtLang.setText(null);
     			
         		cv.langs = langs;
-               	getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
+        		getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         	}		
         });
         btnAdd.setForeground(new Color(255, 255, 255));
@@ -354,7 +354,7 @@ public class Languages extends Information {
         		}
 				
 				cv.langs = langs;
-				getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
+				getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         	}
         });
         btnRemove.setForeground(new Color(255, 255, 255));

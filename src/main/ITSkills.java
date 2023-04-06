@@ -105,6 +105,7 @@ public class ITSkills extends Information {
         tabbedPane.addTab("Experience", null, expTab, null);
         
         JTextArea expText = new JTextArea();
+        expText.setEditable(false);
         expTab.setViewportView(expText);
         
         JScrollPane itTab = new JScrollPane();
@@ -126,21 +127,24 @@ public class ITSkills extends Information {
         tabbedPane.addTab("Hobbies", null, hobbyTab, null);
         
         JTextArea hobbyText = new JTextArea();
+        hobbyText.setEditable(false);
         hobbyTab.setViewportView(hobbyText);
         
         JScrollPane positionTab = new JScrollPane();
         tabbedPane.addTab("Positions", null, positionTab, null);
         
         JTextArea positionText = new JTextArea();
+        positionText.setEditable(false);
         positionTab.setViewportView(positionText);
         
         JScrollPane refereeTab = new JScrollPane();
         tabbedPane.addTab("Referees", null, refereeTab, null);
         
         JTextArea refereeText = new JTextArea();
+        refereeText.setEditable(false);
         refereeTab.setViewportView(refereeText);
         
-        getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
+        getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         // COPY ABOVE
         
         JLabel lblNewLabel = new JLabel("IT Skills");

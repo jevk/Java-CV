@@ -62,7 +62,7 @@ public class WorkExperience extends Information {
         frame.getContentPane().setLocation(-25, -71);
         frame.getContentPane().setBackground(new Color(39, 39, 39));
         frame.getContentPane().setForeground(new Color(0, 0, 0));
-        frame.setBounds(100, 100, 800, 600);
+        frame.setBounds(100, 100, 931, 705);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         
@@ -145,7 +145,7 @@ public class WorkExperience extends Information {
         JTextArea refereeText = new JTextArea();
         refereeTab.setViewportView(refereeText);
         
-        getCV(cv, detailsText, strengthsText, degreeText, expText, itText, langsText, hobbyText, positionText, refereeText);
+        getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         
         JLabel lblNewLabel = new JLabel("Work Experience");
         lblNewLabel.setForeground(new Color(255, 255, 255));
