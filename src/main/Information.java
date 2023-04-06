@@ -5,7 +5,7 @@ import javax.swing.JTextArea;
 import structs.*;
 
 public abstract class Information {
-	public void getCV(CV cv, JTextArea detail, JTextArea strength, JTextArea degree, JTextArea experience, JTextArea itSkills, JTextArea languages, JTextArea hobbies, JTextArea positions, JTextArea referees) {
+	public void getCV(CV cv, JTextArea detail, JTextArea strength, JTextArea degree, JTextArea course, JTextArea experience, JTextArea itSkills, JTextArea languages, JTextArea hobbies, JTextArea positions, JTextArea referees) {
 		Details details = cv.details;
 		detail.setText("");
 		detail.append("Name: " + details.name + "\n");
@@ -31,6 +31,14 @@ public abstract class Information {
 				degree.append(deg.school + "\n");
 				degree.append(deg.education + ", " + deg.degree + "\n");
 				degree.append(deg.startYear + " - " + deg.endYear + "\n\n");
+			}
+		}
+		
+		String[] courses = cv.courses;
+		course.setText("");
+		for (int i = 0; i < courses.length; i++) {
+			if (courses[i] != null) {
+				course.append(courses[i]);
 			}
 		}
 		
