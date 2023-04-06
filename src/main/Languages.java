@@ -81,14 +81,16 @@ public class Languages extends Information {
         
         JPanel panel = new JPanel();
         panel.setBackground(new Color(49, 49, 49));
-        panel.setBounds(408, 21, 354, 437);
+        panel.setBounds(374, 21, 402, 437);
         frame.getContentPane().add(panel);
         panel.setLayout(null);
         
         
         // TABS
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-        tabbedPane.setBounds(10, 11, 334, 415);
+        tabbedPane.setForeground(new Color(255, 255, 255));
+        tabbedPane.setBackground(new Color(128, 128, 128));
+        tabbedPane.setBounds(10, 11, 382, 415);
         panel.add(tabbedPane);
         
         JScrollPane detailsTab = new JScrollPane();
@@ -123,6 +125,7 @@ public class Languages extends Information {
         tabbedPane.addTab("Experience", null, expTab, null);
         
         JTextArea expText = new JTextArea();
+        expText.setEditable(false);
         expTab.setViewportView(expText);
         
         JScrollPane itTab = new JScrollPane();
@@ -144,18 +147,21 @@ public class Languages extends Information {
         tabbedPane.addTab("Hobbies", null, hobbyTab, null);
         
         JTextArea hobbyText = new JTextArea();
+        hobbyText.setEditable(false);
         hobbyTab.setViewportView(hobbyText);
         
         JScrollPane positionTab = new JScrollPane();
         tabbedPane.addTab("Positions", null, positionTab, null);
         
         JTextArea positionText = new JTextArea();
+        positionText.setEditable(false);
         positionTab.setViewportView(positionText);
         
         JScrollPane refereeTab = new JScrollPane();
         tabbedPane.addTab("Referees", null, refereeTab, null);
         
         JTextArea refereeText = new JTextArea();
+        refereeText.setEditable(false);
         refereeTab.setViewportView(refereeText);
         
         //GET TAB INFO
@@ -175,6 +181,8 @@ public class Languages extends Information {
         frame.getContentPane().add(lblNewLabel);
         
         JButton btnNext = new JButton("Next");
+        btnNext.setForeground(new Color(255, 255, 255));
+        btnNext.setBackground(new Color(128, 128, 128));
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.langs = langs;
@@ -187,6 +195,8 @@ public class Languages extends Information {
         frame.getContentPane().add(btnNext);
         
         JButton btnBack = new JButton("Back");
+        btnBack.setForeground(new Color(255, 255, 255));
+        btnBack.setBackground(new Color(128, 128, 128));
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.langs = langs;
@@ -200,14 +210,14 @@ public class Languages extends Information {
         
         JPanel panel_1 = new JPanel();
         panel_1.setBackground(new Color(49, 49, 49));
-        panel_1.setBounds(28, 71, 354, 387);
+        panel_1.setBounds(10, 71, 354, 387);
         frame.getContentPane().add(panel_1);
         panel_1.setLayout(null);
         
         JLabel lblNewLabel_1 = new JLabel("Write a language:");
-        lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+        lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1.setForeground(new Color(255, 255, 255));
-        lblNewLabel_1.setBounds(10, 10, 150, 30);
+        lblNewLabel_1.setBounds(10, 5, 150, 30);
         panel_1.add(lblNewLabel_1);
         
         JRadioButton rdbtnBegSpeech = new JRadioButton("Beginner");
@@ -268,13 +278,13 @@ public class Languages extends Information {
         
         JLabel lblNewLabel_1_1_1 = new JLabel("Select your speech skill level:");
         lblNewLabel_1_1_1.setForeground(Color.WHITE);
-        lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 17));
+        lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1_1_1.setBounds(10, 51, 334, 30);
         panel_1.add(lblNewLabel_1_1_1);
         
         JLabel lblNewLabel_1_1_1_1 = new JLabel("Select your writing skill level:");
         lblNewLabel_1_1_1_1.setForeground(Color.WHITE);
-        lblNewLabel_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 17));
+        lblNewLabel_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1_1_1_1.setBounds(10, 188, 334, 30);
         panel_1.add(lblNewLabel_1_1_1_1);
         
@@ -363,13 +373,13 @@ public class Languages extends Information {
         panel_1.add(btnRemove);
         
         txtLang = new JTextField();
-        txtLang.setBounds(170, 12, 174, 30);
+        txtLang.setBounds(170, 12, 174, 21);
         panel_1.add(txtLang);
         txtLang.setColumns(10);
         
         JLabel lblNewLabel_2 = new JLabel("Set as the native language:");
         lblNewLabel_2.setForeground(new Color(255, 255, 255));
-        lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 15));
+        lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_2.setBounds(10, 325, 213, 21);
         panel_1.add(lblNewLabel_2);
     }

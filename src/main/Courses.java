@@ -61,12 +61,14 @@ public class Courses extends Information {
         
         JPanel panel = new JPanel();
         panel.setBackground(new Color(49, 49, 49));
-        panel.setBounds(408, 21, 354, 437);
+        panel.setBounds(374, 21, 402, 437);
         frame.getContentPane().add(panel);
         panel.setLayout(null);
         
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-        tabbedPane.setBounds(10, 11, 334, 415);
+        tabbedPane.setForeground(new Color(255, 255, 255));
+        tabbedPane.setBackground(new Color(128, 128, 128));
+        tabbedPane.setBounds(10, 11, 382, 415);
         panel.add(tabbedPane);
         
         JScrollPane detailsTab = new JScrollPane();
@@ -143,6 +145,8 @@ public class Courses extends Information {
         getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         
         JButton btnBack = new JButton("Back");
+        btnBack.setForeground(new Color(255, 255, 255));
+        btnBack.setBackground(new Color(128, 128, 128));
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.courses = courses;
@@ -156,16 +160,18 @@ public class Courses extends Information {
         
         JPanel panel_1 = new JPanel();
         panel_1.setBackground(new Color(49, 49, 49));
-        panel_1.setBounds(38, 71, 354, 387);
+        panel_1.setBounds(10, 71, 354, 387);
         frame.getContentPane().add(panel_1);
         panel_1.setLayout(null);
         
         coursesField = new JTextField();
-        coursesField.setBounds(64, 166, 225, 34);
+        coursesField.setBounds(119, 164, 225, 20);
         panel_1.add(coursesField);
         coursesField.setColumns(10);
         
         JButton btnAdd = new JButton("Add");
+        btnAdd.setForeground(new Color(255, 255, 255));
+        btnAdd.setBackground(new Color(128, 128, 128));
         btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		String course = coursesField.getText();
@@ -178,10 +184,12 @@ public class Courses extends Information {
         		}
         	}
         });
-        btnAdd.setBounds(52, 281, 98, 34);
+        btnAdd.setBounds(10, 195, 160, 20);
         panel_1.add(btnAdd);
         
         JButton btnNext = new JButton("Next");
+        btnNext.setForeground(new Color(255, 255, 255));
+        btnNext.setBackground(new Color(128, 128, 128));
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.courses = courses;
@@ -194,14 +202,16 @@ public class Courses extends Information {
         frame.getContentPane().add(btnNext);
         
         
-        JLabel lblNewLabel_1 = new JLabel("Courses");
-        lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-        lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        JLabel lblNewLabel_1 = new JLabel("Your courses:");
+        lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
+        lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1.setForeground(Color.WHITE);
-        lblNewLabel_1.setBounds(80, 115, 193, 40);
+        lblNewLabel_1.setBounds(10, 162, 99, 20);
         panel_1.add(lblNewLabel_1);
         
         JButton btnRemove = new JButton("Remove");
+        btnRemove.setForeground(new Color(255, 255, 255));
+        btnRemove.setBackground(new Color(128, 128, 128));
         btnRemove.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
        			String newText = courseText.getText().replace("\n" + coursesField.getText() + "\n", "\n");
@@ -213,7 +223,7 @@ public class Courses extends Information {
         		strengthsText.setText(newText);
         	}
         });
-        btnRemove.setBounds(202, 281, 98, 34);
+        btnRemove.setBounds(180, 195, 164, 20);
         panel_1.add(btnRemove);
         
         JLabel lblNewLabel = new JLabel("Courses");
