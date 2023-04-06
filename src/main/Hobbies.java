@@ -157,6 +157,7 @@ public class Hobbies extends Information {
         
         
         JButton btnNext = new JButton("Next");
+        btnNext.setForeground(new Color(255, 255, 255));
         btnNext.setBackground(new Color(128, 128, 128));
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -169,6 +170,7 @@ public class Hobbies extends Information {
         frame.getContentPane().add(btnNext);
         
         JButton btnBack = new JButton("Back");
+        btnBack.setForeground(new Color(255, 255, 255));
         btnBack.setBackground(new Color(128, 128, 128));
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
