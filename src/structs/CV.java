@@ -7,7 +7,6 @@ import org.apache.pdfbox.pdmodel.PDDocumentInformation;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
-import org.apache.pdfbox.pdmodel.font.PDType1CFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 public class CV {
@@ -22,7 +21,7 @@ public class CV {
 	public String[] hobbies;
 	public String[] positions;
 	public String[] referees;
-	
+	private PDFont font = PDType1Font.HELVETICA;
 	
 	// Constructors
 	public CV() {
@@ -40,16 +39,26 @@ public class CV {
 	
 	public void BuildCV(CV cv) {
 		PDDocument pdf = new PDDocument();
-		PDFont font = PDType1Font.HELVETICA;
 		PDPage page1 = new PDPage();
 		pdf.addPage(page1);
 		
 		try {
 			PDPageContentStream cs = new PDPageContentStream(pdf, page1);
 			cs.beginText();
-			cs.newLineAtOffset(25, 700);
 			cs.setFont(font, 12);
-			cs.showText("BROOOOOOO");
+			cs.setLeading(7f);
+			cs.newLineAtOffset(0, 0);
+			cs.newLine();
+			cs.showText("dasdjahdkh");
+
+			cs.newLineAtOffset(25, 727);
+			cs.setLeading(14.5f);
+			cs.showText("Walter Hartwell White");
+			cs.newLine();
+			cs.showText("308 Negra Arroyo Lane");
+			cs.newLine();
+			cs.showText("Albuquerque, New Mexico");
+			
 			cs.endText();
 			cs.close();
 		} catch (IOException e1) {
