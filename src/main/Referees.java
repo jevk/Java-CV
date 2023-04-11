@@ -66,6 +66,8 @@ public class Referees extends Information {
         panel.setLayout(null);
         
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+        tabbedPane.setForeground(new Color(255, 255, 255));
+        tabbedPane.setBackground(new Color(128, 128, 128));
         tabbedPane.setBounds(10, 11, 371, 415);
         panel.add(tabbedPane);
         
@@ -148,6 +150,8 @@ public class Referees extends Information {
         
         
         JButton btnBack = new JButton("Back");
+        btnBack.setForeground(new Color(255, 255, 255));
+        btnBack.setBackground(new Color(128, 128, 128));
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.referees = referees;
@@ -192,6 +196,8 @@ public class Referees extends Information {
         panel_1.add(btnAdd);
         
         JButton btnNext = new JButton("Next");
+        btnNext.setForeground(new Color(255, 255, 255));
+        btnNext.setBackground(new Color(128, 128, 128));
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.referees = referees;
