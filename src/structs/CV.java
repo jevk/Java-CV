@@ -46,6 +46,7 @@ public class CV {
 			PDPageContentStream contentStream = new PDPageContentStream(pdf, page1);
 			contentStream.beginText();
 			contentStream.endText();
+			contentStream.close();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -59,7 +60,7 @@ public class CV {
 		pdf.setDocumentInformation(info);
 		
 		try {
-			pdf.save("C:/Users/Jesper.Kemppainen/Documents/test/test.pdf");
+			pdf.save("Desktop/" + details.name + "_cv.pdf");
 			pdf.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
