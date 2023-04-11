@@ -94,6 +94,13 @@ public class PersonalDetails extends Information {
         frame.getContentPane().add(btnNext);
         
         JButton btnFinish = new JButton("Back");
+        btnFinish.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		cv.details = details;
+        		Referees.main(null, cv);
+        		frame.dispose();
+        	}
+        });
         btnFinish.setForeground(new Color(255, 255, 255));
         btnFinish.setBackground(new Color(128, 128, 128));
         btnFinish.setFont(new Font("Tahoma", Font.BOLD, 13));

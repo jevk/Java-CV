@@ -2,11 +2,13 @@ package structs;
 
 import java.io.IOException;
 
-import org.apache.fontbox.util.BoundingBox;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDDocumentInformation;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDFont;
+import org.apache.pdfbox.pdmodel.font.PDType1CFont;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 public class CV {
 	// Variable declarations
@@ -38,15 +40,18 @@ public class CV {
 	
 	public void BuildCV(CV cv) {
 		PDDocument pdf = new PDDocument();
-		
+		PDFont font = PDType1Font.HELVETICA;
 		PDPage page1 = new PDPage();
 		pdf.addPage(page1);
 		
 		try {
-			PDPageContentStream contentStream = new PDPageContentStream(pdf, page1);
-			contentStream.beginText();
-			contentStream.endText();
-			contentStream.close();
+			PDPageContentStream cs = new PDPageContentStream(pdf, page1);
+			cs.beginText();
+			cs.newLineAtOffset(25, 700);
+			cs.setFont(font, 12);
+			cs.showText("BROOOOOOO");
+			cs.endText();
+			cs.close();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -60,7 +65,7 @@ public class CV {
 		pdf.setDocumentInformation(info);
 		
 		try {
-			pdf.save("Desktop/" + details.name + "_cv.pdf");
+			pdf.save("C:/Users/Jesper.Kemppainen/Documents/test/cv.pdf");
 			pdf.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
