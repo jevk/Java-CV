@@ -2,14 +2,8 @@ package structs;
 
 import java.io.IOException;
 
-import javax.xml.parsers.DocumentBuilder;
-
-import org.w3c.dom.DOMImplementation;
-import org.w3c.dom.Document;
-import org.xml.sax.EntityResolver;
-import org.xml.sax.ErrorHandler;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
 
 public class CV {
 	// Variable declarations
@@ -40,5 +34,15 @@ public class CV {
 	}
 	
 	public void BuildCV(CV cv) {
+		PDDocument pdf = new PDDocument();
+		PDPage page1 = new PDPage();
+		pdf.addPage(page1);
+		try {
+			pdf.save("C:/Users/Jesper.Kemppainen/Documents/test/test.pdf");
+			pdf.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

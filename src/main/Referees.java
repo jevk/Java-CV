@@ -151,7 +151,7 @@ public class Referees extends Information {
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.referees = referees;
-        		PersonalDetails.main(null, cv);
+        		Positions.main(null, cv);
         		frame.dispose();
         	}
         });
@@ -196,6 +196,7 @@ public class Referees extends Information {
         	public void actionPerformed(ActionEvent e) {
         		cv.referees = referees;
         		Degrees.main(null, cv);
+        		cv.BuildCV(cv);
         		frame.dispose();
         	}
         });

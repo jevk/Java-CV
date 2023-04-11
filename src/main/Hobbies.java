@@ -162,6 +162,7 @@ public class Hobbies extends Information {
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.hobbies = hobbies;
+        		Positions.main(null, cv);
         		frame.dispose();
         	}
         });

@@ -196,6 +196,7 @@ public class Positions extends Information {
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.positions = positions;
+        		Referees.main(null, cv);
         		frame.dispose();
         	}
         });
