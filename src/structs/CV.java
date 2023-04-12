@@ -74,7 +74,7 @@ public class CV {
 		pdf.setDocumentInformation(info);
 		
 		try {
-			pdf.save("C:/Users/Jesper.Kemppainen/Documents/test/cv.pdf");
+			pdf.save("../cv.pdf");
 			pdf.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
