@@ -51,13 +51,28 @@ public class CV {
 			cs.newLine();
 			cs.showText("dasdjahdkh");
 
-			cs.newLineAtOffset(25, 727);
+			cs.newLineAtOffset(100, 727);
 			cs.setLeading(14.5f);
-			cs.showText("Walter Hartwell White");
+			cs.showText(cv.details.name);
 			cs.newLine();
-			cs.showText("308 Negra Arroyo Lane");
+			cs.showText(cv.details.address);
 			cs.newLine();
-			cs.showText("Albuquerque, New Mexico");
+			cs.showText(cv.details.town);
+			cs.newLine();
+			cs.showText(cv.details.zip);
+			cs.newLine();
+			cs.showText(cv.details.phone);
+			cs.newLine();
+			cs.showText(cv.details.other);
+			
+			cs.newLineAtOffset(345, 60);
+			cs.showText("CV");
+			
+			cs.newLineAtOffset(-400, -110);
+			cs.showText("Strenghts                                            Troloooo");
+			
+			cs.newLineAtOffset(-450, -110);
+			cs.showText("Courses                                              Troloooo");
 			
 			cs.endText();
 			cs.close();
