@@ -212,17 +212,43 @@ public class ITSkills extends Information {
         				break;
         			}
         		}
-        		textField.setText("");
+        		textField.setText(" ");
         	}
         });
         btnAdd.setBounds(10, 201, 163, 20);
         panel_1.add(btnAdd);
         
-        JButton btnRemove = new JButton("Remove");
+        /*JButton btnRemove = new JButton("Remove");
         btnRemove.setFont(new Font("Tahoma", Font.BOLD, 11));
         btnRemove.setBackground(new Color(128, 128, 128));
         btnRemove.setForeground(new Color(255, 255, 255));
         btnRemove.setBounds(186, 201, 161, 20);
+        panel_1.add(btnRemove);*/
+        
+        JButton btnRemove = new JButton("Remove");
+        btnRemove.setForeground(new Color(255, 255, 255));
+        btnRemove.setBackground(new Color(128, 128, 128));
+        btnRemove.setFont(new Font("Tahoma", Font.BOLD, 11));
+        btnRemove.setBounds(186, 201, 161, 20);
+        btnRemove.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		for(int i = 0; i < itSkills.length; i++) {
+        			if (itSkills[i] == null) {
+        				try {
+        					itSkills[i - 1] = null;
+						} catch (Exception e1) {
+							System.out.println(" ");
+						}
+        			}
+        		}
+				cv.itSkills = itSkills;
+				getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
+        	}
+        });
         panel_1.add(btnRemove);
-    }
-}
+        
+        textField.setText(" ");
+        detailsText.setText(" ");
+        
+            		}
+            	}       		
