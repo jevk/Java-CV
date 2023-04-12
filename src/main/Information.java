@@ -38,7 +38,7 @@ public abstract class Information {
 		course.setText("");
 		for (int i = 0; i < courses.length; i++) {
 			if (courses[i] != null) {
-				course.append(courses[i]);
+				course.append(courses[i] + "\n");
 			}
 		}
 		
