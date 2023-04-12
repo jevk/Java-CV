@@ -38,7 +38,7 @@ public abstract class Information {
 		course.setText("");
 		for (int i = 0; i < courses.length; i++) {
 			if (courses[i] != null) {
-				course.append(courses[i]);
+				course.append(courses[i] + "\n");
 			}
 		}
 		
@@ -57,7 +57,7 @@ public abstract class Information {
 		itSkills.setText("");
 		for (int i = 0; i < it.length; i++) {
 			if (it[i] != null) {
-				itSkills.append(it[i]);
+				itSkills.append(it[i] + "\n");
 			}
 		}
 		
@@ -86,7 +86,7 @@ public abstract class Information {
 		positions.setText("");
 		for (int i = 0; i < position.length; i++) {
 			if (position[i] != null) {
-				positions.append(position[i]);
+				positions.append(position[i] + "\n");
 			}
 		}
 		
@@ -94,7 +94,7 @@ public abstract class Information {
 		referees.setText("");
 		for (int i = 0; i < referee.length; i++) {
 			if (referee[i] != null) {
-				referees.append(referee[i]);
+				referees.append(referee[i] + "\n");
 			}
 		}
 	}
