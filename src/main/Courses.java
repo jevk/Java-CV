@@ -209,7 +209,7 @@ public class Courses extends Information {
         lblNewLabel_1.setBounds(10, 162, 99, 20);
         panel_1.add(lblNewLabel_1);
         
-        JButton btnRemove = new JButton("Remove");
+        /*JButton btnRemove = new JButton("Remove");
         btnRemove.setForeground(new Color(255, 255, 255));
         btnRemove.setBackground(new Color(128, 128, 128));
         btnRemove.addActionListener(new ActionListener() {
@@ -217,12 +217,31 @@ public class Courses extends Information {
        			String newText = courseText.getText().replace("\n" + coursesField.getText() + "\n", "\n");
            		for (int i = 0; i < 10; i++) {
            			if (courses[i] == coursesField.getText()) {
-           				courses[i] = "";
+           				courses[i] = "";                				
             		}
             	}
-        		strengthsText.setText(newText);
+        		strengthsText.setText(newText);*/
+        JButton btnRemove = new JButton("Remove");
+        btnRemove.setForeground(new Color(255, 255, 255));
+        btnRemove.setBackground(new Color(128, 128, 128));
+        btnRemove.setFont(new Font("Tahoma", Font.BOLD, 11));
+        btnRemove.setBounds(184, 194, 157, 23);
+        btnRemove.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		for(int i = 0; i < 10; i++) {
+        			if (courses[i] == null) {
+        				try {
+							courses[i - 1] = null;
+						} catch (Exception e1) {
+							System.out.println(" ");
+						}
+        			}
+        		}
+				cv.courses = courses;
+				getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         	}
         });
+        	
         btnRemove.setBounds(180, 195, 164, 20);
         panel_1.add(btnRemove);
         
