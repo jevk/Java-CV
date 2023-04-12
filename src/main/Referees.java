@@ -224,10 +224,17 @@ public class Referees extends Information {
         btnRemove.setBackground(new Color(128, 128, 128));
         btnRemove.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-           		for (int i = 0; i < 10; i++) {
+           		/*for (int i = 0; i < 10; i++) {
            			if (referees[i] == null || i == 10) {
            				referees[i] = "";
-           				break;
+           				break;*/
+        		for(int i = 0; i < referees.length; i++) {
+        			if (referees[i] == null) {
+        				try {
+        					referees[i - 1] = null;
+						} catch (Exception e1) {
+							System.out.println(" ");
+						}
             		}
             	}
         		cv.referees = referees;
