@@ -295,16 +295,5 @@ public class PersonalDetails extends Information {
         lblNewLabel_6_1.setBackground(Color.WHITE);
         lblNewLabel_6_1.setBounds(10, 219, 105, 19);
         panel_1.add(lblNewLabel_6_1);
-        
-        JButton btnSave = new JButton("Create Save");
-        btnSave.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		cv.BuildCV(cv);
-        	}
-        });
-        btnSave.setForeground(new Color(255, 255, 255));
-        btnSave.setBackground(new Color(128, 128, 128));
-        btnSave.setBounds(329, 505, 112, 23);
-        frame.getContentPane().add(btnSave);
     }
 }

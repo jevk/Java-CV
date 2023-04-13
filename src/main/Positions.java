@@ -162,7 +162,7 @@ public class Positions extends Information {
         		frame.dispose();
         	}
         });
-        btnBack.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnBack.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnBack.setBounds(127, 504, 112, 23);
         frame.getContentPane().add(btnBack);
         
@@ -178,6 +178,7 @@ public class Positions extends Information {
         positionField.setColumns(10);
         
         JButton btnAdd = new JButton("Add");
+        btnAdd.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnAdd.setForeground(new Color(255, 255, 255));
         btnAdd.setBackground(new Color(128, 128, 128));
         btnAdd.addActionListener(new ActionListener() {
@@ -193,7 +194,7 @@ public class Positions extends Information {
         		getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         	}
         });
-        btnAdd.setBounds(10, 202, 171, 23);
+        btnAdd.setBounds(10, 202, 171, 18);
         panel_1.add(btnAdd);
         
         JButton btnNext = new JButton("Next");
@@ -206,7 +207,7 @@ public class Positions extends Information {
         		frame.dispose();
         	}
         });
-        btnNext.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnNext.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnNext.setBounds(545, 504, 112, 23);
         frame.getContentPane().add(btnNext);
         
@@ -219,6 +220,7 @@ public class Positions extends Information {
         panel_1.add(lblNewLabel_1);
         
         JButton btnRemove = new JButton("Remove last entry");
+        btnRemove.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnRemove.setForeground(new Color(255, 255, 255));
         btnRemove.setBackground(new Color(128, 128, 128));
         btnRemove.addActionListener(new ActionListener() {
@@ -232,7 +234,7 @@ public class Positions extends Information {
         		getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         	}
         });
-        btnRemove.setBounds(191, 202, 153, 23);
+        btnRemove.setBounds(191, 202, 153, 17);
         panel_1.add(btnRemove);
 	}
 }

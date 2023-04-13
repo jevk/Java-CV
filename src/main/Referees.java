@@ -61,14 +61,14 @@ public class Referees extends Information {
         
         JPanel panel = new JPanel();
         panel.setBackground(new Color(49, 49, 49));
-        panel.setBounds(385, 21, 391, 437);
+        panel.setBounds(374, 21, 402, 437);
         frame.getContentPane().add(panel);
         panel.setLayout(null);
         
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
         tabbedPane.setForeground(new Color(255, 255, 255));
         tabbedPane.setBackground(new Color(128, 128, 128));
-        tabbedPane.setBounds(10, 11, 371, 415);
+        tabbedPane.setBounds(10, 11, 382, 415);
         panel.add(tabbedPane);
         
         JScrollPane detailsTab = new JScrollPane();
@@ -159,24 +159,24 @@ public class Referees extends Information {
         		frame.dispose();
         	}
         });
-        btnBack.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnBack.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnBack.setBounds(127, 504, 112, 23);
         frame.getContentPane().add(btnBack);
         
         JPanel panel_1 = new JPanel();
         panel_1.setBackground(new Color(49, 49, 49));
-        panel_1.setBounds(10, 71, 365, 387);
+        panel_1.setBounds(10, 71, 354, 387);
         frame.getContentPane().add(panel_1);
         panel_1.setLayout(null);
         
         JTextField refereeField = new JTextField();
-        refereeField.setBounds(165, 140, 190, 20);
+        refereeField.setBounds(154, 140, 190, 20);
         panel_1.add(refereeField);
         refereeField.setColumns(10);
         
         JButton btnAdd = new JButton("Add");
         btnAdd.setForeground(new Color(255, 255, 255));
-        btnAdd.setFont(new Font("Tahoma", Font.BOLD, 11));
+        btnAdd.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnAdd.setBackground(new Color(128, 128, 128));
         btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -192,7 +192,7 @@ public class Referees extends Information {
         		getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         	}
         });
-        btnAdd.setBounds(10, 178, 174, 20);
+        btnAdd.setBounds(10, 178, 166, 20);
         panel_1.add(btnAdd);
         
         JButton btnNext = new JButton("Next");
@@ -206,7 +206,7 @@ public class Referees extends Information {
         		frame.dispose();
         	}
         });
-        btnNext.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        btnNext.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnNext.setBounds(545, 504, 112, 23);
         frame.getContentPane().add(btnNext);
         
@@ -215,12 +215,12 @@ public class Referees extends Information {
         lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 18));
         lblNewLabel_1.setForeground(Color.WHITE);
-        lblNewLabel_1.setBounds(10, 127, 145, 40);
+        lblNewLabel_1.setBounds(0, 127, 145, 40);
         panel_1.add(lblNewLabel_1);
         
         JButton btnRemove = new JButton("Remove last entry");
         btnRemove.setForeground(new Color(255, 255, 255));
-        btnRemove.setFont(new Font("Tahoma", Font.BOLD, 11));
+        btnRemove.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnRemove.setBackground(new Color(128, 128, 128));
         btnRemove.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -241,8 +241,19 @@ public class Referees extends Information {
         		getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         	}
         });
-        btnRemove.setBounds(194, 178, 161, 20);
+        btnRemove.setBounds(193, 178, 151, 20);
         panel_1.add(btnRemove);
+        
+        JButton btnSave = new JButton("Create a Save");
+        btnSave.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		cv.BuildCV(cv);
+        	}
+        });
+        btnSave.setForeground(new Color(255, 255, 255));
+        btnSave.setBackground(new Color(128, 128, 128));
+        btnSave.setBounds(329, 505, 112, 23);
+        frame.getContentPane().add(btnSave);
 	}
 
 }
