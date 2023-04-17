@@ -28,6 +28,7 @@ public class WorkExperience extends Information {
 	private JTextField textLength;
 	private JTextField textMonth;
 	private JTextField textYear;
+	private JTextField textWorktask;
 
 	/**
 	 * Launch the application.
@@ -183,7 +184,8 @@ public class WorkExperience extends Information {
         		String workplace = textWorkplace.getText();
         		String job = textJob.getText();
         		String length = textLength.getText();
-        		String month = textMonth.getText();
+        		String month = textMonth.getText();  
+        		String worktask = textWorktask.getText();
         		int year = Integer.parseInt(textYear.getText());
         		
         		for (int i = 0; i < experience.length; i++) {
@@ -195,16 +197,17 @@ public class WorkExperience extends Information {
         				exp.length = length;
         				exp.month = month;
         				exp.year = year;
+        				exp.worktask = worktask;
         				
         				experience[i] = exp;
         				
         				break;
         			}
         		}
-        		expText.append(workplace + "\n" + job + "\n" + length + ", " + month + ", " + year + "\n\n");
-        	}
+        		expText.append(workplace + "\n" + job + "\n" + length + "\n " + month + "\n " + year + "\n" + worktask);
+        	} /*\n\n*/
         });
-        btnAdd.setBounds(10, 245, 156, 20);
+        btnAdd.setBounds(14, 297, 156, 20);
         panel_1.add(btnAdd);
         
         JButton btnNext = new JButton("Next");
@@ -234,11 +237,23 @@ public class WorkExperience extends Information {
         btnRemove.setFont(new Font("Tahoma", Font.BOLD, 11));
         btnRemove.setBackground(new Color(128, 128, 128));
         btnRemove.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        	}
+        	public void actionPerformed(ActionEvent e) {  
+        		for(int i = 0; i < experience.length; i++) {
+        			if (experience[i] == null) {
+        				try {
+        					experience[i - 1] = null;
+						} catch (Exception e1) {
+							System.out.println(" ");
+						}
+        			}
+        			cv.experience = experience;
+    				getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
+            	}
+        }
         });
-        btnRemove.setBounds(176, 244, 154, 20);
-        panel_1.add(btnRemove);
+        btnRemove.setBounds(180, 297, 154, 20);
+        panel_1.add(btnRemove);  
+        detailsText.setText(" ");
         
         JLabel lblNewLabel_1_1 = new JLabel("Job:");
         lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.LEFT);
@@ -292,6 +307,17 @@ public class WorkExperience extends Information {
         textYear.setColumns(10);
         textYear.setBounds(134, 195, 200, 20);
         panel_1.add(textYear);
+        
+        JLabel lblNewLabel_2 = new JLabel("Work task:");
+        lblNewLabel_2.setForeground(new Color(255, 255, 255));
+        lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
+        lblNewLabel_2.setBounds(10, 240, 83, 14);
+        panel_1.add(lblNewLabel_2);
+        
+        textWorktask = new JTextField();
+        textWorktask.setBounds(134, 239, 200, 20);
+        panel_1.add(textWorktask);
+        textWorktask.setColumns(10);
+        
 	}
-
 }
