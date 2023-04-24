@@ -6,7 +6,9 @@ public class Experience {
 	public String job;
 	public String length;
 	public String month;
+	public String worktask;
 	public int year;
+	/*protected String worktask;*/
 	
 	
 	// Constructors
@@ -16,5 +18,6 @@ public class Experience {
 		this.length = "";
 		this.month = "";
 		this.year = 1970;
+		this.worktask = "";
 	}
 }
