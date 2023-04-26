@@ -49,7 +49,8 @@ public abstract class Information {
 				Experience exp = exps[i];
 				experience.append(exp.workplace + "\n");
 				experience.append(exp.job + "\n");
-				experience.append(exp.length + ", " + exp.month + ", " + exp.year + "\n\n");
+				experience.append(exp.jobtitle + "\n");
+				experience.append(exp.length + ", " + exp.month +  "\n\n");
 			}
 		}
 		
