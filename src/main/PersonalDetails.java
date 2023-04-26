@@ -316,7 +316,7 @@ public class PersonalDetails extends Information {
         		JFileChooser jImgPick = new JFileChooser();
         		 
         		jImgPick.setAcceptAllFileFilterUsed(false);
-        		FileNameExtensionFilter filter = new FileNameExtensionFilter("PNG and GIF images", "png", "gif");
+        		FileNameExtensionFilter filter = new FileNameExtensionFilter("PNG files", "png");
         		jImgPick.addChoosableFileFilter(filter);
         		jImgPick.showOpenDialog(null);
         		lblImgChosen.setText(jImgPick.getSelectedFile().getAbsolutePath());
