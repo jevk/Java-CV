@@ -5,14 +5,12 @@ import java.awt.EventQueue;
 import java.awt.Font;
 
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 import structs.CV;
 import structs.Details;
@@ -297,32 +295,5 @@ public class PersonalDetails extends Information {
         lblNewLabel_6_1.setBackground(Color.WHITE);
         lblNewLabel_6_1.setBounds(10, 219, 105, 19);
         panel_1.add(lblNewLabel_6_1);
-        
-        JLabel lblNewLabel_7 = new JLabel("Img selected");
-        lblNewLabel_7.setForeground(new Color(255, 255, 255));
-        lblNewLabel_7.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        lblNewLabel_7.setBounds(32, 329, 81, 22);
-        panel_1.add(lblNewLabel_7);
-        
-        JLabel lblImgChosen = new JLabel("");
-        lblImgChosen.setForeground(new Color(255, 255, 255));
-        lblImgChosen.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        lblImgChosen.setBounds(32, 351, 316, 22);
-        panel_1.add(lblImgChosen);
-        
-        JButton btnNewButton_1 = new JButton("Browse");
-        btnNewButton_1.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		JFileChooser jImgPick = new JFileChooser();
-        		 
-        		jImgPick.setAcceptAllFileFilterUsed(false);
-        		FileNameExtensionFilter filter = new FileNameExtensionFilter("PNG files", "png");
-        		jImgPick.addChoosableFileFilter(filter);
-        		jImgPick.showOpenDialog(null);
-        		lblImgChosen.setText(jImgPick.getSelectedFile().getAbsolutePath());
-        	}
-        });
-        btnNewButton_1.setBounds(22, 295, 105, 23);
-        panel_1.add(btnNewButton_1);
     }
 }
