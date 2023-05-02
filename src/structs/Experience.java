@@ -6,7 +6,7 @@ public class Experience {
 	public String job;
 	public String jobtitle;
 	public String length;
-	public String month;
+	public String date;
 	public String worktask;
 	
 	

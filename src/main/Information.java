@@ -50,7 +50,7 @@ public abstract class Information {
 				experience.append(exp.workplace + "\n");
 				experience.append(exp.job + "\n");
 				experience.append(exp.jobtitle + "\n");
-				experience.append(exp.length + ", " + exp.month +  "\n\n");
+				experience.append(exp.length + ", " + exp.date +  "\n\n");
 			}
 		}
 		

@@ -20,6 +20,8 @@ import structs.CV;
 import structs.Experience;
 import com.toedter.calendar.JDateChooser;
 
+import jdk.internal.org.jline.utils.DiffHelper.Diff;
+
 public class WorkExperience extends Information {
 	private CV cv;
 	private Experience[] experience;
@@ -196,7 +198,9 @@ public class WorkExperience extends Information {
         				exp.workplace = workplace;
         				exp.job = job;
         				exp.jobtitle = jobtitle;
+        				exp.jobtitle = jobtitle;
         				exp.length = length;
+        				
         				
         				experience[i] = exp;
         				
@@ -267,7 +271,7 @@ public class WorkExperience extends Information {
         lblNewLabel_1_2.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_1_2.setForeground(Color.WHITE);
         lblNewLabel_1_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblNewLabel_1_2.setBounds(10, 227, 79, 28);
+        lblNewLabel_1_2.setBounds(10, 128, 79, 28);
         panel_1.add(lblNewLabel_1_2);
         
         JLabel lblNewLabel_1_3 = new JLabel("First Date:");
@@ -296,7 +300,7 @@ public class WorkExperience extends Information {
         
         textLength = new JTextField();
         textLength.setColumns(10);
-        textLength.setBounds(134, 233, 200, 20);
+        textLength.setBounds(134, 134, 200, 20);
         panel_1.add(textLength);
         
         JLabel lblNewLabel_2 = new JLabel("Job title:");
