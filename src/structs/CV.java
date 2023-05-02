@@ -1,5 +1,6 @@
 package structs;
 
+import java.awt.TextArea;
 import java.io.IOException;
 
 import javax.swing.JOptionPane;
@@ -10,6 +11,8 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+
+import main.Languages;
 
 public class CV {
 	// Variable declarations
@@ -37,12 +40,15 @@ public class CV {
 		this.hobbies = new String[10];
 		this.positions = new String[10];
 		this.referees = new String[10];
+		
+		
 	}
 	
 	public void BuildCV(CV cv) {
 		PDDocument pdf = new PDDocument();
 		PDPage page1 = new PDPage();
 		pdf.addPage(page1);
+//		getCV(cv, details, strengths, degrees, courses, langs, positions, referees);
 		
 		try {
 			PDPageContentStream cs = new PDPageContentStream(pdf, page1);
@@ -73,30 +79,57 @@ public class CV {
 			cs.newLineAtOffset(-430, -110);
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
 			cs.showText("Degrees               " /*+ cv.degrees*/);
+	/*		cs.showText("School:");
 			cs.newLine();
+			cs.showText("Education:");
+			cs.newLine();
+			cs.showText("Degree:");
+			cs.newLine();
+			cs.showText("Starting Year:");
+			cs.newLine();
+			cs.showText("End Year:"); */
+			cs.newLine();
+			cs.showText("    " + cv.degrees[0]);
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
-			cs.showText("Strenghts");
-//			cs.setFont(PDType1Font.HELVETICA, 12);
-//			cs.showText("               " + cv.strengths.toString());
+			cs.showText("Strenghts" /*+ cv.strengths*/);
+			/*cs.showText("Your Strenghts:");*/
+			cs.setFont(PDType1Font.HELVETICA, 12);
+			cs.showText("               " + cv.strengths[0]);
 			cs.newLine();
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
 			cs.showText("Courses");
-//			cs.setFont(PDType1Font.HELVETICA, 12);
-//			cs.showText("               " + cv.courses.toString());
+			cs.setFont(PDType1Font.HELVETICA, 12);
+			cs.showText("               " + cv.courses.toString());
+			/*cs.showText("Your Courses:");*/
 			cs.newLine();
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
 			cs.showText("Work Experience");
-//			cs.setFont(PDType1Font.HELVETICA, 12);
-//			cs.showText("               " + cv.experience);
+			cs.setFont(PDType1Font.HELVETICA, 12);
+			cs.showText("               " + cv.experience);
+			/*cs.newLine();
+			cs.newLine();
+			cs.showText("Workplace:");
+			cs.newLine();
+			cs.showText("Job:");
+			cs.newLine();
+			cs.showText("Lenght:");
+			cs.newLine();
+			cs.showText("Month:");
+			cs.newLine();
+			cs.showText("Year:");
+			cs.newLine();
+			cs.showText("Work task:");  */
 			cs.newLine();
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
 			cs.showText("IT-Skills");
-//			cs.setFont(PDType1Font.HELVETICA, 12);
-//			cs.showText("               " + cv.itSkills);
+			cs.setFont(PDType1Font.HELVETICA, 12);
+			cs.showText("               " + cv.itSkills);
+//			cs.newLine();
+//			cs.showText("Programs you can use: ");
 			cs.newLine();
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
@@ -107,9 +140,11 @@ public class CV {
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
 			cs.showText("Hobbies");
-//			cs.setFont(PDType1Font.HELVETICA, 12);
-//			cs.showText("               " + cv.hobbies);
+			cs.setFont(PDType1Font.HELVETICA, 12);
+			cs.showText("               " + cv.hobbies);
 			cs.newLine();
+//			hobbies = cv.hobbies;
+//			cv.hobbies = hobbies;
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
 			cs.showText("Positions");
@@ -119,9 +154,9 @@ public class CV {
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
 			cs.showText("Referees");
-//			cs.setFont(PDType1Font.HELVETICA, 12);
-//			cs.showText("               " + cv.referees);
-			
+			cs.setFont(PDType1Font.HELVETICA, 12);
+			cs.newLine();
+//			cs.showText("               " + cv.referees.toString());
 			cs.endText();
 			cs.close();
 		} catch (IOException e1) {
@@ -143,5 +178,17 @@ public class CV {
 			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(null, e);
 		}
+		
+		for (int i = 0; i < cv.strengths.length; i++) {
+			System.out.println(cv.strengths[i]);
+		}
 	}
-}
+	
+/*	    for(int i = 0; i < cv.positions.length; i++) {
+        	System.out.println(cv.positions[i]); 
+	}
+}    */
+
+		// TODO Auto-generated method stub 
+		
+	} 
