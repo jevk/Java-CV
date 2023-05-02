@@ -49,8 +49,12 @@ public abstract class Information {
 				Experience exp = exps[i];
 				experience.append(exp.workplace + "\n");
 				experience.append(exp.job + "\n");
+<<<<<<< HEAD
 				experience.append(exp.jobtitle + "\n");
 				experience.append(exp.length + ", " + exp.date +  "\n\n");
+=======
+				experience.append(exp.length + ", " + exp.month + ", " + exp.year + "\n\n");
+>>>>>>> parent of b8abe6c (bRuH)
 			}
 		}
 		

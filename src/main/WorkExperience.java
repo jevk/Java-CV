@@ -5,6 +5,10 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,11 +18,10 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import java.time.LocalDate;
-import java.time.Period;
+
 import structs.CV;
 import structs.Experience;
-import com.toedter.calendar.JDateChooser;
+import javax.swing.JScrollBar;
 
 import jdk.internal.org.jline.utils.DiffHelper.Diff;
 
@@ -193,6 +196,7 @@ public class WorkExperience extends Information {
         		String jobtitle = textJobTitle.getText();
         		String length = textLength.getText();
 <<<<<<< HEAD
+<<<<<<< HEAD
         		LocalDate start_date = LocalDate.of(0, 0, 0);
         		LocalDate end_date = LocalDate.of(0, 0, 0);
         		findDifference(start_date, end_date);
@@ -202,6 +206,8 @@ public class WorkExperience extends Information {
         		String worktask = textWorktask.getText();
         		int year = Integer.parseInt(textYear.getText());
 >>>>>>> de7e6ed64ad1f4c5f0028f7557db9efe3af5a37d
+=======
+>>>>>>> parent of b8abe6c (bRuH)
         		
         		for (int i = 0; i < experience.length; i++) {
         			if (experience[i] == null) {
@@ -228,20 +234,6 @@ public class WorkExperience extends Information {
 <<<<<<< HEAD
         		expText.append(workplace + "\n" + job + "\n" + jobtitle + "\n" + length + "\n\n");
         	}
-
-			private void findDifference(LocalDate start_date, LocalDate end_date) {
-				Period diff
-					= Period
-						.between(start_date, end_date);
-					System.out.printf("%d years, %d months" + " and %d days ",
-							diff.getYears(),
-							diff.getMonths(),
-							diff.getDays());
-				
-			}
-			
-
-			
         });
         btnAdd.setBounds(10, 315, 156, 20);
 =======
@@ -271,7 +263,7 @@ public class WorkExperience extends Information {
         lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1.setForeground(Color.WHITE);
-        lblNewLabel_1.setBounds(10, 35, 91, 28);
+        lblNewLabel_1.setBounds(10, 29, 91, 28);
         panel_1.add(lblNewLabel_1);
         
         JButton btnRemove = new JButton("Remove");
@@ -306,64 +298,64 @@ public class WorkExperience extends Information {
         lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_1_1.setForeground(Color.WHITE);
         lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblNewLabel_1_1.setBounds(10, 68, 81, 28);
+        lblNewLabel_1_1.setBounds(12, 69, 81, 28);
         panel_1.add(lblNewLabel_1_1);
         
         JLabel lblNewLabel_1_2 = new JLabel("Length:");
         lblNewLabel_1_2.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_1_2.setForeground(Color.WHITE);
         lblNewLabel_1_2.setFont(new Font("Tahoma", Font.BOLD, 14));
+<<<<<<< HEAD
         lblNewLabel_1_2.setBounds(10, 128, 79, 28);
+=======
+        lblNewLabel_1_2.setBounds(10, 147, 79, 28);
+>>>>>>> parent of b8abe6c (bRuH)
         panel_1.add(lblNewLabel_1_2);
         
         JLabel lblNewLabel_1_3 = new JLabel("First Date:");
         lblNewLabel_1_3.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_1_3.setForeground(Color.WHITE);
         lblNewLabel_1_3.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblNewLabel_1_3.setBounds(10, 167, 108, 20);
+        lblNewLabel_1_3.setBounds(10, 186, 108, 28);
         panel_1.add(lblNewLabel_1_3);
         
         JLabel lblNewLabel_1_4 = new JLabel("Second Date:");
         lblNewLabel_1_4.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_1_4.setForeground(Color.WHITE);
         lblNewLabel_1_4.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblNewLabel_1_4.setBounds(10, 196, 108, 20);
+        lblNewLabel_1_4.setBounds(10, 223, 108, 28);
         panel_1.add(lblNewLabel_1_4);
         
         textWorkplace = new JTextField();
-        textWorkplace.setBounds(134, 41, 200, 20);
+        textWorkplace.setBounds(134, 35, 200, 20);
         panel_1.add(textWorkplace);
         textWorkplace.setColumns(10);
         
         textJob = new JTextField();
         textJob.setColumns(10);
-        textJob.setBounds(134, 72, 200, 20);
+        textJob.setBounds(134, 74, 200, 20);
         panel_1.add(textJob);
         
         textLength = new JTextField();
         textLength.setColumns(10);
+<<<<<<< HEAD
         textLength.setBounds(134, 134, 200, 20);
+=======
+        textLength.setBounds(133, 148, 200, 20);
+>>>>>>> parent of b8abe6c (bRuH)
         panel_1.add(textLength);
         
         JLabel lblNewLabel_2 = new JLabel("Job title:");
         lblNewLabel_2.setForeground(Color.WHITE);
         lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblNewLabel_2.setBounds(10, 104, 83, 14);
+        lblNewLabel_2.setBounds(10, 108, 83, 14);
         panel_1.add(lblNewLabel_2);
         
 <<<<<<< HEAD
         textJobTitle = new JTextField();
         textJobTitle.setColumns(10);
-        textJobTitle.setBounds(134, 103, 200, 20);
+        textJobTitle.setBounds(134, 105, 200, 20);
         panel_1.add(textJobTitle);
-        
-        JDateChooser start_date = new JDateChooser();
-        start_date.setBounds(134, 165, 200, 20);
-        panel_1.add(start_date);
-        
-        JDateChooser end_date = new JDateChooser();
-        end_date.setBounds(134, 196, 200, 20);
-        panel_1.add(end_date);
 	}
 }
 =======
