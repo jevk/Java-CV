@@ -29,7 +29,13 @@ public class WorkExperience extends Information {
 	private JTextField textWorkplace;
 	private JTextField textJob;
 	private JTextField textLength;
+<<<<<<< HEAD
 	private JTextField textJobTitle;
+=======
+	private JTextField textMonth;
+	private JTextField textYear;
+	private JTextField textWorktask;
+>>>>>>> de7e6ed64ad1f4c5f0028f7557db9efe3af5a37d
 
 	/**
 	 * Launch the application.
@@ -186,10 +192,16 @@ public class WorkExperience extends Information {
         		String job = textJob.getText();
         		String jobtitle = textJobTitle.getText();
         		String length = textLength.getText();
+<<<<<<< HEAD
         		LocalDate start_date = LocalDate.of(0, 0, 0);
         		LocalDate end_date = LocalDate.of(0, 0, 0);
         		findDifference(start_date, end_date);
         		
+=======
+        		String month = textMonth.getText();  
+        		String worktask = textWorktask.getText();
+        		int year = Integer.parseInt(textYear.getText());
+>>>>>>> de7e6ed64ad1f4c5f0028f7557db9efe3af5a37d
         		
         		for (int i = 0; i < experience.length; i++) {
         			if (experience[i] == null) {
@@ -200,13 +212,20 @@ public class WorkExperience extends Information {
         				exp.jobtitle = jobtitle;
         				exp.jobtitle = jobtitle;
         				exp.length = length;
+<<<<<<< HEAD
         				
+=======
+        				exp.month = month;
+        				exp.year = year;
+        				exp.worktask = worktask;
+>>>>>>> de7e6ed64ad1f4c5f0028f7557db9efe3af5a37d
         				
         				experience[i] = exp;
         				
         				break;
         			}
         		}
+<<<<<<< HEAD
         		expText.append(workplace + "\n" + job + "\n" + jobtitle + "\n" + length + "\n\n");
         	}
 
@@ -225,6 +244,12 @@ public class WorkExperience extends Information {
 			
         });
         btnAdd.setBounds(10, 315, 156, 20);
+=======
+        		expText.append(workplace + "\n" + job + "\n" + length + "\n " + month + "\n " + year + "\n" + worktask);
+        	} /*\n\n*/
+        });
+        btnAdd.setBounds(14, 297, 156, 20);
+>>>>>>> de7e6ed64ad1f4c5f0028f7557db9efe3af5a37d
         panel_1.add(btnAdd);
         
         JButton btnNext = new JButton("Next");
@@ -254,11 +279,28 @@ public class WorkExperience extends Information {
         btnRemove.setFont(new Font("Tahoma", Font.BOLD, 11));
         btnRemove.setBackground(new Color(128, 128, 128));
         btnRemove.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        	}
+        	public void actionPerformed(ActionEvent e) {  
+        		for(int i = 0; i < experience.length; i++) {
+        			if (experience[i] == null) {
+        				try {
+        					experience[i - 1] = null;
+						} catch (Exception e1) {
+							System.out.println(" ");
+						}
+        			}
+        			cv.experience = experience;
+    				getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
+            	}
+        }
         });
+<<<<<<< HEAD
         btnRemove.setBounds(176, 314, 154, 20);
         panel_1.add(btnRemove);
+=======
+        btnRemove.setBounds(180, 297, 154, 20);
+        panel_1.add(btnRemove);  
+        detailsText.setText(" ");
+>>>>>>> de7e6ed64ad1f4c5f0028f7557db9efe3af5a37d
         
         JLabel lblNewLabel_1_1 = new JLabel("Job:");
         lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.LEFT);
@@ -309,6 +351,7 @@ public class WorkExperience extends Information {
         lblNewLabel_2.setBounds(10, 104, 83, 14);
         panel_1.add(lblNewLabel_2);
         
+<<<<<<< HEAD
         textJobTitle = new JTextField();
         textJobTitle.setColumns(10);
         textJobTitle.setBounds(134, 103, 200, 20);
@@ -323,3 +366,23 @@ public class WorkExperience extends Information {
         panel_1.add(end_date);
 	}
 }
+=======
+        textYear = new JTextField();
+        textYear.setColumns(10);
+        textYear.setBounds(134, 195, 200, 20);
+        panel_1.add(textYear);
+        
+        JLabel lblNewLabel_2 = new JLabel("Work task:");
+        lblNewLabel_2.setForeground(new Color(255, 255, 255));
+        lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
+        lblNewLabel_2.setBounds(10, 240, 83, 14);
+        panel_1.add(lblNewLabel_2);
+        
+        textWorktask = new JTextField();
+        textWorktask.setBounds(134, 239, 200, 20);
+        panel_1.add(textWorktask);
+        textWorktask.setColumns(10);
+        
+	}
+}
+>>>>>>> de7e6ed64ad1f4c5f0028f7557db9efe3af5a37d
