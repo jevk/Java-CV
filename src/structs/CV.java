@@ -77,8 +77,10 @@ public class CV {
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
 			cs.showText("Strenghts");
-//			cs.setFont(PDType1Font.HELVETICA, 12);
-//			cs.showText("               " + cv.strengths.toString());
+			cs.setFont(PDType1Font.HELVETICA, 12);
+			for (int i = 0; i < cv.strengths.length; i++) {
+				cs.showText("               " + cv.strengths.toString());
+			}
 			cs.newLine();
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
@@ -113,8 +115,10 @@ public class CV {
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
 			cs.showText("Positions");
-//			cs.setFont(PDType1Font.HELVETICA, 12);
-//			cs.showText("               " + cv.positions);
+			cs.setFont(PDType1Font.HELVETICA, 12);
+			for(int i = 0; i < cv.positions.length; i++) {
+				cs.showText("               " + cv.positions.toString());
+			}
 			cs.newLine();
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
