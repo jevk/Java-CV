@@ -15,8 +15,6 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import java.time.LocalDate;
-import java.time.Period;
 import structs.CV;
 import structs.Experience;
 import com.toedter.calendar.JDateChooser;
@@ -183,9 +181,6 @@ public class WorkExperience extends Information {
         	String job = textJob.getText();
         	String jobtitle = textJobTitle.getText();
         	String length = textLength.getText();
-        	LocalDate start_date = LocalDate.of(0, 0, 0);
-        	LocalDate end_date = LocalDate.of(0, 0, 0);
-        	findDifference(start_date, end_date);
         		
          	for (int i = 0; i < experience.length; i++) {
         		if (experience[i] == null) {
@@ -204,16 +199,7 @@ public class WorkExperience extends Information {
          	expText.append(workplace + "\n" + job + "\n" + jobtitle + "\n" + length + "\n\n");
         }
 
-			private void findDifference(LocalDate start_date, LocalDate end_date) {
-				Period diff
-					= Period
-						.between(start_date, end_date);
-					System.out.printf("%d years, %d months" + " and %d days ",
-							diff.getYears(),
-							diff.getMonths(),
-							diff.getDays());
-				
-			}
+
 			
 
 			
