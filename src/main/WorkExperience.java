@@ -218,6 +218,11 @@ public class WorkExperience extends Information {
 
 			
         });
+        btnAdd.setForeground(Color.WHITE);
+        btnAdd.setFont(new Font("Tahoma", Font.BOLD, 11));
+        btnAdd.setBackground(Color.GRAY);
+        btnAdd.setBounds(16, 297, 154, 20);
+        panel_1.add(btnAdd);
         
         JButton btnNext = new JButton("Next");
         btnNext.setForeground(new Color(255, 255, 255));
@@ -335,6 +340,10 @@ public class WorkExperience extends Information {
         textWorktask.setBounds(134, 239, 200, 20);
         panel_1.add(textWorktask);
         textWorktask.setColumns(10);
+        
+       
+    
+       
         
 	}
 }
