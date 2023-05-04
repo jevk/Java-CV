@@ -6,6 +6,11 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -28,6 +33,26 @@ public class WorkExperience extends Information {
 	private JTextField textLength;
 	private JTextField textJobTitle;
 	private JTextField textWorktask;
+
+	private LocalDateTime convertToLocalDateTime(java.util.Date date) {
+		return date.toInstant()
+    		.atZone(ZoneId.systemDefault())
+            .toLocalDateTime();
+	}
+	
+	private String daysToString(float days) {
+		int years = (int) (days / 365);
+		int months = (int) ((days - years * 365) / 30);
+		int weeks = (int) ((days - years * 365 - months * 30) / 7);
+		
+		String time = "";
+		
+		if (years > 0) time = years + " years";
+		if (months > 0) time = time + ", " + months + " months";
+		if (weeks > 0) time = time + ", " + weeks + " weeks";
+		
+		return time;
+	}
 	
 	public static void main(String[] args, CV curriculumVitae) {
 		EventQueue.invokeLater(new Runnable() {
@@ -171,6 +196,14 @@ public class WorkExperience extends Information {
         frame.getContentPane().add(panel_1);
         panel_1.setLayout(null);
         
+        JDateChooser start_date = new JDateChooser();
+        start_date.setBounds(134, 165, 200, 20);
+        panel_1.add(start_date);
+        
+        JDateChooser end_date = new JDateChooser();
+        end_date.setBounds(134, 196, 200, 20);
+        panel_1.add(end_date);
+        
         JButton btnAdd = new JButton("Add");
         btnAdd.setForeground(new Color(255, 255, 255));
         btnAdd.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -180,8 +213,15 @@ public class WorkExperience extends Information {
         	String workplace = textWorkplace.getText();
         	String job = textJob.getText();
         	String jobtitle = textJobTitle.getText();
-        	String length = textLength.getText();
-        		
+        	
+        	LocalDateTime start = convertToLocalDateTime(start_date.getDate());
+        	LocalDateTime end = convertToLocalDateTime(end_date.getDate());    
+            float duration = Float.parseFloat(Long.toString(Duration.between(start, end).toDays()));
+            
+            String timeString = daysToString(duration);
+            
+        	System.out.println(timeString);	
+            
          	for (int i = 0; i < experience.length; i++) {
         		if (experience[i] == null) {
         			Experience exp = new Experience();
@@ -189,14 +229,15 @@ public class WorkExperience extends Information {
         			exp.workplace = workplace;
         			exp.job = job;
         			exp.jobtitle = jobtitle;
-        			exp.length = length;
+        			exp.length = timeString;
          				
         			experience[i] = exp;
         				
         			break;
         		}
         	}
-         	expText.append(workplace + "\n" + job + "\n" + jobtitle + "\n" + length + "\n\n");
+         	cv.experience = experience;
+         	getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         }
 
 
@@ -307,14 +348,6 @@ public class WorkExperience extends Information {
         textJobTitle.setColumns(10);
         textJobTitle.setBounds(134, 103, 200, 20);
         panel_1.add(textJobTitle);
-        
-        JDateChooser start_date = new JDateChooser();
-        start_date.setBounds(134, 165, 200, 20);
-        panel_1.add(start_date);
-        
-        JDateChooser end_date = new JDateChooser();
-        end_date.setBounds(134, 196, 200, 20);
-        panel_1.add(end_date);
         
         JLabel lblNewLabel_21 = new JLabel("Work task:");
         lblNewLabel_21.setForeground(new Color(255, 255, 255));
