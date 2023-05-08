@@ -212,7 +212,8 @@ public class ITSkills extends Information {
         				break;
         			}
         		}
-        		textField.setText(" ");
+        		cv.itSkills = itSkills;
+        		getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         	}
         });
         btnAdd.setBounds(10, 201, 163, 20);

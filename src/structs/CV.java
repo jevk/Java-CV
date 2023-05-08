@@ -80,8 +80,9 @@ public class CV {
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA, 12);
 			for (int i = 0; i < cv.strengths.length; i++) {
+				if (cv.strengths[i] == null) break;
 				cs.newLine();
-				cs.showText("               " + cv.strengths);
+				cs.showText("               " + cv.strengths[i]);
 			}
 //			cs.setFont(PDType1Font.HELVETICA, 12);
 //			cs.showText("               " + cv.strengths.toString());
@@ -92,8 +93,9 @@ public class CV {
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA, 12);
 			for(int i = 0; i < cv.courses.length; i++) {
+				if (cv.courses[i] == null) break;
 				cs.newLine();
-				cs.showText("               " + cv.courses);
+				cs.showText("               " + cv.courses[i]);
 			}
 			cs.newLine();
 			cs.newLine();
@@ -108,8 +110,9 @@ public class CV {
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA, 12);
 			for(int i = 0; i < cv.itSkills.length; i++) {
+				if (cv.itSkills[i] == null) break;
 				cs.newLine();
-				cs.showText("               " + cv.itSkills);
+				cs.showText("               " + cv.itSkills[i]);
 			}
 			cs.newLine();
 			cs.newLine();
@@ -125,8 +128,9 @@ public class CV {
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA, 12);
 			for(int i = 0; i < cv.hobbies.length; i++) {
+				if (cv.hobbies[i] == null) break;
 				cs.newLine();
-				cs.showText("               " + cv.hobbies);
+				cs.showText("               " + cv.hobbies[i]);
 			}
 			cs.newLine();
 			cs.newLine();
@@ -135,17 +139,21 @@ public class CV {
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA, 12);
 			for(int i = 0; i < cv.positions.length; i++) {
+				if (cv.positions[i] == null) break;
 				cs.newLine();
-				cs.showText("               " + cv.positions);
+				cs.showText("               " + cv.positions[i]);
 			}
-//			cs.setFont(PDType1Font.HELVETICA, 12);
-//			cs.showText("               " + cv.positions);
 			cs.newLine();
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
-			cs.showText("Referees");			
-//			cs.setFont(PDType1Font.HELVETICA, 12);
-//			cs.showText("               " + cv.referees);
+			cs.showText("Referees");
+			cs.newLine();
+			cs.setFont(PDType1Font.HELVETICA, 12);
+			for (int i = 0; i < cv.referees.length; i++) {
+				if (cv.referees[i] == null) break;
+				cs.newLine();
+				cs.showText("               " + cv.referees[i]);
+			}
 			
 			cs.endText();
 			cs.close();
