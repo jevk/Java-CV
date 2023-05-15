@@ -47,12 +47,7 @@ public class CV {
 		try {
 			PDPageContentStream cs = new PDPageContentStream(pdf, page1);
 			cs.beginText();
-			cs.setFont(font, 12);
-			cs.setLeading(7f);
-			cs.newLineAtOffset(0, 0);
-			cs.newLine();
-			cs.showText("dasdjahdkh");
-
+			cs.setFont(PDType1Font.HELVETICA, 12);
 			cs.newLineAtOffset(150, 727);
 			cs.setLeading(14.5f);
 			cs.showText(cv.details.name);
@@ -72,7 +67,17 @@ public class CV {
 			
 			cs.newLineAtOffset(-430, -110);
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
-			cs.showText("Degrees               ");
+			cs.showText("Degrees");
+			for(int i = 0; i < cv.degrees.length; i++) {
+				if (cv.degrees[i] == null) break;
+				cs.showText("               " + cv.degrees[i].school);
+				cs.newLine();
+				cs.setFont(PDType1Font.HELVETICA, 12);
+				cs.showText("               " + cv.degrees[i].degree + cv.degrees[i].education);
+				cs.newLine();
+				cs.showText("               " + cv.degrees[i].startYear + "-" + cv.degrees[i].endYear);
+				cs.newLine();
+			}
 			cs.newLine();
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
@@ -81,11 +86,9 @@ public class CV {
 			cs.setFont(PDType1Font.HELVETICA, 12);
 			for (int i = 0; i < cv.strengths.length; i++) {
 				if (cv.strengths[i] == null) break;
-				cs.newLine();
 				cs.showText("               " + cv.strengths[i]);
+				cs.newLine();
 			}
-//			cs.setFont(PDType1Font.HELVETICA, 12);
-//			cs.showText("               " + cv.strengths.toString());
 			cs.newLine();
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
@@ -94,15 +97,25 @@ public class CV {
 			cs.setFont(PDType1Font.HELVETICA, 12);
 			for(int i = 0; i < cv.courses.length; i++) {
 				if (cv.courses[i] == null) break;
-				cs.newLine();
 				cs.showText("               " + cv.courses[i]);
+				cs.newLine();
 			}
 			cs.newLine();
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
 			cs.showText("Work Experience");
-//			cs.setFont(PDType1Font.HELVETICA, 12);
-//			cs.showText("               " + cv.experience);
+			for(int i = 0; i < cv.experience.length; i++) {
+				if (cv.experience[i] == null) break;
+				cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
+				cs.showText("               " + cv.experience[i].workplace + ":");
+				cs.newLine();
+				cs.setFont(PDType1Font.HELVETICA, 12);
+				cs.showText("               " + cv.experience[i].job + ", " + cv.experience[i].worktask);
+				cs.newLine();
+				cs.showText("               " + cv.experience[i].length + cv.experience[i].month + cv.experience[i].year);
+				cs.newLine();
+				cs.newLine();
+			}
 			cs.newLine();
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
@@ -111,26 +124,32 @@ public class CV {
 			cs.setFont(PDType1Font.HELVETICA, 12);
 			for(int i = 0; i < cv.itSkills.length; i++) {
 				if (cv.itSkills[i] == null) break;
-				cs.newLine();
 				cs.showText("               " + cv.itSkills[i]);
+				cs.newLine();
 			}
 			cs.newLine();
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
-			cs.showText("Language Skills");
-//			cs.setFont(PDType1Font.HELVETICA, 12);
-//			cs.showText("               " + cv.langs);
+			cs.showText("Language Skills             Spoken   Written");
+			cs.setFont(PDType1Font.HELVETICA, 12);
+			cs.newLine();
+			for(int i = 0; i < cv.langs.length; i++) {
+				if (cv.langs[i] == null) break;
+				cs.newLine();
+				cs.showText("               " + cv.langs[i].langName);
+				if (cv.langs[i].nativeLang = false) cs.showText("               " + cv.langs[i].written + cv.langs[i].spoken);
+				if (cv.langs[i].nativeLang = true) cs.showText("               " + cv.langs[i].nativeLang + cv.langs[i].nativeLang);
+				cs.newLine();
+			}
 			cs.newLine();
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
-			cs.showText("Hobbies");
-			cs.setFont(PDType1Font.HELVETICA, 12);
+			cs.showText("Hobbies          ");
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA, 12);
 			for(int i = 0; i < cv.hobbies.length; i++) {
 				if (cv.hobbies[i] == null) break;
-				cs.newLine();
-				cs.showText("               " + cv.hobbies[i]);
+				cs.showText(cv.hobbies[i] + ", ");
 			}
 			cs.newLine();
 			cs.newLine();
@@ -140,8 +159,8 @@ public class CV {
 			cs.setFont(PDType1Font.HELVETICA, 12);
 			for(int i = 0; i < cv.positions.length; i++) {
 				if (cv.positions[i] == null) break;
-				cs.newLine();
 				cs.showText("               " + cv.positions[i]);
+				cs.newLine();
 			}
 			cs.newLine();
 			cs.newLine();
@@ -151,8 +170,8 @@ public class CV {
 			cs.setFont(PDType1Font.HELVETICA, 12);
 			for (int i = 0; i < cv.referees.length; i++) {
 				if (cv.referees[i] == null) break;
-				cs.newLine();
 				cs.showText("               " + cv.referees[i]);
+				cs.newLine();
 			}
 			
 			cs.endText();
