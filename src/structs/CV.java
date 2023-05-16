@@ -49,6 +49,8 @@ public class CV {
 			PDPageContentStream cs = new PDPageContentStream(pdf, page1);
 			cs.beginText();
 			cs.setFont(PDType1Font.HELVETICA, 12);
+			cs.newLineAtOffset(100, 727);
+			cs.showText(image);
 			cs.newLineAtOffset(150, 727);
 			cs.setLeading(14.5f);
 			cs.showText(cv.details.name);
