@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 
+import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,6 +23,9 @@ import structs.Details;
 
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class PersonalDetails extends Information {
@@ -313,6 +317,10 @@ public class PersonalDetails extends Information {
         lblImgChosen.setBounds(32, 351, 316, 22);
         panel_1.add(lblImgChosen);
         
+        JLabel img = new JLabel("");
+        img.setBounds(137, 295, 211, 81);
+        panel_1.add(img);
+        
         JButton btnNewButton_1 = new JButton("Browse");
         btnNewButton_1.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -326,6 +334,16 @@ public class PersonalDetails extends Information {
         		
         		path = jImgPick.getSelectedFile().getAbsolutePath();
         		cv.image = path;
+        		
+        		BufferedImage bi = null;
+        		try {
+        			bi = ImageIO.read(new File(path));
+        		} catch(IOException err) {
+        			err.printStackTrace();
+        		}
+        		Image dimg = bi.getScaledInstance(img.getWidth(), img.getHeight(), Image.SCALE_SMOOTH);
+        		ImageIcon ii = new ImageIcon(dimg);
+        		img.setIcon(ii);
         	}
         });
         btnNewButton_1.setBounds(22, 295, 105, 23);

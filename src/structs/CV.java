@@ -114,11 +114,7 @@ public class CV {
 				cs.setFont(PDType1Font.HELVETICA, 12);
 				cs.showText("               " + cv.experience[i].job + ", " + cv.experience[i].worktask);
 				cs.newLine();
-				cs.showText("               " + cv.experience[i].length); 
-				cs.newLine();
-				cs.showText("               " + cv.experience[i].month );
-                cs.newLine();
-				cs.showText("                " + cv.experience[i].year);
+				cs.showText("               " + cv.experience[i].length);
 				cs.newLine();
 				cs.newLine();
 			}
