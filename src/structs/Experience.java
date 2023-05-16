@@ -9,8 +9,6 @@ public class Experience {
 	public String date;
 	public String worktask;
 	public String month;
-	public int year;
-	/*protected String worktask;*/
 
 	
 	
@@ -22,7 +20,6 @@ public class Experience {
 		this.length = "";
 		this.worktask = "";
 		this.month = "";
-		this.year = 1970;
 
 	}
 }

@@ -46,7 +46,7 @@ public class WorkExperience extends Information {
 		int weeks = (int) ((days - years * 365 - months * 30) / 7);
 		
 		String time = "";
-		
+
 		if (years > 0) time = years + " years";
 		if (months > 0) time = time + ", " + months + " months";
 		if (weeks > 0) time = time + ", " + weeks + " weeks";
@@ -230,6 +230,8 @@ public class WorkExperience extends Information {
         			exp.job = job;
         			exp.jobtitle = jobtitle;
         			exp.length = timeString;
+        			
+        			System.out.println(exp.length);
          				
         			experience[i] = exp;
         				
