@@ -32,7 +32,6 @@ public class WorkExperience extends Information {
 	private JTextField textJob;
 	private JTextField textLength;
 	private JTextField textJobTitle;
-	private JTextField textWorktask;
 
 	private LocalDateTime convertToLocalDateTime(java.util.Date date) {
 		return date.toInstant()
@@ -350,17 +349,6 @@ public class WorkExperience extends Information {
         textJobTitle.setColumns(10);
         textJobTitle.setBounds(134, 103, 200, 20);
         panel_1.add(textJobTitle);
-        
-        JLabel lblNewLabel_21 = new JLabel("Work task:");
-        lblNewLabel_21.setForeground(new Color(255, 255, 255));
-        lblNewLabel_21.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblNewLabel_21.setBounds(10, 240, 83, 14);
-        panel_1.add(lblNewLabel_21);
-        
-        textWorktask = new JTextField();
-        textWorktask.setBounds(134, 239, 200, 20);
-        panel_1.add(textWorktask);
-        textWorktask.setColumns(10);
         
        
     
