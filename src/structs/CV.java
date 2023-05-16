@@ -71,10 +71,11 @@ public class CV {
 			cs.showText("Degrees");
 			for(int i = 0; i < cv.degrees.length; i++) {
 				if (cv.degrees[i] == null) break;
+				cs.newLine();
 				cs.showText("               " + cv.degrees[i].school);
 				cs.newLine();
 				cs.setFont(PDType1Font.HELVETICA, 12);
-				cs.showText("               " + cv.degrees[i].degree + cv.degrees[i].education);
+				cs.showText("               " + cv.degrees[i].degree + "," + cv.degrees[i].education);
 				cs.newLine();
 				cs.showText("               " + cv.degrees[i].startYear + "-" + cv.degrees[i].endYear);
 				cs.newLine();
@@ -113,7 +114,11 @@ public class CV {
 				cs.setFont(PDType1Font.HELVETICA, 12);
 				cs.showText("               " + cv.experience[i].job + ", " + cv.experience[i].worktask);
 				cs.newLine();
-				cs.showText("               " + cv.experience[i].length);
+				cs.showText("               " + cv.experience[i].length); 
+				cs.newLine();
+				cs.showText("               " + cv.experience[i].month );
+                cs.newLine();
+				cs.showText("                " + cv.experience[i].year);
 				cs.newLine();
 				cs.newLine();
 			}
@@ -138,7 +143,9 @@ public class CV {
 				if (cv.langs[i] == null) break;
 				cs.newLine();
 				cs.showText("               " + cv.langs[i].langName);
+				cs.newLine();
 				if (cv.langs[i].nativeLang = false) cs.showText("               " + cv.langs[i].written + cv.langs[i].spoken);
+				cs.newLine();
 				if (cv.langs[i].nativeLang = true) cs.showText("               " + cv.langs[i].nativeLang + cv.langs[i].nativeLang);
 				cs.newLine();
 			}
@@ -195,6 +202,7 @@ public class CV {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(null, e);
+			
 		}
 	}
 }
