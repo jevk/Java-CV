@@ -23,6 +23,7 @@ public class CV {
 	public String[] hobbies;
 	public String[] positions;
 	public String[] referees;
+	public String image;
 	private PDFont font = PDType1Font.HELVETICA;
 	
 	// Constructors
@@ -112,7 +113,7 @@ public class CV {
 				cs.setFont(PDType1Font.HELVETICA, 12);
 				cs.showText("               " + cv.experience[i].job + ", " + cv.experience[i].worktask);
 				cs.newLine();
-				cs.showText("               " + cv.experience[i].length + cv.experience[i].month + cv.experience[i].year);
+				cs.showText("               " + cv.experience[i].length);
 				cs.newLine();
 				cs.newLine();
 			}

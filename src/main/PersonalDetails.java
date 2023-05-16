@@ -3,7 +3,10 @@ package main;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -314,12 +317,15 @@ public class PersonalDetails extends Information {
         btnNewButton_1.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		JFileChooser jImgPick = new JFileChooser();
+        		String path;
         		 
         		jImgPick.setAcceptAllFileFilterUsed(false);
         		FileNameExtensionFilter filter = new FileNameExtensionFilter("PNG files", "png");
         		jImgPick.addChoosableFileFilter(filter);
         		jImgPick.showOpenDialog(null);
-        		lblImgChosen.setText(jImgPick.getSelectedFile().getAbsolutePath());
+        		
+        		path = jImgPick.getSelectedFile().getAbsolutePath();
+        		cv.image = path;
         	}
         });
         btnNewButton_1.setBounds(22, 295, 105, 23);
