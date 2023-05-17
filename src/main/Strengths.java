@@ -158,7 +158,7 @@ public class Strengths extends Information {
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.strengths = strengths;
-        		PersonalDetails.main(null, cv);
+        		PersonalDetails.main(null, cv, "fi");
         		frame.dispose();
         	}
         });
