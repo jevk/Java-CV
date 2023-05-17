@@ -11,15 +11,22 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
 import structs.CV;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class Main {
 
 	private JFrame frame;
 	private String[] strengths = { "", "", "", "", "" };
+	private String language = "fi";
+	private Locale l;
+	private ResourceBundle r;
 
 	/**
 	 * Launch the application.
@@ -68,7 +75,11 @@ public class Main {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initialize() {
+    	l = new Locale(language);
+    	r = ResourceBundle.getBundle("locales/Bundle_"+language, l);
+    	
         frame = new JFrame();
         frame.getContentPane().setBackground(new Color(39, 39, 39));
         frame.getContentPane().setForeground(new Color(0, 0, 0));
@@ -76,14 +87,14 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         
-        JLabel lblNewLabel = new JLabel("CV Generator");
+        JLabel lblNewLabel = new JLabel(r.getString("cvGen"));
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel.setForeground(new Color(255, 255, 255));
         lblNewLabel.setFont(new Font("Ebrima", Font.BOLD, 45));
         lblNewLabel.setBounds(186, 11, 412, 76);
         frame.getContentPane().add(lblNewLabel);
         
-        JButton btnQuit = new JButton("Leave");
+        JButton btnQuit = new JButton(r.getString("leave"));
         btnQuit.setForeground(new Color(255, 255, 255));
         btnQuit.setBackground(new Color(128, 128, 128));
         btnQuit.addActionListener(new ActionListener() {
@@ -95,18 +106,40 @@ public class Main {
         btnQuit.setBounds(291, 292, 202, 49);
         frame.getContentPane().add(btnQuit);
         
-        JButton btnStart = new JButton("Generate a new CV");
+        JButton btnStart = new JButton(r.getString("start"));
         btnStart.setForeground(new Color(255, 255, 255));
         btnStart.setBackground(new Color(128, 128, 128));
         btnStart.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		CV cv = new CV();
-        		PersonalDetails.main(null, cv);
+        		PersonalDetails.main(null, cv, language);
         		frame.dispose();
         	}
         });
         btnStart.setFont(new Font("Tahoma", Font.BOLD, 15));
         btnStart.setBounds(291, 213, 202, 49);
         frame.getContentPane().add(btnStart);
+        
+        JComboBox pickLang = new JComboBox();
+        pickLang.setModel(new DefaultComboBoxModel(new String[] {"Suomi", "English"}));
+        pickLang.setBounds(291, 381, 202, 31);
+        pickLang.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				switch(pickLang.getSelectedIndex()) {
+					case 0: language = "fi"; break;
+					case 1: language = "en"; break;
+				}
+		    	l = new Locale(language);
+		    	r = ResourceBundle.getBundle("locales/Bundle_"+language, l);
+		    	
+		    	lblNewLabel.setText(r.getString("cvGen"));
+		    	btnQuit.setText(r.getString("leave"));
+		    	btnStart.setText(r.getString("start"));
+				
+			}
+		});
+        frame.getContentPane().add(pickLang);
 	}
 }
