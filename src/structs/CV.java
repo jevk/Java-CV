@@ -8,8 +8,9 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDDocumentInformation;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 public class CV {
 	// Variable declarations
@@ -24,7 +25,7 @@ public class CV {
 	public String[] positions;
 	public String[] referees;
 	public String image;
-	private PDFont font = PDType1Font.HELVETICA;
+	public PDImageXObject pdImage;
 	
 	// Constructors
 	public CV() {
@@ -46,11 +47,11 @@ public class CV {
 		pdf.addPage(page1);
 		
 		try {
+			pdImage = PDImageXObject.createFromFile(image, pdf);
 			PDPageContentStream cs = new PDPageContentStream(pdf, page1);
+			cs.drawImage(pdImage, 40, 640, 100, 100);
 			cs.beginText();
 			cs.setFont(PDType1Font.HELVETICA, 12);
-			cs.newLineAtOffset(100, 727);
-			cs.showText(image);
 			cs.newLineAtOffset(150, 727);
 			cs.setLeading(14.5f);
 			cs.showText(cv.details.name);
