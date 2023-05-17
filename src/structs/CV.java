@@ -8,6 +8,7 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDDocumentInformation;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
@@ -26,6 +27,13 @@ public class CV {
 	public String[] referees;
 	public String image;
 	public PDImageXObject pdImage;
+	public PDPage page1 = new PDPage();
+	PDRectangle mediabox = page1.getMediaBox();
+    float margin = 72;
+    float width = mediabox.getWidth() - 2 * margin;
+    float startX = mediabox.getLowerLeftX() + margin;
+    float startY = mediabox.getUpperRightY() - margin;
+    float heightCounter = startY;
 	
 	// Constructors
 	public CV() {
@@ -43,7 +51,6 @@ public class CV {
 	
 	public void BuildCV(CV cv) {
 		PDDocument pdf = new PDDocument();
-		PDPage page1 = new PDPage();
 		pdf.addPage(page1);
 		
 		try {
@@ -52,6 +59,7 @@ public class CV {
 			cs.drawImage(pdImage, 40, 640, 100, 100);
 			cs.beginText();
 			cs.setFont(PDType1Font.HELVETICA, 12);
+//			cs.newLineAtOffset(margin, heightCounter - startX);
 			cs.newLineAtOffset(150, 727);
 			cs.setLeading(14.5f);
 			cs.showText(cv.details.name);
@@ -74,7 +82,6 @@ public class CV {
 			cs.showText("Degrees");
 			for(int i = 0; i < cv.degrees.length; i++) {
 				if (cv.degrees[i] == null) break;
-				cs.newLine();
 				cs.showText("               " + cv.degrees[i].school);
 				cs.newLine();
 				cs.setFont(PDType1Font.HELVETICA, 12);
@@ -135,13 +142,13 @@ public class CV {
 			cs.newLine();
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
-			cs.showText("Language Skills             Spoken   Written");
+			cs.showText("Language Skills             Spoken      Written");
 			cs.setFont(PDType1Font.HELVETICA, 12);
 			cs.newLine();
 			for(int i = 0; i < cv.langs.length; i++) {
 				if (cv.langs[i] == null) break;
 				cs.newLine();
-				cs.showText("               " + cv.langs[i].langName);
+				cs.showText("                       " + cv.langs[i].langName);
 				cs.newLine();
 				if (cv.langs[i].nativeLang = false) cs.showText("               " + cv.langs[i].written + cv.langs[i].spoken);
 				cs.newLine();
@@ -183,6 +190,14 @@ public class CV {
 			
 			cs.endText();
 			cs.close();
+			if (heightCounter < margin) {
+				cs.endText();
+				cs.close();
+				this.page1 = new PDPage();
+				cs.beginText();
+				cs.setFont(PDType1Font.HELVETICA, 12);
+				cs.newLineAtOffset(margin, heightCounter-margin);
+			}
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(null, e1);
