@@ -6,10 +6,11 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Date;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -32,6 +33,10 @@ public class WorkExperience extends Information {
 	private JTextField textJob;
 	private JTextField textLength;
 	private JTextField textJobTitle;
+	
+	private Locale l;
+	private ResourceBundle r;
+	private static String lang;
 
 	private LocalDateTime convertToLocalDateTime(java.util.Date date) {
 		return date.toInstant()
@@ -45,15 +50,23 @@ public class WorkExperience extends Information {
 		int weeks = (int) ((days - years * 365 - months * 30) / 7);
 		
 		String time = "";
-
-		if (years > 0) time = years + " years";
-		if (months > 0) time = time + ", " + months + " months";
-		if (weeks > 0) time = time + ", " + weeks + " weeks";
+		String yPlural = "";
+		String mPlural = "";
+		String wPlural = "";
+		
+		if (years > 1) yPlural = "s";
+		if (months > 1) mPlural = "s";
+		if (weeks > 1) wPlural = "s";
+		
+		if (years > 0) time += years + " " + r.getString("year"+yPlural) + ", ";
+		if (months > 0) time += months + " " + r.getString("month"+mPlural) + ", ";
+		if (weeks > 0 && years == 0) time += weeks + " " + r.getString("week"+wPlural);
 		
 		return time;
 	}
 	
 	public static void main(String[] args, CV curriculumVitae) {
+		lang = curriculumVitae.LOCALE;
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -79,6 +92,9 @@ public class WorkExperience extends Information {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+    	l = new Locale(lang);
+    	r = ResourceBundle.getBundle("locales/Bundle_"+lang, l);
+    	
         frame = new JFrame();
         frame.getContentPane().setLocation(-25, -71);
         frame.getContentPane().setBackground(new Color(39, 39, 39));
@@ -100,82 +116,82 @@ public class WorkExperience extends Information {
         panel.add(tabbedPane);
         
         JScrollPane detailsTab = new JScrollPane();
-        tabbedPane.addTab("Details", null, detailsTab, null);
+        tabbedPane.addTab(r.getString("details"), null, detailsTab, null);
         
         JTextArea detailsText = new JTextArea();
         detailsText.setEditable(false);
         detailsTab.setViewportView(detailsText);
         
         JScrollPane strengthsTab = new JScrollPane();
-        tabbedPane.addTab("Strengths", null, strengthsTab, null);
+        tabbedPane.addTab(r.getString("strengths"), null, strengthsTab, null);
         
         JTextArea strengthsText = new JTextArea();
         strengthsText.setEditable(false);
         strengthsTab.setViewportView(strengthsText);
         
         JScrollPane degreeTab = new JScrollPane();
-        tabbedPane.addTab("Degrees", null, degreeTab, null);
+        tabbedPane.addTab(r.getString("degrees"), null, degreeTab, null);
         
         JTextArea degreeText = new JTextArea();
         degreeText.setEditable(false);
         degreeTab.setViewportView(degreeText);
         
         JScrollPane courseTab = new JScrollPane();
-        tabbedPane.addTab("Courses", null, courseTab, null);
+        tabbedPane.addTab(r.getString("courses"), null, courseTab, null);
         
         JTextArea courseText = new JTextArea();
         courseText.setEditable(false);
         courseTab.setViewportView(courseText);
         
         JScrollPane expTab = new JScrollPane();
-        tabbedPane.addTab("Experience", null, expTab, null);
+        tabbedPane.addTab(r.getString("experience"), null, expTab, null);
         
         JTextArea expText = new JTextArea();
         expTab.setViewportView(expText);
         
         JScrollPane itTab = new JScrollPane();
-        tabbedPane.addTab("IT Skills", null, itTab, null);
+        tabbedPane.addTab(r.getString("skills"), null, itTab, null);
         
         JTextArea itText = new JTextArea();
         itText.setEditable(false);
         itTab.setViewportView(itText);
-        itText.setText("IT Skills:\n");
+        itText.setText(r.getString("skills") + ":\n");
         
         JScrollPane langTab = new JScrollPane();
-        tabbedPane.addTab("Languages", null, langTab, null);
+        tabbedPane.addTab(r.getString("languages"), null, langTab, null);
         
         JTextArea langsText = new JTextArea();
         langsText.setEditable(false);
         langTab.setViewportView(langsText);
         
         JScrollPane hobbyTab = new JScrollPane();
-        tabbedPane.addTab("Hobbies", null, hobbyTab, null);
+        tabbedPane.addTab(r.getString("hobbies"), null, hobbyTab, null);
         
         JTextArea hobbyText = new JTextArea();
         hobbyTab.setViewportView(hobbyText);
         
         JScrollPane positionTab = new JScrollPane();
-        tabbedPane.addTab("Positions", null, positionTab, null);
+        tabbedPane.addTab(r.getString("positions"), null, positionTab, null);
         
         JTextArea positionText = new JTextArea();
         positionTab.setViewportView(positionText);
         
         JScrollPane refereeTab = new JScrollPane();
-        tabbedPane.addTab("Referees", null, refereeTab, null);
+        tabbedPane.addTab(r.getString("references"), null, refereeTab, null);
         
         JTextArea refereeText = new JTextArea();
         refereeTab.setViewportView(refereeText);
         
         getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         
-        JLabel lblNewLabel = new JLabel("Work Experience");
+        JLabel lblNewLabel = new JLabel(r.getString("experience"));
         lblNewLabel.setForeground(new Color(255, 255, 255));
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
         lblNewLabel.setBounds(28, 11, 354, 49);
         frame.getContentPane().add(lblNewLabel);
         
         
-        JButton btnBack = new JButton("Back");
+        JButton btnBack = new JButton(r.getString("back"));
         btnBack.setForeground(new Color(255, 255, 255));
         btnBack.setBackground(new Color(128, 128, 128));
         btnBack.addActionListener(new ActionListener() {
@@ -203,7 +219,7 @@ public class WorkExperience extends Information {
         end_date.setBounds(134, 196, 200, 20);
         panel_1.add(end_date);
         
-        JButton btnAdd = new JButton("Add");
+        JButton btnAdd = new JButton(r.getString("add"));
         btnAdd.setForeground(new Color(255, 255, 255));
         btnAdd.setFont(new Font("Tahoma", Font.BOLD, 11));
         btnAdd.setBackground(new Color(128, 128, 128));
@@ -219,8 +235,6 @@ public class WorkExperience extends Information {
             
             String timeString = daysToString(duration);
             
-        	System.out.println(timeString);	
-            
          	for (int i = 0; i < experience.length; i++) {
         		if (experience[i] == null) {
         			Experience exp = new Experience();
@@ -229,8 +243,6 @@ public class WorkExperience extends Information {
         			exp.job = job;
         			exp.jobtitle = jobtitle;
         			exp.length = timeString;
-        			
-        			System.out.println(exp.length);
          				
         			experience[i] = exp;
         				
@@ -252,7 +264,7 @@ public class WorkExperience extends Information {
         btnAdd.setBounds(16, 297, 154, 20);
         panel_1.add(btnAdd);
         
-        JButton btnNext = new JButton("Next");
+        JButton btnNext = new JButton(r.getString("next"));
         btnNext.setForeground(new Color(255, 255, 255));
         btnNext.setBackground(new Color(128, 128, 128));
         btnNext.addActionListener(new ActionListener() {
@@ -267,7 +279,7 @@ public class WorkExperience extends Information {
         frame.getContentPane().add(btnNext);
         
         
-        JLabel lblNewLabel_1 = new JLabel("Workplace:");
+        JLabel lblNewLabel_1 = new JLabel(r.getString("workPlace") + ":");
         lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1.setForeground(Color.WHITE);
@@ -297,32 +309,25 @@ public class WorkExperience extends Information {
  		panel_1.add(btnRemove);  
  		detailsText.setText(" ");
  		
- 		JLabel lblNewLabel_1_1 = new JLabel("Job:");
+ 		JLabel lblNewLabel_1_1 = new JLabel(r.getString("job")+":");
         lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_1_1.setForeground(Color.WHITE);
         lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1_1.setBounds(10, 68, 81, 28);
         panel_1.add(lblNewLabel_1_1);
         
-        JLabel lblNewLabel_1_2 = new JLabel("Length:");
-        lblNewLabel_1_2.setHorizontalAlignment(SwingConstants.LEFT);
-        lblNewLabel_1_2.setForeground(Color.WHITE);
-        lblNewLabel_1_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblNewLabel_1_2.setBounds(10, 128, 79, 28);
-        panel_1.add(lblNewLabel_1_2);
-        
-        JLabel lblNewLabel_1_3 = new JLabel("First Date:");
+        JLabel lblNewLabel_1_3 = new JLabel(r.getString("date1")+":");
         lblNewLabel_1_3.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_1_3.setForeground(Color.WHITE);
         lblNewLabel_1_3.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblNewLabel_1_3.setBounds(10, 167, 108, 20);
+        lblNewLabel_1_3.setBounds(10, 128, 79, 28);
         panel_1.add(lblNewLabel_1_3);
         
-        JLabel lblNewLabel_1_4 = new JLabel("Second Date:");
+        JLabel lblNewLabel_1_4 = new JLabel(r.getString("date2")+":");
         lblNewLabel_1_4.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_1_4.setForeground(Color.WHITE);
         lblNewLabel_1_4.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblNewLabel_1_4.setBounds(10, 196, 108, 20);
+        lblNewLabel_1_4.setBounds(10, 167, 108, 20);
         panel_1.add(lblNewLabel_1_4);
         
         textWorkplace = new JTextField();
@@ -340,7 +345,7 @@ public class WorkExperience extends Information {
         textLength.setBounds(134, 134, 200, 20);
         panel_1.add(textLength);
         
-        JLabel lblNewLabel_2 = new JLabel("Job title:");
+        JLabel lblNewLabel_2 = new JLabel(r.getString("title")+":");
         lblNewLabel_2.setForeground(Color.WHITE);
         lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_2.setBounds(10, 104, 83, 14);

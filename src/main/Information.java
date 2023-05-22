@@ -1,18 +1,27 @@
 package main;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 import javax.swing.JTextArea;
 
 import structs.*;
 
 public abstract class Information {
+	private String lang;
+	
 	public void getCV(CV cv, JTextArea detail, JTextArea strength, JTextArea degree, JTextArea course, JTextArea experience, JTextArea itSkills, JTextArea languages, JTextArea hobbies, JTextArea positions, JTextArea referees) {
+		lang = cv.LOCALE;
+    	Locale l = new Locale(lang);
+    	ResourceBundle r = ResourceBundle.getBundle("locales/Bundle_" + lang, l);
+    	
 		Details details = cv.details;
 		detail.setText("");
-		detail.append("Name: " + details.name + "\n");
-		detail.append("Address: " + details.address + "\n");
-		detail.append("Town: " + details.town + ", " + details.zip + "\n");
-		detail.append("Phone: " + details.phone + "\n");
-		detail.append("Email: " + details.email + "\n");
+		detail.append(r.getString("name") + " " + details.name + "\n");
+		detail.append(r.getString("address") + " " + details.address + "\n");
+		detail.append(r.getString("town") + " " + details.town + ", " + details.zip + "\n");
+		detail.append(r.getString("phone") + " " + details.phone + "\n");
+		detail.append(r.getString("email") + " " + details.email + "\n");
 		if (details.other.length() > 0) detail.append("Other: " + details.other);
 		
 		String[] strengths = cv.strengths;
@@ -67,11 +76,15 @@ public abstract class Information {
 		languages.setText("");
 		for (int i = 0; i < lang.length; i++) {
 			if (lang[i] != null) {
-				if (lang[i].nativeLang) languages.append("Native " + lang[i].langName + " speaker.\n\n");
+				if (lang[i].nativeLang) {
+					languages.append(lang[i].langName + ":\n");
+					languages.append("- "+r.getString("speech")+ ":" + r.getString("native") + "\n");
+					languages.append("- "+r.getString("written")+":" + r.getString("native") + "\n\n");
+				}
 				else {
 					languages.append(lang[i].langName + ":\n");
-					languages.append("- Speech: " + lang[i].spoken + "\n");
-					languages.append("- Written: " + lang[i].written + "\n\n");
+					languages.append("- "+r.getString("speech")+ ":" + lang[i].spoken + "\n");
+					languages.append("- "+r.getString("written")+":" + lang[i].written+ "\n\n");
 				}
 			}
 		}

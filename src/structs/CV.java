@@ -1,6 +1,8 @@
 package structs;
 
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
@@ -28,6 +30,7 @@ public class CV {
 	public String image;
 	public PDImageXObject pdImage;
 	public PDPage page1 = new PDPage();
+	public String LOCALE;
 	PDRectangle mediabox = page1.getMediaBox();
     float margin = 72;
     float width = mediabox.getWidth() - 2 * margin;
@@ -50,13 +53,18 @@ public class CV {
 	}
 	
 	public void BuildCV(CV cv) {
+    	Locale l = new Locale(cv.LOCALE);
+    	ResourceBundle r = ResourceBundle.getBundle("locales/Bundle_"+cv.LOCALE, l);
+		
 		PDDocument pdf = new PDDocument();
 		pdf.addPage(page1);
 		
 		try {
-			pdImage = PDImageXObject.createFromFile(image, pdf);
 			PDPageContentStream cs = new PDPageContentStream(pdf, page1);
-			cs.drawImage(pdImage, 40, 640, 100, 100);
+			if (image != null) {
+				pdImage = PDImageXObject.createFromFile(image, pdf);
+				cs.drawImage(pdImage, 40, 640, 100, 100);
+			}
 			cs.beginText();
 			cs.setFont(PDType1Font.HELVETICA, 12);
 //			cs.newLineAtOffset(margin, heightCounter - startX);
@@ -79,7 +87,7 @@ public class CV {
 			
 			cs.newLineAtOffset(-430, -110);
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
-			cs.showText("Degrees");
+			cs.showText(r.getString("degrees"));
 			for(int i = 0; i < cv.degrees.length; i++) {
 				if (cv.degrees[i] == null) break;
 				cs.showText("               " + cv.degrees[i].school);
@@ -93,7 +101,7 @@ public class CV {
 			cs.newLine();
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
-			cs.showText("Strenghts");
+			cs.showText(r.getString("strengths"));
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA, 12);
 			for (int i = 0; i < cv.strengths.length; i++) {
@@ -104,7 +112,7 @@ public class CV {
 			cs.newLine();
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
-			cs.showText("Courses");
+			cs.showText(r.getString("courses"));
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA, 12);
 			for(int i = 0; i < cv.courses.length; i++) {
@@ -115,7 +123,7 @@ public class CV {
 			cs.newLine();
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
-			cs.showText("Work Experience");
+			cs.showText(r.getString("experience"));
 			for(int i = 0; i < cv.experience.length; i++) {
 				if (cv.experience[i] == null) break;
 				cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
@@ -131,7 +139,7 @@ public class CV {
 			cs.newLine();
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
-			cs.showText("IT-Skills");
+			cs.showText(r.getString("skills"));
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA, 12);
 			for(int i = 0; i < cv.itSkills.length; i++) {
@@ -142,23 +150,25 @@ public class CV {
 			cs.newLine();
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
-			cs.showText("Language Skills             Spoken      Written");
+			String space = "      ";
+			if (cv.LOCALE == "en") space = "    ";
+			
+			cs.showText(r.getString("langSkill")+"             "+r.getString("speech")+space+r.getString("written"));
 			cs.setFont(PDType1Font.HELVETICA, 12);
 			cs.newLine();
 			for(int i = 0; i < cv.langs.length; i++) {
 				if (cv.langs[i] == null) break;
 				cs.newLine();
-				cs.showText("                       " + cv.langs[i].langName);
+				cs.showText(cv.langs[i].langName);
 				cs.newLine();
-				if (cv.langs[i].nativeLang = false) cs.showText("               " + cv.langs[i].written + cv.langs[i].spoken);
+				cs.showText("               " + cv.langs[i].written + space + cv.langs[i].spoken);
 				cs.newLine();
-				if (cv.langs[i].nativeLang = true) cs.showText("               " + cv.langs[i].nativeLang + cv.langs[i].nativeLang);
 				cs.newLine();
 			}
 			cs.newLine();
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
-			cs.showText("Hobbies          ");
+			cs.showText(r.getString("hobbies"));
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA, 12);
 			for(int i = 0; i < cv.hobbies.length; i++) {
@@ -168,7 +178,7 @@ public class CV {
 			cs.newLine();
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
-			cs.showText("Positions");
+			cs.showText(r.getString("positions"));
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA, 12);
 			for(int i = 0; i < cv.positions.length; i++) {
@@ -179,7 +189,7 @@ public class CV {
 			cs.newLine();
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA_BOLD, 12);
-			cs.showText("Referees");
+			cs.showText(r.getString("references"));
 			cs.newLine();
 			cs.setFont(PDType1Font.HELVETICA, 12);
 			for (int i = 0; i < cv.referees.length; i++) {
@@ -190,6 +200,7 @@ public class CV {
 			
 			cs.endText();
 			cs.close();
+			
 			if (heightCounter < margin) {
 				cs.endText();
 				cs.close();
@@ -205,7 +216,7 @@ public class CV {
 		
 		PDDocumentInformation info = new PDDocumentInformation();
 		info.setAuthor(cv.details.name);
-		info.setTitle(cv.details.name + "'s " + "CV");
+		info.setTitle(cv.details.name + r.getString("genitive") + " CV");
 		info.setCreator(cv.details.name);
 		
 		pdf.setDocumentInformation(info);

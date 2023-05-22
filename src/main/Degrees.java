@@ -17,8 +17,11 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
 
 public class Degrees extends Information {
 	private CV cv;
@@ -27,8 +30,6 @@ public class Degrees extends Information {
 	private JTextField txtSchool;
 	private JTextField txtEducation;
 	private JTextField txtDegree;
-	private JTextField txtStartYear;
-	private JTextField txtEndYear;
 
 	/**
 	 * Launch the application.
@@ -58,6 +59,9 @@ public class Degrees extends Information {
      * Initialize the contents of the frame.
      */
     private void initialize() {
+    	Locale l = new Locale(cv.LOCALE);
+    	ResourceBundle r = ResourceBundle.getBundle("locales/Bundle_"+cv.LOCALE, l);
+    	
     	degrees = cv.degrees;
     	
         frame = new JFrame();
@@ -80,85 +84,80 @@ public class Degrees extends Information {
         panel.add(tabbedPane);
         
         JScrollPane detailsTab = new JScrollPane();
-        tabbedPane.addTab("Details", null, detailsTab, null);
+        tabbedPane.addTab(r.getString("details"), null, detailsTab, null);
         
         JTextArea detailsText = new JTextArea();
         detailsText.setEditable(false);
         detailsTab.setViewportView(detailsText);
         
         JScrollPane strengthsTab = new JScrollPane();
-        tabbedPane.addTab("Strengths", null, strengthsTab, null);
+        tabbedPane.addTab(r.getString("strengths"), null, strengthsTab, null);
         
         JTextArea strengthsText = new JTextArea();
         strengthsText.setEditable(false);
         strengthsTab.setViewportView(strengthsText);
         
         JScrollPane degreeTab = new JScrollPane();
-        tabbedPane.addTab("Degrees", null, degreeTab, null);
+        tabbedPane.addTab(r.getString("degrees"), null, degreeTab, null);
         
         JTextArea degreeText = new JTextArea();
         degreeText.setEditable(false);
         degreeTab.setViewportView(degreeText);
         
         JScrollPane courseTab = new JScrollPane();
-        tabbedPane.addTab("Courses", null, courseTab, null);
+        tabbedPane.addTab(r.getString("courses"), null, courseTab, null);
         
         JTextArea courseText = new JTextArea();
         courseText.setEditable(false);
         courseTab.setViewportView(courseText);
         
         JScrollPane expTab = new JScrollPane();
-        tabbedPane.addTab("Experience", null, expTab, null);
+        tabbedPane.addTab(r.getString("experience"), null, expTab, null);
         
         JTextArea expText = new JTextArea();
-        expText.setEditable(false);
         expTab.setViewportView(expText);
         
         JScrollPane itTab = new JScrollPane();
-        tabbedPane.addTab("IT Skills", null, itTab, null);
+        tabbedPane.addTab(r.getString("skills"), null, itTab, null);
         
         JTextArea itText = new JTextArea();
         itText.setEditable(false);
         itTab.setViewportView(itText);
-        itText.setText("IT Skills:\n");
         
         JScrollPane langTab = new JScrollPane();
-        tabbedPane.addTab("Languages", null, langTab, null);
+        tabbedPane.addTab(r.getString("languages"), null, langTab, null);
         
         JTextArea langsText = new JTextArea();
         langsText.setEditable(false);
         langTab.setViewportView(langsText);
         
         JScrollPane hobbyTab = new JScrollPane();
-        tabbedPane.addTab("Hobbies", null, hobbyTab, null);
+        tabbedPane.addTab(r.getString("hobbies"), null, hobbyTab, null);
         
         JTextArea hobbyText = new JTextArea();
-        hobbyText.setEditable(false);
         hobbyTab.setViewportView(hobbyText);
         
         JScrollPane positionTab = new JScrollPane();
-        tabbedPane.addTab("Positions", null, positionTab, null);
+        tabbedPane.addTab(r.getString("positions"), null, positionTab, null);
         
         JTextArea positionText = new JTextArea();
-        positionText.setEditable(false);
         positionTab.setViewportView(positionText);
         
         JScrollPane refereeTab = new JScrollPane();
-        tabbedPane.addTab("Referees", null, refereeTab, null);
+        tabbedPane.addTab(r.getString("references"), null, refereeTab, null);
         
         JTextArea refereeText = new JTextArea();
-        refereeText.setEditable(false);
         refereeTab.setViewportView(refereeText);
         
         getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         
-        JLabel lblNewLabel = new JLabel("Degrees");
+        JLabel lblNewLabel = new JLabel(r.getString("degrees"));
         lblNewLabel.setForeground(new Color(255, 255, 255));
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
         lblNewLabel.setBounds(28, 11, 354, 49);
         frame.getContentPane().add(lblNewLabel);
         
-        JButton btnNext = new JButton("Next");
+        JButton btnNext = new JButton(r.getString("next"));
         btnNext.setForeground(new Color(255, 255, 255));
         btnNext.setBackground(new Color(128, 128, 128));
         btnNext.addActionListener(new ActionListener() {
@@ -172,7 +171,7 @@ public class Degrees extends Information {
         btnNext.setBounds(545, 504, 112, 23);
         frame.getContentPane().add(btnNext);
         
-        JButton btnBack = new JButton("Back");
+        JButton btnBack = new JButton(r.getString("back"));
         btnBack.setForeground(new Color(255, 255, 255));
         btnBack.setBackground(new Color(128, 128, 128));
         btnBack.addActionListener(new ActionListener() {
@@ -192,31 +191,31 @@ public class Degrees extends Information {
         frame.getContentPane().add(panel_1);
         panel_1.setLayout(null);
         
-        JLabel lblNewLabel_1 = new JLabel("School:");
+        JLabel lblNewLabel_1 = new JLabel(r.getString("school")+":");
         lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1.setForeground(Color.WHITE);
         lblNewLabel_1.setBounds(10, 24, 112, 21);
         panel_1.add(lblNewLabel_1);
         
-        JLabel lblNewLabel_1_1 = new JLabel("Education:");
+        JLabel lblNewLabel_1_1 = new JLabel(r.getString("education")+":");
         lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1_1.setForeground(Color.WHITE);
         lblNewLabel_1_1.setBounds(10, 72, 112, 21);
         panel_1.add(lblNewLabel_1_1);
         
-        JLabel lblNewLabel_1_2 = new JLabel("Degree:");
+        JLabel lblNewLabel_1_2 = new JLabel(r.getString("degree")+":");
         lblNewLabel_1_2.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1_2.setForeground(Color.WHITE);
         lblNewLabel_1_2.setBounds(10, 119, 112, 21);
         panel_1.add(lblNewLabel_1_2);
         
-        JLabel lblNewLabel_1_3 = new JLabel("Starting Year:");
+        JLabel lblNewLabel_1_3 = new JLabel(r.getString("year1")+":");
         lblNewLabel_1_3.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1_3.setForeground(Color.WHITE);
         lblNewLabel_1_3.setBounds(10, 168, 112, 21);
         panel_1.add(lblNewLabel_1_3);
         
-        JLabel lblNewLabel_1_4 = new JLabel("End Year:");
+        JLabel lblNewLabel_1_4 = new JLabel(r.getString("year2")+":");
         lblNewLabel_1_4.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1_4.setForeground(Color.WHITE);
         lblNewLabel_1_4.setBounds(10, 219, 112, 21);
@@ -237,15 +236,15 @@ public class Degrees extends Information {
         txtDegree.setBounds(132, 122, 212, 20);
         panel_1.add(txtDegree);
         
-        txtStartYear = new JTextField();
-        txtStartYear.setColumns(10);
-        txtStartYear.setBounds(132, 171, 215, 20);
-        panel_1.add(txtStartYear);
+        JSpinner selectStartYear = new JSpinner();
+        selectStartYear.setBounds(132, 171, 215, 20);
+        selectStartYear.setValue(2000);
+        panel_1.add(selectStartYear);
         
-        txtEndYear = new JTextField();
-        txtEndYear.setColumns(10);
-        txtEndYear.setBounds(132, 222, 213, 20);
-        panel_1.add(txtEndYear);
+        JSpinner selectEndYear = new JSpinner();
+        selectEndYear.setBounds(132, 222, 213, 20);
+        selectEndYear.setValue(2000);
+        panel_1.add(selectEndYear);
         
 		// degrees[i - 1] = null;
         
@@ -262,30 +261,28 @@ public class Degrees extends Information {
         				deg.school = txtSchool.getText();
         				deg.education = txtEducation.getText();
         				deg.degree = txtDegree.getText();
-        				deg.startYear = txtStartYear.getText();
-        				deg.endYear = txtEndYear.getText();
-        				//deg.startYear = Integer.parseInt(txtStartYear.getText());
-        				//deg.endYear = Integer.parseInt(txtEndYear.getText());
+        				deg.startYear = Integer.toString((int)selectStartYear.getValue());
+        				deg.endYear = Integer.toString((int)selectEndYear.getValue());
         				degrees[i] = deg;
         				break;
         			}
         			else if (txtSchool.getText().isEmpty()||txtEducation.getText().isEmpty()||txtDegree.getText().isEmpty()) {
-        				JOptionPane.showMessageDialog(null, "Please Enter All Fields");
+        				JOptionPane.showMessageDialog(null, r.getString("enterAll"));
                     	break;
         			}
         			else if(txtSchool.getText().isEmpty())
                     {
-                    	JOptionPane.showMessageDialog(null, "Please Enter School Field");
+                    	JOptionPane.showMessageDialog(null, r.getString("enterSchool"));
                     	break;
                     }
         			else if(txtEducation.getText().isEmpty())
         			{
-        				JOptionPane.showMessageDialog(null, "Please Enter Education Field");
+        				JOptionPane.showMessageDialog(null, r.getString("enterEd"));
                     	break;
         			}
         			else if(txtDegree.getText().isEmpty())
         			{
-        				JOptionPane.showMessageDialog(null, "Please Enter Degree Field");
+        				JOptionPane.showMessageDialog(null, r.getString("enterDeg"));
                     	break;
         			}
         		}
@@ -297,7 +294,7 @@ public class Degrees extends Information {
         btnAdd.setBounds(10, 272, 169, 21);
         panel_1.add(btnAdd);
         
-        JButton btnRemove = new JButton("Remove");
+        JButton btnRemove = new JButton(r.getString("remove"));
         btnRemove.setForeground(new Color(255, 255, 255));
         btnRemove.setBackground(new Color(128, 128, 128));
         btnRemove.addActionListener(new ActionListener() {
@@ -307,7 +304,7 @@ public class Degrees extends Information {
         				try {
 							degrees[i - 1] = null;
 						} catch (Exception e1) {
-							System.out.println("vitun retu xD");
+							System.out.println("fucking retard xD");
 						}
         			}
         		}
@@ -319,22 +316,22 @@ public class Degrees extends Information {
         btnRemove.setBounds(190, 271, 154, 21);
         panel_1.add(btnRemove);
         
-        JLabel errorlabel = new JLabel("*Please Enter");
+        JLabel errorlabel = new JLabel(r.getString("plsEnter"));
         errorlabel.setFont(new Font("Tahoma", Font.BOLD, 11));
         errorlabel.setForeground(Color.RED);
         errorlabel.setBounds(253, 52, 92, 21);
         panel_1.add(errorlabel);
         
-        JLabel errorlabel_1 = new JLabel("*Please Enter");
+        JLabel errorlabel_1 = new JLabel(r.getString("plsEnter"));
         errorlabel_1.setFont(new Font("Tahoma", Font.BOLD, 11));
         errorlabel_1.setForeground(Color.RED);
         errorlabel_1.setBounds(252, 94, 92, 28);
         panel_1.add(errorlabel_1);
         
-        JLabel errorlabel_1_1 = new JLabel("*Please Enter");
-        errorlabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-        errorlabel_1_1.setForeground(Color.RED);
-        errorlabel_1_1.setBounds(249, 143, 95, 28);
-        panel_1.add(errorlabel_1_1);
+        JLabel mgmghfafmgmasfmofEatingPorn = new JLabel(r.getString("plsEnter"));
+        mgmghfafmgmasfmofEatingPorn.setFont(new Font("Tahoma", Font.BOLD, 11));
+        mgmghfafmgmasfmofEatingPorn.setForeground(Color.RED);
+        mgmghfafmgmasfmofEatingPorn.setBounds(249, 143, 95, 28);
+        panel_1.add(mgmghfafmgmasfmofEatingPorn);
     }
 }

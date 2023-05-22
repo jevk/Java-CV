@@ -6,7 +6,6 @@ import java.awt.Font;
 import java.awt.Image;
 
 import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -50,8 +49,8 @@ public class PersonalDetails extends Information {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args, CV curriculumVitae, String language) {
-		lang = language;
+	public static void main(String[] args, CV curriculumVitae) {
+		lang = curriculumVitae.LOCALE;
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -153,60 +152,56 @@ public class PersonalDetails extends Information {
         strengthsTab.setViewportView(strengthsText);
         
         JScrollPane degreeTab = new JScrollPane();
-        tabbedPane.addTab("Degrees", null, degreeTab, null);
+        tabbedPane.addTab(r.getString("degrees"), null, degreeTab, null);
         
         JTextArea degreeText = new JTextArea();
         degreeText.setEditable(false);
         degreeTab.setViewportView(degreeText);
         
         JScrollPane courseTab = new JScrollPane();
-        tabbedPane.addTab("Courses", null, courseTab, null);
+        tabbedPane.addTab(r.getString("courses"), null, courseTab, null);
         
         JTextArea courseText = new JTextArea();
         courseText.setEditable(false);
         courseTab.setViewportView(courseText);
         
         JScrollPane expTab = new JScrollPane();
-        tabbedPane.addTab("Experience", null, expTab, null);
+        tabbedPane.addTab(r.getString("experience"), null, expTab, null);
         
         JTextArea expText = new JTextArea();
-        expText.setEditable(false);
         expTab.setViewportView(expText);
         
         JScrollPane itTab = new JScrollPane();
-        tabbedPane.addTab("IT Skills", null, itTab, null);
+        tabbedPane.addTab(r.getString("skills"), null, itTab, null);
         
         JTextArea itText = new JTextArea();
         itText.setEditable(false);
         itTab.setViewportView(itText);
-        itText.setText("IT Skills:\n");
+        itText.setText(r.getString("skills") + ":\n");
         
         JScrollPane langTab = new JScrollPane();
-        tabbedPane.addTab("Languages", null, langTab, null);
+        tabbedPane.addTab(r.getString("languages"), null, langTab, null);
         
         JTextArea langsText = new JTextArea();
         langsText.setEditable(false);
         langTab.setViewportView(langsText);
         
         JScrollPane hobbyTab = new JScrollPane();
-        tabbedPane.addTab("Hobbies", null, hobbyTab, null);
+        tabbedPane.addTab(r.getString("hobbies"), null, hobbyTab, null);
         
         JTextArea hobbyText = new JTextArea();
-        hobbyText.setEditable(false);
         hobbyTab.setViewportView(hobbyText);
         
         JScrollPane positionTab = new JScrollPane();
-        tabbedPane.addTab("Positions", null, positionTab, null);
+        tabbedPane.addTab(r.getString("positions"), null, positionTab, null);
         
         JTextArea positionText = new JTextArea();
-        positionText.setEditable(false);
         positionTab.setViewportView(positionText);
         
         JScrollPane refereeTab = new JScrollPane();
-        tabbedPane.addTab("Referees", null, refereeTab, null);
+        tabbedPane.addTab(r.getString("references"), null, refereeTab, null);
         
         JTextArea refereeText = new JTextArea();
-        refereeText.setEditable(false);
         refereeTab.setViewportView(refereeText);
         
         getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
@@ -338,7 +333,7 @@ public class PersonalDetails extends Information {
         		String path;
         		 
         		jImgPick.setAcceptAllFileFilterUsed(false);
-        		FileNameExtensionFilter filter = new FileNameExtensionFilter("PNG files", "png");
+        		FileNameExtensionFilter filter = new FileNameExtensionFilter(r.getString("pngFiles"), "png");
         		jImgPick.addChoosableFileFilter(filter);
         		jImgPick.showOpenDialog(null);
         		

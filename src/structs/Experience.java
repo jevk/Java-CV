@@ -8,8 +8,6 @@ public class Experience {
 	public String length;
 	public String date;
 	public String worktask;
-	public String month;
-
 	
 	
 	// Constructors
@@ -19,7 +17,6 @@ public class Experience {
 		this.jobtitle = "";
 		this.length = "";
 		this.worktask = "";
-		this.month = "";
 
 	}
 }
