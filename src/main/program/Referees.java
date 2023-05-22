@@ -1,4 +1,4 @@
-package main;
+package program;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -8,15 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 
 import structs.CV;
 
@@ -55,7 +47,7 @@ public class Referees extends Information {
 	 */
 	private void initialize() {
     	Locale l = new Locale(cv.LOCALE);
-    	ResourceBundle r = ResourceBundle.getBundle("locales/Bundle_"+cv.LOCALE, l);
+    	ResourceBundle r = ResourceBundle.getBundle("Bundle_"+cv.LOCALE, l);
     	
         frame = new JFrame();
         frame.getContentPane().setBackground(new Color(39, 39, 39));
@@ -247,7 +239,12 @@ public class Referees extends Information {
         JButton btnSave = new JButton(r.getString("createCV"));
         btnSave.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		cv.BuildCV(cv);
+                try {
+                    cv.BuildCV(cv);
+                }
+                catch (Exception e1) {
+                    JOptionPane.showMessageDialog(null, e1 + "\n\nIn English, this means that you are dented in the brain and didn't fill out everything!");
+                }
         	}
         });
         btnSave.setForeground(new Color(255, 255, 255));

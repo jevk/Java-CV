@@ -1,5 +1,5 @@
 
-package main;
+package program;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -93,7 +93,7 @@ public class WorkExperience extends Information {
 	 */
 	private void initialize() {
     	l = new Locale(lang);
-    	r = ResourceBundle.getBundle("locales/Bundle_"+lang, l);
+    	r = ResourceBundle.getBundle("Bundle_"+lang, l);
     	
         frame = new JFrame();
         frame.getContentPane().setLocation(-25, -71);

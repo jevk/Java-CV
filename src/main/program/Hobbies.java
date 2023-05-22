@@ -1,4 +1,4 @@
-package main;
+package program;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -8,27 +8,25 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import structs.CV;
 
+import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.awt.event.ActionEvent;
 import javax.swing.JTabbedPane;
-import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
-import javax.swing.JTextArea;
 
-public class Strengths extends Information {
+public class Hobbies extends Information {
 	private CV cv;
-	private String[] strengths = new String[10];
 	private JFrame frame;
-	private JTextField strengthField;
+	private JTextField txtNimi;
+	private String[] hobbies = new String[10];
 	
-	private Locale l;
-	private ResourceBundle r;
 
 	/**
 	 * Launch the application.
@@ -37,7 +35,7 @@ public class Strengths extends Information {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Strengths window = new Strengths(curriculumVitae);
+					Hobbies window = new Hobbies(curriculumVitae);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +47,7 @@ public class Strengths extends Information {
 	/**
 	 * Create the application.
 	 */
-	public Strengths(CV curriculumVitae) {
+	public Hobbies(CV curriculumVitae) {
 		cv = curriculumVitae;
 		initialize();
 	}
@@ -57,9 +55,12 @@ public class Strengths extends Information {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
-    	l = new Locale(cv.LOCALE);
-    	r = ResourceBundle.getBundle("locales/Bundle_"+cv.LOCALE, l);
+	
+    private void initialize() {
+    	Locale l = new Locale(cv.LOCALE);
+    	ResourceBundle r = ResourceBundle.getBundle("Bundle_"+cv.LOCALE, l);
+    	
+    	hobbies = cv.hobbies;
     	
         frame = new JFrame();
         frame.getContentPane().setBackground(new Color(39, 39, 39));
@@ -70,14 +71,20 @@ public class Strengths extends Information {
         
         JPanel panel = new JPanel();
         panel.setBackground(new Color(49, 49, 49));
-        panel.setBounds(380, 29, 396, 437);
+        panel.setBounds(371, 21, 405, 437);
         frame.getContentPane().add(panel);
         panel.setLayout(null);
+        
+        JLabel lblNewLabel = new JLabel(r.getString("hobbies"));
+        lblNewLabel.setForeground(new Color(255, 255, 255));
+        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
+        lblNewLabel.setBounds(28, 11, 354, 49);
+        frame.getContentPane().add(lblNewLabel);
         
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
         tabbedPane.setForeground(new Color(255, 255, 255));
         tabbedPane.setBackground(new Color(128, 128, 128));
-        tabbedPane.setBounds(10, 11, 378, 415);
+        tabbedPane.setBounds(10, 11, 385, 415);
         panel.add(tabbedPane);
         
         JScrollPane detailsTab = new JScrollPane();
@@ -148,20 +155,28 @@ public class Strengths extends Information {
         
         getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         
-        JLabel lblNewLabel = new JLabel(r.getString("strengths"));
-        lblNewLabel.setForeground(new Color(255, 255, 255));
-        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
-        lblNewLabel.setBounds(28, 11, 354, 49);
-        frame.getContentPane().add(lblNewLabel);
         
+        JButton btnNext = new JButton(r.getString("next"));
+        btnNext.setForeground(new Color(255, 255, 255));
+        btnNext.setBackground(new Color(128, 128, 128));
+        btnNext.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		cv.hobbies = hobbies;
+        		Positions.main(null, cv);
+        		frame.dispose();
+        	}
+        });
+        btnNext.setFont(new Font("Tahoma", Font.BOLD, 13));
+        btnNext.setBounds(545, 504, 112, 23);
+        frame.getContentPane().add(btnNext);
         
         JButton btnBack = new JButton(r.getString("back"));
         btnBack.setForeground(new Color(255, 255, 255));
         btnBack.setBackground(new Color(128, 128, 128));
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		cv.strengths = strengths;
-        		PersonalDetails.main(null, cv);
+        		cv.hobbies = hobbies;
+        		Languages.main(null, cv);
         		frame.dispose();
         	}
         });
@@ -171,73 +186,65 @@ public class Strengths extends Information {
         
         JPanel panel_1 = new JPanel();
         panel_1.setBackground(new Color(49, 49, 49));
-        panel_1.setBounds(10, 79, 360, 387);
+        panel_1.setBounds(10, 71, 351, 387);
         frame.getContentPane().add(panel_1);
         panel_1.setLayout(null);
         
-        strengthField = new JTextField();
-        strengthField.setBounds(176, 170, 174, 20);
-        panel_1.add(strengthField);
-        strengthField.setColumns(10);
+        JLabel lblNewLabel_1 = new JLabel(r.getString("urHobisColon3")+":");
+        lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
+        lblNewLabel_1.setForeground(new Color(255, 255, 255));
+        lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+        lblNewLabel_1.setBounds(10, 154, 110, 29);
+        panel_1.add(lblNewLabel_1);
         
-        JButton btnAdd = new JButton(r.getString("add"));
-        btnAdd.setForeground(new Color(255, 255, 255));
-        btnAdd.setBackground(new Color(128, 128, 128));
-        btnAdd.setFont(new Font("Tahoma", Font.BOLD, 13));
-        btnAdd.addActionListener(new ActionListener() {
+        txtNimi = new JTextField();
+        txtNimi.setBounds(124, 159, 217, 23);
+        panel_1.add(txtNimi);
+        txtNimi.setColumns(10);
+        
+        JButton btnNewButton = new JButton(r.getString("add"));
+        btnNewButton.setForeground(new Color(255, 255, 255));
+        btnNewButton.setBackground(new Color(128, 128, 128));
+        btnNewButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		String strength = strengthField.getText();
-        		for (int i = 0; i < strengths.length; i++) {
-        			if (strengths[i] == "" || strengths[i] == null) {
-        				strengths[i] = strength;
+        		for (int i = 0; i < hobbies.length; i++) {
+        			if (hobbies[i] == null) {
+        				hobbies[i] = txtNimi.getText();
         				break;
         			}
         		}
-        		cv.strengths = strengths;
-        		getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
+        		hobbyText.append(txtNimi.getText() + "\n");    		
         	}
         });
-        btnAdd.setBounds(10, 205, 156, 20);
-        panel_1.add(btnAdd);
-        
-        JButton btnNext = new JButton(r.getString("next"));
-        btnNext.setForeground(new Color(255, 255, 255));
-        btnNext.setBackground(new Color(128, 128, 128));
-        btnNext.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		cv.strengths = strengths;
-        		Degrees.main(null, cv);
-        		frame.dispose();
-        	}
-        });
-        btnNext.setFont(new Font("Tahoma", Font.BOLD, 13));
-        btnNext.setBounds(545, 504, 112, 23);
-        frame.getContentPane().add(btnNext);
-        
-        
-        JLabel lblNewLabel_1 = new JLabel(r.getString("urStrengths")+":");
-        lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
-        lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblNewLabel_1.setForeground(Color.WHITE);
-        lblNewLabel_1.setBounds(10, 162, 156, 32);
-        panel_1.add(lblNewLabel_1);
+        btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+        btnNewButton.setBounds(10, 194, 164, 23);
+        panel_1.add(btnNewButton);
         
         JButton btnRemove = new JButton(r.getString("remove"));
         btnRemove.setForeground(new Color(255, 255, 255));
         btnRemove.setBackground(new Color(128, 128, 128));
-        btnRemove.setFont(new Font("Tahoma", Font.BOLD, 13));
+        btnRemove.setFont(new Font("Tahoma", Font.BOLD, 11));
+        btnRemove.setBounds(184, 194, 157, 23);
         btnRemove.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-           		for (int i = 0; i < 10; i++) {
-           			if (strengths[i] == null || i == 10) {
-           				strengths[i - 1] = null;
-            		}
-            	}
-        		cv.strengths = strengths;
-        		getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
+        		for(int i = 0; i < hobbies.length; i++) {
+        			if (hobbies[i] == null) {
+        				try {
+							hobbies[i - 1] = null;
+						} catch (Exception e1) {
+							System.out.println("vitun retu xD");
+						}
+        			}
+        		}
+				cv.hobbies = hobbies;
+				getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         	}
         });
-        btnRemove.setBounds(176, 205, 174, 20);
         panel_1.add(btnRemove);
-	}
+        
+        txtNimi.setText(" ");
+        detailsText.setText(" ");
+        
+        
+    }
 }

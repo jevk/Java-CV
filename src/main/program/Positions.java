@@ -1,4 +1,4 @@
-package main;
+package program;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -56,7 +56,7 @@ public class Positions extends Information {
 	 */
 	private void initialize() {
     	Locale l = new Locale(cv.LOCALE);
-    	ResourceBundle r = ResourceBundle.getBundle("locales/Bundle_"+cv.LOCALE, l);
+    	ResourceBundle r = ResourceBundle.getBundle("Bundle_"+cv.LOCALE, l);
     	
         frame = new JFrame();
         frame.getContentPane().setBackground(new Color(39, 39, 39));

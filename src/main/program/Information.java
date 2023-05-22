@@ -1,4 +1,4 @@
-package main;
+package program;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -13,7 +13,7 @@ public abstract class Information {
 	public void getCV(CV cv, JTextArea detail, JTextArea strength, JTextArea degree, JTextArea course, JTextArea experience, JTextArea itSkills, JTextArea languages, JTextArea hobbies, JTextArea positions, JTextArea referees) {
 		lang = cv.LOCALE;
     	Locale l = new Locale(lang);
-    	ResourceBundle r = ResourceBundle.getBundle("locales/Bundle_" + lang, l);
+    	ResourceBundle r = ResourceBundle.getBundle("Bundle_" + lang, l);
     	
 		Details details = cv.details;
 		detail.setText("");

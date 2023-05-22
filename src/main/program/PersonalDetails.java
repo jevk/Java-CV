@@ -1,4 +1,4 @@
-package main;
+package program;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -77,7 +77,7 @@ public class PersonalDetails extends Information {
 	
     private void initialize() {
     	l = new Locale(lang);
-    	r = ResourceBundle.getBundle("locales/Bundle_"+lang, l);
+    	r = ResourceBundle.getBundle("Bundle_"+lang, l);
     	
         frame = new JFrame();
         frame.getContentPane().setBackground(new Color(39, 39, 39));
