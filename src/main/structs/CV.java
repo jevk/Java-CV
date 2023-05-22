@@ -32,7 +32,7 @@ public class CV {
 	public String[] referees;
 	public String image;
 	public String LOCALE;
-	
+
 	// Constructors
 	public CV() {
 		this.details = new Details();
@@ -69,11 +69,11 @@ public class CV {
 
 		lineBreak(pdf);
 	}
-	
+
 	public void BuildCV(CV cv) {
     	Locale l = new Locale(cv.LOCALE);
     	ResourceBundle r = ResourceBundle.getBundle("Bundle_"+cv.LOCALE, l);
-		
+
 		Document pdf = new Document(40, 50, 40, 60);
 
 		try {
@@ -110,7 +110,7 @@ public class CV {
 			p.addText(" ", 12, PDType1Font.HELVETICA);
 			pdf.add(p);
 
-			// String bassed sections
+			// String based sections
 			addSectionString(cv.strengths, r.getString("strengths"), pdf);
 			addSectionString(cv.positions, r.getString("positions"), pdf);
 			addSectionString(cv.courses, r.getString("courses"), pdf);
