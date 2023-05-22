@@ -34,8 +34,6 @@ public class CV {
 	public String image;
 	public String LOCALE;
 	
-	private PDImageXObject pdImage;
-	
 	// Constructors
 	public CV() {
 		this.details = new Details();
