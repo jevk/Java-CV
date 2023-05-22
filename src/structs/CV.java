@@ -29,14 +29,8 @@ public class CV {
 	public String[] referees;
 	public String image;
 	public PDImageXObject pdImage;
-	public PDPage page1 = new PDPage();
+	public PDPage page1 = new PDPage(PDRectangle.LETTER);
 	public String LOCALE;
-	PDRectangle mediabox = page1.getMediaBox();
-    float margin = 72;
-    float width = mediabox.getWidth() - 2 * margin;
-    float startX = mediabox.getLowerLeftX() + margin;
-    float startY = mediabox.getUpperRightY() - margin;
-    float heightCounter = startY;
 	
 	// Constructors
 	public CV() {
@@ -93,9 +87,9 @@ public class CV {
 				cs.showText("               " + cv.degrees[i].school);
 				cs.newLine();
 				cs.setFont(PDType1Font.HELVETICA, 12);
-				cs.showText("               " + cv.degrees[i].degree + "," + cv.degrees[i].education);
+				cs.showText("                              " + cv.degrees[i].degree + "," + cv.degrees[i].education);
 				cs.newLine();
-				cs.showText("               " + cv.degrees[i].startYear + "-" + cv.degrees[i].endYear);
+				cs.showText("                              " + cv.degrees[i].startYear + "-" + cv.degrees[i].endYear);
 				cs.newLine();
 			}
 			cs.newLine();
@@ -130,9 +124,9 @@ public class CV {
 				cs.showText("               " + cv.experience[i].workplace + ":");
 				cs.newLine();
 				cs.setFont(PDType1Font.HELVETICA, 12);
-				cs.showText("               " + cv.experience[i].job + ", " + cv.experience[i].worktask);
+				cs.showText("                              " + cv.experience[i].job + ", " + cv.experience[i].worktask);
 				cs.newLine();
-				cs.showText("               " + cv.experience[i].length);
+				cs.showText("                              " + cv.experience[i].length);
 				cs.newLine();
 				cs.newLine();
 			}
@@ -199,16 +193,9 @@ public class CV {
 			}
 			
 			cs.endText();
+			page1 = new PDPage(PDRectangle.LETTER);
+			pdf.addPage(page1);
 			cs.close();
-			
-			if (heightCounter < margin) {
-				cs.endText();
-				cs.close();
-				this.page1 = new PDPage();
-				cs.beginText();
-				cs.setFont(PDType1Font.HELVETICA, 12);
-				cs.newLineAtOffset(margin, heightCounter-margin);
-			}
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(null, e1);
