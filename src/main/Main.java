@@ -122,7 +122,7 @@ public class Main {
         frame.getContentPane().add(btnStart);
         
         JComboBox pickLang = new JComboBox();
-        pickLang.setModel(new DefaultComboBoxModel(new String[] {"Suomi", "English"}));
+        pickLang.setModel(new DefaultComboBoxModel(new String[] {"suomi", "English", "Svenska", "Eesti", "Español"}));
         pickLang.setBounds(291, 381, 202, 31);
         pickLang.addActionListener(new ActionListener() {
 			
@@ -131,6 +131,9 @@ public class Main {
 				switch(pickLang.getSelectedIndex()) {
 					case 0: language = "fi"; break;
 					case 1: language = "en"; break;
+					case 2: language = "se"; break;
+					case 3: language = "ee"; break;
+					case 4: language = "es"; break;
 				}
 		    	l = new Locale(language);
 		    	r = ResourceBundle.getBundle("locales/Bundle_"+language, l);
