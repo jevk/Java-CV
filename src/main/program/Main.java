@@ -52,21 +52,21 @@ public class Main {
 	private void initialize() {
     	l = new Locale(language);
     	r = getBundle("Bundle_"+language, l);
-
+    	
         frame = new JFrame();
         frame.getContentPane().setBackground(new Color(39, 39, 39));
         frame.getContentPane().setForeground(new Color(0, 0, 0));
         frame.setBounds(100, 100, 800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
-
+        
         JLabel lblNewLabel = new JLabel(r.getString("cvGen"));
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel.setForeground(new Color(255, 255, 255));
         lblNewLabel.setFont(new Font("Ebrima", Font.BOLD, 45));
         lblNewLabel.setBounds(186, 11, 412, 76);
         frame.getContentPane().add(lblNewLabel);
-
+        
         JButton btnQuit = new JButton(r.getString("leave"));
         btnQuit.setForeground(new Color(255, 255, 255));
         btnQuit.setBackground(new Color(128, 128, 128));
@@ -74,7 +74,7 @@ public class Main {
         btnQuit.setFont(new Font("Tahoma", Font.BOLD, 15));
         btnQuit.setBounds(291, 292, 202, 49);
         frame.getContentPane().add(btnQuit);
-
+        
         JButton btnStart = new JButton(r.getString("start"));
         btnStart.setForeground(new Color(255, 255, 255));
         btnStart.setBackground(new Color(128, 128, 128));
