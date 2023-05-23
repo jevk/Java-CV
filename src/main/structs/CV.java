@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import rst.pdfbox.layout.elements.ControlElement;
 import rst.pdfbox.layout.elements.Document;
 import rst.pdfbox.layout.elements.ImageElement;
