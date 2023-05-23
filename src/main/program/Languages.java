@@ -75,7 +75,7 @@ public class Languages extends Information {
 	 */
 	private void initialize() {
     	Locale l = new Locale(cv.LOCALE);
-    	ResourceBundle r = ResourceBundle.getBundle("Bundle_"+cv.LOCALE, l);
+    	ResourceBundle r = ResourceBundle.getBundle("resources/Bundle_"+cv.LOCALE, l);
     	
 		frame = new JFrame();
         frame.getContentPane().setBackground(new Color(39, 39, 39));
@@ -186,7 +186,7 @@ public class Languages extends Information {
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.langs = langs;
-        		Hobbies.main(null, cv);
+        		Hobbies.main(cv);
         		frame.dispose();
         	}
         });
@@ -200,7 +200,7 @@ public class Languages extends Information {
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.langs = langs;
-        		ITSkills.main(null, cv);
+        		ITSkills.main(cv);
         		frame.dispose();
         	}
         });

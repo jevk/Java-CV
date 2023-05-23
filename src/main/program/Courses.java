@@ -3,9 +3,8 @@ package program;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import javax.swing.JButton;
@@ -21,28 +20,23 @@ import javax.swing.SwingConstants;
 import structs.CV;
 
 public class Courses extends Information {
-	private CV cv;
-	private String[] courses = new String[10];
+	private final CV cv;
+	private final String[] courses = new String[10];
 	private JFrame frame;
 	private JTextField coursesField;
-	
-	private Locale l;
-	private ResourceBundle r;
 
-	/**
+    /**
 	 * Launch the application.
 	 */
-	public static void main(String[] args, CV curriculumVitae) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Courses window = new Courses(curriculumVitae);
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public static void main(CV curriculumVitae) {
+		EventQueue.invokeLater(() -> {
+            try {
+                Courses window = new Courses(curriculumVitae);
+                window.frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 	}
 
 	/**
@@ -57,8 +51,8 @@ public class Courses extends Information {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-    	l = new Locale(cv.LOCALE);
-    	r = ResourceBundle.getBundle("Bundle_"+cv.LOCALE, l);
+        Locale l = new Locale(cv.LOCALE);
+        ResourceBundle r = ResourceBundle.getBundle("resources/Bundle_" + cv.LOCALE, l);
 		
 		frame = new JFrame();
         frame.getContentPane().setBackground(new Color(39, 39, 39));
@@ -150,12 +144,10 @@ public class Courses extends Information {
         JButton btnBack = new JButton(r.getString("back"));
         btnBack.setForeground(new Color(255, 255, 255));
         btnBack.setBackground(new Color(128, 128, 128));
-        btnBack.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		cv.courses = courses;
-        		Degrees.main(null, cv);
-        		frame.dispose();
-        	}
+        btnBack.addActionListener(e -> {
+            cv.courses = courses;
+            Degrees.main(null, cv);
+            frame.dispose();
         });
         btnBack.setFont(new Font("Tahoma", Font.PLAIN, 13));
         btnBack.setBounds(127, 504, 112, 23);
@@ -175,17 +167,15 @@ public class Courses extends Information {
         JButton btnAdd = new JButton(r.getString("add"));
         btnAdd.setForeground(new Color(255, 255, 255));
         btnAdd.setBackground(new Color(128, 128, 128));
-        btnAdd.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		String course = coursesField.getText();
-        		courseText.append(course + "\n");
-        		for (int i = 0; i < course.length(); i++) {
-        			if (courses[i] == "" || courses[i] == null) {
-        				courses[i] = course;
-        				break;
-        			}
-        		}
-        	}
+        btnAdd.addActionListener(e -> {
+            String course = coursesField.getText();
+            courseText.append(course + "\n");
+            for (int i = 0; i < course.length(); i++) {
+                if (Objects.equals(courses[i], "") || courses[i] == null) {
+                    courses[i] = course;
+                    break;
+                }
+            }
         });
         btnAdd.setBounds(10, 195, 160, 20);
         panel_1.add(btnAdd);
@@ -193,12 +183,10 @@ public class Courses extends Information {
         JButton btnNext = new JButton(r.getString("next"));
         btnNext.setForeground(new Color(255, 255, 255));
         btnNext.setBackground(new Color(128, 128, 128));
-        btnNext.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		cv.courses = courses;
-        		WorkExperience.main(null, cv);
-        		frame.dispose();
-        	}
+        btnNext.addActionListener(e -> {
+            cv.courses = courses;
+            WorkExperience.main(cv);
+            frame.dispose();
         });
         btnNext.setFont(new Font("Tahoma", Font.PLAIN, 13));
         btnNext.setBounds(545, 504, 112, 23);
@@ -229,20 +217,18 @@ public class Courses extends Information {
         btnRemove.setBackground(new Color(128, 128, 128));
         btnRemove.setFont(new Font("Tahoma", Font.BOLD, 11));
         btnRemove.setBounds(184, 194, 157, 23);
-        btnRemove.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		for(int i = 0; i < 10; i++) {
-        			if (courses[i] == null) {
-        				try {
-							courses[i - 1] = null;
-						} catch (Exception e1) {
-							System.out.println(" ");
-						}
-        			}
-        		}
-				cv.courses = courses;
-				getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
-        	}
+        btnRemove.addActionListener(e -> {
+            for(int i = 0; i < 10; i++) {
+                if (courses[i] == null) {
+                    try {
+                        courses[i - 1] = null;
+                    } catch (Exception e1) {
+                        System.out.println(" ");
+                    }
+                }
+            }
+            cv.courses = courses;
+            getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         });
         	
         btnRemove.setBounds(180, 195, 164, 20);

@@ -1,41 +1,27 @@
 
 package program;
 
-import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import com.toedter.calendar.JDateChooser;
+import structs.CV;
+import structs.Experience;
+
+import javax.swing.*;
+import java.awt.*;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import structs.CV;
-import structs.Experience;
-import com.toedter.calendar.JDateChooser;
-
 public class WorkExperience extends Information {
-	private CV cv;
-	private Experience[] experience;
+	private final CV cv;
+	private final Experience[] experience;
 	private JFrame frame;
 	private JTextField textWorkplace;
 	private JTextField textJob;
-	private JTextField textLength;
-	private JTextField textJobTitle;
-	
-	private Locale l;
-	private ResourceBundle r;
+    private JTextField textJobTitle;
+
+    private ResourceBundle r;
 	private static String lang;
 
 	private LocalDateTime convertToLocalDateTime(java.util.Date date) {
@@ -65,18 +51,16 @@ public class WorkExperience extends Information {
 		return time;
 	}
 	
-	public static void main(String[] args, CV curriculumVitae) {
+	public static void main(CV curriculumVitae) {
 		lang = curriculumVitae.LOCALE;
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					WorkExperience window = new WorkExperience(curriculumVitae);
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		EventQueue.invokeLater(() -> {
+            try {
+                WorkExperience window = new WorkExperience(curriculumVitae);
+                window.frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 	}
 
 	/**
@@ -92,8 +76,8 @@ public class WorkExperience extends Information {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-    	l = new Locale(lang);
-    	r = ResourceBundle.getBundle("Bundle_"+lang, l);
+        Locale l = new Locale(lang);
+    	r = ResourceBundle.getBundle("resources/Bundle_"+lang, l);
     	
         frame = new JFrame();
         frame.getContentPane().setLocation(-25, -71);
@@ -194,12 +178,10 @@ public class WorkExperience extends Information {
         JButton btnBack = new JButton(r.getString("back"));
         btnBack.setForeground(new Color(255, 255, 255));
         btnBack.setBackground(new Color(128, 128, 128));
-        btnBack.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		cv.experience = experience;
-        		Courses.main(null, cv);
-        		frame.dispose();
-        	}
+        btnBack.addActionListener(e -> {
+            cv.experience = experience;
+            Courses.main(cv);
+            frame.dispose();
         });
         btnBack.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnBack.setBounds(127, 504, 112, 23);
@@ -223,40 +205,33 @@ public class WorkExperience extends Information {
         btnAdd.setForeground(new Color(255, 255, 255));
         btnAdd.setFont(new Font("Tahoma", Font.BOLD, 11));
         btnAdd.setBackground(new Color(128, 128, 128));
-        btnAdd.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
+        btnAdd.addActionListener(e -> {
         	String workplace = textWorkplace.getText();
         	String job = textJob.getText();
         	String jobtitle = textJobTitle.getText();
-        	
+
         	LocalDateTime start = convertToLocalDateTime(start_date.getDate());
-        	LocalDateTime end = convertToLocalDateTime(end_date.getDate());    
+        	LocalDateTime end = convertToLocalDateTime(end_date.getDate());
             float duration = Float.parseFloat(Long.toString(Duration.between(start, end).toDays()));
-            
+
             String timeString = daysToString(duration);
-            
+
          	for (int i = 0; i < experience.length; i++) {
         		if (experience[i] == null) {
         			Experience exp = new Experience();
-        				
+
         			exp.workplace = workplace;
         			exp.job = job;
         			exp.jobtitle = jobtitle;
         			exp.length = timeString;
-         				
+
         			experience[i] = exp;
-        				
+
         			break;
         		}
         	}
          	cv.experience = experience;
          	getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
-        }
-
-
-			
-
-			
         });
         btnAdd.setForeground(Color.WHITE);
         btnAdd.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -267,12 +242,10 @@ public class WorkExperience extends Information {
         JButton btnNext = new JButton(r.getString("next"));
         btnNext.setForeground(new Color(255, 255, 255));
         btnNext.setBackground(new Color(128, 128, 128));
-        btnNext.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		cv.experience = experience;
-        		ITSkills.main(null, cv);
-        		frame.dispose();
-        	}
+        btnNext.addActionListener(e -> {
+            cv.experience = experience;
+            ITSkills.main(cv);
+            frame.dispose();
         });
         btnNext.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnNext.setBounds(545, 504, 112, 23);
@@ -290,21 +263,19 @@ public class WorkExperience extends Information {
         btnRemove.setForeground(new Color(255, 255, 255));
         btnRemove.setFont(new Font("Tahoma", Font.BOLD, 11));
         btnRemove.setBackground(new Color(128, 128, 128));
-        btnRemove.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {  
-        		for(int i = 0; i < experience.length; i++) {
-        			if (experience[i] == null) {
-        				try {
-        					experience[i - 1] = null;
-						} catch (Exception e1) {
-							System.out.println(" ");
-						}
-        			}
-        			cv.experience = experience;
-    				getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
-            	}
-        }
-        });
+        btnRemove.addActionListener(e -> {
+            for(int i = 0; i < experience.length; i++) {
+                if (experience[i] == null) {
+                    try {
+                        experience[i - 1] = null;
+                    } catch (Exception e1) {
+                        System.out.println(" ");
+                    }
+                }
+                cv.experience = experience;
+                getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
+            }
+});
         btnRemove.setBounds(180, 297, 154, 20);
  		panel_1.add(btnRemove);  
  		detailsText.setText(" ");
@@ -339,8 +310,8 @@ public class WorkExperience extends Information {
         textJob.setColumns(10);
         textJob.setBounds(134, 72, 200, 20);
         panel_1.add(textJob);
-        
-        textLength = new JTextField();
+
+        JTextField textLength = new JTextField();
         textLength.setColumns(10);
         textLength.setBounds(134, 134, 200, 20);
         panel_1.add(textLength);

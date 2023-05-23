@@ -60,7 +60,7 @@ public class Degrees extends Information {
      */
     private void initialize() {
     	Locale l = new Locale(cv.LOCALE);
-    	ResourceBundle r = ResourceBundle.getBundle("Bundle_"+cv.LOCALE, l);
+    	ResourceBundle r = ResourceBundle.getBundle("resources/Bundle_"+cv.LOCALE, l);
     	
     	degrees = cv.degrees;
     	
@@ -163,7 +163,7 @@ public class Degrees extends Information {
         btnNext.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.degrees = degrees;
-        		Courses.main(null, cv);
+        		Courses.main(cv);
         		frame.dispose();
         	}
         });
@@ -177,7 +177,7 @@ public class Degrees extends Information {
         btnBack.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		cv.degrees = degrees;
-        		Strengths.main(null, cv);
+        		Strengths.main(cv);
         		frame.dispose();
         	}
         });

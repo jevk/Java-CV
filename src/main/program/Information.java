@@ -1,19 +1,17 @@
 package program;
 
+import structs.*;
+
+import javax.swing.*;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import javax.swing.JTextArea;
-
-import structs.*;
-
 public abstract class Information {
-	private String lang;
-	
+
 	public void getCV(CV cv, JTextArea detail, JTextArea strength, JTextArea degree, JTextArea course, JTextArea experience, JTextArea itSkills, JTextArea languages, JTextArea hobbies, JTextArea positions, JTextArea referees) {
-		lang = cv.LOCALE;
-    	Locale l = new Locale(lang);
-    	ResourceBundle r = ResourceBundle.getBundle("Bundle_" + lang, l);
+		String lang1 = cv.LOCALE;
+    	Locale l = new Locale(lang1);
+    	ResourceBundle r = ResourceBundle.getBundle("resources/Bundle_" + lang1, l);
     	
 		Details details = cv.details;
 		detail.setText("");
@@ -26,90 +24,87 @@ public abstract class Information {
 		
 		String[] strengths = cv.strengths;
 		strength.setText("");
-		for (int i = 0; i < strengths.length; i++) {
-			if (strengths[i] != null) {
-				strength.append(strengths[i] + "\n");
+		for (String s : strengths) {
+			if (s != null) {
+				strength.append(s + "\n");
 			}
 		}
 		
 		Degree[] degrees = cv.degrees;
 		degree.setText("");
-		for (int i = 0; i < degrees.length; i++) {
-			if (degrees[i] != null) {
-				Degree deg = degrees[i];
-				degree.append(deg.school + "\n");
-				degree.append(deg.education + ", " + deg.degree + "\n");
-				degree.append(deg.startYear + " - " + deg.endYear + "\n\n");
+		for (Degree value : degrees) {
+			if (value != null) {
+				degree.append(value.school + "\n");
+				degree.append(value.education + ", " + value.degree + "\n");
+				degree.append(value.startYear + " - " + value.endYear + "\n\n");
 			}
 		}
 		
 		String[] courses = cv.courses;
 		course.setText("");
-		for (int i = 0; i < courses.length; i++) {
-			if (courses[i] != null) {
-				course.append(courses[i] + "\n");
+		for (String course1 : courses) {
+			if (course1 != null) {
+				course.append(course1 + "\n");
 			}
 		}
 		
-		Experience[] exps = cv.experience;
+		Experience[] exp = cv.experience;
 		experience.setText("");
-		for (int i = 0; i < exps.length; i++) {
-			if (exps[i] != null) {
-				Experience exp = exps[i];
-				experience.append(exp.workplace + "\n");
-				experience.append(exp.job + "\n");
-				experience.append(exp.jobtitle + "\n");
-				experience.append(exp.length + "\n\n");
+		for (Experience value : exp) {
+			if (value != null) {
+				experience.append(value.workplace + "\n");
+				experience.append(value.job + "\n");
+				experience.append(value.jobtitle + "\n");
+				experience.append(value.length + "\n\n");
 
 			}
 		}
 		
 		String[] it = cv.itSkills;
 		itSkills.setText("");
-		for (int i = 0; i < it.length; i++) {
-			if (it[i] != null) {
-				itSkills.append(it[i] + "\n");
+		for (String s : it) {
+			if (s != null) {
+				itSkills.append(s + "\n");
 			}
 		}
 		
 		Language[] lang = cv.langs;
 		languages.setText("");
-		for (int i = 0; i < lang.length; i++) {
-			if (lang[i] != null) {
-				if (lang[i].nativeLang) {
-					languages.append(lang[i].langName + ":\n");
-					languages.append("- "+r.getString("speech")+ ":" + r.getString("native") + "\n");
-					languages.append("- "+r.getString("written")+":" + r.getString("native") + "\n\n");
-				}
-				else {
-					languages.append(lang[i].langName + ":\n");
-					languages.append("- "+r.getString("speech")+ ":" + lang[i].spoken + "\n");
-					languages.append("- "+r.getString("written")+":" + lang[i].written+ "\n\n");
+		for (Language language : lang) {
+			if (language != null) {
+				if (language.nativeLang) {
+					languages.append(language.langName + ":\n");
+					languages.append("- " + r.getString("speech") + ":" + r.getString("native") + "\n");
+					languages.append("- " + r.getString("written") + ":" + r.getString("native") + "\n\n");
+				} else {
+					languages.append(language.langName + ":\n");
+					languages.append("- " + r.getString("speech") + ":" + language.spoken + "\n");
+					languages.append("- " + r.getString("written") + ":" + language.written + "\n\n");
 				}
 			}
 		}
 		
 		String[] hobby = cv.hobbies;
 		hobbies.setText("");
-		for (int i = 0; i < hobby.length; i++) {
-			if (hobby[i] != null) {
-				hobbies.append(hobby[i] + "\n");
+		for (String s : hobby) {
+			if (s != null) {
+				hobbies.append(s + "\n");
 			}
 		}
 		
 		String[] position = cv.positions;
 		positions.setText("");
-		for (int i = 0; i < position.length; i++) {
-			if (position[i] != null) {
-				positions.append(position[i] + "\n");
+		for (String s : position) {
+			if (s != null) {
+				positions.append(s + "\n");
 			}
 		}
 		
 		String[] referee = cv.referees;
 		referees.setText("");
-		for (int i = 0; i < referee.length; i++) {
-			if (referee[i] != null) {
-				referees.append(referee[i] + "\n");
+		for (String s : referee) {
+			if (s != null) {
+				referees.append(s + "\n");
 			}
 		}
 	}

@@ -14,15 +14,13 @@ import javax.swing.JTextField;
 import structs.CV;
 
 import javax.swing.JTextArea;
-import java.awt.event.ActionListener;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import java.awt.event.ActionEvent;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
 
 public class Hobbies extends Information {
-	private CV cv;
+	private final CV cv;
 	private JFrame frame;
 	private JTextField txtNimi;
 	private String[] hobbies = new String[10];
@@ -31,17 +29,15 @@ public class Hobbies extends Information {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args, CV curriculumVitae) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Hobbies window = new Hobbies(curriculumVitae);
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public static void main(CV curriculumVitae) {
+		EventQueue.invokeLater(() -> {
+            try {
+                Hobbies window = new Hobbies(curriculumVitae);
+                window.frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 	}
 
 	/**
@@ -58,7 +54,7 @@ public class Hobbies extends Information {
 	
     private void initialize() {
     	Locale l = new Locale(cv.LOCALE);
-    	ResourceBundle r = ResourceBundle.getBundle("Bundle_"+cv.LOCALE, l);
+    	ResourceBundle r = ResourceBundle.getBundle("resources/Bundle_"+cv.LOCALE, l);
     	
     	hobbies = cv.hobbies;
     	
@@ -159,12 +155,10 @@ public class Hobbies extends Information {
         JButton btnNext = new JButton(r.getString("next"));
         btnNext.setForeground(new Color(255, 255, 255));
         btnNext.setBackground(new Color(128, 128, 128));
-        btnNext.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		cv.hobbies = hobbies;
-        		Positions.main(null, cv);
-        		frame.dispose();
-        	}
+        btnNext.addActionListener(e -> {
+            cv.hobbies = hobbies;
+            Positions.main(cv);
+            frame.dispose();
         });
         btnNext.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnNext.setBounds(545, 504, 112, 23);
@@ -173,12 +167,10 @@ public class Hobbies extends Information {
         JButton btnBack = new JButton(r.getString("back"));
         btnBack.setForeground(new Color(255, 255, 255));
         btnBack.setBackground(new Color(128, 128, 128));
-        btnBack.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		cv.hobbies = hobbies;
-        		Languages.main(null, cv);
-        		frame.dispose();
-        	}
+        btnBack.addActionListener(e -> {
+            cv.hobbies = hobbies;
+            Languages.main(null, cv);
+            frame.dispose();
         });
         btnBack.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnBack.setBounds(127, 504, 112, 23);
@@ -205,16 +197,14 @@ public class Hobbies extends Information {
         JButton btnNewButton = new JButton(r.getString("add"));
         btnNewButton.setForeground(new Color(255, 255, 255));
         btnNewButton.setBackground(new Color(128, 128, 128));
-        btnNewButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		for (int i = 0; i < hobbies.length; i++) {
-        			if (hobbies[i] == null) {
-        				hobbies[i] = txtNimi.getText();
-        				break;
-        			}
-        		}
-        		hobbyText.append(txtNimi.getText() + "\n");    		
-        	}
+        btnNewButton.addActionListener(e -> {
+            for (int i = 0; i < hobbies.length; i++) {
+                if (hobbies[i] == null) {
+                    hobbies[i] = txtNimi.getText();
+                    break;
+                }
+            }
+            hobbyText.append(txtNimi.getText() + "\n");
         });
         btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
         btnNewButton.setBounds(10, 194, 164, 23);
@@ -225,20 +215,18 @@ public class Hobbies extends Information {
         btnRemove.setBackground(new Color(128, 128, 128));
         btnRemove.setFont(new Font("Tahoma", Font.BOLD, 11));
         btnRemove.setBounds(184, 194, 157, 23);
-        btnRemove.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		for(int i = 0; i < hobbies.length; i++) {
-        			if (hobbies[i] == null) {
-        				try {
-							hobbies[i - 1] = null;
-						} catch (Exception e1) {
-							System.out.println("vitun retu xD");
-						}
-        			}
-        		}
-				cv.hobbies = hobbies;
-				getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
-        	}
+        btnRemove.addActionListener(e -> {
+            for(int i = 0; i < hobbies.length; i++) {
+                if (hobbies[i] == null) {
+                    try {
+                        hobbies[i - 1] = null;
+                    } catch (Exception e1) {
+                        System.out.println("vitun retu xD");
+                    }
+                }
+            }
+            cv.hobbies = hobbies;
+            getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         });
         panel_1.add(btnRemove);
         

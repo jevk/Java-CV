@@ -1,20 +1,11 @@
 package program;
 
-import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.Font;
+import structs.CV;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import java.util.Arrays;
+import javax.swing.*;
+import java.awt.*;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import javax.swing.SwingConstants;
-
-import structs.CV;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
 
 import static java.util.ResourceBundle.getBundle;
 
@@ -51,7 +42,7 @@ public class Main {
 	 */
 	private void initialize() {
     	l = new Locale(language);
-    	r = getBundle("Bundle_"+language, l);
+    	r = getBundle("resources/Bundle_"+language, l);
     	
         frame = new JFrame();
         frame.getContentPane().setBackground(new Color(39, 39, 39));
@@ -81,7 +72,7 @@ public class Main {
         btnStart.addActionListener(e -> {
 			CV cv = new CV();
 			cv.LOCALE = language;
-			PersonalDetails.main(null, cv);
+			PersonalDetails.main(cv);
 			frame.dispose();
 		});
         btnStart.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -100,7 +91,7 @@ public class Main {
 				case 4: language = "es"; break;
 			}
 			l = new Locale(language);
-			r = getBundle("Bundle_"+language, l);
+			r = getBundle("resources/Bundle_"+language, l);
 
 			lblNewLabel.setText(r.getString("cvGen"));
 			btnQuit.setText(r.getString("leave"));

@@ -1,66 +1,47 @@
 package program;
 
-import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.Image;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTextField;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
 import structs.CV;
 import structs.Details;
 
-import javax.swing.JTextArea;
-import java.awt.event.ActionListener;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
-import java.awt.event.ActionEvent;
 
 public class PersonalDetails extends Information {
-	private CV cv;
+	private final CV cv;
 	private JFrame frame;
 	private JTextField txtNimi;
 	private JTextField txtKotiosoite;
 	private JTextField txtSahkoposti;
 	private JTextField txtPuhnumero;
-	private Details details = new Details();
+	private final Details details = new Details();
 	private JTextField txtKaupunki;
 	private JTextField txtPostinumero;
 	private JTextField textOther;
 	
 	private static String lang;
-	private Locale l;
-	private ResourceBundle r;
+    private ResourceBundle r;
 	
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args, CV curriculumVitae) {
+	public static void main(CV curriculumVitae) {
 		lang = curriculumVitae.LOCALE;
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PersonalDetails window = new PersonalDetails(curriculumVitae);
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		EventQueue.invokeLater(() -> {
+            try {
+                PersonalDetails window = new PersonalDetails(curriculumVitae);
+                window.frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 	}
 
 	/**
@@ -76,8 +57,8 @@ public class PersonalDetails extends Information {
 	 */
 	
     private void initialize() {
-    	l = new Locale(lang);
-    	r = ResourceBundle.getBundle("Bundle_"+lang, l);
+        Locale l = new Locale(lang);
+    	r = ResourceBundle.getBundle("resources/Bundle_"+lang, l);
     	
         frame = new JFrame();
         frame.getContentPane().setBackground(new Color(39, 39, 39));
@@ -101,23 +82,19 @@ public class PersonalDetails extends Information {
         JButton btnNext = new JButton(r.getString("next"));
         btnNext.setForeground(new Color(255, 255, 255));
         btnNext.setBackground(new Color(128, 128, 128));
-        btnNext.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		Strengths.main(null, cv);
-        		frame.dispose();
-        	}
+        btnNext.addActionListener(e -> {
+            Strengths.main(cv);
+            frame.dispose();
         });
         btnNext.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnNext.setBounds(545, 504, 112, 23);
         frame.getContentPane().add(btnNext);
         
         JButton btnFinish = new JButton(r.getString("back"));
-        btnFinish.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		cv.details = details;
-        		Referees.main(null, cv);
-        		frame.dispose();
-        	}
+        btnFinish.addActionListener(e -> {
+            cv.details = details;
+            Referees.main(cv);
+            frame.dispose();
         });
         btnFinish.setForeground(new Color(255, 255, 255));
         btnFinish.setBackground(new Color(128, 128, 128));
@@ -269,22 +246,20 @@ public class PersonalDetails extends Information {
         JButton btnNewButton = new JButton(r.getString("setInfo"));
         btnNewButton.setForeground(new Color(255, 255, 255));
         btnNewButton.setBackground(new Color(128, 128, 128));
-        btnNewButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		details.address = txtKotiosoite.getText();
-        		details.email = txtSahkoposti.getText();
-        		details.name = txtNimi.getText();
-        		details.phone = txtPuhnumero.getText();
-        		details.town = txtKaupunki.getText();
-        		details.zip = txtPostinumero.getText();
-        		
-        		if (textOther.getText().length() > 0) {
-        			details.other = textOther.getText();
-        		}
-        		
-        		cv.details = details;
-        		getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
-        	}
+        btnNewButton.addActionListener(e -> {
+            details.address = txtKotiosoite.getText();
+            details.email = txtSahkoposti.getText();
+            details.name = txtNimi.getText();
+            details.phone = txtPuhnumero.getText();
+            details.town = txtKaupunki.getText();
+            details.zip = txtPostinumero.getText();
+
+            if (textOther.getText().length() > 0) {
+                details.other = textOther.getText();
+            }
+
+            cv.details = details;
+            getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         });
         btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnNewButton.setBounds(96, 264, 171, 20);
@@ -327,29 +302,28 @@ public class PersonalDetails extends Information {
         panel_1.add(img);
         
         JButton btnNewButton_1 = new JButton(r.getString("browse"));
-        btnNewButton_1.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		JFileChooser jImgPick = new JFileChooser();
-        		String path;
-        		 
-        		jImgPick.setAcceptAllFileFilterUsed(false);
-        		FileNameExtensionFilter filter = new FileNameExtensionFilter(r.getString("pngFiles"), "png");
-        		jImgPick.addChoosableFileFilter(filter);
-        		jImgPick.showOpenDialog(null);
-        		
-        		path = jImgPick.getSelectedFile().getAbsolutePath();
-        		cv.image = path;
-        		
-        		BufferedImage bi = null;
-        		try {
-        			bi = ImageIO.read(new File(path));
-        		} catch(IOException err) {
-        			err.printStackTrace();
-        		}
-        		Image dimg = bi.getScaledInstance(img.getWidth(), img.getHeight(), Image.SCALE_SMOOTH);
-        		ImageIcon ii = new ImageIcon(dimg);
-        		img.setIcon(ii);
-        	}
+        btnNewButton_1.addActionListener(e -> {
+            JFileChooser jImgPick = new JFileChooser();
+            String path;
+
+            jImgPick.setAcceptAllFileFilterUsed(false);
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(r.getString("pngFiles"), "png");
+            jImgPick.addChoosableFileFilter(filter);
+            jImgPick.showOpenDialog(null);
+
+            path = jImgPick.getSelectedFile().getAbsolutePath();
+            cv.image = path;
+
+            BufferedImage bi = null;
+            try {
+                bi = ImageIO.read(new File(path));
+            } catch(IOException err) {
+                err.printStackTrace();
+            }
+            assert bi != null;
+            Image dimg = bi.getScaledInstance(img.getWidth(), img.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon ii = new ImageIcon(dimg);
+            img.setIcon(ii);
         });
         btnNewButton_1.setBounds(22, 295, 105, 23);
         panel_1.add(btnNewButton_1);

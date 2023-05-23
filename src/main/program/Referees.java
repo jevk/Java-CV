@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import javax.swing.*;
@@ -14,24 +15,22 @@ import structs.CV;
 
 public class Referees extends Information {
 
-	private String[] referees = new String[10];
+	private final String[] referees = new String[10];
 	private JFrame frame;
-	private CV cv;
+	private final CV cv;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args, CV curriculumVitae) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Referees window = new Referees(curriculumVitae);
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public static void main(CV curriculumVitae) {
+		EventQueue.invokeLater(() -> {
+            try {
+                Referees window = new Referees(curriculumVitae);
+                window.frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 	}
 
 	/**
@@ -47,7 +46,7 @@ public class Referees extends Information {
 	 */
 	private void initialize() {
     	Locale l = new Locale(cv.LOCALE);
-    	ResourceBundle r = ResourceBundle.getBundle("Bundle_"+cv.LOCALE, l);
+    	ResourceBundle r = ResourceBundle.getBundle("resources/Bundle_"+cv.LOCALE, l);
     	
         frame = new JFrame();
         frame.getContentPane().setBackground(new Color(39, 39, 39));
@@ -145,12 +144,10 @@ public class Referees extends Information {
         JButton btnBack = new JButton(r.getString("back"));
         btnBack.setForeground(new Color(255, 255, 255));
         btnBack.setBackground(new Color(128, 128, 128));
-        btnBack.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		cv.referees = referees;
-        		Positions.main(null, cv);
-        		frame.dispose();
-        	}
+        btnBack.addActionListener(e -> {
+            cv.referees = referees;
+            Positions.main(cv);
+            frame.dispose();
         });
         btnBack.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnBack.setBounds(127, 504, 112, 23);
@@ -171,19 +168,17 @@ public class Referees extends Information {
         btnAdd.setForeground(new Color(255, 255, 255));
         btnAdd.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnAdd.setBackground(new Color(128, 128, 128));
-        btnAdd.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		String strength = refereeField.getText();
-        		strengthsText.append(strength + "\n");
-        		for (int i = 0; i < referees.length; i++) {
-        			if (referees[i] == "" || referees[i] == null) {
-        				referees[i] = strength;
-        				break;
-        			}
-        		}
-        		cv.referees = referees;
-        		getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
-        	}
+        btnAdd.addActionListener(e -> {
+            String strength = refereeField.getText();
+            strengthsText.append(strength + "\n");
+            for (int i = 0; i < referees.length; i++) {
+                if (Objects.equals(referees[i], "") || referees[i] == null) {
+                    referees[i] = strength;
+                    break;
+                }
+            }
+            cv.referees = referees;
+            getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         });
         btnAdd.setBounds(10, 178, 166, 20);
         panel_1.add(btnAdd);
@@ -191,12 +186,10 @@ public class Referees extends Information {
         JButton btnNext = new JButton(r.getString("next"));
         btnNext.setForeground(new Color(255, 255, 255));
         btnNext.setBackground(new Color(128, 128, 128));
-        btnNext.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		cv.referees = referees;
-        		PersonalDetails.main(null, cv);
-        		frame.dispose();
-        	}
+        btnNext.addActionListener(e -> {
+            cv.referees = referees;
+            PersonalDetails.main(cv);
+            frame.dispose();
         });
         btnNext.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnNext.setBounds(545, 504, 112, 23);
@@ -214,38 +207,34 @@ public class Referees extends Information {
         btnRemove.setForeground(new Color(255, 255, 255));
         btnRemove.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnRemove.setBackground(new Color(128, 128, 128));
-        btnRemove.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-           		/*for (int i = 0; i < 10; i++) {
-           			if (referees[i] == null || i == 10) {
-           				referees[i] = "";
-           				break;*/
-        		for(int i = 0; i < referees.length; i++) {
-        			if (referees[i] == null) {
-        				try {
-        					referees[i - 1] = null;
-						} catch (Exception e1) {
-							System.out.println(" ");
-						}
-            		}
-            	}
-        		cv.referees = referees;
-        		getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
-        	}
+        btnRemove.addActionListener(e -> {
+               /*for (int i = 0; i < 10; i++) {
+                   if (referees[i] == null || i == 10) {
+                       referees[i] = "";
+                       break;*/
+            for(int i = 0; i < referees.length; i++) {
+                if (referees[i] == null) {
+                    try {
+                        referees[i - 1] = null;
+                    } catch (Exception e1) {
+                        System.out.println(" ");
+                    }
+                }
+            }
+            cv.referees = referees;
+            getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         });
         btnRemove.setBounds(193, 178, 151, 20);
         panel_1.add(btnRemove);
         
         JButton btnSave = new JButton(r.getString("createCV"));
-        btnSave.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-                try {
-                    cv.BuildCV(cv);
-                }
-                catch (Exception e1) {
-                    JOptionPane.showMessageDialog(null, e1 + "\n\nIn English, this means that you are dented in the brain and didn't fill out everything!");
-                }
-        	}
+        btnSave.addActionListener(e -> {
+try {
+cv.BuildCV(cv);
+}
+catch (Exception e1) {
+JOptionPane.showMessageDialog(null, e1 + "\n\nIn English, this means that you are dented in the brain and didn't fill out everything!");
+}
         });
         btnSave.setForeground(new Color(255, 255, 255));
         btnSave.setBackground(new Color(128, 128, 128));

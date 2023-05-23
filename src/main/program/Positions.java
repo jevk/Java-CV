@@ -12,35 +12,32 @@ import javax.swing.JTextField;
 
 import structs.CV;
 
-import java.awt.event.ActionListener;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.ResourceBundle;
-import java.awt.event.ActionEvent;
 import javax.swing.JTabbedPane;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.JTextArea;
 
 public class Positions extends Information {
-	private CV cv;
-	private String[] positions = new String[10];
+	private final CV cv;
+	private final String[] positions = new String[10];
 	private JFrame frame;
 	private JTextField positionField;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args, CV curriculumVitae) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Positions window = new Positions(curriculumVitae);
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public static void main(CV curriculumVitae) {
+		EventQueue.invokeLater(() -> {
+            try {
+                Positions window = new Positions(curriculumVitae);
+                window.frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 	}
 
 	/**
@@ -56,7 +53,7 @@ public class Positions extends Information {
 	 */
 	private void initialize() {
     	Locale l = new Locale(cv.LOCALE);
-    	ResourceBundle r = ResourceBundle.getBundle("Bundle_"+cv.LOCALE, l);
+    	ResourceBundle r = ResourceBundle.getBundle("resources/Bundle_"+cv.LOCALE, l);
     	
         frame = new JFrame();
         frame.getContentPane().setBackground(new Color(39, 39, 39));
@@ -155,12 +152,10 @@ public class Positions extends Information {
         JButton btnBack = new JButton(r.getString("back"));
         btnBack.setForeground(new Color(255, 255, 255));
         btnBack.setBackground(new Color(128, 128, 128));
-        btnBack.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		cv.positions = positions;
-        		Hobbies.main(null, cv);
-        		frame.dispose();
-        	}
+        btnBack.addActionListener(e -> {
+            cv.positions = positions;
+            Hobbies.main(cv);
+            frame.dispose();
         });
         btnBack.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnBack.setBounds(127, 504, 112, 23);
@@ -181,18 +176,16 @@ public class Positions extends Information {
         btnAdd.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnAdd.setForeground(new Color(255, 255, 255));
         btnAdd.setBackground(new Color(128, 128, 128));
-        btnAdd.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		String position = positionField.getText();
-        		for (int i = 0; i < positions.length; i++) {
-        			if (positions[i] == "" || positions[i] == null) {
-        				positions[i] = position;
-        				break;
-        			}
-        		}
-        		cv.positions = positions;
-        		getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
-        	}
+        btnAdd.addActionListener(e -> {
+            String position = positionField.getText();
+            for (int i = 0; i < positions.length; i++) {
+                if (Objects.equals(positions[i], "") || positions[i] == null) {
+                    positions[i] = position;
+                    break;
+                }
+            }
+            cv.positions = positions;
+            getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         });
         btnAdd.setBounds(10, 202, 171, 18);
         panel_1.add(btnAdd);
@@ -200,12 +193,10 @@ public class Positions extends Information {
         JButton btnNext = new JButton("Next");
         btnNext.setForeground(new Color(255, 255, 255));
         btnNext.setBackground(new Color(128, 128, 128));
-        btnNext.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		cv.positions = positions;
-        		Referees.main(null, cv);
-        		frame.dispose();
-        	}
+        btnNext.addActionListener(e -> {
+            cv.positions = positions;
+            Referees.main(cv);
+            frame.dispose();
         });
         btnNext.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnNext.setBounds(545, 504, 112, 23);
@@ -223,16 +214,14 @@ public class Positions extends Information {
         btnRemove.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnRemove.setForeground(new Color(255, 255, 255));
         btnRemove.setBackground(new Color(128, 128, 128));
-        btnRemove.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-           		for (int i = 0; i < 10; i++) {
-           			if (positions[i] == null || i == 10) {
-           				positions[i - 1] = null;
-            		}
-            	}
-        		cv.positions = positions;
-        		getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
-        	}
+        btnRemove.addActionListener(e -> {
+               for (int i = 0; i < 10; i++) {
+                   if (positions[i] == null || i == 10) {
+                       positions[i - 1] = null;
+                }
+            }
+            cv.positions = positions;
+            getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         });
         btnRemove.setBounds(191, 202, 153, 17);
         panel_1.add(btnRemove);

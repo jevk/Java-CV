@@ -1,49 +1,31 @@
 package program;
 
-import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.Font;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
 import structs.CV;
 
-import java.awt.event.ActionListener;
+import javax.swing.*;
+import java.awt.*;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.ResourceBundle;
-import java.awt.event.ActionEvent;
-import javax.swing.JTabbedPane;
-import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
-import javax.swing.JTextArea;
 
 public class Strengths extends Information {
-	private CV cv;
-	private String[] strengths = new String[10];
+	private final CV cv;
+	private final String[] strengths = new String[10];
 	private JFrame frame;
 	private JTextField strengthField;
-	
-	private Locale l;
-	private ResourceBundle r;
 
-	/**
+    /**
 	 * Launch the application.
 	 */
-	public static void main(String[] args, CV curriculumVitae) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Strengths window = new Strengths(curriculumVitae);
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public static void main(CV curriculumVitae) {
+		EventQueue.invokeLater(() -> {
+            try {
+                Strengths window = new Strengths(curriculumVitae);
+                window.frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 	}
 
 	/**
@@ -58,8 +40,8 @@ public class Strengths extends Information {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-    	l = new Locale(cv.LOCALE);
-    	r = ResourceBundle.getBundle("Bundle_"+cv.LOCALE, l);
+        Locale l = new Locale(cv.LOCALE);
+        ResourceBundle r = ResourceBundle.getBundle("resources/Bundle_" + cv.LOCALE, l);
     	
         frame = new JFrame();
         frame.getContentPane().setBackground(new Color(39, 39, 39));
@@ -158,12 +140,10 @@ public class Strengths extends Information {
         JButton btnBack = new JButton(r.getString("back"));
         btnBack.setForeground(new Color(255, 255, 255));
         btnBack.setBackground(new Color(128, 128, 128));
-        btnBack.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		cv.strengths = strengths;
-        		PersonalDetails.main(null, cv);
-        		frame.dispose();
-        	}
+        btnBack.addActionListener(e -> {
+            cv.strengths = strengths;
+            PersonalDetails.main(cv);
+            frame.dispose();
         });
         btnBack.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnBack.setBounds(127, 504, 112, 23);
@@ -184,18 +164,16 @@ public class Strengths extends Information {
         btnAdd.setForeground(new Color(255, 255, 255));
         btnAdd.setBackground(new Color(128, 128, 128));
         btnAdd.setFont(new Font("Tahoma", Font.BOLD, 13));
-        btnAdd.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		String strength = strengthField.getText();
-        		for (int i = 0; i < strengths.length; i++) {
-        			if (strengths[i] == "" || strengths[i] == null) {
-        				strengths[i] = strength;
-        				break;
-        			}
-        		}
-        		cv.strengths = strengths;
-        		getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
-        	}
+        btnAdd.addActionListener(e -> {
+            String strength = strengthField.getText();
+            for (int i = 0; i < strengths.length; i++) {
+                if (Objects.equals(strengths[i], "") || strengths[i] == null) {
+                    strengths[i] = strength;
+                    break;
+                }
+            }
+            cv.strengths = strengths;
+            getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         });
         btnAdd.setBounds(10, 205, 156, 20);
         panel_1.add(btnAdd);
@@ -203,12 +181,10 @@ public class Strengths extends Information {
         JButton btnNext = new JButton(r.getString("next"));
         btnNext.setForeground(new Color(255, 255, 255));
         btnNext.setBackground(new Color(128, 128, 128));
-        btnNext.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		cv.strengths = strengths;
-        		Degrees.main(null, cv);
-        		frame.dispose();
-        	}
+        btnNext.addActionListener(e -> {
+            cv.strengths = strengths;
+            Degrees.main(null, cv);
+            frame.dispose();
         });
         btnNext.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnNext.setBounds(545, 504, 112, 23);
@@ -226,16 +202,14 @@ public class Strengths extends Information {
         btnRemove.setForeground(new Color(255, 255, 255));
         btnRemove.setBackground(new Color(128, 128, 128));
         btnRemove.setFont(new Font("Tahoma", Font.BOLD, 13));
-        btnRemove.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-           		for (int i = 0; i < 10; i++) {
-           			if (strengths[i] == null || i == 10) {
-           				strengths[i - 1] = null;
-            		}
-            	}
-        		cv.strengths = strengths;
-        		getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
-        	}
+        btnRemove.addActionListener(e -> {
+               for (int i = 0; i < 10; i++) {
+                   if (strengths[i] == null) {
+                       strengths[i - 1] = null;
+                }
+            }
+            cv.strengths = strengths;
+            getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         });
         btnRemove.setBounds(176, 205, 174, 20);
         panel_1.add(btnRemove);
