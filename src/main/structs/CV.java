@@ -1,14 +1,14 @@
 package structs;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
-import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import rst.pdfbox.layout.elements.ControlElement;
 import rst.pdfbox.layout.elements.Document;
 import rst.pdfbox.layout.elements.ImageElement;
@@ -73,7 +73,7 @@ public class CV {
 	
 	public void BuildCV(CV cv) {
     	Locale l = new Locale(cv.LOCALE);
-    	ResourceBundle r = ResourceBundle.getBundle("Bundle_"+cv.LOCALE, l);
+    	ResourceBundle r = ResourceBundle.getBundle("resources/Bundle_"+cv.LOCALE, l);
 		
 		Document pdf = new Document(40, 50, 40, 60);
 
@@ -107,11 +107,13 @@ public class CV {
 			p.setAlignment(Alignment.Right);
 			pdf.add(p);
 
+			pdf.add(new ColumnLayout(1, 0));
 			p = new Paragraph();
 			p.addText(" ", 12, PDType1Font.HELVETICA);
 			pdf.add(p);
+			lineBreak(pdf);
 
-			// String bassed sections
+			// String based sections
 			addSectionString(cv.strengths, r.getString("strengths"), pdf);
 			addSectionString(cv.positions, r.getString("positions"), pdf);
 			addSectionString(cv.courses, r.getString("courses"), pdf);
@@ -119,7 +121,6 @@ public class CV {
 			if (pdf.getPDDocument().getNumberOfPages() == 1) pdf.add(ControlElement.NEWPAGE);
 			addSectionString(cv.hobbies, r.getString("hobbies"), pdf);
 			addSectionString(cv.referees, r.getString("references"), pdf);
-			pdf.add(ControlElement.NEWPAGE);
 
 			// Struct based sections
 			// Degrees
@@ -170,7 +171,7 @@ public class CV {
 			}
 			pdf.add(p);
 
-			final OutputStream os = new FileOutputStream("CV_" + cv.details.name + ".pdf");
+			final OutputStream os = Files.newOutputStream(Paths.get("CV_" + cv.details.name + ".pdf"));
 
 			try {
 				pdf.save(os);

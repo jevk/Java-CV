@@ -229,12 +229,7 @@ public class Referees extends Information {
         
         JButton btnSave = new JButton(r.getString("createCV"));
         btnSave.addActionListener(e -> {
-try {
-cv.BuildCV(cv);
-}
-catch (Exception e1) {
-JOptionPane.showMessageDialog(null, e1 + "\n\nIn English, this means that you are dented in the brain and didn't fill out everything!");
-}
+            cv.BuildCV(cv);
         });
         btnSave.setForeground(new Color(255, 255, 255));
         btnSave.setBackground(new Color(128, 128, 128));
