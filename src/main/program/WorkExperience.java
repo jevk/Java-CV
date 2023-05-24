@@ -194,11 +194,11 @@ public class WorkExperience extends Information {
         panel_1.setLayout(null);
         
         JDateChooser start_date = new JDateChooser();
-        start_date.setBounds(134, 165, 200, 20);
+        start_date.setBounds(134, 134, 200, 20);
         panel_1.add(start_date);
         
         JDateChooser end_date = new JDateChooser();
-        end_date.setBounds(134, 196, 200, 20);
+        end_date.setBounds(134, 165, 200, 20);
         panel_1.add(end_date);
         
         JButton btnAdd = new JButton(r.getString("add"));
@@ -310,11 +310,6 @@ public class WorkExperience extends Information {
         textJob.setColumns(10);
         textJob.setBounds(134, 72, 200, 20);
         panel_1.add(textJob);
-
-        JTextField textLength = new JTextField();
-        textLength.setColumns(10);
-        textLength.setBounds(134, 134, 200, 20);
-        panel_1.add(textLength);
         
         JLabel lblNewLabel_2 = new JLabel(r.getString("title")+":");
         lblNewLabel_2.setForeground(Color.WHITE);
