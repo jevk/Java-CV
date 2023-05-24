@@ -156,9 +156,15 @@ public class CV {
 			p = new Paragraph();
 			for (Language lang : cv.langs) {
 				if (lang == null) break;
-				String info = lang.langName +
-						":\n  - " + r.getString("speech")+ ": " + lang.spoken +
-						"\n  - " + r.getString("written")+ ": " + lang.written;
+				String info;
+				if (!lang.nativeLang) {
+					info = lang.langName +
+					":\n  - " + r.getString("speech") + ": " + lang.spoken + "\n  - " + r.getString("written") + ": " + lang.written;
+				}
+				else {
+					info = lang.langName +
+					":\n  - " + r.getString("native");
+				}
 				p.addText(info + "\n\n", 12, PDType1Font.HELVETICA);
 			}
 			pdf.add(p);
