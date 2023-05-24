@@ -1,4 +1,4 @@
-/bin/
+/src/main/resources/bin/
 *.txt
 /target/
 *.pdf
