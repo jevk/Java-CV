@@ -84,6 +84,7 @@ public class CV {
 				ie.setWidth(120);
 				ie.setHeight(120);
 				pdf.add(ie);
+				lineBreak(pdf);
 			}
 
 			pdf.add(ColumnLayout.NEWCOLUMN);
@@ -102,28 +103,16 @@ public class CV {
 
 			pdf.add(ColumnLayout.NEWCOLUMN);
 
+			lineBreak(pdf);
 			p = new Paragraph();
-			p.addText("CV", 20, PDType1Font.HELVETICA_BOLD);
+			p.addText("CV", 12, PDType1Font.HELVETICA);
 			p.setAlignment(Alignment.Right);
 			pdf.add(p);
-
-			pdf.add(new ColumnLayout(1, 0));
-			p = new Paragraph();
-			p.addText(" ", 12, PDType1Font.HELVETICA);
-			pdf.add(p);
 			lineBreak(pdf);
-
-			// String based sections
 			addSectionString(cv.strengths, r.getString("strengths"), pdf);
-			addSectionString(cv.positions, r.getString("positions"), pdf);
-			addSectionString(cv.courses, r.getString("courses"), pdf);
-			addSectionString(cv.itSkills, r.getString("skills"), pdf);
-			if (pdf.getPDDocument().getNumberOfPages() == 1) pdf.add(ControlElement.NEWPAGE);
-			addSectionString(cv.hobbies, r.getString("hobbies"), pdf);
-			addSectionString(cv.referees, r.getString("references"), pdf);
-
-			// Struct based sections
 			// Degrees
+			lineBreak(pdf);
+			p = new Paragraph();
 			p.addText(r.getString("degrees"), 12, PDType1Font.HELVETICA_BOLD);
 			pdf.add(new ColumnLayout(2, 0));
 			pdf.add(p);
@@ -136,7 +125,8 @@ public class CV {
 				p.addText(info + "\n\n", 12, PDType1Font.HELVETICA);
 			}
 			pdf.add(p);
-
+			lineBreak(pdf);
+			addSectionString(cv.courses, r.getString("courses"), pdf);
 			// Experience
 			lineBreak(pdf);
 			p = new Paragraph();
@@ -152,7 +142,9 @@ public class CV {
 				p.addText(info + "\n\n", 12, PDType1Font.HELVETICA);
 			}
 			pdf.add(p);
-
+			lineBreak(pdf);
+			addSectionString(cv.itSkills, r.getString("skills"), pdf);
+			if (pdf.getPDDocument().getNumberOfPages() == 1) pdf.add(ControlElement.NEWPAGE);
 			// Language
 			lineBreak(pdf);
 			p = new Paragraph();
@@ -170,6 +162,12 @@ public class CV {
 				p.addText(info + "\n\n", 12, PDType1Font.HELVETICA);
 			}
 			pdf.add(p);
+			lineBreak(pdf);
+			addSectionString(cv.hobbies, r.getString("hobbies"), pdf);
+			lineBreak(pdf);
+			addSectionString(cv.positions, r.getString("positions"), pdf);
+			lineBreak(pdf);
+			addSectionString(cv.referees, r.getString("references"), pdf);
 
 			final OutputStream os = Files.newOutputStream(Paths.get("CV_" + cv.details.name + ".pdf"));
 
