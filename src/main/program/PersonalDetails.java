@@ -211,7 +211,7 @@ public class PersonalDetails extends Information {
         JLabel lblNewLabel_4 = new JLabel(r.getString("phone"));
         lblNewLabel_4.setForeground(new Color(255, 255, 255));
         lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblNewLabel_4.setBounds(10, 126, 105, 14);
+        lblNewLabel_4.setBounds(10, 126, 115, 14);
         panel_1.add(lblNewLabel_4);
         
         txtNimi = new JTextField();
@@ -274,7 +274,7 @@ public class PersonalDetails extends Information {
         JLabel lblNewLabel_5 = new JLabel(r.getString("town"));
         lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_5.setForeground(new Color(255, 255, 255));
-        lblNewLabel_5.setBounds(10, 156, 83, 17);
+        lblNewLabel_5.setBounds(10, 156, 123, 17);
         panel_1.add(lblNewLabel_5);
         
         JLabel lblNewLabel_6 = new JLabel(r.getString("zip"));

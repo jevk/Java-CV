@@ -200,11 +200,11 @@ public class WorkExperience extends Information {
         panel_1.setLayout(null);
         
         JDateChooser start_date = new JDateChooser();
-        start_date.setBounds(134, 134, 200, 20);
+        start_date.setBounds(174, 134, 160, 20);
         panel_1.add(start_date);
         
         JDateChooser end_date = new JDateChooser();
-        end_date.setBounds(134, 165, 200, 20);
+        end_date.setBounds(174, 165, 160, 20);
         panel_1.add(end_date);
         
         JButton btnAdd = new JButton(r.getString("add"));
@@ -297,14 +297,14 @@ public class WorkExperience extends Information {
         lblNewLabel_1_3.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_1_3.setForeground(Color.WHITE);
         lblNewLabel_1_3.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblNewLabel_1_3.setBounds(10, 128, 79, 28);
+        lblNewLabel_1_3.setBounds(10, 128, 140, 28);
         panel_1.add(lblNewLabel_1_3);
         
         JLabel lblNewLabel_1_4 = new JLabel(r.getString("date2")+":");
         lblNewLabel_1_4.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_1_4.setForeground(Color.WHITE);
         lblNewLabel_1_4.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblNewLabel_1_4.setBounds(10, 167, 108, 20);
+        lblNewLabel_1_4.setBounds(10, 167, 140, 20);
         panel_1.add(lblNewLabel_1_4);
         
         textWorkplace = new JTextField();
