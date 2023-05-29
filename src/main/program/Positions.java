@@ -190,7 +190,7 @@ public class Positions extends Information {
         btnAdd.setBounds(10, 202, 171, 18);
         panel_1.add(btnAdd);
         
-        JButton btnNext = new JButton("Next");
+        JButton btnNext = new JButton(r.getString("next"));
         btnNext.setForeground(new Color(255, 255, 255));
         btnNext.setBackground(new Color(128, 128, 128));
         btnNext.addActionListener(e -> {
