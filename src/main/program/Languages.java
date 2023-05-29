@@ -130,6 +130,7 @@ public class Languages extends Information {
         tabbedPane.addTab(r.getString("experience"), null, expTab, null);
         
         JTextArea expText = new JTextArea();
+        expText.setEditable(false);
         expTab.setViewportView(expText);
         
         JScrollPane itTab = new JScrollPane();
@@ -150,18 +151,21 @@ public class Languages extends Information {
         tabbedPane.addTab(r.getString("hobbies"), null, hobbyTab, null);
         
         JTextArea hobbyText = new JTextArea();
+        hobbyText.setEditable(false);
         hobbyTab.setViewportView(hobbyText);
         
         JScrollPane positionTab = new JScrollPane();
         tabbedPane.addTab(r.getString("positions"), null, positionTab, null);
         
         JTextArea positionText = new JTextArea();
+        positionText.setEditable(false);
         positionTab.setViewportView(positionText);
         
         JScrollPane refereeTab = new JScrollPane();
         tabbedPane.addTab(r.getString("references"), null, refereeTab, null);
         
         JTextArea refereeText = new JTextArea();
+        refereeText.setEditable(false);
         refereeTab.setViewportView(refereeText);
         
         //GET TAB INFO
@@ -171,8 +175,8 @@ public class Languages extends Information {
        			nativeSet = true;
        		}
        	}
-        
-        
+
+        tabbedPane.setSelectedIndex(6);
         
         JLabel lblNewLabel = new JLabel(r.getString("langSkill"));
         lblNewLabel.setForeground(new Color(255, 255, 255));

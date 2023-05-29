@@ -146,6 +146,7 @@ public class PersonalDetails extends Information {
         tabbedPane.addTab(r.getString("experience"), null, expTab, null);
         
         JTextArea expText = new JTextArea();
+        expText.setEditable(false);
         expTab.setViewportView(expText);
         
         JScrollPane itTab = new JScrollPane();
@@ -167,21 +168,26 @@ public class PersonalDetails extends Information {
         tabbedPane.addTab(r.getString("hobbies"), null, hobbyTab, null);
         
         JTextArea hobbyText = new JTextArea();
+        hobbyText.setEditable(false);
         hobbyTab.setViewportView(hobbyText);
         
         JScrollPane positionTab = new JScrollPane();
         tabbedPane.addTab(r.getString("positions"), null, positionTab, null);
         
         JTextArea positionText = new JTextArea();
+        positionText.setEditable(false);
         positionTab.setViewportView(positionText);
         
         JScrollPane refereeTab = new JScrollPane();
         tabbedPane.addTab(r.getString("references"), null, refereeTab, null);
         
         JTextArea refereeText = new JTextArea();
+        refereeText.setEditable(false);
         refereeTab.setViewportView(refereeText);
         
         getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
+
+        tabbedPane.setSelectedIndex(0);
         
         JLabel lblNewLabel_1 = new JLabel(r.getString("name"));
         lblNewLabel_1.setForeground(new Color(255, 255, 255));
