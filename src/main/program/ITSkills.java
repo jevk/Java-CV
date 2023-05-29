@@ -171,11 +171,11 @@ public class ITSkills extends Information {
         lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1.setForeground(Color.WHITE);
         lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-        lblNewLabel_1.setBounds(0, 162, 176, 28);
+        lblNewLabel_1.setBounds(75, 130, 206, 28);
         panel_1.add(lblNewLabel_1);
         
         textField = new JTextField();
-        textField.setBounds(186, 168, 161, 20);
+        textField.setBounds(23, 168, 310, 20);
         panel_1.add(textField);
         textField.setColumns(10);
         
