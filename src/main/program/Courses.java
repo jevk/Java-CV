@@ -166,7 +166,7 @@ public class Courses extends Information {
         panel_1.setLayout(null);
         
         coursesField = new JTextField();
-        coursesField.setBounds(119, 164, 225, 20);
+        coursesField.setBounds(23, 168, 310, 20);
         panel_1.add(coursesField);
         coursesField.setColumns(10);
         
@@ -183,7 +183,7 @@ public class Courses extends Information {
                 }
             }
         });
-        btnAdd.setBounds(10, 195, 160, 20);
+        btnAdd.setBounds(10, 201, 163, 20);
         panel_1.add(btnAdd);
         
         JButton btnNext = new JButton(r.getString("next"));
@@ -200,10 +200,10 @@ public class Courses extends Information {
         
         
         JLabel lblNewLabel_1 = new JLabel(r.getString("yourCourses")+":");
-        lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
+        lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1.setForeground(Color.WHITE);
-        lblNewLabel_1.setBounds(10, 162, 99, 20);
+        lblNewLabel_1.setBounds(75, 130, 206, 28);
         panel_1.add(lblNewLabel_1);
         
         /*JButton btnRemove = new JButton("Remove");
@@ -222,7 +222,7 @@ public class Courses extends Information {
         btnRemove.setForeground(new Color(255, 255, 255));
         btnRemove.setBackground(new Color(128, 128, 128));
         btnRemove.setFont(new Font("Tahoma", Font.BOLD, 11));
-        btnRemove.setBounds(184, 194, 157, 23);
+        btnRemove.setBounds(186, 201, 161, 20);
         btnRemove.addActionListener(e -> {
             for(int i = 0; i < 10; i++) {
                 if (courses[i] == null) {
@@ -236,8 +236,6 @@ public class Courses extends Information {
             cv.courses = courses;
             getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         });
-        	
-        btnRemove.setBounds(180, 195, 164, 20);
         panel_1.add(btnRemove);
         
         JLabel lblNewLabel = new JLabel(r.getString("courses"));

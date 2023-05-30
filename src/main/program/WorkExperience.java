@@ -86,10 +86,10 @@ public class WorkExperience extends Information {
         frame.setBounds(100, 100, 800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
-        
+
         JPanel panel = new JPanel();
         panel.setBackground(new Color(49, 49, 49));
-        panel.setBounds(370, 21, 402, 437);
+        panel.setBounds(377, 21, 399, 437);
         frame.getContentPane().add(panel);
         panel.setLayout(null);
         
@@ -192,10 +192,10 @@ public class WorkExperience extends Information {
         btnBack.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnBack.setBounds(127, 504, 112, 23);
         frame.getContentPane().add(btnBack);
-        
+
         JPanel panel_1 = new JPanel();
         panel_1.setBackground(new Color(49, 49, 49));
-        panel_1.setBounds(10, 71, 340, 387);
+        panel_1.setBounds(10, 71, 356, 387);
         frame.getContentPane().add(panel_1);
         panel_1.setLayout(null);
         

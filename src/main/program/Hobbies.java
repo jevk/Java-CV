@@ -189,14 +189,14 @@ public class Hobbies extends Information {
         panel_1.setLayout(null);
         
         JLabel lblNewLabel_1 = new JLabel(r.getString("urHobisColon3")+":");
-        lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
+        lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_1.setForeground(new Color(255, 255, 255));
         lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-        lblNewLabel_1.setBounds(10, 154, 110, 29);
+        lblNewLabel_1.setBounds(75, 130, 206, 28);
         panel_1.add(lblNewLabel_1);
         
         txtNimi = new JTextField();
-        txtNimi.setBounds(124, 159, 217, 23);
+        txtNimi.setBounds(23, 168, 310, 20);
         panel_1.add(txtNimi);
         txtNimi.setColumns(10);
         
@@ -213,14 +213,14 @@ public class Hobbies extends Information {
             hobbyText.append(txtNimi.getText() + "\n");
         });
         btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
-        btnNewButton.setBounds(10, 194, 164, 23);
+        btnNewButton.setBounds(10, 201, 163, 20);
         panel_1.add(btnNewButton);
         
         JButton btnRemove = new JButton(r.getString("remove"));
         btnRemove.setForeground(new Color(255, 255, 255));
         btnRemove.setBackground(new Color(128, 128, 128));
         btnRemove.setFont(new Font("Tahoma", Font.BOLD, 11));
-        btnRemove.setBounds(184, 194, 157, 23);
+        btnRemove.setBounds(186, 201, 161, 20);
         btnRemove.addActionListener(e -> {
             for(int i = 0; i < hobbies.length; i++) {
                 if (hobbies[i] == null) {

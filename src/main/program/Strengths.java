@@ -52,14 +52,14 @@ public class Strengths extends Information {
         
         JPanel panel = new JPanel();
         panel.setBackground(new Color(49, 49, 49));
-        panel.setBounds(380, 29, 396, 437);
+        panel.setBounds(374, 21, 402, 437);
         frame.getContentPane().add(panel);
         panel.setLayout(null);
         
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
         tabbedPane.setForeground(new Color(255, 255, 255));
         tabbedPane.setBackground(new Color(128, 128, 128));
-        tabbedPane.setBounds(10, 11, 378, 415);
+        tabbedPane.setBounds(10, 11, 382, 415);
         panel.add(tabbedPane);
         
         JScrollPane detailsTab = new JScrollPane();
@@ -157,12 +157,12 @@ public class Strengths extends Information {
         
         JPanel panel_1 = new JPanel();
         panel_1.setBackground(new Color(49, 49, 49));
-        panel_1.setBounds(10, 79, 360, 387);
+        panel_1.setBounds(10, 71, 354, 387);
         frame.getContentPane().add(panel_1);
         panel_1.setLayout(null);
         
         strengthField = new JTextField();
-        strengthField.setBounds(176, 170, 174, 20);
+        strengthField.setBounds(23, 168, 310, 20);
         panel_1.add(strengthField);
         strengthField.setColumns(10);
         
@@ -181,7 +181,7 @@ public class Strengths extends Information {
             cv.strengths = strengths;
             getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         });
-        btnAdd.setBounds(10, 205, 156, 20);
+        btnAdd.setBounds(10, 201, 163, 20);
         panel_1.add(btnAdd);
         
         JButton btnNext = new JButton(r.getString("next"));
@@ -198,10 +198,10 @@ public class Strengths extends Information {
         
         
         JLabel lblNewLabel_1 = new JLabel(r.getString("urStrengths")+":");
-        lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
+        lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1.setForeground(Color.WHITE);
-        lblNewLabel_1.setBounds(10, 162, 156, 32);
+        lblNewLabel_1.setBounds(75, 130, 206, 28);
         panel_1.add(lblNewLabel_1);
         
         JButton btnRemove = new JButton(r.getString("remove"));
@@ -217,7 +217,7 @@ public class Strengths extends Information {
             cv.strengths = strengths;
             getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         });
-        btnRemove.setBounds(176, 205, 174, 20);
+        btnRemove.setBounds(186, 201, 161, 20);
         panel_1.add(btnRemove);
 	}
 }

@@ -174,7 +174,7 @@ public class Positions extends Information {
         panel_1.setLayout(null);
         
         positionField = new JTextField();
-        positionField.setBounds(119, 173, 225, 18);
+        positionField.setBounds(23, 168, 310, 20);
         panel_1.add(positionField);
         positionField.setColumns(10);
         
@@ -193,7 +193,7 @@ public class Positions extends Information {
             cv.positions = positions;
             getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         });
-        btnAdd.setBounds(10, 202, 171, 18);
+        btnAdd.setBounds(10, 201, 163, 20);
         panel_1.add(btnAdd);
         
         JButton btnNext = new JButton(r.getString("next"));
@@ -210,10 +210,10 @@ public class Positions extends Information {
         
         
         JLabel lblNewLabel_1 = new JLabel(r.getString("urPos")+":");
-        lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
+        lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1.setForeground(Color.WHITE);
-        lblNewLabel_1.setBounds(10, 173, 121, 17);
+        lblNewLabel_1.setBounds(75, 130, 206, 28);
         panel_1.add(lblNewLabel_1);
         
         JButton btnRemove = new JButton(r.getString("remove"));
@@ -229,7 +229,7 @@ public class Positions extends Information {
             cv.positions = positions;
             getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         });
-        btnRemove.setBounds(191, 202, 153, 17);
+        btnRemove.setBounds(186, 201, 161, 20);
         panel_1.add(btnRemove);
 	}
 }

@@ -167,7 +167,7 @@ public class Referees extends Information {
         panel_1.setLayout(null);
         
         JTextField refereeField = new JTextField();
-        refereeField.setBounds(154, 140, 190, 20);
+        refereeField.setBounds(23, 168, 310, 20);
         panel_1.add(refereeField);
         refereeField.setColumns(10);
         
@@ -187,7 +187,7 @@ public class Referees extends Information {
             cv.referees = referees;
             getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         });
-        btnAdd.setBounds(10, 178, 166, 20);
+        btnAdd.setBounds(10, 201, 163, 20);
         panel_1.add(btnAdd);
         
         JButton btnNext = new JButton(r.getString("next"));
@@ -205,9 +205,9 @@ public class Referees extends Information {
         
         JLabel lblNewLabel_1 = new JLabel(r.getString("urRefs")+":");
         lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-        lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 18));
+        lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1.setForeground(Color.WHITE);
-        lblNewLabel_1.setBounds(0, 127, 145, 40);
+        lblNewLabel_1.setBounds(75, 130, 206, 28);
         panel_1.add(lblNewLabel_1);
         
         JButton btnRemove = new JButton(r.getString("remove"));
@@ -231,7 +231,7 @@ public class Referees extends Information {
             cv.referees = referees;
             getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         });
-        btnRemove.setBounds(193, 178, 151, 20);
+        btnRemove.setBounds(186, 201, 161, 20);
         panel_1.add(btnRemove);
         
         JButton btnSave = new JButton(r.getString("createCV"));
