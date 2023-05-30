@@ -29,7 +29,7 @@ import javax.swing.JCheckBox;
 public class Languages extends Information {
 	private CV cv;
 	private JFrame frame;
-	private Language[] langs = new Language[10];
+	private Language[] langs;
 	private JTextField txtLang;
 	private boolean nativeSet = false;
 
@@ -67,6 +67,7 @@ public class Languages extends Information {
 	 */
 	public Languages(CV curriculumVitae) {
 		cv = curriculumVitae;
+        langs = cv.langs;
 		initialize();
 	}
 

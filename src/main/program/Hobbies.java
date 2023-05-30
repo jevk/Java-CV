@@ -23,7 +23,7 @@ public class Hobbies extends Information {
 	private final CV cv;
 	private JFrame frame;
 	private JTextField txtNimi;
-	private String[] hobbies = new String[10];
+	private String[] hobbies;
 	
 
 	/**
@@ -45,6 +45,7 @@ public class Hobbies extends Information {
 	 */
 	public Hobbies(CV curriculumVitae) {
 		cv = curriculumVitae;
+        hobbies = cv.hobbies;
 		initialize();
 	}
 

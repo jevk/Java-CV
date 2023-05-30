@@ -9,7 +9,7 @@ import java.util.ResourceBundle;
 
 public class ITSkills extends Information {
 	private final CV cv;
-	private final String[] itSkills = new String[10];
+	private String[] itSkills;
 	private JFrame frame;
 	private JTextField textField;
 
@@ -32,6 +32,7 @@ public class ITSkills extends Information {
 	 */
 	public ITSkills(CV curriculumVitae) {
 		cv = curriculumVitae;
+        itSkills = cv.itSkills;
 		initialize();
 	}
 

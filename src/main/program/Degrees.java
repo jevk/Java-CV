@@ -25,7 +25,7 @@ import javax.swing.JSpinner;
 
 public class Degrees extends Information {
 	private CV cv;
-	private Degree[] degrees = new Degree[10];
+	private Degree[] degrees;
 	private JFrame frame;
 	private JTextField txtSchool;
 	private JTextField txtEducation;
@@ -52,6 +52,7 @@ public class Degrees extends Information {
 	 */
 	public Degrees(CV curriculumVitae) {
 		cv = curriculumVitae;
+        degrees = cv.degrees;
 		initialize();
 	}
 

@@ -21,7 +21,7 @@ import structs.CV;
 
 public class Courses extends Information {
 	private final CV cv;
-	private final String[] courses = new String[10];
+	private String[] courses;
 	private JFrame frame;
 	private JTextField coursesField;
 
@@ -44,6 +44,7 @@ public class Courses extends Information {
 	 */
 	public Courses(CV curriculumVitae) {
 		cv = curriculumVitae;
+        courses = cv.courses;
 		initialize();
 	}
 

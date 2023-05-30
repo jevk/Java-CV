@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 
 public class Strengths extends Information {
 	private final CV cv;
-	private final String[] strengths = new String[10];
+	private String[] strengths;
 	private JFrame frame;
 	private JTextField strengthField;
 
@@ -33,6 +33,7 @@ public class Strengths extends Information {
 	 */
 	public Strengths(CV curriculumVitae) {
 		cv = curriculumVitae;
+        strengths = cv.strengths;
 		initialize();
 	}
 

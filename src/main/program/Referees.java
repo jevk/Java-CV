@@ -15,7 +15,7 @@ import structs.CV;
 
 public class Referees extends Information {
 
-	private final String[] referees = new String[10];
+	private String[] referees;
 	private JFrame frame;
 	private final CV cv;
 
@@ -38,6 +38,7 @@ public class Referees extends Information {
 	 */
 	public Referees(CV curriculumVitae) {
 		cv = curriculumVitae;
+        referees = cv.referees;
 		initialize();
 	}
 

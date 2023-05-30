@@ -22,7 +22,7 @@ import javax.swing.JTextArea;
 
 public class Positions extends Information {
 	private final CV cv;
-	private final String[] positions = new String[10];
+	private String[] positions;
 	private JFrame frame;
 	private JTextField positionField;
 
@@ -45,6 +45,7 @@ public class Positions extends Information {
 	 */
 	public Positions(CV curriculumVitae) {
 		cv = curriculumVitae;
+        positions = cv.positions;
 		initialize();
 	}
 

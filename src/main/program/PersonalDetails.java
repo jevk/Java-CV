@@ -20,7 +20,7 @@ public class PersonalDetails extends Information {
 	private JTextField txtKotiosoite;
 	private JTextField txtSahkoposti;
 	private JTextField txtPuhnumero;
-	private final Details details = new Details();
+	private Details details;
 	private JTextField txtKaupunki;
 	private JTextField txtPostinumero;
 	private JTextField textOther;
@@ -57,6 +57,7 @@ public class PersonalDetails extends Information {
 	 */
 	
     private void initialize() {
+        details = cv.details;
         Locale l = new Locale(lang);
     	r = ResourceBundle.getBundle("resources/Bundle_"+lang, l);
     	
