@@ -286,7 +286,7 @@ public class Languages extends Information {
         lblNewLabel_1_1_1.setBounds(10, 51, 334, 30);
         panel_1.add(lblNewLabel_1_1_1);
         
-        JLabel lblNewLabel_1_1_1_1 = new JLabel(r.getString("selectSpeech")+":");
+        JLabel lblNewLabel_1_1_1_1 = new JLabel(r.getString("selectWritten")+":");
         lblNewLabel_1_1_1_1.setForeground(Color.WHITE);
         lblNewLabel_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1_1_1_1.setBounds(10, 188, 334, 30);
