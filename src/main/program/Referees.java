@@ -136,8 +136,6 @@ public class Referees extends Information {
         JTextArea refereeText = new JTextArea();
         refereeText.setEditable(false);
         refereeTab.setViewportView(refereeText);
-        
-        getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
 
         tabbedPane.setSelectedIndex(9);
 
@@ -242,6 +240,8 @@ public class Referees extends Information {
         btnSave.setBackground(new Color(128, 128, 128));
         btnSave.setBounds(329, 505, 112, 23);
         frame.getContentPane().add(btnSave);
+        //GET TAB INFO
+        getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
 	}
 
 }

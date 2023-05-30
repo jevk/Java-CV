@@ -152,8 +152,6 @@ public class Degrees extends Information {
         JTextArea refereeText = new JTextArea();
         refereeText.setEditable(false);
         refereeTab.setViewportView(refereeText);
-        
-        getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
 
         tabbedPane.setSelectedIndex(2);
         
@@ -321,6 +319,8 @@ public class Degrees extends Information {
         btnRemove.setFont(new Font("Tahoma", Font.BOLD, 18));
         btnRemove.setBounds(190, 271, 154, 21);
         panel_1.add(btnRemove);
+
+        getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         
         JLabel errorlabel = new JLabel(r.getString("plsEnter"));
         errorlabel.setFont(new Font("Tahoma", Font.BOLD, 11));

@@ -142,8 +142,6 @@ public class Courses extends Information {
         JTextArea refereeText = new JTextArea();
         refereeText.setEditable(false);
         refereeTab.setViewportView(refereeText);
-        
-        getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
 
         tabbedPane.setSelectedIndex(3);
         
@@ -243,6 +241,8 @@ public class Courses extends Information {
         lblNewLabel.setForeground(new Color(255, 255, 255));
         lblNewLabel.setBounds(38, 11, 354, 49);
         frame.getContentPane().add(lblNewLabel);
+        //GET TAB INFO
+        getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         
 	}
 }

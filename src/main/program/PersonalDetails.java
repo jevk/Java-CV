@@ -184,8 +184,6 @@ public class PersonalDetails extends Information {
         JTextArea refereeText = new JTextArea();
         refereeText.setEditable(false);
         refereeTab.setViewportView(refereeText);
-        
-        getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
 
         tabbedPane.setSelectedIndex(0);
         
@@ -333,5 +331,7 @@ public class PersonalDetails extends Information {
         });
         btnNewButton_1.setBounds(22, 295, 105, 23);
         panel_1.add(btnNewButton_1);
+        //GET TAB INFO
+        getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
     }
 }

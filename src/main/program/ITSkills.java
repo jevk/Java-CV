@@ -131,9 +131,6 @@ public class ITSkills extends Information {
         JTextArea refereeText = new JTextArea();
         refereeText.setEditable(false);
         refereeTab.setViewportView(refereeText);
-        
-        getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
-        // COPY ABOVE
 
         tabbedPane.setSelectedIndex(5);
         
@@ -225,6 +222,8 @@ public class ITSkills extends Information {
         
         textField.setText(" ");
         detailsText.setText(" ");
+        //GET TAB INFO
+        getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         
-            		}
-            	}       		
+    }
+}

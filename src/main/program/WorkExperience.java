@@ -169,8 +169,6 @@ public class WorkExperience extends Information {
         JTextArea refereeText = new JTextArea();
         refereeText.setEditable(false);
         refereeTab.setViewportView(refereeText);
-        
-        getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
 
         tabbedPane.setSelectedIndex(4);
         
@@ -326,8 +324,10 @@ public class WorkExperience extends Information {
         textJobTitle.setColumns(10);
         textJobTitle.setBounds(134, 103, 200, 20);
         panel_1.add(textJobTitle);
-        
-       
+
+
+        //GET TAB INFO
+        getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
     
        
         

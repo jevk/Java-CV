@@ -231,5 +231,8 @@ public class Positions extends Information {
         });
         btnRemove.setBounds(186, 201, 161, 20);
         panel_1.add(btnRemove);
+
+
+        getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
 	}
 }

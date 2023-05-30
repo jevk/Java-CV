@@ -167,9 +167,7 @@ public class Languages extends Information {
         JTextArea refereeText = new JTextArea();
         refereeText.setEditable(false);
         refereeTab.setViewportView(refereeText);
-        
-        //GET TAB INFO
-        getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
+
        	for (int i = 0; i < cv.langs.length; i++) {
        		if (cv.langs[i] != null && cv.langs[i].nativeLang == true) {
        			nativeSet = true;
@@ -388,5 +386,8 @@ public class Languages extends Information {
         lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_2.setBounds(10, 325, 213, 21);
         panel_1.add(lblNewLabel_2);
+
+        //GET TAB INFO
+        getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
     }
 }

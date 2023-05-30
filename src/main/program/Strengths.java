@@ -131,8 +131,6 @@ public class Strengths extends Information {
         JTextArea refereeText = new JTextArea();
         refereeText.setEditable(false);
         refereeTab.setViewportView(refereeText);
-        
-        getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
 
         tabbedPane.setSelectedIndex(1);
         
@@ -219,5 +217,7 @@ public class Strengths extends Information {
         });
         btnRemove.setBounds(186, 201, 161, 20);
         panel_1.add(btnRemove);
+        //GET TAB INFO
+        getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
 	}
 }

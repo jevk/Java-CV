@@ -152,8 +152,6 @@ public class Hobbies extends Information {
         JTextArea refereeText = new JTextArea();
         refereeText.setEditable(false);
         refereeTab.setViewportView(refereeText);
-        
-        getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
 
         tabbedPane.setSelectedIndex(7);
         
@@ -238,6 +236,8 @@ public class Hobbies extends Information {
         
         txtNimi.setText(" ");
         detailsText.setText(" ");
+
+        getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         
         
     }
