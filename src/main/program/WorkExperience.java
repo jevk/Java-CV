@@ -281,7 +281,7 @@ public class WorkExperience extends Information {
                 cv.experience = experience;
                 getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
             }
-});
+        });
         btnRemove.setBounds(180, 297, 154, 20);
  		panel_1.add(btnRemove);  
  		detailsText.setText(" ");

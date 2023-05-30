@@ -20,7 +20,7 @@ public abstract class Information {
 		detail.append(r.getString("town") + " " + details.town + ", " + details.zip + "\n");
 		detail.append(r.getString("phone") + " " + details.phone + "\n");
 		detail.append(r.getString("email") + " " + details.email + "\n");
-		if (details.other.length() > 0) detail.append("Other: " + details.other);
+		if (details.other != null) detail.append(r.getString("other") + " " + details.other + "\n");
 		
 		String[] strengths = cv.strengths;
 		strength.setText("");
