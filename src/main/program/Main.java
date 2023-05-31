@@ -61,6 +61,14 @@ public class Main {
         lblNewLabel.setBounds(186, 11, 412, 76);
         frame.getContentPane().add(lblNewLabel);
 
+		JLabel credits = new JLabel("<html>Made by:<br/><br/>Lucy \"Jevk\" Kemppainen<br/>Arttu \"Darksuh\" Kaurala<br/>Kasper \"Meg1s\" Karvonen<br/>Leevi \"Planks\" Saljas<br/>Riku \"RikUMB\" Tikkanen</html>");
+		credits.setHorizontalAlignment(SwingConstants.LEFT);
+		credits.setVerticalAlignment(SwingConstants.TOP);
+		credits.setForeground(new Color(255, 255, 255));
+		credits.setFont(new Font("Ebrima", Font.PLAIN, 15));
+		credits.setBounds(10, 11, 412, 400);
+		frame.getContentPane().add(credits);
+
 		// Create quit button
         JButton btnQuit = new JButton(r.getString("leave"));
         btnQuit.setForeground(new Color(255, 255, 255));
