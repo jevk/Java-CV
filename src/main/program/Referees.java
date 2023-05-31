@@ -48,7 +48,8 @@ public class Referees extends Information {
 	private void initialize() {
     	Locale l = new Locale(cv.LOCALE);
     	ResourceBundle r = ResourceBundle.getBundle("resources/Bundle_"+cv.LOCALE, l);
-    	
+
+        // create GUI and tabs
         frame = new JFrame();
         frame.getContentPane().setBackground(new Color(39, 39, 39));
         frame.getContentPane().setForeground(new Color(0, 0, 0));
@@ -61,13 +62,13 @@ public class Referees extends Information {
         panel.setBounds(374, 21, 402, 437);
         frame.getContentPane().add(panel);
         panel.setLayout(null);
-        
+
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
         tabbedPane.setForeground(new Color(255, 255, 255));
         tabbedPane.setBackground(new Color(128, 128, 128));
         tabbedPane.setBounds(10, 11, 382, 415);
         panel.add(tabbedPane);
-        
+
         JScrollPane detailsTab = new JScrollPane();
         tabbedPane.addTab(r.getString("details"), null, detailsTab, null);
         
@@ -145,8 +146,8 @@ public class Referees extends Information {
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
         lblNewLabel.setBounds(28, 11, 354, 49);
         frame.getContentPane().add(lblNewLabel);
-        
-        
+
+        // button to return to the previous page, in this case positions
         JButton btnBack = new JButton(r.getString("back"));
         btnBack.setForeground(new Color(255, 255, 255));
         btnBack.setBackground(new Color(128, 128, 128));
@@ -164,12 +165,14 @@ public class Referees extends Information {
         panel_1.setBounds(10, 71, 354, 387);
         frame.getContentPane().add(panel_1);
         panel_1.setLayout(null);
-        
+
+        // textfield for referees
         JTextField refereeField = new JTextField();
         refereeField.setBounds(23, 168, 310, 20);
         panel_1.add(refereeField);
         refereeField.setColumns(10);
-        
+
+        // adds an entry from text field to references tab
         JButton btnAdd = new JButton(r.getString("add"));
         btnAdd.setForeground(new Color(255, 255, 255));
         btnAdd.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -188,7 +191,8 @@ public class Referees extends Information {
         });
         btnAdd.setBounds(10, 201, 163, 20);
         panel_1.add(btnAdd);
-        
+
+        // continue to the next page, in this case to personal details
         JButton btnNext = new JButton(r.getString("next"));
         btnNext.setForeground(new Color(255, 255, 255));
         btnNext.setBackground(new Color(128, 128, 128));
@@ -208,7 +212,8 @@ public class Referees extends Information {
         lblNewLabel_1.setForeground(Color.WHITE);
         lblNewLabel_1.setBounds(75, 130, 206, 28);
         panel_1.add(lblNewLabel_1);
-        
+
+        // remove last entry
         JButton btnRemove = new JButton(r.getString("remove"));
         btnRemove.setForeground(new Color(255, 255, 255));
         btnRemove.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -232,7 +237,9 @@ public class Referees extends Information {
         });
         btnRemove.setBounds(186, 201, 161, 20);
         panel_1.add(btnRemove);
-        
+
+        // creates the CV with the entered details
+
         JButton btnSave = new JButton(r.getString("createCV"));
         btnSave.addActionListener(e -> {
             cv.BuildCV(cv);
