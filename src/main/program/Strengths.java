@@ -140,8 +140,8 @@ public class Strengths extends Information {
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
         lblNewLabel.setBounds(28, 11, 354, 49);
         frame.getContentPane().add(lblNewLabel);
-        
-        
+
+        //goes to the previous program
         JButton btnBack = new JButton(r.getString("back"));
         btnBack.setForeground(new Color(255, 255, 255));
         btnBack.setBackground(new Color(128, 128, 128));
@@ -164,7 +164,8 @@ public class Strengths extends Information {
         strengthField.setBounds(23, 168, 310, 20);
         panel_1.add(strengthField);
         strengthField.setColumns(10);
-        
+
+        //Adds all information what you put
         JButton btnAdd = new JButton(r.getString("add"));
         btnAdd.setForeground(new Color(255, 255, 255));
         btnAdd.setBackground(new Color(128, 128, 128));
@@ -182,7 +183,8 @@ public class Strengths extends Information {
         });
         btnAdd.setBounds(10, 201, 163, 20);
         panel_1.add(btnAdd);
-        
+
+        //goes to the next program
         JButton btnNext = new JButton(r.getString("next"));
         btnNext.setForeground(new Color(255, 255, 255));
         btnNext.setBackground(new Color(128, 128, 128));
@@ -202,7 +204,8 @@ public class Strengths extends Information {
         lblNewLabel_1.setForeground(Color.WHITE);
         lblNewLabel_1.setBounds(75, 130, 206, 28);
         panel_1.add(lblNewLabel_1);
-        
+
+        //removes all information what you did put
         JButton btnRemove = new JButton(r.getString("remove"));
         btnRemove.setForeground(new Color(255, 255, 255));
         btnRemove.setBackground(new Color(128, 128, 128));
