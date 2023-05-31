@@ -48,12 +48,18 @@ public class CV {
 		this.referees = new String[10];
 	}
 
+	/*
+	 * Adds a line break to the pdf document
+	 */
 	private void lineBreak(Document pdf) throws IOException {
 		Paragraph p = new Paragraph();
 		p.addText(" ", 12, PDType1Font.HELVETICA);
 		pdf.add(p);
 	}
 
+	/*
+	 * Adds a section to the pdf document
+	 */
 	private void addSectionString(String[] strings, String title, Document pdf) throws IOException {
 		Paragraph p = new Paragraph();
 		p.addText(title, 12, PDType1Font.HELVETICA_BOLD);
@@ -70,7 +76,10 @@ public class CV {
 
 		lineBreak(pdf);
 	}
-	
+
+	/*
+	 * Builds the CV into a pdf document
+	 */
 	public void BuildCV(CV cv) {
     	Locale l = new Locale(cv.LOCALE);
     	ResourceBundle r = ResourceBundle.getBundle("resources/Bundle_"+cv.LOCALE, l);
