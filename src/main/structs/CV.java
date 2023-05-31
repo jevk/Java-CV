@@ -88,6 +88,7 @@ public class CV {
 
 		try {
 			pdf.add(new ColumnLayout(3, 0));
+			//Image
 			if (image != null) {
 				ImageElement ie = new ImageElement(cv.image);
 				ie.setWidth(120);
@@ -97,7 +98,7 @@ public class CV {
 			}
 
 			pdf.add(ColumnLayout.NEWCOLUMN);
-
+			//Details
 			Paragraph p = new Paragraph();
 			p.addText(
 			cv.details.name + "\n" +
@@ -111,7 +112,7 @@ public class CV {
 			pdf.add(p, new VerticalLayoutHint(Alignment.Left, -10, 0, 0, 0));
 
 			pdf.add(ColumnLayout.NEWCOLUMN);
-
+			//Text "CV"
 			lineBreak(pdf);
 			p = new Paragraph();
 			p.addText("CV", 12, PDType1Font.HELVETICA);
@@ -177,17 +178,21 @@ public class CV {
 				p.addText(info + "\n\n", 12, PDType1Font.HELVETICA);
 			}
 			pdf.add(p);
+			//Hobbies
 			lineBreak(pdf);
 			addSectionString(cv.hobbies, r.getString("hobbies"), pdf);
 			lineBreak(pdf);
+			//Posiotions
 			addSectionString(cv.positions, r.getString("positions"), pdf);
 			lineBreak(pdf);
+			//references
 			addSectionString(cv.referees, r.getString("references"), pdf);
-
+			//File saving
 			final OutputStream os = Files.newOutputStream(Paths.get("CV_" + cv.details.name + ".pdf"));
 
 			try {
 				pdf.save(os);
+				JOptionPane.showMessageDialog(null, r.getString("save"));
 			} catch (IOException e) {
 				JOptionPane.showMessageDialog(null, e + " REEEEEEEEEE YOU FORGOR");
 			}
