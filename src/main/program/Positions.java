@@ -55,7 +55,8 @@ public class Positions extends Information {
 	private void initialize() {
     	Locale l = new Locale(cv.LOCALE);
     	ResourceBundle r = ResourceBundle.getBundle("resources/Bundle_"+cv.LOCALE, l);
-    	
+
+        // create GUI and tabs
         frame = new JFrame();
         frame.getContentPane().setBackground(new Color(39, 39, 39));
         frame.getContentPane().setForeground(new Color(0, 0, 0));
@@ -155,7 +156,7 @@ public class Positions extends Information {
         lblNewLabel.setBounds(28, 11, 354, 49);
         frame.getContentPane().add(lblNewLabel);
         
-        
+        // returns to the last page, in this case hobbies
         JButton btnBack = new JButton(r.getString("back"));
         btnBack.setForeground(new Color(255, 255, 255));
         btnBack.setBackground(new Color(128, 128, 128));
@@ -178,7 +179,8 @@ public class Positions extends Information {
         positionField.setBounds(23, 168, 310, 20);
         panel_1.add(positionField);
         positionField.setColumns(10);
-        
+
+        // adds a new entry from text field to positions tab
         JButton btnAdd = new JButton(r.getString("add"));
         btnAdd.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnAdd.setForeground(new Color(255, 255, 255));
@@ -196,7 +198,8 @@ public class Positions extends Information {
         });
         btnAdd.setBounds(10, 201, 163, 20);
         panel_1.add(btnAdd);
-        
+
+        // moves to the next page, in this case being referees
         JButton btnNext = new JButton(r.getString("next"));
         btnNext.setForeground(new Color(255, 255, 255));
         btnNext.setBackground(new Color(128, 128, 128));
@@ -216,7 +219,8 @@ public class Positions extends Information {
         lblNewLabel_1.setForeground(Color.WHITE);
         lblNewLabel_1.setBounds(75, 130, 206, 28);
         panel_1.add(lblNewLabel_1);
-        
+
+        // removes latest entry
         JButton btnRemove = new JButton(r.getString("remove"));
         btnRemove.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnRemove.setForeground(new Color(255, 255, 255));
