@@ -182,7 +182,7 @@ public class Languages extends Information {
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
         lblNewLabel.setBounds(28, 11, 354, 49);
         frame.getContentPane().add(lblNewLabel);
-        
+        //To the next part
         JButton btnNext = new JButton(r.getString("next"));
         btnNext.setForeground(new Color(255, 255, 255));
         btnNext.setBackground(new Color(128, 128, 128));
@@ -196,7 +196,7 @@ public class Languages extends Information {
         btnNext.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnNext.setBounds(545, 504, 112, 23);
         frame.getContentPane().add(btnNext);
-        
+        //Go back to the previous part
         JButton btnBack = new JButton(r.getString("back"));
         btnBack.setForeground(new Color(255, 255, 255));
         btnBack.setBackground(new Color(128, 128, 128));
@@ -210,7 +210,7 @@ public class Languages extends Information {
         btnBack.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnBack.setBounds(127, 504, 112, 23);
         frame.getContentPane().add(btnBack);
-        
+        //Panel for languages selection
         JPanel panel_1 = new JPanel();
         panel_1.setBackground(new Color(49, 49, 49));
         panel_1.setBounds(10, 71, 354, 387);
@@ -222,94 +222,94 @@ public class Languages extends Information {
         lblNewLabel_1.setForeground(new Color(255, 255, 255));
         lblNewLabel_1.setBounds(10, 5, 150, 30);
         panel_1.add(lblNewLabel_1);
-        
+        //Radio button for "Beginner speech"
         JRadioButton rdbtnBegSpeech = new JRadioButton(r.getString("beginner"));
         rdbtnBegSpeech.setFont(new Font("Tahoma", Font.BOLD, 15));
         rdbtnBegSpeech.setForeground(new Color(255, 255, 255));
         rdbtnBegSpeech.setBackground(new Color(86, 86, 86));
         rdbtnBegSpeech.setBounds(170, 88, 174, 21);
         panel_1.add(rdbtnBegSpeech);
-        
+        //Radio button for "Intermediate speech"
         JRadioButton rdbtnInterSpeech = new JRadioButton(r.getString("intermediate"));
         rdbtnInterSpeech.setForeground(Color.WHITE);
         rdbtnInterSpeech.setFont(new Font("Tahoma", Font.BOLD, 15));
         rdbtnInterSpeech.setBackground(new Color(86, 86, 86));
         rdbtnInterSpeech.setBounds(170, 112, 174, 21);
         panel_1.add(rdbtnInterSpeech);
-        
+        //Radio button for "Advanced speech"
         JRadioButton rdbtnAdSpeech = new JRadioButton(r.getString("advanced"));
         rdbtnAdSpeech.setForeground(Color.WHITE);
         rdbtnAdSpeech.setFont(new Font("Tahoma", Font.BOLD, 15));
         rdbtnAdSpeech.setBackground(new Color(86, 86, 86));
         rdbtnAdSpeech.setBounds(170, 136, 174, 21);
         panel_1.add(rdbtnAdSpeech);
-        
+        //Radio button for "Fluent speech"
         JRadioButton rdbtnFluSpeech = new JRadioButton(r.getString("fluent"));
         rdbtnFluSpeech.setForeground(Color.WHITE);
         rdbtnFluSpeech.setFont(new Font("Tahoma", Font.BOLD, 15));
         rdbtnFluSpeech.setBackground(new Color(86, 86, 86));
         rdbtnFluSpeech.setBounds(170, 160, 174, 21);
         panel_1.add(rdbtnFluSpeech);
-        
+        //Radio button for "Beginner Writing"
         JRadioButton rdbtnBegWrite = new JRadioButton(r.getString("beginner"));
         rdbtnBegWrite.setForeground(Color.WHITE);
         rdbtnBegWrite.setFont(new Font("Tahoma", Font.BOLD, 15));
         rdbtnBegWrite.setBackground(new Color(86, 86, 86));
         rdbtnBegWrite.setBounds(10, 225, 174, 21);
         panel_1.add(rdbtnBegWrite);
-        
+        //Radio button for "Intermediate Writing"
         JRadioButton rdbtnInterWrite = new JRadioButton(r.getString("intermediate"));
         rdbtnInterWrite.setForeground(Color.WHITE);
         rdbtnInterWrite.setFont(new Font("Tahoma", Font.BOLD, 15));
         rdbtnInterWrite.setBackground(new Color(86, 86, 86));
         rdbtnInterWrite.setBounds(10, 249, 174, 21);
         panel_1.add(rdbtnInterWrite);
-        
+        //Radio button for "Advanced Writing"
         JRadioButton rdbtnAdWrite = new JRadioButton(r.getString("advanced"));
         rdbtnAdWrite.setForeground(Color.WHITE);
         rdbtnAdWrite.setFont(new Font("Tahoma", Font.BOLD, 15));
         rdbtnAdWrite.setBackground(new Color(86, 86, 86));
         rdbtnAdWrite.setBounds(10, 273, 174, 21);
         panel_1.add(rdbtnAdWrite);
-        
+        //Radio button for "Fluent writing"
         JRadioButton rdbtnFluWrite = new JRadioButton(r.getString("fluent"));
         rdbtnFluWrite.setForeground(Color.WHITE);
         rdbtnFluWrite.setFont(new Font("Tahoma", Font.BOLD, 15));
         rdbtnFluWrite.setBackground(new Color(86, 86, 86));
         rdbtnFluWrite.setBounds(10, 297, 174, 21);
         panel_1.add(rdbtnFluWrite);
-        
+        //label for "Select Speech"
         JLabel lblNewLabel_1_1_1 = new JLabel(r.getString("selectSpeech")+":");
         lblNewLabel_1_1_1.setForeground(Color.WHITE);
         lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1_1_1.setBounds(10, 51, 334, 30);
         panel_1.add(lblNewLabel_1_1_1);
-        
+        //label for "Select written"
         JLabel lblNewLabel_1_1_1_1 = new JLabel(r.getString("selectWritten")+":");
         lblNewLabel_1_1_1_1.setForeground(Color.WHITE);
         lblNewLabel_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1_1_1_1.setBounds(10, 188, 334, 30);
         panel_1.add(lblNewLabel_1_1_1_1);
-        
+        //Button group for "Speech"
         ButtonGroup Speech = new ButtonGroup();
         Speech.add(rdbtnFluSpeech);
         Speech.add(rdbtnAdSpeech);
         Speech.add(rdbtnInterSpeech);
         Speech.add(rdbtnBegSpeech);
-        
+        //Button group for "Write"
         ButtonGroup Write = new ButtonGroup();
         Write.add(rdbtnFluWrite);
         Write.add(rdbtnAdWrite);
         Write.add(rdbtnInterWrite);
         Write.add(rdbtnBegWrite);
-        
+        //CheckBox to check that the language is native for the person
         JCheckBox checkboxNative = new JCheckBox("");
         checkboxNative.setEnabled(!nativeSet);
         checkboxNative.setForeground(Color.WHITE);
         checkboxNative.setBackground(new Color(49, 49, 49));
         checkboxNative.setBounds(229, 326, 97, 23);
         panel_1.add(checkboxNative);
-        
+        //adds the language to the list
         JButton btnAdd = new JButton(r.getString("add"));
         btnAdd.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -351,7 +351,7 @@ public class Languages extends Information {
         btnAdd.setFont(new Font("Tahoma", Font.BOLD, 15));
         btnAdd.setBounds(10, 353, 154, 23);
         panel_1.add(btnAdd);
-        
+        //removes the language from the list
         JButton btnRemove = new JButton(r.getString("remove"));
         btnRemove.setFont(new Font("Tahoma", Font.BOLD, 15));
         btnRemove.addActionListener(new ActionListener() {
@@ -376,12 +376,12 @@ public class Languages extends Information {
         btnRemove.setBackground(new Color(128, 128, 128));
         btnRemove.setBounds(174, 353, 170, 23);
         panel_1.add(btnRemove);
-        
+        //For writing the name of the language
         txtLang = new JTextField();
         txtLang.setBounds(170, 12, 174, 21);
         panel_1.add(txtLang);
         txtLang.setColumns(10);
-        
+        //label for "Set Native"
         JLabel lblNewLabel_2 = new JLabel(r.getString("setNative"));
         lblNewLabel_2.setForeground(new Color(255, 255, 255));
         lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));

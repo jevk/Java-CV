@@ -1,18 +1,19 @@
 package structs;
 
+// Literally just a struct for the languages
 public class Language {
+    // Store the language name
     public String langName;
+    // Store the spoken skill level
     public String spoken;
+    // Store the written skill level
     public String written;
+    // Store whether the language is the user's native language or not
     public boolean nativeLang;
 
-    public Language(String langName, String spoken, String written, boolean nativeLang) {
-        this.langName = langName;
-        this.spoken = spoken;
-        this.written = written;
-        this.nativeLang = nativeLang;
-    }
+    // Constructors
     public Language() {
+        // Initialize variables
         this.langName = "";
         this.spoken = "";
         this.written = "";

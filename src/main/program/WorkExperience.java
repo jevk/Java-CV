@@ -29,29 +29,38 @@ public class WorkExperience extends Information {
     		.atZone(ZoneId.systemDefault())
             .toLocalDateTime();
 	}
-	
+
+    // Method to format the date to a string in the format "year(s), month(s), week(s)" (e.g. "1 year, 2 months, 3 weeks")
 	private String daysToString(float days) {
+        // Get the number of years, months and weeks from the number of days
 		int years = (int) (days / 365);
 		int months = (int) ((days - years * 365) / 30);
 		int weeks = (int) ((days - years * 365 - months * 30) / 7);
-		
+
+        // Declare the returned string and the plural strings
 		String time = "";
 		String yPlural = "";
 		String mPlural = "";
 		String wPlural = "";
-		
+
+        // If the number of years, months or weeks is greater than 1, add an "s" to the end of the string
 		if (years > 1) yPlural = "s";
 		if (months > 1) mPlural = "s";
 		if (weeks > 1) wPlural = "s";
-		
-		if (years > 0) time += years + " " + r.getString("year"+yPlural) + ", ";
-		if (months > 0) time += months + " " + r.getString("month"+mPlural) + ", ";
+
+        // Add the number of years, months and weeks to the returned string
+		if (years > 0) time += years + " " + r.getString("year"+yPlural);
+        if (years > 0 && months > 0) time += ", ";
+		if (months > 0) time += months + " " + r.getString("month"+mPlural);
+        if ((years > 0 || months > 0) && weeks > 0) time += ", ";
 		if (weeks > 0 && years == 0) time += weeks + " " + r.getString("week"+wPlural);
-		
+
+        // Return the formatted string
 		return time;
 	}
-	
+
 	public static void main(CV curriculumVitae) {
+        // Set the language
 		lang = curriculumVitae.LOCALE;
 		EventQueue.invokeLater(() -> {
             try {
@@ -67,8 +76,11 @@ public class WorkExperience extends Information {
 	 * Create the application.
 	 */
 	public WorkExperience(CV curriculumVitae) {
+        // Set the CV structure and the experience array
 		cv = curriculumVitae;
 		experience = cv.experience;
+
+        // Start the GUI
 		initialize();
 	}
 
@@ -76,9 +88,11 @@ public class WorkExperience extends Information {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+        // Initialize locale and resource bundle
         Locale l = new Locale(lang);
     	r = ResourceBundle.getBundle("resources/Bundle_"+lang, l);
-    	
+
+        // Initialize the GUI itself along with the tabs and the panel
         frame = new JFrame();
         frame.getContentPane().setLocation(-25, -71);
         frame.getContentPane().setBackground(new Color(39, 39, 39));
@@ -170,6 +184,7 @@ public class WorkExperience extends Information {
         refereeText.setEditable(false);
         refereeTab.setViewportView(refereeText);
 
+        // Set the selected page on the preview panel
         tabbedPane.setSelectedIndex(4);
         
         JLabel lblNewLabel = new JLabel(r.getString("experience"));
@@ -178,11 +193,12 @@ public class WorkExperience extends Information {
         lblNewLabel.setBounds(28, 11, 354, 49);
         frame.getContentPane().add(lblNewLabel);
         
-        
+        // Button for moving to the previous page
         JButton btnBack = new JButton(r.getString("back"));
         btnBack.setForeground(new Color(255, 255, 255));
         btnBack.setBackground(new Color(128, 128, 128));
         btnBack.addActionListener(e -> {
+            // Save the changes to the CV and move to the previous page
             cv.experience = experience;
             Courses.main(cv);
             frame.dispose();
@@ -204,49 +220,64 @@ public class WorkExperience extends Information {
         JDateChooser end_date = new JDateChooser();
         end_date.setBounds(174, 165, 160, 20);
         panel_1.add(end_date);
-        
+
+        // Add a new entry
         JButton btnAdd = new JButton(r.getString("add"));
         btnAdd.setForeground(new Color(255, 255, 255));
         btnAdd.setFont(new Font("Tahoma", Font.BOLD, 11));
         btnAdd.setBackground(new Color(128, 128, 128));
         btnAdd.addActionListener(e -> {
+            // Retrieve the data from the fields
         	String workplace = textWorkplace.getText();
         	String job = textJob.getText();
-        	String jobtitle = textJobTitle.getText();
+        	String jobTitle = textJobTitle.getText();
 
+            // Get the dates
         	LocalDateTime start = convertToLocalDateTime(start_date.getDate());
         	LocalDateTime end = convertToLocalDateTime(end_date.getDate());
+
+            // Calculate the duration between the dates in days
             float duration = Float.parseFloat(Long.toString(Duration.between(start, end).toDays()));
 
+            // Convert the duration to a string in the format "x years, y months, z days"
             String timeString = daysToString(duration);
 
+            // Add the entry to the array
          	for (int i = 0; i < experience.length; i++) {
-        		if (experience[i] == null) {
-        			Experience exp = new Experience();
+                if (experience[i] == null) {
+                    // Create a new Experience object
+                    Experience exp = new Experience();
 
-        			exp.workplace = workplace;
-        			exp.job = job;
-        			exp.jobtitle = jobtitle;
-        			exp.length = timeString;
+                    // Set the values
+                    exp.workplace = workplace;
+                    exp.job = job;
+                    exp.jobtitle = jobTitle;
+                    exp.length = timeString;
 
-        			experience[i] = exp;
+                    // Add the object to the array
+                    experience[i] = exp;
 
-        			break;
-        		}
-        	}
-         	cv.experience = experience;
-         	getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
+                    // Break the loop
+                    break;
+                }
+            }
+
+            // Update the data
+            cv.experience = experience;
+            getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
         });
         btnAdd.setForeground(Color.WHITE);
         btnAdd.setFont(new Font("Tahoma", Font.BOLD, 11));
         btnAdd.setBackground(Color.GRAY);
         btnAdd.setBounds(16, 297, 154, 20);
         panel_1.add(btnAdd);
-        
+
+        // Button for moving to the next page
         JButton btnNext = new JButton(r.getString("next"));
         btnNext.setForeground(new Color(255, 255, 255));
         btnNext.setBackground(new Color(128, 128, 128));
         btnNext.addActionListener(e -> {
+            // Save the changes to the CV and move to the next page
             cv.experience = experience;
             ITSkills.main(cv);
             frame.dispose();
@@ -262,20 +293,27 @@ public class WorkExperience extends Information {
         lblNewLabel_1.setForeground(Color.WHITE);
         lblNewLabel_1.setBounds(10, 35, 91, 28);
         panel_1.add(lblNewLabel_1);
-        
+
+        // The button for removing the last entry
         JButton btnRemove = new JButton("Remove");
         btnRemove.setForeground(new Color(255, 255, 255));
         btnRemove.setFont(new Font("Tahoma", Font.BOLD, 11));
         btnRemove.setBackground(new Color(128, 128, 128));
         btnRemove.addActionListener(e -> {
+            // Loop through the array
             for(int i = 0; i < experience.length; i++) {
+                // Find the last entry
                 if (experience[i] == null) {
                     try {
+                        // Remove the entry
                         experience[i - 1] = null;
                     } catch (Exception e1) {
+                        // If there are no entries, do nothing
                         System.out.println(" ");
                     }
                 }
+
+                // Update the data
                 cv.experience = experience;
                 getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
             }
@@ -304,12 +342,14 @@ public class WorkExperience extends Information {
         lblNewLabel_1_4.setFont(new Font("Tahoma", Font.BOLD, 14));
         lblNewLabel_1_4.setBounds(10, 167, 140, 20);
         panel_1.add(lblNewLabel_1_4);
-        
+
+        // Text field for the workplace
         textWorkplace = new JTextField();
         textWorkplace.setBounds(134, 41, 200, 20);
         panel_1.add(textWorkplace);
         textWorkplace.setColumns(10);
-        
+
+        // Text field for the job
         textJob = new JTextField();
         textJob.setColumns(10);
         textJob.setBounds(134, 72, 200, 20);
@@ -326,7 +366,7 @@ public class WorkExperience extends Information {
         panel_1.add(textJobTitle);
 
 
-        //GET TAB INFO
+        // SET PREVIEWED CV DATA
         getCV(cv, detailsText, strengthsText, degreeText, courseText, expText, itText, langsText, hobbyText, positionText, refereeText);
     
        
