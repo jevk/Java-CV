@@ -295,7 +295,7 @@ public class WorkExperience extends Information {
         panel_1.add(lblNewLabel_1);
 
         // The button for removing the last entry
-        JButton btnRemove = new JButton("Remove");
+        JButton btnRemove = new JButton(r.getString("remove"));
         btnRemove.setForeground(new Color(255, 255, 255));
         btnRemove.setFont(new Font("Tahoma", Font.BOLD, 11));
         btnRemove.setBackground(new Color(128, 128, 128));

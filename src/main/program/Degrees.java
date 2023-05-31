@@ -260,7 +260,7 @@ public class Degrees extends Information {
         
        
         //Adds all information what you put on text boxes
-        JButton btnAdd = new JButton("Add");
+        JButton btnAdd = new JButton(r.getString("add"));
         btnAdd.setForeground(new Color(255, 255, 255));
         btnAdd.setBackground(new Color(128, 128, 128));
         btnAdd.addActionListener(new ActionListener() {
