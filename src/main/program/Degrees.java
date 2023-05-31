@@ -316,7 +316,7 @@ public class Degrees extends Information {
         				try {
 							degrees[i - 1] = null;
 						} catch (Exception e1) {
-							System.out.println("fucking retard xD");
+							System.out.println(" ");
 						}
         			}
         		}
