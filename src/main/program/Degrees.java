@@ -61,6 +61,7 @@ public class Degrees extends Information {
      */
     private void initialize() {
     	Locale l = new Locale(cv.LOCALE);
+        //get the bundle
     	ResourceBundle r = ResourceBundle.getBundle("resources/Bundle_"+cv.LOCALE, l);
     	
     	degrees = cv.degrees;
@@ -161,7 +162,8 @@ public class Degrees extends Information {
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 24));
         lblNewLabel.setBounds(28, 11, 354, 49);
         frame.getContentPane().add(lblNewLabel);
-        
+
+        //goes to the next program
         JButton btnNext = new JButton(r.getString("next"));
         btnNext.setForeground(new Color(255, 255, 255));
         btnNext.setBackground(new Color(128, 128, 128));
@@ -175,7 +177,8 @@ public class Degrees extends Information {
         btnNext.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnNext.setBounds(545, 504, 112, 23);
         frame.getContentPane().add(btnNext);
-        
+
+        //goes to the previous program
         JButton btnBack = new JButton(r.getString("back"));
         btnBack.setForeground(new Color(255, 255, 255));
         btnBack.setBackground(new Color(128, 128, 128));
@@ -240,21 +243,23 @@ public class Degrees extends Information {
         txtDegree.setColumns(10);
         txtDegree.setBounds(132, 122, 212, 20);
         panel_1.add(txtDegree);
-        
+
+        //year selection spinner
         JSpinner selectStartYear = new JSpinner();
         selectStartYear.setBounds(132, 171, 215, 20);
         selectStartYear.setValue(2000);
         panel_1.add(selectStartYear);
-        
+
+        //year selection spinner
         JSpinner selectEndYear = new JSpinner();
         selectEndYear.setBounds(132, 222, 213, 20);
         selectEndYear.setValue(2000);
         panel_1.add(selectEndYear);
         
-		// degrees[i - 1] = null;
+
         
        
-        
+        //Adds all information what you put on text boxes
         JButton btnAdd = new JButton("Add");
         btnAdd.setForeground(new Color(255, 255, 255));
         btnAdd.setBackground(new Color(128, 128, 128));
@@ -299,6 +304,8 @@ public class Degrees extends Information {
         btnAdd.setBounds(10, 272, 169, 21);
         panel_1.add(btnAdd);
         
+
+        //removes all information what you did put
         JButton btnRemove = new JButton(r.getString("remove"));
         btnRemove.setForeground(new Color(255, 255, 255));
         btnRemove.setBackground(new Color(128, 128, 128));
@@ -309,7 +316,7 @@ public class Degrees extends Information {
         				try {
 							degrees[i - 1] = null;
 						} catch (Exception e1) {
-							System.out.println("fucking retard xD");
+							System.out.println(" ");
 						}
         			}
         		}
